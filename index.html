@@ -3,14 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centro de Recargas — Robot Interactivo 3D</title>
+  <title>Centro de Recargas Gamer — Nexus Top-Up 24/7</title>
   <style>
     :root {
-      --bg: #0b0c10;
-      --eye-color: #ffffff;
-      --eye-glow: rgba(56, 189, 248, 0.9);
-      --eye-fringe: rgba(255, 110, 80, 0.5);
-      --primary: #38bdf8;
+      --bg: #07080c;
+      --card-bg: rgba(14, 17, 24, 0.85);
+      --card-border: rgba(255, 255, 255, 0.08);
+      /* TEMA VERDE NEÓN GAMER POR DEFECTO (ESTILO RAZER / MATRIX) */
+      --accent: #00ff88;
+      --accent-glow: rgba(0, 255, 136, 0.7);
+      --accent-dim: rgba(0, 255, 136, 0.12);
+      --eye-fringe: rgba(0, 200, 255, 0.5);
+    }
+
+    [data-theme="red"] {
+      /* TEMA ROJO CYBERPUNK GAMER */
+      --accent: #ff003c;
+      --accent-glow: rgba(255, 0, 60, 0.7);
+      --accent-dim: rgba(255, 0, 60, 0.12);
+      --eye-fringe: rgba(255, 120, 0, 0.6);
     }
 
     * {
@@ -23,342 +34,542 @@
     html, body {
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
       background-color: var(--bg);
       color: #f1f5f9;
       user-select: none;
     }
 
-    /* FONDO ESTUDIO CINEMATOGRÁFICO COMBINADO */
-    .viewport {
+    /* FONDO GAMER CIBERNÉTICO */
+    .app-viewport {
       position: relative;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
       overflow: hidden;
-      background: 
-        radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 40%), rgba(56, 189, 248, 0.08) 0%, rgba(20, 24, 33, 0.4) 40%, transparent 70%),
-        radial-gradient(ellipse at 50% 100%, #171b26 0%, #0a0b0f 75%);
+      background:
+        radial-gradient(circle at var(--mouse-x, 80%) var(--mouse-y, 40%), var(--accent-dim) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 65%, rgba(0, 0, 0, 0.7) 0%, transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(180deg, #06070a 0%, #0a0d14 100%);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px, 100% 100%;
     }
 
-    /* CANVAS DE POLVO / AMBIENTE CIBERNÉTICO */
+    /* CANVAS DE PARTÍCULAS / CHISPAS CIBERNÉTICAS */
     #ambient-canvas {
-      position: absolute;
+      position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 5;
+      z-index: 2;
     }
 
-    /* HEADER MINIMALISTA */
-    header {
-      position: absolute;
-      top: 28px;
-      left: 0;
-      right: 0;
+    /* GRID PRINCIPAL: IZQUIERDA (TIENDA GAMER) | DERECHA (ROBOT REALISTA) */
+    .layout-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      z-index: 10;
+    }
+
+    /* ----------------------------------------------------
+       LADO IZQUIERDO: CENTRO DE RECARGAS GAMER
+       ---------------------------------------------------- */
+    .store-panel {
+      padding: 32px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 20;
+    }
+
+    .store-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 36px;
-      z-index: 30;
-      pointer-events: none;
+      margin-bottom: 24px;
     }
 
-    .brand {
+    .brand-group {
       display: flex;
       align-items: center;
-      gap: 12px;
-      pointer-events: auto;
+      gap: 14px;
     }
 
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(188, 255, 72, 0.15));
-      border: 1px solid rgba(56, 189, 248, 0.4);
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+      font-size: 20px;
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
-    .brand-title {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+    .brand-text h1 {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      background: linear-gradient(135deg, #ffffff 50%, #94a3b8 100%);
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .brand-subtitle {
+    .brand-text p {
       font-size: 11px;
       color: #64748b;
-      letter-spacing: 0.08em;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    .status-badge {
+    .status-pill {
       display: inline-flex;
       align-items: center;
       gap: 7px;
       padding: 6px 14px;
       border-radius: 9999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(12, 15, 22, 0.85);
+      border: 1px solid var(--card-border);
       font-size: 11px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-family: ui-monospace, monospace;
       color: #94a3b8;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      pointer-events: auto;
     }
 
-    .status-pulse {
+    .status-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 10px #10b981;
-      animation: pulseLive 2s infinite;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulseGlow 1.8s infinite;
     }
 
-    @keyframes pulseLive {
+    @keyframes pulseGlow {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+      50% { opacity: 0.35; transform: scale(0.85); }
     }
 
-    .controls-top {
+    /* SELECTOR DE JUEGOS */
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
+      gap: 8px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .games-scroll {
+      display: flex;
       gap: 10px;
-      pointer-events: auto;
+      margin-bottom: 24px;
     }
 
-    .icon-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(18, 22, 32, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #cbd5e1;
+    .game-tab {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 14px;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(10px);
     }
 
-    .icon-btn:hover {
-      background: rgba(30, 41, 59, 0.9);
-      border-color: rgba(56, 189, 248, 0.5);
-      color: #38bdf8;
-      transform: scale(1.08);
+    .game-tab:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      transform: translateY(-2px);
     }
 
-    /* CONTENEDOR 3D DEL ROBOT REALISTA */
-    .robot-scene {
+    .game-tab.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+
+    /* GRID DE PAQUETES DE RECARGA */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .package-card {
       position: relative;
-      width: min(720px, 92vw);
-      height: min(760px, 86vh);
-      perspective: 1200px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .package-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), 0 0 15px var(--accent-glow);
+    }
+
+    .package-card.selected {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(14, 17, 24, 0.95), var(--accent-dim));
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--accent);
+      color: #000;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    .package-amount {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .package-bonus {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .package-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: #cbd5e1;
+      font-family: ui-monospace, monospace;
+    }
+
+    /* FORMULARIO DE RECARGA RÁPIDA (ID DE JUGADOR) */
+    .recharge-form {
+      background: rgba(14, 17, 24, 0.92);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(16px);
+      margin-bottom: 20px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .player-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 13px;
+      font-family: ui-monospace, monospace;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .player-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .btn-recharge {
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #000;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    .btn-recharge:hover {
+      transform: scale(1.03);
+      filter: brightness(1.1);
+    }
+
+    /* FOOTER DE LA TIENDA */
+    .store-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #64748b;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .theme-toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-chip {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: #94a3b8;
+      transition: all 0.2s;
+    }
+
+    .theme-chip.active {
+      border-color: var(--accent);
+      color: #fff;
+      background: var(--accent-dim);
+    }
+
+    /* ----------------------------------------------------
+       LADO DERECHO: ROBOT REALISTA ESTABLE CON CABEZA Y OJOS QUE SIGUEN EL CURSOR
+       ---------------------------------------------------- */
+    .robot-stage {
+      position: relative;
+      height: 100vh;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      z-index: 10;
-      margin-bottom: -20px;
+      overflow: hidden;
+      perspective: 1000px;
+      z-index: 25;
     }
 
-    .robot-rig {
+    /* CONTENEDOR ANCLADO DEL ROBOT (ESTABLE Y BIEN UBICADO A LA DERECHA) */
+    .robot-figure-box {
       position: relative;
+      width: min(560px, 48vw);
+      height: min(780px, 92vh);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      transform-origin: 50% 90%;
+      pointer-events: none;
+    }
+
+    /* CAPA 1: CUERPO / PECHO / CUELLO (ESTABLE CON RESPIRACIÓN SUTIL) */
+    .robot-body-layer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      transform-style: preserve-3d;
-      transform-origin: 50% 85%;
-      will-change: transform;
+      animation: bodyBreathe 5s ease-in-out infinite;
+      z-index: 1;
     }
 
-    /* CUERPO Y CABEZA DEL ROBOT REALISTA */
-    .robot-character {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      transform-style: preserve-3d;
-      animation: subtleBreathing 4.5s ease-in-out infinite;
+    @keyframes bodyBreathe {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-3px) scale(1.002); }
     }
 
-    @keyframes subtleBreathing {
-      0%, 100% {
-        transform: translateY(0px) scale(1);
-      }
-      50% {
-        transform: translateY(-4px) scale(1.003);
-      }
-    }
-
-    .robot-photo {
+    .robot-body-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: bottom center;
-      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.85));
-      pointer-events: none;
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.85));
     }
 
-    /* PANTALLA CRT INTERACTIVA Y OJOS DINÁMICOS QUE SIGUEN EL CURSOR */
-    .crt-screen-overlay {
+    /* CAPA 2: CABEZA TV ARTICULADA QUE GIRA Y VE AL CURSOR */
+    .robot-head-pivot {
       position: absolute;
-      top: 7.2%;
-      left: 22.8%;
-      width: 53.8%;
-      height: 48.2%;
-      border-radius: 18px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      transform-style: preserve-3d;
+      transform-origin: 50% 68%; /* Pivote del cuello realista */
+      will-change: transform;
+      z-index: 2;
+    }
+
+    .robot-head-img {
+      width: 100%;
+      height: 75%;
+      object-fit: contain;
+      object-position: top center;
+      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+    }
+
+    /* PANTALLA CRT OSCURA DENTRO DE LA CABEZA */
+    .crt-screen-box {
+      position: absolute;
+      top: 7.5%;
+      left: 23%;
+      width: 54%;
+      height: 48%;
+      border-radius: 20px;
       overflow: hidden;
       transform-style: preserve-3d;
       pointer-events: none;
+      z-index: 5;
     }
 
-    /* PANTALLA DE FONDO OSCURA CON RESPLANDOR */
-    .crt-dark-glass {
+    .crt-black-screen {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, #0f1519 0%, #06080a 90%);
-      opacity: 0.96;
+      background: radial-gradient(circle at center, #0e1318 0%, #050709 92%);
+      opacity: 0.98;
     }
 
-    /* LÍNEAS DE ESCANEO CRT */
-    .crt-lines {
+    .crt-scan-mesh {
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.7) 0px,
-        rgba(0, 0, 0, 0.7) 1.5px,
+        rgba(0, 0, 0, 0.65) 0px,
+        rgba(0, 0, 0, 0.65) 1.5px,
         transparent 1.5px,
         transparent 3px
       );
       opacity: 0.35;
-      pointer-events: none;
       z-index: 10;
     }
 
-    /* CURVATURA DE PANTALLA CRT */
-    .crt-glare {
+    .crt-glass-glare {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         135deg,
         rgba(255, 255, 255, 0.08) 0%,
-        rgba(255, 255, 255, 0.02) 30%,
+        rgba(255, 255, 255, 0.02) 25%,
         transparent 60%
       );
-      pointer-events: none;
       z-index: 11;
     }
 
-    /* OJOS REACTIVOS QUE SIGUEN EL RATÓN */
-    .robot-eye {
+    /* OJOS DEL ROBOT QUE SIGUEN AL CURSOR EN TIEMPO REAL */
+    .robot-pupil {
       position: absolute;
-      width: 25.5%;
+      width: 25%;
       height: 38%;
       border-radius: 50%;
       background: radial-gradient(
         circle at center,
         #ffffff 35%,
-        var(--eye-color, #ffffff) 65%,
-        var(--eye-glow, rgba(56, 189, 248, 0.9)) 85%,
+        var(--accent) 70%,
+        var(--accent-glow) 90%,
         transparent 100%
       );
-      box-shadow: 
-        0 0 35px 12px var(--eye-glow, rgba(56, 189, 248, 0.9)),
-        inset 0 0 15px 4px rgba(255, 255, 255, 0.95),
-        -4px 0 16px var(--eye-fringe, rgba(255, 110, 80, 0.5)),
-        4px 0 16px rgba(56, 189, 248, 0.6);
+      box-shadow:
+        0 0 35px 12px var(--accent-glow),
+        inset 0 0 15px 4px #ffffff,
+        -4px 0 16px var(--eye-fringe),
+        4px 0 16px var(--accent-glow);
       transform-origin: center center;
-      transition: height 0.12s ease, border-radius 0.14s ease, opacity 0.12s ease;
+      transition: height 0.12s, border-radius 0.12s;
       will-change: transform;
-      z-index: 5;
+      z-index: 6;
     }
 
-    .eye-left {
+    .pupil-l {
       top: 31%;
       left: 17%;
     }
 
-    .eye-right {
+    .pupil-r {
       top: 29.5%;
       right: 17%;
     }
 
-    .eye-blink {
+    .pupil-blink {
       height: 3px !important;
       border-radius: 2px !important;
-      opacity: 0.4 !important;
+      opacity: 0.3 !important;
     }
 
-    .eye-squint {
+    .pupil-happy {
       height: 18% !important;
-      border-radius: 14px 14px 2px 2px !important;
+      border-radius: 12px 12px 2px 2px !important;
     }
 
-    /* REFLEJO DE LUZ DEL ROBOT SOBRE EL CUELLO */
-    .robot-light-reflection {
+    /* GLOBO HOLOGRÁFICO DEL ROBOT */
+    .robot-hud-speech {
       position: absolute;
-      bottom: 24%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 48%;
-      height: 20%;
-      background: radial-gradient(ellipse at top, var(--eye-glow) 0%, transparent 70%);
-      opacity: 0.18;
-      filter: blur(14px);
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-
-    /* TEXTO HOLOGRÁFICO DEL ROBOT */
-    .robot-speech-balloon {
-      position: absolute;
-      top: -30px;
+      top: 0px;
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
-      background: rgba(10, 14, 22, 0.92);
-      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(9, 12, 18, 0.94);
+      border: 1px solid var(--accent);
       color: #ffffff;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: ui-monospace, monospace;
       padding: 6px 14px;
       border-radius: 8px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 18px var(--accent-glow);
       backdrop-filter: blur(14px);
       opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      pointer-events: none;
-      z-index: 40;
+      transition: all 0.25s ease;
+      z-index: 30;
     }
 
-    .robot-speech-balloon.visible {
+    .robot-hud-speech.active {
       opacity: 1;
-      transform: translateX(-50%) translateY(-6px);
+      transform: translateX(-50%) translateY(-10px);
     }
 
-    .robot-speech-balloon::after {
+    .robot-hud-speech::after {
       content: '';
       position: absolute;
       bottom: -5px;
@@ -366,212 +577,223 @@
       transform: translateX(-50%) rotate(45deg);
       width: 8px;
       height: 8px;
-      background: rgba(10, 14, 22, 0.92);
-      border-right: 1px solid rgba(56, 189, 248, 0.4);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(9, 12, 18, 0.94);
+      border-right: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent);
     }
 
-    /* FOOTER SUTIL Y ELEGANTE */
-    footer {
-      position: absolute;
-      bottom: 24px;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 36px;
-      z-index: 30;
-      pointer-events: none;
-    }
-
-    .footer-hint {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      color: #64748b;
-      letter-spacing: 0.04em;
-    }
-
-    .footer-hint span.dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #475569;
-    }
-
-    .palette-dock {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 5px 10px;
-      border-radius: 9999px;
-      backdrop-filter: blur(12px);
-      pointer-events: auto;
-    }
-
-    .palette-btn {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .palette-btn.active {
-      transform: scale(1.3);
-      border-color: #ffffff;
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .layout-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .robot-stage {
+        height: 60vh;
+      }
+      .robot-figure-box {
+        width: 85vw;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="viewport" id="viewport">
-    <!-- CANVAS DE POLVO / AMBIENTE -->
+  <div class="app-viewport" id="viewport">
     <canvas id="ambient-canvas"></canvas>
 
-    <!-- HEADER MINIMALISTA -->
-    <header>
-      <div class="brand">
-        <div class="brand-icon">⚡</div>
+    <div class="layout-container">
+      <!-- ----------------------------------------------------
+           LADO IZQUIERDO: CENTRO DE RECARGAS GAMER
+           ---------------------------------------------------- -->
+      <section class="store-panel">
         <div>
-          <div class="brand-title">Centro de Recargas</div>
-          <div class="brand-subtitle">Asistente Virtual Cibernético</div>
-        </div>
-      </div>
+          <!-- Header de Marca -->
+          <div class="store-header">
+            <div class="brand-group">
+              <div class="brand-badge">⚡</div>
+              <div class="brand-text">
+                <h1>Nexus Recargas</h1>
+                <p>Centro Gamer de Recargas Instantáneas</p>
+              </div>
+            </div>
 
-      <div class="controls-top">
-        <div class="status-badge">
-          <div class="status-pulse"></div>
-          <span>SEGUIMIENTO OCULAR: ACTIVO</span>
-        </div>
+            <div class="status-pill">
+              <div class="status-dot"></div>
+              <span>SISTEMAS 24/7 EN LÍNEA</span>
+            </div>
+          </div>
 
-        <button id="btn-audio" class="icon-btn" title="Activar/Desactivar sonido robótico">
-          🔇
-        </button>
-      </div>
-    </header>
+          <!-- Selector de Juegos Populares -->
+          <div class="section-label">1. Selecciona tu Juego</div>
+          <div class="games-scroll">
+            <button class="game-tab active" onclick="selectGame('Free Fire', 'Diamantes 💎', this)">
+              🔥 Free Fire
+            </button>
+            <button class="game-tab" onclick="selectGame('COD Mobile', 'CP Points 🎖️', this)">
+              🎯 COD Mobile
+            </button>
+            <button class="game-tab" onclick="selectGame('Valorant', 'VP Points ⚔️', this)">
+              🗡️ Valorant
+            </button>
+            <button class="game-tab" onclick="selectGame('Roblox', 'Robux 🧱', this)">
+              🧱 Roblox
+            </button>
+            <button class="game-tab" onclick="selectGame('Brawl Stars', 'Gemas ⭐', this)">
+              ⭐ Brawl Stars
+            </button>
+          </div>
 
-    <!-- ESCENA 3D DEL ROBOT REALISTA -->
-    <div class="robot-scene" id="robot-scene">
-      <div class="robot-rig" id="robot-rig">
+          <!-- Catálogo de Paquetes -->
+          <div class="section-label">2. Elige el Paquete de Saldo</div>
+          <div class="packages-grid" id="packages-container">
+            <div class="package-card" onclick="selectPackage(100, '$0.99', this)">
+              <div class="package-amount">100 💎</div>
+              <div class="package-bonus">+10 Diamantes Extra</div>
+              <div class="package-price">$0.99 USD</div>
+            </div>
 
-        <!-- Globo de diálogo holográfico -->
-        <div id="speech-balloon" class="robot-speech-balloon">
-          ¡SISTEMAS SINCRONIZADOS! ⚡
-        </div>
+            <div class="package-card selected" onclick="selectPackage(310, '$2.99', this)">
+              <div class="package-badge">POPULAR 🔥</div>
+              <div class="package-amount">310 💎</div>
+              <div class="package-bonus">+31 Diamantes Extra</div>
+              <div class="package-price">$2.99 USD</div>
+            </div>
 
-        <div class="robot-character" id="robot-character">
-          <!-- Fotografía del robot realista con fondo transparente -->
-          <img src="robot-full.png" alt="Robot TV Realista" class="robot-photo" />
+            <div class="package-card" onclick="selectPackage(520, '$4.99', this)">
+              <div class="package-amount">520 💎</div>
+              <div class="package-bonus">+52 Diamantes Extra</div>
+              <div class="package-price">$4.99 USD</div>
+            </div>
 
-          <!-- Resplandor proyectado sobre el cuello -->
-          <div class="robot-light-reflection" id="light-reflection"></div>
+            <div class="package-card" onclick="selectPackage(1060, '$9.99', this)">
+              <div class="package-badge">MEJOR VALOR ⭐</div>
+              <div class="package-amount">1,060 💎</div>
+              <div class="package-bonus">+106 Diamantes Extra</div>
+              <div class="package-price">$9.99 USD</div>
+            </div>
 
-          <!-- PANTALLA CRT CON OJOS INTERACTIVOS -->
-          <div class="crt-screen-overlay">
-            <div class="crt-dark-glass"></div>
-            <div class="crt-lines"></div>
-            <div class="crt-glare"></div>
+            <div class="package-card" onclick="selectPackage(2180, '$19.99', this)">
+              <div class="package-amount">2,180 💎</div>
+              <div class="package-bonus">+218 Diamantes Extra</div>
+              <div class="package-price">$19.99 USD</div>
+            </div>
 
-            <!-- Ojo Izquierdo que sigue el cursor -->
-            <div id="eye-left" class="robot-eye eye-left"></div>
+            <div class="package-card" onclick="selectPackage('Pase Élite', '$3.99', this)">
+              <div class="package-badge">TEMPORADA 🏆</div>
+              <div class="package-amount">Pase Élite</div>
+              <div class="package-bonus">Desbloqueo Completo</div>
+              <div class="package-price">$3.99 USD</div>
+            </div>
+          </div>
 
-            <!-- Ojo Derecho que sigue el cursor -->
-            <div id="eye-right" class="robot-eye eye-right"></div>
+          <!-- Formulario de ID -->
+          <div class="section-label">3. Datos del Jugador</div>
+          <div class="recharge-form">
+            <div style="font-size: 11px; color: #94a3b8; font-family: ui-monospace, monospace;">
+              INGRESA TU ID DE JUGADOR (UID)
+            </div>
+            <div class="input-row">
+              <input
+                type="text"
+                id="player-id-input"
+                class="player-input"
+                placeholder="Ejemplo: 2849102847"
+                onfocus="onInputFocus()"
+              />
+              <button class="btn-recharge" onclick="executeRecharge()">
+                <span>⚡ RECARGAR AHORA</span>
+              </button>
+            </div>
           </div>
         </div>
 
-      </div>
+        <!-- Footer Izquierdo -->
+        <div class="store-footer">
+          <div>Entrega automática garantizada en menos de 60 segundos 🛡️</div>
+          <div class="theme-toggle-group">
+            <span style="font-size: 10px;">Color Gamer:</span>
+            <button class="theme-chip active" id="chip-green" onclick="setGamerTheme('green')">
+              🟢 Verde Neón
+            </button>
+            <button class="theme-chip" id="chip-red" onclick="setGamerTheme('red')">
+              🔴 Rojo Cyber
+            </button>
+            <button id="btn-audio-toggle" style="background: none; border: none; font-size: 14px; cursor: pointer; margin-left: 8px;" onclick="toggleAudio()" title="Activar sonido robótico">
+              🔇
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ----------------------------------------------------
+           LADO DERECHO: ROBOT REALISTA ESTABLE CON CABEZA Y OJOS QUE VEN AL CURSOR
+           ---------------------------------------------------- -->
+      <section class="robot-stage" id="robot-stage">
+        <div class="robot-figure-box" id="robot-box">
+
+          <!-- Globo de voz holográfico -->
+          <div id="robot-speech" class="robot-hud-speech">
+            ¡SISTEMAS ONLINE! LISTO PARA RECARGAR 🎮
+          </div>
+
+          <!-- CAPA 1: CUERPO / PECHO / CUELLO (ESTABLE Y RESPIRANDO) -->
+          <div class="robot-body-layer">
+            <img src="robot-body.png" alt="Robot Torso" class="robot-body-img" />
+          </div>
+
+          <!-- CAPA 2: CABEZA TV ARTICULADA QUE GIRA Y VE AL CURSOR -->
+          <div class="robot-head-pivot" id="robot-head">
+            <img src="robot-head.png" alt="Robot Head" class="robot-head-img" />
+
+            <!-- PANTALLA CRT OSCURA DENTRO DE LA CABEZA -->
+            <div class="crt-screen-box">
+              <div class="crt-black-screen"></div>
+              <div class="crt-scan-mesh"></div>
+              <div class="crt-glass-glare"></div>
+
+              <!-- OJOS LUMINISCENTES QUE VEN Y SIGUEN EL CURSOR -->
+              <div id="pupil-left" class="robot-pupil pupil-l"></div>
+              <div id="pupil-right" class="robot-pupil pupil-r"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </div>
-
-    <!-- FOOTER SUTIL -->
-    <footer>
-      <div class="footer-hint">
-        <span>Mueve el cursor por la pantalla para que el robot te siga con la mirada</span>
-        <span class="dot"></span>
-        <span>Haz clic para interactuar</span>
-      </div>
-
-      <!-- Selector de color para los ojos -->
-      <div class="palette-dock">
-        <span style="font-size: 11px; color: #94a3b8; margin-right: 4px;">Energía:</span>
-        <div class="palette-btn active" style="background: #38bdf8;" onclick="setRobotEnergy('cyan', this)" title="Cian Eléctrico"></div>
-        <div class="palette-btn" style="background: #ffffff;" onclick="setRobotEnergy('white', this)" title="Blanco Puro"></div>
-        <div class="palette-btn" style="background: #10b981;" onclick="setRobotEnergy('emerald', this)" title="Esmeralda"></div>
-        <div class="palette-btn" style="background: #c084fc;" onclick="setRobotEnergy('purple', this)" title="Púrpura"></div>
-        <div class="palette-btn" style="background: #f59e0b;" onclick="setRobotEnergy('amber', this)" title="Ámbar Solar"></div>
-      </div>
-    </footer>
   </div>
 
   <script>
     // ESTADO GENERAL
     const state = {
-      mouseX: window.innerWidth / 2,
-      mouseY: window.innerHeight / 2,
+      mouseX: window.innerWidth * 0.5,
+      mouseY: window.innerHeight * 0.5,
       targetNormX: 0,
       targetNormY: 0,
       currentNormX: 0,
       currentNormY: 0,
-      rotX: 0,
-      rotY: 0,
-      rotZ: 0,
+      headRotX: 0,
+      headRotY: 0,
+      headRotZ: 0,
+      theme: 'green',
       audio: false,
-      isMouseDown: false,
-      speechTimer: 200,
-      currentTheme: 'cyan'
-    };
-
-    const PALETTES = {
-      cyan: {
-        color: '#ffffff',
-        glow: 'rgba(56, 189, 248, 0.95)',
-        fringe: 'rgba(255, 110, 80, 0.55)',
-        primary: '#38bdf8'
-      },
-      white: {
-        color: '#ffffff',
-        glow: 'rgba(255, 255, 255, 0.95)',
-        fringe: 'rgba(160, 210, 255, 0.6)',
-        primary: '#ffffff'
-      },
-      emerald: {
-        color: '#ffffff',
-        glow: 'rgba(16, 185, 129, 0.95)',
-        fringe: 'rgba(52, 211, 153, 0.5)',
-        primary: '#10b981'
-      },
-      purple: {
-        color: '#ffffff',
-        glow: 'rgba(192, 132, 252, 0.95)',
-        fringe: 'rgba(236, 72, 153, 0.5)',
-        primary: '#c084fc'
-      },
-      amber: {
-        color: '#ffffff',
-        glow: 'rgba(245, 158, 11, 0.95)',
-        fringe: 'rgba(239, 68, 68, 0.55)',
-        primary: '#f59e0b'
-      }
+      speechTimer: 240,
+      selectedGame: 'Free Fire',
+      selectedPkg: '310 💎'
     };
 
     // DOM ELEMENTS
     const viewport = document.getElementById('viewport');
-    const robotRig = document.getElementById('robot-rig');
-    const eyeLeft = document.getElementById('eye-left');
-    const eyeRight = document.getElementById('eye-right');
-    const speechBalloon = document.getElementById('speech-balloon');
-    const lightReflection = document.getElementById('light-reflection');
-    const btnAudio = document.getElementById('btn-audio');
+    const robotBox = document.getElementById('robot-box');
+    const robotHead = document.getElementById('robot-head');
+    const pupilLeft = document.getElementById('pupil-left');
+    const pupilRight = document.getElementById('pupil-right');
+    const robotSpeech = document.getElementById('robot-speech');
+    const btnAudioToggle = document.getElementById('btn-audio-toggle');
 
-    // WEB AUDIO API NATIVO
+    // WEB AUDIO API
     let audioCtx = null;
-    function playRobotSound(type) {
+    function playSfx(type) {
       if (!state.audio) return;
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -583,125 +805,140 @@
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
-        if (type === 'chirp') {
+        if (type === 'beep') {
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(480, now);
+          osc.frequency.setValueAtTime(540, now);
           osc.frequency.exponentialRampToValueAtTime(920, now + 0.1);
-          gain.gain.setValueAtTime(0.06, now);
+          gain.gain.setValueAtTime(0.08, now);
           gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
           osc.start(now);
           osc.stop(now + 0.12);
-        } else if (type === 'blink') {
+        } else if (type === 'recharge') {
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(740, now);
-          osc.frequency.linearRampToValueAtTime(540, now + 0.08);
-          gain.gain.setValueAtTime(0.04, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.linearRampToValueAtTime(640, now + 0.08);
+          osc.frequency.linearRampToValueAtTime(960, now + 0.18);
+          gain.gain.setValueAtTime(0.1, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
           osc.start(now);
-          osc.stop(now + 0.08);
-        } else if (type === 'servo') {
+          osc.stop(now + 0.25);
+        } else if (type === 'blink') {
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(220, now);
-          osc.frequency.exponentialRampToValueAtTime(380, now + 0.15);
-          gain.gain.setValueAtTime(0.02, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+          osc.frequency.setValueAtTime(700, now);
+          osc.frequency.linearRampToValueAtTime(520, now + 0.06);
+          gain.gain.setValueAtTime(0.04, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
           osc.start(now);
-          osc.stop(now + 0.15);
+          osc.stop(now + 0.06);
         }
-      } catch (err) {
-        console.warn(err);
+      } catch (e) {
+        console.warn(e);
       }
     }
 
-    // AUDIO TOGGLE
-    btnAudio.addEventListener('click', () => {
+    function toggleAudio() {
       state.audio = !state.audio;
-      btnAudio.innerText = state.audio ? '🔊' : '🔇';
-      btnAudio.style.color = state.audio ? '#38bdf8' : '#cbd5e1';
+      btnAudioToggle.innerText = state.audio ? '🔊' : '🔇';
       if (state.audio) {
-        playRobotSound('chirp');
-        showSpeech('AUDIO ROBÓTICO: ACTIVO 🔊');
+        playSfx('beep');
+        speak('AUDIO GAMER: CONECTADO 🔊');
       }
-    });
+    }
 
-    function showSpeech(text) {
-      speechBalloon.innerText = text;
-      speechBalloon.classList.add('visible');
+    function speak(text) {
+      robotSpeech.innerText = text;
+      robotSpeech.classList.add('active');
       state.speechTimer = 220;
     }
 
-    function setRobotEnergy(themeKey, dotEl) {
-      document.querySelectorAll('.palette-btn').forEach(d => d.classList.remove('active'));
-      dotEl.classList.add('active');
-      state.currentTheme = themeKey;
-
-      const t = PALETTES[themeKey];
-      document.documentElement.style.setProperty('--eye-color', t.color);
-      document.documentElement.style.setProperty('--eye-glow', t.glow);
-      document.documentElement.style.setProperty('--eye-fringe', t.fringe);
-      document.documentElement.style.setProperty('--primary', t.primary);
-
-      playRobotSound('chirp');
-      showSpeech('ENERGÍA SINCRONIZADA ✨');
+    // CAMBIAR COLOR GAMER (VERDE NEÓN O ROJO CYBER)
+    function setGamerTheme(theme) {
+      state.theme = theme;
+      if (theme === 'red') {
+        document.documentElement.setAttribute('data-theme', 'red');
+        document.getElementById('chip-red').classList.add('active');
+        document.getElementById('chip-green').classList.remove('active');
+        speak('MODO CYBER ROJO ACTIVADO 🔴');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        document.getElementById('chip-green').classList.add('active');
+        document.getElementById('chip-red').classList.remove('active');
+        speak('MODO NEÓN VERDE ACTIVADO 🟢');
+      }
+      playSfx('beep');
     }
 
-    // SEGUIMIENTO DEL CURSOR
+    // INTERACCIONES CON LA TIENDA DE RECARGAS
+    function selectGame(gameName, curr, btn) {
+      document.querySelectorAll('.game-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.selectedGame = gameName;
+      speak(`JUEGO: ${gameName.toUpperCase()} • ${curr}`);
+      playSfx('beep');
+    }
+
+    function selectPackage(amount, price, card) {
+      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      state.selectedPkg = `${amount} (${price})`;
+      speak(`SELECCIONASTE ${amount} POR ${price} 💎`);
+      playSfx('beep');
+    }
+
+    function onInputFocus() {
+      speak('ESCANEANDO TU ID DE JUGADOR 🔍');
+      playSfx('beep');
+    }
+
+    function executeRecharge() {
+      const input = document.getElementById('player-id-input');
+      const idVal = input.value.trim();
+      if (!idVal) {
+        speak('¡POR FAVOR INGRESA TU ID DE JUGADOR! ⚠️');
+        input.focus();
+        return;
+      }
+      playSfx('recharge');
+      speak(`¡RECARGA ENVIADA A ID ${idVal}! 🚀💎`);
+      pupilLeft.classList.add('pupil-happy');
+      pupilRight.classList.add('pupil-happy');
+      setTimeout(() => {
+        pupilLeft.classList.remove('pupil-happy');
+        pupilRight.classList.remove('pupil-happy');
+      }, 900);
+    }
+
+    // SEGUIMIENTO REALISTA: CUERPO ESTABLE, CABEZA Y OJOS VEN AL CURSOR
     window.addEventListener('mousemove', (e) => {
       state.mouseX = e.clientX;
       state.mouseY = e.clientY;
 
-      // Calcular posición del robot en pantalla
-      const rect = robotRig.getBoundingClientRect();
-      const robotCenterX = rect.left + rect.width / 2;
-      const robotCenterY = rect.top + rect.height * 0.35; // Centro del televisor
+      // Ubicación de la cabeza del robot en pantalla
+      const rect = robotHead.getBoundingClientRect();
+      const headCenterX = rect.left + rect.width / 2;
+      const headCenterY = rect.top + rect.height * 0.45;
 
-      // Normalizar offsets entre -1 y 1
-      state.targetNormX = Math.max(-1, Math.min(1, (e.clientX - robotCenterX) / (window.innerWidth * 0.45)));
-      state.targetNormY = Math.max(-1, Math.min(1, (e.clientY - robotCenterY) / (window.innerHeight * 0.45)));
+      // Normalizar dirección del cursor hacia la cabeza
+      state.targetNormX = Math.max(-1.1, Math.min(1.1, (e.clientX - headCenterX) / (window.innerWidth * 0.5)));
+      state.targetNormY = Math.max(-1.1, Math.min(1.1, (e.clientY - headCenterY) / (window.innerHeight * 0.5)));
 
-      // Mover suavemente la luz ambiental del fondo
-      viewport.style.setProperty('--spot-x', `${(e.clientX / window.innerWidth) * 100}%`);
-      viewport.style.setProperty('--spot-y', `${Math.max(25, (e.clientY / window.innerHeight) * 65)}%`);
+      viewport.style.setProperty('--mouse-x', `${(e.clientX / window.innerWidth) * 100}%`);
+      viewport.style.setProperty('--mouse-y', `${(e.clientY / window.innerHeight) * 100}%`);
     }, { passive: true });
 
-    // REACCIÓN AL CLIC
-    window.addEventListener('mousedown', (e) => {
-      if (e.target.closest('header, footer, button')) return;
-      state.isMouseDown = true;
-      eyeLeft.classList.add('eye-squint');
-      eyeRight.classList.add('eye-squint');
-      playRobotSound('chirp');
-
-      const msgs = [
-        '¡TE VEO! 👀',
-        'OBJETIVO FIJADO 🎯',
-        'SISTEMAS OPERATIVOS ⚡',
-        'CENTRO DE RECARGAS LISTO 🚀'
-      ];
-      showSpeech(msgs[Math.floor(Math.random() * msgs.length)]);
-    });
-
-    window.addEventListener('mouseup', () => {
-      state.isMouseDown = false;
-      setTimeout(() => {
-        eyeLeft.classList.remove('eye-squint');
-        eyeRight.classList.remove('eye-squint');
-      }, 260);
-    });
-
-    // PARPADEO NATURAL
+    // PARPADEO ALEATORIO
     let blinkTimer = 0;
     function triggerBlink() {
-      eyeLeft.classList.add('eye-blink');
-      eyeRight.classList.add('eye-blink');
-      playRobotSound('blink');
+      pupilLeft.classList.add('pupil-blink');
+      pupilRight.classList.add('pupil-blink');
+      playSfx('blink');
       setTimeout(() => {
-        eyeLeft.classList.remove('eye-blink');
-        eyeRight.classList.remove('eye-blink');
+        pupilLeft.classList.remove('pupil-blink');
+        pupilRight.classList.remove('pupil-blink');
       }, 150);
     }
 
-    // AMBIENTE DE POLVO / CHISPAS EN CANVAS
+    // CANVAS DE POLVO / CHISPAS
     const canvas = document.getElementById('ambient-canvas');
     const ctx = canvas.getContext('2d');
     let width = canvas.width = window.innerWidth;
@@ -713,90 +950,84 @@
     });
 
     const particles = [];
-    for (let i = 0; i < 45; i++) {
+    for (let i = 0; i < 35; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: -Math.random() * 0.45 - 0.15,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.1,
         size: Math.random() * 2 + 0.8,
-        alpha: Math.random() * 0.5 + 0.2
+        alpha: Math.random() * 0.4 + 0.15
       });
     }
 
-    // BUCLE DE FÍSICA E INERCIA REALISTA
-    let lastTime = performance.now();
-
-    function render(currentTime) {
-      const dt = Math.min((currentTime - lastTime) / 1000, 0.1);
-      lastTime = currentTime;
-
-      // 1. Interpolación suave (Spring / Lerp) del seguimiento
+    // BUCLE DE FÍSICA CINEMÁTICA REALISTA
+    function loop() {
+      // 1. Suavizar movimiento (Lerp)
       state.currentNormX += (state.targetNormX - state.currentNormX) * 0.085;
       state.currentNormY += (state.targetNormY - state.currentNormY) * 0.085;
 
-      // 2. Rotación 3D realista de la cabeza y el cuello
-      // Yaw (giro lateral): hasta 24 grados
-      // Pitch (inclinación vertical): hasta 16 grados
-      // Roll (inclinación sutil): hasta 4 grados
-      const targetRotY = state.currentNormX * 24;
-      const targetRotX = -state.currentNormY * 16;
+      // 2. ROTACIÓN 3D DE LA CABEZA TV (EL CUERPO PERMANECE FIRME EN SU LUGAR)
+      // Yaw (giro lateral): el robot voltea a ver los juegos a la izquierda
+      const targetRotY = state.currentNormX * 26;
+      // Pitch (inclinación vertical): ve hacia arriba o hacia el formulario
+      const targetRotX = -state.currentNormY * 18;
+      // Roll (inclinación sutil)
       const targetRotZ = state.currentNormX * 3.5;
 
-      state.rotY += (targetRotY - state.rotY) * 0.1;
-      state.rotX += (targetRotX - state.rotX) * 0.1;
-      state.rotZ += (targetRotZ - state.rotZ) * 0.1;
+      state.headRotY += (targetRotY - state.headRotY) * 0.1;
+      state.headRotX += (targetRotX - state.headRotX) * 0.1;
+      state.headRotZ += (targetRotZ - state.headRotZ) * 0.1;
 
-      robotRig.style.transform = `perspective(1200px) rotateX(${state.rotX}deg) rotateY(${state.rotY}deg) rotateZ(${state.rotZ}deg)`;
+      robotHead.style.transform = `perspective(1000px) rotateX(${state.headRotX}deg) rotateY(${state.headRotY}deg) rotateZ(${state.headRotZ}deg)`;
 
-      // 3. Desplazamiento de los ojos sobre la pantalla CRT (Paralaje realista)
-      // Los ojos se mueven sobre la superficie del monitor buscando al cursor
-      const maxEyeShiftX = 22; // píxeles máximos en X
-      const maxEyeShiftY = 18; // píxeles máximos en Y
+      // 3. DESPLAZAMIENTO OCULAR (LOS OJOS VEN DIRECTAMENTE AL CURSOR SOBRE EL MONITOR)
+      const maxEyeShiftX = 22; // px
+      const maxEyeShiftY = 16; // px
 
-      const eyeShiftX = state.currentNormX * maxEyeShiftX;
-      const eyeShiftY = state.currentNormY * maxEyeShiftY;
+      const shiftX = state.currentNormX * maxEyeShiftX;
+      const shiftY = state.currentNormY * maxEyeShiftY;
 
-      eyeLeft.style.transform = `translate(${eyeShiftX}px, ${eyeShiftY}px)`;
-      eyeRight.style.transform = `translate(${eyeShiftX}px, ${eyeShiftY}px)`;
+      pupilLeft.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
+      pupilRight.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
 
-      // 4. Parpadeo aleatorio realista cada 4-6 segundos
+      // 4. Parpadeo realista cada 4-6 segundos
       blinkTimer++;
-      if (blinkTimer > 280 + Math.random() * 80) {
+      if (blinkTimer > 270 + Math.random() * 80) {
         triggerBlink();
         blinkTimer = 0;
       }
 
-      // 5. Ocultar globo de texto temporizado
+      // 5. Ocultar diálogo después de un tiempo
       if (state.speechTimer > 0) {
         state.speechTimer--;
         if (state.speechTimer === 0) {
-          speechBalloon.classList.remove('visible');
+          robotSpeech.classList.remove('active');
         }
       }
 
-      // 6. Dibujar partículas de ambiente
+      // 6. Dibujar partículas
       ctx.clearRect(0, 0, width, height);
+      const color = state.theme === 'red' ? '#ff003c' : '#00ff88';
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
-
         if (p.y < 0) p.y = height;
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = PALETTES[state.currentTheme].primary;
+        ctx.fillStyle = color;
         ctx.globalAlpha = p.alpha;
         ctx.fill();
       }
 
-      requestAnimationFrame(render);
+      requestAnimationFrame(loop);
     }
 
-    requestAnimationFrame(render);
+    requestAnimationFrame(loop);
   </script>
 </body>
 </html>
