@@ -1,0 +1,11 @@
+{
+  "name": "centro-de-recargas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cyber TV Robot Cursor Companion",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  }
+}
