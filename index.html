@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <!-- impeccable-disable tiny-text, nested-cards -- calibrated esports terminal metrics -->
   <title>X7 STORE — Centro Gamer de Recargas Instantáneas 24/7</title>
 
   <!-- Google Fonts: Outfit (Titulares Gamer), Rajdhani (Acentos Tech), Manrope (UI & Cuerpo) -->
@@ -12,25 +13,24 @@
 
   <style>
     :root {
-      /* PALETA BASE X7 STORE - BRILLO EQUILIBRADO Y ELEGANTE */
+      /* PALETA BASE X7 STORE - DISEÑO DE PRECISIÓN Y PROFUNDIDAD ELEGANTE */
       --bg-deep: #07090e;
       --bg-surface: #0c101a;
       --bg-card: rgba(14, 18, 28, 0.88);
-      --bg-card-hover: rgba(22, 28, 44, 0.95);
+      --bg-card-hover: rgba(20, 26, 40, 0.96);
       --border-card: rgba(255, 255, 255, 0.1);
       --border-card-hover: rgba(255, 42, 74, 0.35);
 
       --text-pure: #ffffff;
       --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --text-muted: #cbd5e1;
+      --text-dim: #8ba2c4;
 
-      /* TEMA 1: X7 CRIMSON RED (ROJO GAMER SUAVIZADO // DEFAULT) */
+      /* TEMA 1: X7 CRIMSON RED (ROJO GAMER EQUILIBRADO // DEFAULT) */
       --accent: #ff2a4a;
-      --accent-glow: rgba(255, 42, 74, 0.28); /* Tonalidad de brillo rebajada */
-      --accent-dim: rgba(255, 42, 74, 0.10);
+      --accent-glow: rgba(255, 42, 74, 0.24);
+      --accent-dim: rgba(255, 42, 74, 0.08);
       --accent-secondary: #00d4ff;
-      --accent-secondary-glow: rgba(0, 212, 255, 0.25);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #ff2a4a 60%, #b30026 100%);
       --btn-gradient: linear-gradient(135deg, #ff2a4a 0%, #d80032 100%);
       --badge-bg: rgba(255, 42, 74, 0.10);
@@ -38,12 +38,11 @@
     }
 
     [data-theme="blue"] {
-      /* TEMA 2: X7 CYBER BLUE (AZUL ELÉCTRICO SUAVIZADO) */
+      /* TEMA 2: X7 CYBER BLUE (AZUL ELÉCTRICO REFINADO) */
       --accent: #00b4d8;
-      --accent-glow: rgba(0, 180, 216, 0.28); /* Tonalidad de brillo rebajada */
-      --accent-dim: rgba(0, 180, 216, 0.10);
+      --accent-glow: rgba(0, 180, 216, 0.24);
+      --accent-dim: rgba(0, 180, 216, 0.08);
       --accent-secondary: #0077b6;
-      --accent-secondary-glow: rgba(0, 119, 182, 0.25);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #00b4d8 60%, #0077b6 100%);
       --btn-gradient: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
       --border-card-hover: rgba(0, 180, 216, 0.35);
@@ -52,12 +51,11 @@
     }
 
     [data-theme="yellow"] {
-      /* TEMA 3: X7 CYBER GOLD (AMARILLO ORO ESPORTS SUAVE, CERO BRILLO CEGADOR) */
+      /* TEMA 3: X7 CYBER GOLD (ORO ÁMBAR ESPORTS CONFORTABLE) */
       --accent: #e5a910;
-      --accent-glow: rgba(229, 169, 16, 0.28); /* Tonalidad de brillo rebajada */
-      --accent-dim: rgba(229, 169, 16, 0.10);
+      --accent-glow: rgba(229, 169, 16, 0.24);
+      --accent-dim: rgba(229, 169, 16, 0.08);
       --accent-secondary: #d97706;
-      --accent-secondary-glow: rgba(217, 119, 6, 0.25);
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #e5a910 60%, #b45309 100%);
       --btn-gradient: linear-gradient(135deg, #e5a910 0%, #ca8a04 100%);
       --border-card-hover: rgba(229, 169, 16, 0.35);
@@ -83,14 +81,46 @@
       min-height: 100vh;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* CURSOR GAMER: HUMO Y DESTELLOS LUMINISCENTES EQUILIBRADOS */
+    /* DETALLES DE ARTESANÍA: SELECCIÓN Y SCROLLBAR PERSONALIZADOS */
+    ::selection {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #06080d;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    /* CURSOR GAMER: HUMO Y DESTELLOS LUMINISCENTES EN ESCRITORIO */
     #cursor-trail-canvas {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 9999;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      /* Desactivar canvas de cursor en táctil para maximizar rendimiento móvil */
+      #cursor-trail-canvas {
+        display: none;
+      }
     }
 
     /* TIPOGRAFÍA GAMER */
@@ -104,7 +134,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* FONDO DE ENERGÍA AMBIENTAL CON CHISPAS REACTIVAS */
+    /* FONDO DE ENERGÍA AMBIENTAL DISCRETO */
     #ambient-canvas {
       position: fixed;
       inset: 0;
@@ -112,15 +142,12 @@
       z-index: 1;
     }
 
-    .cyber-grid-overlay {
+    .ambient-glow-layer {
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at 15% 20%, var(--accent-dim) 0%, transparent 50%),
-        radial-gradient(circle at 85% 35%, rgba(0, 212, 255, 0.06) 0%, transparent 55%),
-        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 54px 54px, 54px 54px;
+        radial-gradient(circle at 15% 20%, var(--accent-dim) 0%, transparent 45%),
+        radial-gradient(circle at 85% 35%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
       pointer-events: none;
       z-index: 2;
     }
@@ -142,8 +169,8 @@
       position: sticky;
       top: 0;
       width: 100%;
-      height: 76px;
-      padding: 0 48px;
+      height: 74px;
+      padding: 0 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -158,40 +185,39 @@
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-decoration: none;
       color: inherit;
       flex-shrink: 0;
     }
 
     .brand-badge-x7 {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255, 42, 74, 0.2) 0%, rgba(0, 212, 255, 0.12) 100%);
+      background: linear-gradient(135deg, rgba(255, 42, 74, 0.18) 0%, rgba(0, 212, 255, 0.1) 100%);
       border: 1.5px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 900;
       font-family: 'Outfit', sans-serif;
       color: #fff;
-      box-shadow: 0 0 16px var(--accent-glow);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
       transition: all 0.25s;
     }
 
     .brand-logo:hover .brand-badge-x7 {
-      transform: scale(1.06) rotate(3deg);
+      transform: scale(1.05);
       border-color: var(--accent);
-      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .brand-title-box h1 {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       line-height: 1;
       color: #fff;
     }
@@ -201,7 +227,7 @@
     }
 
     .brand-title-box p {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-dim);
       font-family: 'Rajdhani', sans-serif;
       letter-spacing: 0.12em;
@@ -212,7 +238,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
     }
 
@@ -221,7 +247,7 @@
       text-decoration: none;
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       transition: all 0.2s;
       position: relative;
     }
@@ -236,9 +262,8 @@
       bottom: -6px;
       left: 0;
       width: 100%;
-      height: 2.5px;
+      height: 2px;
       background: var(--accent-gradient);
-      box-shadow: 0 0 8px var(--accent-glow);
       border-radius: 2px;
     }
 
@@ -248,7 +273,7 @@
       gap: 12px;
     }
 
-    /* SELECTOR DE TEMAS X7: SOLAMENTE ROJO, AZUL Y AMARILLO (BRILLO CONTROLADO) */
+    /* SELECTOR DE TEMAS X7: SOLAMENTE ROJO, AZUL Y AMARILLO */
     .theme-picker {
       display: flex;
       align-items: center;
@@ -259,19 +284,9 @@
       border-radius: 9999px;
     }
 
-    .theme-picker-label {
-      font-size: 10px;
-      font-family: 'Rajdhani', monospace;
-      font-weight: 800;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-right: 2px;
-    }
-
     .theme-btn {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       border: 2px solid transparent;
       cursor: pointer;
@@ -284,17 +299,16 @@
     }
 
     .theme-btn:hover {
-      transform: scale(1.2);
+      transform: scale(1.15);
     }
 
     .theme-btn.active {
       border-color: #ffffff;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
     }
 
     .theme-btn-dot {
-      width: 11px;
-      height: 11px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
     }
 
@@ -331,7 +345,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 4px 16px var(--accent-glow);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
       transition: all 0.2s;
       border: 1px solid rgba(255, 255, 255, 0.2);
       white-space: nowrap;
@@ -339,15 +353,14 @@
 
     .btn-nav-recharge:hover {
       transform: translateY(-2px);
-      filter: brightness(1.1);
-      box-shadow: 0 6px 20px var(--accent-glow);
+      filter: brightness(1.08);
     }
 
     /* BOTÓN HAMBURGUESA PARA CELULARES */
     .mobile-menu-btn {
       display: none;
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-card);
@@ -368,20 +381,20 @@
     /* GAVETA / MENÚ MÓVIL DESPLEGABLE */
     .mobile-menu-drawer {
       position: fixed;
-      top: 76px;
+      top: 68px;
       left: 0;
       width: 100%;
       background: rgba(7, 9, 14, 0.98);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid var(--border-card);
-      padding: 24px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       z-index: 99;
       transform: translateY(-120%);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
     }
 
@@ -392,9 +405,9 @@
     .mobile-menu-drawer a {
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 800;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.05);
@@ -415,8 +428,8 @@
        ========================================================================= */
     .hero-section {
       position: relative;
-      min-height: calc(100vh - 76px);
-      padding: 48px;
+      min-height: calc(100vh - 74px);
+      padding: 44px 40px;
       display: grid;
       grid-template-columns: 1.15fr 0.95fr;
       gap: 40px;
@@ -431,7 +444,7 @@
       background:
         linear-gradient(90deg, rgba(7, 9, 14, 0.95) 0%, rgba(12, 16, 26, 0.8) 50%, rgba(7, 9, 14, 0.95) 100%),
         radial-gradient(circle at 10% 40%, var(--accent-dim) 0%, transparent 60%),
-        radial-gradient(circle at 80% 30%, rgba(0, 212, 255, 0.12) 0%, transparent 65%),
+        radial-gradient(circle at 80% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 65%),
         url('assets/games/hero-bg.jpg') center/cover no-repeat;
       opacity: 0.85;
       pointer-events: none;
@@ -442,53 +455,27 @@
     @keyframes heroLiveVideo {
       0% {
         transform: scale(1.02) translate(0, 0);
-        filter: brightness(0.95) contrast(1.05);
+        filter: brightness(0.95) contrast(1.04);
       }
       50% {
-        transform: scale(1.08) translate(-1.5%, -1%);
-        filter: brightness(1.08) contrast(1.08);
+        transform: scale(1.07) translate(-1.5%, -1%);
+        filter: brightness(1.04) contrast(1.06);
       }
       100% {
-        transform: scale(1.04) translate(1%, -1.5%);
-        filter: brightness(0.98) contrast(1.05);
+        transform: scale(1.03) translate(1%, -1.5%);
+        filter: brightness(0.98) contrast(1.04);
       }
     }
 
-    /* CAPAS DE ANIMACIÓN DE VIDEO: SCANLINES Y RAYOS DE LUZ EN MOVIMIENTO */
     .hero-video-scanlines {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.015), rgba(0, 255, 0, 0.01), rgba(0, 212, 255, 0.015));
-      background-size: 100% 4px, 6px 100%;
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
       pointer-events: none;
       z-index: 2;
-      opacity: 0.55;
-      animation: scanlinesVideoScroll 8s linear infinite;
-    }
-
-    @keyframes scanlinesVideoScroll {
-      0% { background-position: 0 0, 0 0; }
-      100% { background-position: 0 160px, 0 0; }
-    }
-
-    .hero-light-beam {
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at 50% 30%, var(--accent-glow) 0%, transparent 50%);
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: 2;
-      animation: lightBeamSweep 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes lightBeamSweep {
-      0% { transform: rotate(-12deg) translateY(-6%); }
-      100% { transform: rotate(14deg) translateY(8%); }
+      opacity: 0.45;
     }
 
     .hero-content {
@@ -502,59 +489,47 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 9999px;
       background: var(--badge-bg);
-      border: 1.5px solid var(--accent);
+      border: 1px solid var(--accent);
       color: #fff;
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       width: fit-content;
-      box-shadow: 0 0 14px var(--accent-dim);
     }
 
-    .pulse-dot-red {
-      width: 8px;
-      height: 8px;
+    .status-indicator-dot {
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-      animation: pulseDot 1.8s infinite ease-in-out;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
+      flex-shrink: 0;
     }
 
     .hero-title {
-      font-size: clamp(34px, 4.8vw, 64px);
+      font-size: clamp(32px, 4.4vw, 58px);
       font-weight: 900;
       line-height: 1.06;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
     }
 
-    .hero-title .highlight-red {
+    .hero-title .highlight-accent {
       color: var(--accent);
-      text-shadow: 0 0 16px var(--accent-glow);
-    }
-
-    .hero-title .highlight-blue {
-      color: #f1f5f9;
     }
 
     .hero-subtitle {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text-muted);
       line-height: 1.6;
-      max-width: 540px;
-      margin-bottom: 32px;
+      max-width: 520px;
+      margin-bottom: 28px;
     }
 
     .hero-subtitle strong {
@@ -565,45 +540,44 @@
     .hero-cta-group {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 40px;
+      gap: 12px;
+      margin-bottom: 36px;
       flex-wrap: wrap;
     }
 
     .btn-hero-primary {
-      padding: 15px 32px;
+      padding: 14px 28px;
       border-radius: 12px;
       background: var(--btn-gradient);
       color: #ffffff;
       font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 6px 20px var(--accent-glow);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .btn-hero-primary:hover {
       transform: translateY(-2px);
-      filter: brightness(1.1);
-      box-shadow: 0 8px 24px var(--accent-glow);
+      filter: brightness(1.08);
     }
 
     .btn-hero-secondary {
-      padding: 15px 26px;
+      padding: 14px 24px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.04);
-      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #ffffff;
       font-size: 13px;
       font-weight: 800;
       text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
       transition: all 0.2s;
@@ -619,24 +593,24 @@
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding-top: 28px;
+      gap: 16px;
+      padding-top: 24px;
       border-top: 1px solid var(--border-card);
     }
 
-    .stat-box h4 {
-      font-size: 26px;
+    .stat-number {
+      font-size: 24px;
       font-weight: 900;
       color: #ffffff;
       font-family: 'Outfit', sans-serif;
       margin-bottom: 2px;
     }
 
-    .stat-box h4 span {
+    .stat-number span {
       color: var(--accent);
     }
 
-    .stat-box p {
+    .stat-label {
       font-size: 11px;
       color: var(--text-dim);
       font-family: 'Rajdhani', sans-serif;
@@ -651,14 +625,14 @@
     .hero-terminal {
       position: relative;
       background: var(--bg-card);
-      border: 1.5px solid var(--border-card);
-      border-radius: 24px;
-      padding: 24px;
+      border: 1px solid var(--border-card);
+      border-radius: 22px;
+      padding: 22px;
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 24px var(--accent-dim);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
       z-index: 20;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s;
     }
 
     .hero-terminal:hover {
@@ -668,28 +642,31 @@
     /* BANNER VISUAL DEL JUEGO SELECCIONADO DENTRO DE LA TERMINAL */
     .terminal-game-banner-preview {
       position: relative;
-      height: 94px;
-      border-radius: 16px;
+      min-height: 90px;
+      padding: 12px 16px;
+      border-radius: 14px;
       background-size: cover;
       background-position: center;
       overflow: hidden;
-      margin-bottom: 18px;
-      border: 1.5px solid var(--border-card);
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+      margin-bottom: 16px;
+      border: 1px solid var(--border-card);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
       transition: background-image 0.4s ease, border-color 0.3s;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
     }
 
     .terminal-game-banner-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(7, 9, 14, 0.92) 0%, rgba(12, 16, 26, 0.7) 60%, rgba(7, 9, 14, 0.88) 100%);
+      background: linear-gradient(90deg, rgba(7, 9, 14, 0.92) 0%, rgba(12, 16, 26, 0.65) 60%, rgba(7, 9, 14, 0.88) 100%);
     }
 
     .terminal-game-banner-content {
       position: relative;
       z-index: 2;
-      height: 100%;
-      padding: 0 16px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -702,15 +679,14 @@
     }
 
     .terminal-game-logo-box {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       background: rgba(7, 9, 14, 0.85);
       border: 1.5px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 12px var(--accent-glow);
       padding: 6px;
       flex-shrink: 0;
     }
@@ -721,17 +697,17 @@
       object-fit: contain;
     }
 
-    .terminal-title-cluster h3 {
-      font-size: 17px;
+    .terminal-title-cluster h2 {
+      font-size: 16px;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       color: #fff;
       line-height: 1.1;
     }
 
     .terminal-game-subtitle {
-      font-size: 10px;
+      font-size: 11px;
       color: var(--accent);
       font-family: 'Rajdhani', monospace;
       letter-spacing: 0.12em;
@@ -749,11 +725,10 @@
       font-family: 'Rajdhani', monospace;
       font-weight: 800;
       color: #fff;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 5px 12px;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 4px 10px;
       border-radius: 8px;
       border: 1px solid var(--accent);
-      box-shadow: 0 0 8px var(--accent-dim);
     }
 
     /* SELECTOR RÁPIDO DE JUEGOS EN TERMINAL CON LOGOS REALES */
@@ -761,9 +736,9 @@
       font-size: 11px;
       font-weight: 800;
       color: var(--text-muted);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -774,15 +749,15 @@
       gap: 8px;
       overflow-x: auto;
       padding-bottom: 6px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
     }
     .game-chips-row::-webkit-scrollbar { display: none; }
 
     .game-chip {
-      padding: 8px 14px;
-      border-radius: 12px;
+      padding: 8px 12px;
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-card);
       color: var(--text-muted);
@@ -792,23 +767,22 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       transition: all 0.2s;
       flex-shrink: 0;
+      min-height: 40px;
     }
 
     .chip-game-logo {
       width: 18px;
       height: 18px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-      transition: transform 0.2s;
+      flex-shrink: 0;
     }
 
     .game-chip:hover {
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
-      transform: translateY(-2px);
       border-color: rgba(255, 255, 255, 0.25);
     }
 
@@ -816,23 +790,22 @@
       background: var(--accent-dim);
       border-color: var(--accent);
       color: #fff;
-      box-shadow: 0 0 12px var(--accent-dim);
     }
 
     /* GRID DINÁMICO DE PAQUETES CON MONEDAS ESPECÍFICAS */
     .packages-terminal-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-      min-height: 140px;
+      gap: 8px;
+      margin-bottom: 16px;
+      min-height: 130px;
     }
 
     .pkg-chip {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-card);
-      border-radius: 14px;
-      padding: 12px 10px;
+      border-radius: 12px;
+      padding: 10px 8px;
       cursor: pointer;
       transition: all 0.2s;
       position: relative;
@@ -840,27 +813,26 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 60px;
     }
 
     .pkg-chip:hover {
       border-color: var(--accent);
       background: var(--accent-dim);
-      transform: translateY(-2px);
     }
 
     .pkg-chip.active {
-      background: linear-gradient(135deg, var(--accent-dim), rgba(255, 255, 255, 0.04));
+      background: linear-gradient(135deg, var(--accent-dim), rgba(255, 255, 255, 0.03));
       border-color: var(--accent);
-      box-shadow: 0 0 14px var(--accent-dim);
     }
 
     .pkg-chip-tag {
       position: absolute;
       top: -6px;
-      right: 6px;
+      right: 5px;
       background: var(--accent);
       color: #fff;
-      font-size: 8px;
+      font-size: 11px;
       font-weight: 900;
       padding: 2px 6px;
       border-radius: 4px;
@@ -868,25 +840,25 @@
     }
 
     .pkg-chip-amount {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 900;
       color: #fff;
       margin-bottom: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 3px;
     }
 
     .pkg-chip-bonus {
       font-size: 11px;
       color: var(--accent);
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .pkg-chip-price {
-      font-size: 13px;
+      font-size: 12px;
       font-family: 'Rajdhani', monospace;
       color: #fff;
       font-weight: 800;
@@ -894,7 +866,7 @@
 
     /* INPUT DE ID DE JUGADOR */
     .terminal-input-wrap {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .input-box {
@@ -903,13 +875,12 @@
       background: rgba(0, 0, 0, 0.6);
       border: 1px solid var(--border-card);
       border-radius: 12px;
-      padding: 4px 6px 4px 14px;
+      padding: 3px 5px 3px 12px;
       transition: all 0.2s;
     }
 
     .input-box:focus-within {
       border-color: var(--accent);
-      box-shadow: 0 0 12px var(--accent-dim);
     }
 
     .input-box input {
@@ -918,10 +889,11 @@
       border: none;
       color: #fff;
       font-family: 'Rajdhani', monospace;
-      font-size: 16px; /* 16px mínimo para evitar zoom molesto en iPhone/Safari */
+      font-size: 16px; /* 16px mínimo para evitar zoom en iOS Safari */
       font-weight: 700;
       outline: none;
       min-width: 0;
+      min-height: 42px;
     }
 
     .input-box input::placeholder {
@@ -940,6 +912,7 @@
       cursor: pointer;
       transition: all 0.2s;
       flex-shrink: 0;
+      min-height: 38px;
     }
 
     .input-verify-btn:hover {
@@ -950,13 +923,13 @@
     /* BOTÓN EJECUTAR RECARGA */
     .btn-terminal-submit {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       border-radius: 12px;
       background: var(--btn-gradient);
       color: #ffffff;
       font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       border: 1px solid rgba(255, 255, 255, 0.2);
       cursor: pointer;
@@ -964,12 +937,13 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: 0 6px 20px var(--accent-glow);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
       transition: all 0.2s;
+      min-height: 48px;
     }
 
     .btn-terminal-submit:hover {
-      filter: brightness(1.1);
+      filter: brightness(1.08);
       transform: translateY(-2px);
     }
 
@@ -978,7 +952,7 @@
        ========================================================================= */
     .steps-section {
       position: relative;
-      padding: 80px 48px;
+      padding: 72px 40px;
       background:
         linear-gradient(180deg, rgba(7, 9, 14, 0.98) 0%, rgba(13, 17, 28, 0.95) 50%, rgba(7, 9, 14, 0.98) 100%);
       border-top: 1px solid var(--border-card);
@@ -988,7 +962,7 @@
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 24px;
       position: relative;
       z-index: 2;
     }
@@ -996,67 +970,53 @@
     .step-card {
       background: var(--bg-card);
       border: 1px solid var(--border-card);
-      border-radius: 20px;
-      padding: 32px 24px;
+      border-radius: 18px;
+      padding: 28px 22px;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s;
+      transition: all 0.25s;
       display: flex;
       flex-direction: column;
     }
 
     .step-card:hover {
       border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8), 0 0 16px var(--accent-dim);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
     }
 
-    .step-number-watermark {
-      position: absolute;
-      top: -10px;
-      right: 12px;
-      font-size: 74px;
-      font-weight: 900;
-      font-family: 'Rajdhani', sans-serif;
-      color: rgba(255, 255, 255, 0.03);
-      user-select: none;
-      line-height: 1;
-      transition: color 0.3s;
-    }
-
-    .step-card:hover .step-number-watermark {
-      color: var(--accent-dim);
-    }
-
-    .step-icon-badge {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: var(--badge-bg);
-      border: 1.5px solid var(--accent);
+    .step-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 18px;
-      box-shadow: 0 0 14px var(--accent-dim);
+      justify-content: space-between;
+      margin-bottom: 16px;
     }
 
-    .step-badge-tag {
-      font-size: 11px;
-      font-family: 'Rajdhani', monospace;
-      font-weight: 800;
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--badge-bg);
+      border: 1px solid var(--accent);
       color: var(--accent);
-      letter-spacing: 0.12em;
+      font-family: 'Rajdhani', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+    }
+
+    .step-icon-symbol {
+      font-size: 22px;
+      line-height: 1;
     }
 
     .step-card h3 {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 900;
       color: #fff;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .step-card p {
@@ -1070,13 +1030,12 @@
        ========================================================================= */
     .section-catalog-wrap {
       position: relative;
-      padding: 90px 48px;
+      padding: 80px 40px;
       background: #080b12;
       overflow: hidden;
       border-bottom: 1px solid var(--border-card);
     }
 
-    /* FONDO DE VIDEO / ANIMACIÓN GAMER DEL CATÁLOGO */
     .catalog-live-backdrop {
       position: absolute;
       inset: -40px;
@@ -1084,16 +1043,9 @@
         linear-gradient(180deg, rgba(7, 9, 14, 0.96) 0%, rgba(11, 15, 26, 0.86) 50%, rgba(7, 9, 14, 0.96) 100%),
         radial-gradient(circle at 50% 20%, var(--accent-dim) 0%, transparent 60%),
         url('assets/games/cs2.jpg') center/cover no-repeat;
-      opacity: 0.45;
+      opacity: 0.35;
       pointer-events: none;
       z-index: 1;
-      animation: catalogLiveVideo 28s ease-in-out infinite alternate;
-    }
-
-    @keyframes catalogLiveVideo {
-      0% { transform: scale(1.0) translateY(0); }
-      50% { transform: scale(1.06) translateY(-2%); }
-      100% { transform: scale(1.03) translateY(1%); }
     }
 
     .section-container-inner {
@@ -1106,27 +1058,16 @@
 
     .section-header-center {
       text-align: center;
-      max-width: 660px;
-      margin: 0 auto 48px;
+      max-width: 680px;
+      margin: 0 auto 40px;
       padding: 0 16px;
     }
 
-    .section-eyebrow {
-      font-size: 11px;
-      font-family: 'Rajdhani', monospace;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-
     .section-main-title {
-      font-size: clamp(28px, 4vw, 46px);
+      font-size: clamp(26px, 3.8vw, 42px);
       font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: #ffffff;
       line-height: 1.15;
     }
@@ -1146,14 +1087,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 36px;
+      gap: 8px;
+      margin-bottom: 32px;
       flex-wrap: wrap;
-      padding: 0 10px;
+      padding: 0 8px;
     }
 
     .filter-btn {
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 9999px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-card);
@@ -1163,6 +1104,7 @@
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
+      min-height: 38px;
     }
 
     .filter-btn:hover {
@@ -1174,58 +1116,56 @@
       background: var(--accent-dim);
       border-color: var(--accent);
       color: #fff;
-      box-shadow: 0 0 12px var(--accent-dim);
     }
 
     /* GRID DEL CATÁLOGO CON IMÁGENES NÍTIDAS Y LOGOS OFICIALES */
     .catalog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
     }
 
     .game-card {
       position: relative;
       background: var(--bg-card);
       border: 1px solid var(--border-card);
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
     }
 
     .game-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       border-color: var(--accent);
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.9), 0 0 18px var(--accent-dim);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8);
     }
 
     /* BANNER DE IMAGEN REAL DEL JUEGO (NÍTIDO, CLARO Y SIN OSCURECIMIENTO EXCESIVO) */
     .game-card-banner {
-      height: 185px;
+      height: 180px;
       position: relative;
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      padding: 14px;
+      padding: 12px;
       overflow: hidden;
-      transition: transform 0.4s ease;
+      transition: transform 0.35s ease;
     }
 
     .game-card:hover .game-card-banner {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
 
     .game-card-banner::after {
       content: '';
       position: absolute;
       inset: 0;
-      /* Degradado suave que NO oscurece la cara ni el diseño del juego */
-      background: linear-gradient(180deg, rgba(7, 9, 14, 0.05) 0%, rgba(7, 9, 14, 0.35) 60%, rgba(7, 9, 14, 0.85) 100%);
+      background: linear-gradient(180deg, rgba(7, 9, 14, 0.0) 0%, rgba(7, 9, 14, 0.35) 60%, rgba(7, 9, 14, 0.85) 100%);
       pointer-events: none;
     }
 
@@ -1235,8 +1175,8 @@
       top: 12px;
       left: 12px;
       z-index: 3;
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       background: rgba(7, 9, 14, 0.88);
       border: 1.5px solid var(--accent);
@@ -1246,14 +1186,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
       transition: transform 0.25s;
     }
 
     .game-card:hover .game-card-logo-float {
-      transform: scale(1.12) rotate(4deg);
+      transform: scale(1.1) rotate(3deg);
       border-color: #ffffff;
-      box-shadow: 0 0 16px var(--accent-glow);
     }
 
     .game-card-logo-float img {
@@ -1266,11 +1205,11 @@
       position: relative;
       z-index: 2;
       background: rgba(7, 9, 14, 0.85);
-      border: 1.5px solid var(--accent);
+      border: 1px solid var(--accent);
       color: #ffffff;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 4px 10px;
+      padding: 3px 8px;
       border-radius: 6px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -1282,14 +1221,14 @@
     .game-currency-pill {
       position: absolute;
       bottom: 12px;
-      right: 14px;
+      right: 12px;
       z-index: 2;
       background: rgba(7, 9, 14, 0.88);
       border: 1px solid var(--border-card);
       color: #fff;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 4px 10px;
+      padding: 4px 8px;
       border-radius: 6px;
       display: flex;
       align-items: center;
@@ -1299,14 +1238,13 @@
     }
 
     .game-card-body {
-      padding: 18px;
+      padding: 16px;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
       z-index: 3;
-      background: var(--bg-card);
     }
 
     .game-card-title-row {
@@ -1317,14 +1255,14 @@
     }
 
     .card-inline-logo {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       object-fit: contain;
       flex-shrink: 0;
     }
 
     .game-card-name {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
       color: #ffffff;
     }
@@ -1333,7 +1271,7 @@
       font-size: 12px;
       color: var(--accent);
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -1343,7 +1281,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 14px;
+      padding-top: 12px;
       border-top: 1px solid var(--border-card);
     }
 
@@ -1360,7 +1298,7 @@
     }
 
     .btn-card-select {
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 8px;
       background: var(--btn-gradient);
       border: none;
@@ -1370,11 +1308,11 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: all 0.2s;
+      min-height: 36px;
     }
 
     .game-card:hover .btn-card-select {
-      filter: brightness(1.1);
-      box-shadow: 0 0 12px var(--accent-glow);
+      filter: brightness(1.08);
     }
 
     /* =========================================================================
@@ -1382,7 +1320,7 @@
        ========================================================================= */
     .section-wrap {
       position: relative;
-      padding: 80px 48px;
+      padding: 72px 40px;
       max-width: 1360px;
       margin: 0 auto;
       width: 100%;
@@ -1392,44 +1330,42 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .service-box {
       background: var(--bg-card);
       border: 1px solid var(--border-card);
-      border-radius: 18px;
-      padding: 28px 22px;
-      transition: all 0.28s;
+      border-radius: 16px;
+      padding: 22px 20px;
+      transition: all 0.25s;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
       position: relative;
       overflow: hidden;
     }
 
     .service-box:hover {
       border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 16px var(--accent-dim);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
     }
 
-    .service-icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--badge-bg);
-      border: 1.5px solid var(--accent);
+    .service-header-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      color: #fff;
-      box-shadow: 0 0 12px var(--accent-dim);
+      gap: 12px;
     }
 
-    .service-box h3 {
-      font-size: 18px;
+    .service-icon-symbol {
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .service-header-row h3 {
+      font-size: 17px;
       font-weight: 900;
       color: #fff;
     }
@@ -1443,16 +1379,16 @@
     /* =========================================================================
        6. SECCIÓN: OFERTAS FLASH CON FONDO DE VIDEO CYBERPUNK
        ========================================================================= */
-    .flash-banner {
+    .flash-showcase {
       position: relative;
-      border: 1.5px solid var(--accent);
-      border-radius: 26px;
-      padding: 44px;
+      border: 1px solid var(--accent);
+      border-radius: 22px;
+      padding: 36px;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 36px;
+      gap: 32px;
       align-items: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 24px var(--accent-dim);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
       overflow: hidden;
     }
 
@@ -1462,16 +1398,16 @@
       background:
         linear-gradient(90deg, rgba(7, 9, 14, 0.96) 0%, rgba(16, 22, 36, 0.88) 60%, rgba(7, 9, 14, 0.96) 100%),
         url('assets/games/cyberpunk.jpg') center/cover no-repeat;
-      opacity: 0.55;
+      opacity: 0.5;
       pointer-events: none;
       z-index: 1;
       animation: flashLiveVideo 20s ease-in-out infinite alternate;
     }
 
     @keyframes flashLiveVideo {
-      0% { transform: scale(1.02); filter: brightness(0.9); }
-      50% { transform: scale(1.06) translate(-1%, -1%); filter: brightness(1.08); }
-      100% { transform: scale(1.03) translate(1%, 0); filter: brightness(0.98); }
+      0% { transform: scale(1.01); }
+      50% { transform: scale(1.05) translate(-1%, -1%); }
+      100% { transform: scale(1.02) translate(1%, 0); }
     }
 
     .flash-left {
@@ -1480,7 +1416,7 @@
     }
 
     .flash-left h2 {
-      font-size: clamp(28px, 3.2vw, 42px);
+      font-size: clamp(26px, 3vw, 38px);
       font-weight: 900;
       text-transform: uppercase;
       margin-bottom: 12px;
@@ -1495,7 +1431,7 @@
     .flash-left p {
       font-size: 14px;
       color: var(--text-muted);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       max-width: 480px;
     }
 
@@ -1503,48 +1439,48 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .count-unit {
       background: rgba(0, 0, 0, 0.7);
       border: 1px solid var(--border-card);
-      border-radius: 12px;
-      padding: 10px 16px;
+      border-radius: 10px;
+      padding: 8px 14px;
       text-align: center;
-      min-width: 68px;
+      min-width: 64px;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
 
     .count-num {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       color: var(--accent);
       font-family: 'Rajdhani', monospace;
     }
 
     .count-label {
-      font-size: 9px;
+      font-size: 11px;
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 700;
     }
 
-    .flash-right-cards {
+    .flash-deals-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      gap: 12px;
       position: relative;
       z-index: 2;
     }
 
-    .flash-item-card {
+    .flash-deal-tile {
       background: rgba(14, 18, 28, 0.9);
       border: 1px solid var(--border-card);
-      border-radius: 16px;
-      padding: 18px 14px;
+      border-radius: 14px;
+      padding: 16px 12px;
       text-align: center;
       transition: all 0.2s;
       backdrop-filter: blur(12px);
@@ -1555,17 +1491,23 @@
       align-items: center;
     }
 
-    .flash-item-card:hover {
+    .flash-deal-tile:hover {
       border-color: var(--accent);
-      transform: scale(1.02);
-      box-shadow: 0 0 16px var(--accent-dim);
+      transform: translateY(-2px);
     }
 
-    .flash-card-logo {
-      width: 34px;
-      height: 34px;
+    .flash-deal-logo {
+      width: 32px;
+      height: 32px;
       object-fit: contain;
       margin-bottom: 8px;
+    }
+
+    .flash-deal-tile h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
     }
 
     /* =========================================================================
@@ -1574,15 +1516,15 @@
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-      margin-top: 32px;
+      gap: 20px;
+      margin-top: 28px;
     }
 
     .review-card {
       background: var(--bg-card);
       border: 1px solid var(--border-card);
-      border-radius: 18px;
-      padding: 22px;
+      border-radius: 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1592,39 +1534,39 @@
     .review-card:hover {
       border-color: var(--accent);
       transform: translateY(-3px);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.8), 0 0 14px var(--accent-dim);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     }
 
     .review-header {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .review-avatar {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent) 0%, rgba(0, 212, 255, 0.5) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
       color: #fff;
       border: 1.5px solid #fff;
       flex-shrink: 0;
     }
 
-    .review-author h4 {
+    .review-author h3 {
       font-size: 13px;
       font-weight: 800;
       color: #fff;
     }
 
     .review-author span {
-      font-size: 10px;
+      font-size: 11px;
       color: var(--text-dim);
       display: flex;
       align-items: center;
@@ -1653,7 +1595,7 @@
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-card);
-      font-size: 10px;
+      font-size: 11px;
       font-family: 'Rajdhani', monospace;
     }
 
@@ -1673,35 +1615,35 @@
     .payments-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 14px;
-      margin-top: 32px;
+      gap: 12px;
+      margin-top: 28px;
     }
 
     .payment-card {
       background: var(--bg-card);
       border: 1px solid var(--border-card);
-      border-radius: 16px;
-      padding: 18px 12px;
+      border-radius: 14px;
+      padding: 16px 10px;
       text-align: center;
       transition: all 0.25s;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 90px;
     }
 
     .payment-card:hover {
       border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 0 14px var(--accent-dim);
+      transform: translateY(-2px);
     }
 
     .payment-card-icon {
-      font-size: 28px;
-      margin-bottom: 6px;
+      font-size: 26px;
+      margin-bottom: 4px;
     }
 
-    .payment-card h4 {
+    .payment-card h3 {
       font-size: 12px;
       font-weight: 800;
       color: #fff;
@@ -1709,7 +1651,7 @@
     }
 
     .payment-card p {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--accent);
       font-family: 'Rajdhani', monospace;
       font-weight: 800;
@@ -1717,23 +1659,28 @@
     }
 
     /* =========================================================================
-       9. SECCIÓN TICKER: RECARGAS EN VIVO
+       9. SECCIÓN: RECARGAS RECIENTES VERIFICADAS
        ========================================================================= */
-    .live-ticker-wrap {
-      background: rgba(7, 9, 14, 0.98);
+    .recent-feed-container {
+      background: rgba(7, 9, 14, 0.95);
       border-top: 1px solid var(--border-card);
       border-bottom: 1px solid var(--border-card);
-      padding: 14px 24px;
+      padding: 14px 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .recent-feed-container::-webkit-scrollbar { display: none; }
+
+    .feed-items-row {
       display: flex;
       align-items: center;
-      gap: 20px;
-      overflow: hidden;
-      white-space: nowrap;
-      z-index: 20;
+      gap: 16px;
+      width: max-content;
     }
 
-    .ticker-lead-badge {
-      display: flex;
+    .feed-badge {
+      display: inline-flex;
       align-items: center;
       gap: 6px;
       background: var(--badge-bg);
@@ -1741,47 +1688,34 @@
       color: #fff;
       font-size: 11px;
       font-weight: 900;
-      padding: 4px 10px;
+      padding: 4px 8px;
       border-radius: 6px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       flex-shrink: 0;
     }
 
-    .ticker-feed {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      animation: tickerScroll 24s linear infinite;
-    }
-
-    @keyframes tickerScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .ticker-item {
+    .feed-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
       font-size: 12px;
       color: var(--text-muted);
+      white-space: nowrap;
     }
 
-    .ticker-player {
+    .feed-player {
       color: #fff;
       font-weight: 800;
     }
 
-    .ticker-val {
+    .feed-val {
       color: var(--accent);
       font-weight: 800;
-    }
-
-    .ticker-time {
-      font-size: 10px;
-      color: var(--text-dim);
-      font-family: 'Rajdhani', monospace;
     }
 
     /* =========================================================================
@@ -1810,11 +1744,10 @@
 
     .faq-item.active {
       border-color: var(--accent);
-      box-shadow: 0 0 12px var(--accent-dim);
     }
 
     .faq-question {
-      padding: 18px 20px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1824,6 +1757,7 @@
       color: #fff;
       user-select: none;
       gap: 10px;
+      min-height: 48px;
     }
 
     .faq-toggle-icon {
@@ -1839,7 +1773,7 @@
 
     .faq-answer {
       display: none;
-      padding: 0 20px 18px;
+      padding: 0 20px 16px;
       font-size: 13px;
       color: var(--text-muted);
       line-height: 1.6;
@@ -1855,23 +1789,23 @@
     .site-footer {
       background: #05060a;
       border-top: 1px solid var(--border-card);
-      padding: 56px 48px 28px;
-      margin-top: 40px;
+      padding: 52px 40px 24px;
+      margin-top: 36px;
       position: relative;
       z-index: 10;
     }
 
     .footer-telemetry-bar {
       max-width: 1360px;
-      margin: 0 auto 36px;
-      padding: 10px 18px;
+      margin: 0 auto 32px;
+      padding: 10px 16px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-card);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 11px;
+      font-size: 12px;
       font-family: 'Rajdhani', monospace;
       color: var(--text-dim);
       flex-wrap: wrap;
@@ -1887,26 +1821,24 @@
     }
 
     .telemetry-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #10b981;
-      box-shadow: 0 0 8px #10b981;
-      animation: pulseDot 1.5s infinite;
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr repeat(3, 1fr);
-      gap: 40px;
+      gap: 36px;
       max-width: 1360px;
-      margin: 0 auto 40px;
+      margin: 0 auto 36px;
     }
 
     .footer-brand h2 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #fff;
     }
 
@@ -1919,15 +1851,15 @@
       color: var(--text-dim);
       line-height: 1.6;
       max-width: 380px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 13px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       color: #fff;
     }
 
@@ -1953,15 +1885,74 @@
     .footer-bottom {
       max-width: 1360px;
       margin: 0 auto;
-      padding-top: 20px;
+      padding-top: 18px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-dim);
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    /* BARRA DE NAVEGACIÓN INFERIOR PARA CELULARES (THUMB-FRIENDLY BOTTOM BAR) */
+    .mobile-bottom-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 62px;
+      background: rgba(7, 9, 14, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-card);
+      z-index: 99;
+      padding: 0 10px;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .mobile-tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 800;
+      gap: 3px;
+      transition: all 0.2s;
+      flex: 1;
+      height: 100%;
+    }
+
+    .mobile-tab-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .mobile-tab-item:hover, .mobile-tab-item.active {
+      color: var(--accent);
+    }
+
+    .mobile-tab-item.recharge-highlight {
+      color: #fff;
+    }
+
+    .mobile-tab-item.recharge-highlight .mobile-tab-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--btn-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      font-size: 14px;
     }
 
     /* MODAL DE CONFIRMACIÓN DE RECARGA CON LOGO OFICIAL */
@@ -1975,52 +1966,51 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
     }
 
     .recharge-modal-backdrop.active {
       display: flex;
     }
 
-    .modal-card {
+    .modal-dialog {
       background: var(--bg-surface);
       border: 1.5px solid var(--accent);
-      border-radius: 24px;
-      padding: 30px 24px;
-      max-width: 440px;
+      border-radius: 20px;
+      padding: 24px 20px;
+      max-width: 420px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px var(--accent-glow);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
       position: relative;
     }
 
     .modal-close-btn {
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: 12px;
+      right: 12px;
       background: none;
       border: none;
       color: var(--text-muted);
       font-size: 20px;
       cursor: pointer;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .modal-logo-wrap {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
       background: var(--badge-bg);
       border: 2px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
-      box-shadow: 0 0 16px var(--accent-glow);
+      margin: 0 auto 14px;
       padding: 8px;
     }
 
@@ -2030,26 +2020,26 @@
       object-fit: contain;
     }
 
-    .modal-card h3 {
-      font-size: 22px;
+    .modal-dialog h3 {
+      font-size: 20px;
       font-weight: 900;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       color: #fff;
     }
 
-    .modal-card p {
+    .modal-dialog p {
       font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       line-height: 1.5;
     }
 
     .order-details-box {
       background: rgba(0, 0, 0, 0.5);
       border: 1px solid var(--border-card);
-      border-radius: 14px;
-      padding: 16px;
-      margin-bottom: 20px;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 16px;
       text-align: left;
       font-size: 13px;
     }
@@ -2057,7 +2047,7 @@
     .order-line {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .order-line:last-child {
       margin-bottom: 0;
@@ -2075,11 +2065,11 @@
       color: #fff;
       font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 16px var(--accent-glow);
+      min-height: 48px;
     }
 
     /* =========================================================================
@@ -2087,7 +2077,7 @@
        ========================================================================= */
     @media (max-width: 1024px) {
       .navbar {
-        padding: 0 24px;
+        padding: 0 20px;
       }
       .nav-links {
         display: none;
@@ -2097,8 +2087,8 @@
       }
       .hero-section {
         grid-template-columns: 1fr;
-        padding: 32px 24px;
-        gap: 36px;
+        padding: 28px 20px;
+        gap: 32px;
       }
       .steps-grid {
         grid-template-columns: 1fr;
@@ -2114,107 +2104,112 @@
       }
       .flash-banner {
         grid-template-columns: 1fr;
-        padding: 32px 24px;
+        padding: 28px 20px;
       }
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
       }
       .section-wrap, .section-catalog-wrap, .steps-section {
-        padding: 56px 24px;
+        padding: 48px 20px;
       }
     }
 
     @media (max-width: 768px) {
+      body {
+        padding-bottom: 66px; /* Espacio para barra de navegación inferior móvil */
+      }
+      .mobile-bottom-bar {
+        display: flex;
+      }
       .navbar {
-        height: 66px;
+        height: 64px;
         padding: 0 16px;
       }
       .brand-badge-x7 {
-        width: 38px;
-        height: 38px;
-        font-size: 17px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
       }
       .brand-title-box h1 {
-        font-size: 17px;
+        font-size: 16px;
       }
       .brand-title-box p {
         display: none;
       }
       .btn-nav-recharge {
-        padding: 8px 14px;
-        font-size: 11px;
-      }
-      .theme-picker-label {
-        display: none;
+        display: none; /* Reemplazado por el botón central del bottom bar */
       }
       .mobile-menu-drawer {
-        top: 66px;
+        top: 64px;
         padding: 16px;
       }
       .hero-section {
-        padding: 24px 16px 36px;
-        gap: 28px;
+        padding: 20px 16px 28px;
+        gap: 24px;
       }
       .hero-title {
-        font-size: 32px;
+        font-size: 28px;
       }
       .hero-subtitle {
         font-size: 14px;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
       .hero-cta-group {
-        margin-bottom: 28px;
+        margin-bottom: 24px;
       }
       .btn-hero-primary, .btn-hero-secondary {
         width: 100%;
         justify-content: center;
         padding: 14px;
+        min-height: 48px;
       }
       .hero-stats {
         grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        padding-top: 18px;
+        gap: 6px;
+        padding-top: 16px;
       }
-      .stat-box h4 {
-        font-size: 20px;
+      .stat-number {
+        font-size: 19px;
       }
-      .stat-box p {
-        font-size: 10px;
+      .stat-label {
+        font-size: 11px;
       }
       .hero-terminal {
-        padding: 16px 14px;
-        border-radius: 20px;
+        padding: 16px 12px;
+        border-radius: 18px;
       }
       .terminal-game-banner-preview {
-        height: 84px;
+        min-height: 80px;
+        padding: 10px 12px;
+        margin-bottom: 12px;
       }
       .terminal-game-logo-box {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
       }
-      .terminal-title-cluster h3 {
-        font-size: 15px;
+      .terminal-title-cluster h2 {
+        font-size: 14px;
       }
       .terminal-live-badge {
-        font-size: 10px;
+        font-size: 11px;
         padding: 4px 8px;
       }
       .packages-terminal-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+        gap: 6px;
       }
       .section-wrap, .section-catalog-wrap, .steps-section {
-        padding: 48px 16px;
+        padding: 40px 16px;
       }
       .section-main-title {
-        font-size: 28px;
+        font-size: 24px;
       }
       .catalog-grid {
         grid-template-columns: 1fr;
       }
       .game-card-banner {
-        height: 200px; /* Banner generoso y claro en celular */
+        height: 190px;
       }
       .services-grid {
         grid-template-columns: 1fr;
@@ -2226,13 +2221,13 @@
         grid-template-columns: 1fr;
       }
       .site-footer {
-        padding: 40px 16px 24px;
+        padding: 36px 16px 20px;
       }
       .footer-telemetry-bar {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 8px;
+        gap: 6px;
       }
       .footer-bottom {
         flex-direction: column;
@@ -2246,11 +2241,11 @@
         grid-template-columns: repeat(2, 1fr);
       }
       .count-unit {
-        min-width: 56px;
-        padding: 8px 10px;
+        min-width: 52px;
+        padding: 6px 8px;
       }
       .count-num {
-        font-size: 19px;
+        font-size: 18px;
       }
     }
   </style>
@@ -2260,9 +2255,9 @@
   <!-- CANVAS OVERLAY PARA EL EFECTO DE CURSOR GAMER -->
   <canvas id="cursor-trail-canvas"></canvas>
 
-  <!-- CANVAS DE ENERGÍA AMBIENTAL CON CHISPAS REACTIVAS -->
+  <!-- CANVAS DE ENERGÍA AMBIENTAL -->
   <canvas id="ambient-canvas"></canvas>
-  <div class="cyber-grid-overlay"></div>
+  <div class="ambient-glow-layer"></div>
 
   <div class="app-container">
 
@@ -2292,7 +2287,6 @@
       <div class="nav-actions">
         <!-- Selector de Color X7: Solamente Rojo, Azul y Amarillo con tonalidad agradable -->
         <div class="theme-picker" title="Cambiar color del sitio">
-          <span class="theme-picker-label">COLOR:</span>
           <!-- 1. ROJO -->
           <button class="theme-btn active" id="btn-theme-red" onclick="setGamerTheme('red')" title="X7 Carmesí (Rojo Gamer)">
             <span class="theme-btn-dot" style="background: #ff2a4a;"></span>
@@ -2310,10 +2304,10 @@
         <!-- Audio sintético -->
         <button class="btn-sfx" id="btn-audio-sfx" onclick="toggleAudio()" title="Activar sonido gamer">
           <span id="audio-icon">🔇</span>
-          <span style="display: none;">SFX</span>
+          <span>SFX</span>
         </button>
 
-        <!-- Botón Recargar CTA -->
+        <!-- Botón Recargar CTA (Desktop) -->
         <a href="#catalogo" class="btn-nav-recharge">
           <span>⚡ RECARGAR</span>
         </a>
@@ -2342,17 +2336,16 @@
       <!-- Fondo animado tipo video gamer -->
       <div class="hero-gamer-backdrop"></div>
       <div class="hero-video-scanlines"></div>
-      <div class="hero-light-beam"></div>
 
       <div class="hero-content">
         <div class="hero-badge-pill">
-          <span class="pulse-dot-red"></span>
+          <span class="status-indicator-dot"></span>
           <span>ENTREGA DIRECTA EN MENOS DE 30 SEGUNDOS</span>
         </div>
 
         <h1 class="hero-title">
           RECARGAS GAMER <br>
-          <span class="highlight-red">AL INSTANTE //</span> <span class="highlight-blue">X7 STORE</span>
+          <span class="highlight-accent">AL INSTANTE //</span> X7 STORE
         </h1>
 
         <p class="hero-subtitle">
@@ -2365,22 +2358,22 @@
             <span>⚡</span>
           </a>
           <a href="#pasos" class="btn-hero-secondary" onclick="playSfx('click')">
-            <span>¿Cómo Funciona? 🛡️</span>
+            <span>¿Cómo Funciona?</span>
           </a>
         </div>
 
         <div class="hero-stats">
           <div class="stat-box">
-            <h4>+180K<span>+</span></h4>
-            <p>Recargas Exitosas</p>
+            <div class="stat-number">+180K<span>+</span></div>
+            <div class="stat-label">Recargas Exitosas</div>
           </div>
           <div class="stat-box">
-            <h4>&lt; 30s</h4>
-            <p>Tiempo Entrega</p>
+            <div class="stat-number">&lt; 30s</div>
+            <div class="stat-label">Tiempo Entrega</div>
           </div>
           <div class="stat-box">
-            <h4>4.9 / 5 ⭐</h4>
-            <p>TrustScore</p>
+            <div class="stat-number">4.9/5 <span>★</span></div>
+            <div class="stat-label">TrustScore</div>
           </div>
         </div>
       </div>
@@ -2397,12 +2390,12 @@
                 <img id="terminal-active-logo" src="assets/logos/freefire.svg" alt="Logo Oficial del Juego">
               </div>
               <div>
-                <h3 id="terminal-game-name">FREE FIRE</h3>
+                <h2 id="terminal-game-name">FREE FIRE</h2>
                 <span id="terminal-game-subtitle" class="terminal-game-subtitle">GARENA OFICIAL</span>
               </div>
             </div>
             <div class="terminal-live-badge">
-              <span class="pulse-dot-red"></span>
+              <span class="status-indicator-dot"></span>
               <span id="terminal-currency-label">DIAMANTES 💎</span>
             </div>
           </div>
@@ -2411,7 +2404,7 @@
         <!-- 1. Selector de Juego Rápido con LOGO DE CADA JUEGO -->
         <div class="terminal-field-label">
           <span>1. SELECCIONA TU JUEGO</span>
-          <span style="font-size: 10px; color: var(--accent); font-weight: 800;">OFICIAL // VERIFICADO</span>
+          <span style="font-size: 11px; color: var(--accent); font-weight: 800;">OFICIAL // VERIFICADO</span>
         </div>
         <div class="game-chips-row" id="terminal-chips">
           <button class="game-chip active" onclick="terminalSelectGame('freefire', this)">
@@ -2455,16 +2448,16 @@
         <!-- 2. Paquetes con la Moneda del Juego Seleccionado -->
         <div class="terminal-field-label">
           <span>2. PAQUETES DE <span id="terminal-currency-name-header" style="color: var(--accent);">DIAMANTES 💎</span></span>
-          <span id="terminal-pkg-badge" style="color: var(--accent); font-weight: 800;">BONUS EXTRA ACTIVO</span>
+          <span id="terminal-pkg-badge" style="color: var(--accent); font-weight: 800;">BONUS ACTIVO</span>
         </div>
         <div class="packages-terminal-grid" id="terminal-pkgs-grid">
-          <!-- Inyectado dinámicamente según el juego activo con su moneda respectiva -->
+          <!-- Inyectado dinámicamente según el juego activo -->
         </div>
 
         <!-- 3. Entrada de ID del Jugador -->
         <div class="terminal-field-label">
           <span id="terminal-id-label">3. ID DE JUGADOR (UID)</span>
-          <span style="font-size: 9px; color: var(--accent); font-weight: 800;">SIN CONTRASEÑAS // SEGURO</span>
+          <span style="font-size: 11px; color: var(--accent); font-weight: 800;">SIN CONTRASEÑAS</span>
         </div>
         <div class="terminal-input-wrap">
           <div class="input-box">
@@ -2480,38 +2473,16 @@
 
     </section>
 
-    <!-- TICKER DE COMPRAS EN VIVO (PRUEBA SOCIAL GAMER) -->
-    <div class="live-ticker-wrap">
-      <div class="ticker-lead-badge">
-        <span class="pulse-dot-red"></span>
-        <span>EN VIVO // X7</span>
-      </div>
-      <div class="ticker-feed">
-        <div class="ticker-item">
-          <span class="ticker-player">AlexGamer99 (Venezuela)</span> recargó <span class="ticker-val">1,060 💎 Free Fire</span> <span class="ticker-time">hace 6s</span>
-        </div>
-        <div class="ticker-item">
-          <span class="ticker-player">Carlos_COD (Colombia)</span> recargó <span class="ticker-val">2,400 CP Call of Duty</span> <span class="ticker-time">hace 18s</span>
-        </div>
-        <div class="ticker-item">
-          <span class="ticker-player">Val_Sniper (Chile)</span> recargó <span class="ticker-val">2,050 VP Valorant</span> <span class="ticker-time">hace 32s</span>
-        </div>
-        <div class="ticker-item">
-          <span class="ticker-player">RobuxMaster (México)</span> recargó <span class="ticker-val">1,700 Robux Roblox</span> <span class="ticker-time">hace 45s</span>
-        </div>
-        <div class="ticker-item">
-          <span class="ticker-player">StarsPro (Argentina)</span> recargó <span class="ticker-val">170 Gemas Brawl Stars</span> <span class="ticker-time">hace 58s</span>
-        </div>
-        <div class="ticker-item">
-          <span class="ticker-player">GenshinFan (Perú)</span> recargó <span class="ticker-val">1,980 🌌 Cristales Génesis</span> <span class="ticker-time">hace 1m</span>
-        </div>
-        <!-- Loop duplicado -->
-        <div class="ticker-item">
-          <span class="ticker-player">AlexGamer99 (Venezuela)</span> recargó <span class="ticker-val">1,060 💎 Free Fire</span> <span class="ticker-time">hace 6s</span>
-        </div>
-        <div class="ticker-item">
-          <span class="ticker-player">Carlos_COD (Colombia)</span> recargó <span class="ticker-val">2,400 CP Call of Duty</span> <span class="ticker-time">hace 18s</span>
-        </div>
+    <!-- BANNER DE RECARGAS VERIFICADAS RECIENTES (TOUCH FRIENDLY) -->
+    <div class="recent-feed-container">
+      <div class="feed-items-row">
+        <div class="feed-badge">EN VIVO // X7</div>
+        <div class="feed-pill"><span class="feed-player">AlexGamer99 (VE)</span>: <span class="feed-val">1,060 💎 Free Fire</span> — Aprobado</div>
+        <div class="feed-pill"><span class="feed-player">Carlos_COD (CO)</span>: <span class="feed-val">2,400 CP Call of Duty</span> — Aprobado</div>
+        <div class="feed-pill"><span class="feed-player">Val_Sniper (CL)</span>: <span class="feed-val">2,050 VP Valorant</span> — Aprobado</div>
+        <div class="feed-pill"><span class="feed-player">RobuxMaster (MX)</span>: <span class="feed-val">1,700 Robux Roblox</span> — Aprobado</div>
+        <div class="feed-pill"><span class="feed-player">StarsPro (AR)</span>: <span class="feed-val">170 Gemas Brawl Stars</span> — Aprobado</div>
+        <div class="feed-pill"><span class="feed-player">GenshinFan (PE)</span>: <span class="feed-val">1,980 🌌 Cristales</span> — Aprobado</div>
       </div>
     </div>
 
@@ -2519,8 +2490,7 @@
     <section class="steps-section" id="pasos">
       <div class="section-container-inner">
         <div class="section-header-center">
-          <span class="section-eyebrow">// PROCESO 100% AUTOMÁTICO</span>
-          <h2 class="section-main-title">Recarga en 3 Simples Pasos en <span>X7 Store</span></h2>
+          <h2 class="section-main-title">Recarga en 3 Pasos en <span>X7 Store</span></h2>
           <p class="section-subtitle-text">
             Sin registros engorrosos ni compartir tus contraseñas. Diseñado por gamers para entregas en menos de 30 segundos.
           </p>
@@ -2529,27 +2499,30 @@
         <div class="steps-grid">
           <!-- PASO 1 -->
           <div class="step-card">
-            <div class="step-number-watermark">01</div>
-            <div class="step-icon-badge">🎮</div>
-            <span class="step-badge-tag">PASO 01 // SELECCIÓN</span>
+            <div class="step-header">
+              <span class="step-badge">PASO 01</span>
+              <span class="step-icon-symbol">🎮</span>
+            </div>
             <h3>Elige tu Juego y Pack</h3>
             <p>Selecciona tu título preferido (Free Fire, COD, Valorant, Roblox...) y elige la cantidad exacta de diamantes, monedas o pases de temporada con bono extra.</p>
           </div>
 
           <!-- PASO 2 -->
           <div class="step-card">
-            <div class="step-number-watermark">02</div>
-            <div class="step-icon-badge">🎯</div>
-            <span class="step-badge-tag">PASO 02 // BLINDAJE</span>
+            <div class="step-header">
+              <span class="step-badge">PASO 02</span>
+              <span class="step-icon-symbol">🎯</span>
+            </div>
             <h3>Ingresa tu ID de Jugador</h3>
             <p>Solo digita tu UID o Gamertag oficial. Nuestro verificador de servidores confirma tu cuenta en tiempo real sin solicitar contraseñas ni correos confidenciales.</p>
           </div>
 
           <!-- PASO 3 -->
           <div class="step-card">
-            <div class="step-number-watermark">03</div>
-            <div class="step-icon-badge">⚡</div>
-            <span class="step-badge-tag">PASO 03 // INSTANTÁNEO</span>
+            <div class="step-header">
+              <span class="step-badge">PASO 03</span>
+              <span class="step-icon-symbol">⚡</span>
+            </div>
             <h3>Paga y Recibe en Segundos</h3>
             <p>Paga con Pago Móvil, Binance Pay (cero comisiones), Nequi, Zelle o Tarjetas. El sistema emite la orden por API y tus monedas caen a tu cuenta inmediatamente.</p>
           </div>
@@ -2559,12 +2532,10 @@
 
     <!-- 4. SECCIÓN: CATÁLOGO DE JUEGOS CON IMÁGENES NÍTIDAS Y LOGOS OFICIALES -->
     <section class="section-catalog-wrap" id="catalogo">
-      <!-- Fondo animado tipo video gamer -->
       <div class="catalog-live-backdrop"></div>
 
       <div class="section-container-inner">
         <div class="section-header-center">
-          <span class="section-eyebrow">// CATÁLOGO OFICIAL X7 STORE</span>
           <h2 class="section-main-title">Tus Juegos Favoritos en <span>X7 Store</span></h2>
           <p class="section-subtitle-text">
             Selecciona tu título preferido con su imagen y logotipo oficial, ingresa tu identificador de jugador y recibe tus monedas en segundos.
@@ -2616,7 +2587,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/cod.svg" alt="COD Mobile Logo Oficial">
               </div>
-              <span class="game-badge-tag">ACTIVISION 🎖️</span>
+              <span class="game-badge-tag">ACTIVISION</span>
               <span class="game-currency-pill">🎖️ CP Points</span>
             </div>
             <div class="game-card-body">
@@ -2643,7 +2614,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/valorant.svg" alt="Valorant Logo Oficial">
               </div>
-              <span class="game-badge-tag">RIOT GAMES ⚔️</span>
+              <span class="game-badge-tag">RIOT GAMES</span>
               <span class="game-currency-pill">⚔️ VP Points</span>
             </div>
             <div class="game-card-body">
@@ -2670,7 +2641,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/roblox.svg" alt="Roblox Logo Oficial">
               </div>
-              <span class="game-badge-tag">ENTREGA DIRECTA</span>
+              <span class="game-badge-tag">ENTREGA INMEDIATA</span>
               <span class="game-currency-pill">🧱 Robux</span>
             </div>
             <div class="game-card-body">
@@ -2697,7 +2668,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/brawlstars.svg" alt="Brawl Stars Logo Oficial">
               </div>
-              <span class="game-badge-tag">SUPERCELL ⭐</span>
+              <span class="game-badge-tag">SUPERCELL</span>
               <span class="game-currency-pill">⭐ Gemas</span>
             </div>
             <div class="game-card-body">
@@ -2724,7 +2695,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/mobilelegends.svg" alt="Mobile Legends Logo Oficial">
               </div>
-              <span class="game-badge-tag">MOONTON 🔮</span>
+              <span class="game-badge-tag">MOONTON</span>
               <span class="game-currency-pill">🔮 Diamonds</span>
             </div>
             <div class="game-card-body">
@@ -2751,7 +2722,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/pubg.svg" alt="PUBG Mobile Logo Oficial">
               </div>
-              <span class="game-badge-tag">TENCENT 🪂</span>
+              <span class="game-badge-tag">TENCENT</span>
               <span class="game-currency-pill">🪂 UC Cash</span>
             </div>
             <div class="game-card-body">
@@ -2778,7 +2749,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/genshin.svg" alt="Genshin Impact Logo Oficial">
               </div>
-              <span class="game-badge-tag">HOYOVERSE 🌌</span>
+              <span class="game-badge-tag">HOYOVERSE</span>
               <span class="game-currency-pill">🌌 Cristales</span>
             </div>
             <div class="game-card-body">
@@ -2805,7 +2776,7 @@
               <div class="game-card-logo-float">
                 <img src="assets/logos/steam.svg" alt="Steam Logo Oficial">
               </div>
-              <span class="game-badge-tag">VALVE GLOBAL</span>
+              <span class="game-badge-tag">VALVE</span>
               <span class="game-currency-pill">🎮 Saldo USD</span>
             </div>
             <div class="game-card-body">
@@ -2833,7 +2804,6 @@
     <!-- 5. SECCIÓN: SERVICIOS Y BENEFICIOS GAMER -->
     <section class="section-wrap" id="servicios">
       <div class="section-header-center">
-        <span class="section-eyebrow">// VENTAJAS EXCLUSIVAS</span>
         <h2 class="section-main-title">¿Por Qué Confiar en <span>X7 Store</span>?</h2>
         <p class="section-subtitle-text">
           Erradicamos las esperas manuales y riesgos de estafa. Infraestructura técnica directa con los distribuidores oficiales.
@@ -2842,26 +2812,34 @@
 
       <div class="services-grid">
         <div class="service-box">
-          <div class="service-icon-box">⚡</div>
-          <h3>Entrega por API en 30s</h3>
+          <div class="service-header-row">
+            <span class="service-icon-symbol">⚡</span>
+            <h3>Entrega por API en 30s</h3>
+          </div>
           <p>Nuestros servidores liquidan la transacción inmediatamente al confirmar tu pago. Tu saldo llega a tu cuenta de juego sin esperas.</p>
         </div>
 
         <div class="service-box">
-          <div class="service-icon-box">🛡️</div>
-          <h3>100% Antiban por ID</h3>
+          <div class="service-header-row">
+            <span class="service-icon-symbol">🛡️</span>
+            <h3>100% Antiban por ID</h3>
+          </div>
           <p>Solo solicitamos tu ID de jugador o UID. Jamás te pediremos contraseñas ni correos. Todo el proceso es oficial y seguro.</p>
         </div>
 
         <div class="service-box">
-          <div class="service-icon-box">💳</div>
-          <h3>Pagos Locales y Cripto</h3>
+          <div class="service-header-row">
+            <span class="service-icon-symbol">💳</span>
+            <h3>Pagos Locales y Cripto</h3>
+          </div>
           <p>Aceptamos Pago Móvil, Binance Pay (USDT con cero comisiones), Nequi, Zelle, Tarjetas de Débito/Crédito y PayPal.</p>
         </div>
 
         <div class="service-box">
-          <div class="service-icon-box">🎧</div>
-          <h3>Soporte Real 24/7</h3>
+          <div class="service-header-row">
+            <span class="service-icon-symbol">🎧</span>
+            <h3>Soporte Real 24/7</h3>
+          </div>
           <p>Atención inmediata por WhatsApp y Discord los 365 días del año. Si surge cualquier duda, nuestro equipo te asiste en tiempo real.</p>
         </div>
       </div>
@@ -2869,12 +2847,10 @@
 
     <!-- 6. SECCIÓN: OFERTAS FLASH CON FONDO DE VIDEO CYBERPUNK -->
     <section class="section-wrap" id="ofertas">
-      <div class="flash-banner">
-        <!-- Fondo animado tipo video cyberpunk -->
+      <div class="flash-showcase">
         <div class="flash-banner-backdrop"></div>
 
         <div class="flash-left">
-          <span class="section-eyebrow" style="color: var(--accent);">⚡ OFERTA RELÁMPAGO // X7 STORE</span>
           <h2>BONIFICACIÓN DEL +20% EXTRA EN <span>TUS MONEDAS</span></h2>
           <p>
             Aprovecha la recarga bonificada de fin de semana en X7 Store. Válido en todos los paquetes superiores a 520 diamantes, 880 CP o 1,000 robux.
@@ -2901,34 +2877,34 @@
           </a>
         </div>
 
-        <div class="flash-right-cards">
-          <!-- CARD 1: FREE FIRE -->
-          <div class="flash-item-card" onclick="catalogPickGame('freefire')">
-            <img src="assets/logos/freefire.svg" class="flash-card-logo" alt="Free Fire Logo">
-            <h4 style="color: #fff; font-size: 14px; font-weight: 800;">Free Fire 1,060 + 212 Bonus</h4>
-            <div style="font-size: 11px; color: var(--accent); margin: 4px 0; font-weight: 700;">Ahorro del 20%</div>
-            <div style="font-size: 17px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$8.99 USD</div>
+        <div class="flash-deals-grid">
+          <!-- OFERTA 1: FREE FIRE -->
+          <div class="flash-deal-tile" onclick="catalogPickGame('freefire')">
+            <img src="assets/logos/freefire.svg" class="flash-deal-logo" alt="Free Fire Logo">
+            <h3>Free Fire 1,060 + 212 Bonus</h3>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">Ahorro del 20%</div>
+            <div style="font-size: 16px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$8.99 USD</div>
           </div>
-          <!-- CARD 2: ROBLOX -->
-          <div class="flash-item-card" onclick="catalogPickGame('roblox')">
-            <img src="assets/logos/roblox.svg" class="flash-card-logo" alt="Roblox Logo">
-            <h4 style="color: #fff; font-size: 14px; font-weight: 800;">2,000 Robux Especial</h4>
-            <div style="font-size: 11px; color: var(--accent); margin: 4px 0; font-weight: 700;">Ahorro de $4.00</div>
-            <div style="font-size: 17px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$16.99 USD</div>
+          <!-- OFERTA 2: ROBLOX -->
+          <div class="flash-deal-tile" onclick="catalogPickGame('roblox')">
+            <img src="assets/logos/roblox.svg" class="flash-deal-logo" alt="Roblox Logo">
+            <h3>2,000 Robux Especial</h3>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">Ahorro de $4.00</div>
+            <div style="font-size: 16px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$16.99 USD</div>
           </div>
-          <!-- CARD 3: COD -->
-          <div class="flash-item-card" onclick="catalogPickGame('cod')">
-            <img src="assets/logos/cod.svg" class="flash-card-logo" alt="COD Mobile Logo">
-            <h4 style="color: #fff; font-size: 14px; font-weight: 800;">COD 2,400 CP + 400 Extra</h4>
-            <div style="font-size: 11px; color: var(--accent); margin: 4px 0; font-weight: 700;">BattlePass Listo</div>
-            <div style="font-size: 17px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$22.99 USD</div>
+          <!-- OFERTA 3: COD -->
+          <div class="flash-deal-tile" onclick="catalogPickGame('cod')">
+            <img src="assets/logos/cod.svg" class="flash-deal-logo" alt="COD Mobile Logo">
+            <h3>COD 2,400 CP + 400 Extra</h3>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">BattlePass Listo</div>
+            <div style="font-size: 16px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$22.99 USD</div>
           </div>
-          <!-- CARD 4: VALORANT -->
-          <div class="flash-item-card" onclick="catalogPickGame('valorant')">
-            <img src="assets/logos/valorant.svg" class="flash-card-logo" alt="Valorant Logo">
-            <h4 style="color: #fff; font-size: 14px; font-weight: 800;">Valorant 3,650 VP</h4>
-            <div style="font-size: 11px; color: var(--accent); margin: 4px 0; font-weight: 700;">Bonus de Verano</div>
-            <div style="font-size: 17px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$31.99 USD</div>
+          <!-- OFERTA 4: VALORANT -->
+          <div class="flash-deal-tile" onclick="catalogPickGame('valorant')">
+            <img src="assets/logos/valorant.svg" class="flash-deal-logo" alt="Valorant Logo">
+            <h3>Valorant 3,650 VP</h3>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">Bonus Especial</div>
+            <div style="font-size: 16px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$31.99 USD</div>
           </div>
         </div>
       </div>
@@ -2937,7 +2913,6 @@
     <!-- 7. SECCIÓN: COMPROBANTES Y RESEÑAS GAMER EN VIVO -->
     <section class="section-wrap" id="opiniones">
       <div class="section-header-center">
-        <span class="section-eyebrow">// COMUNIDAD VERIFICADA</span>
         <h2 class="section-main-title">Lo que dicen los Gamers en <span>X7 Store</span></h2>
         <p class="section-subtitle-text">
           Más de 180,000 pedidos completados en Venezuela, Colombia, México, Chile, Argentina y toda Latinoamérica.
@@ -2951,7 +2926,7 @@
             <div class="review-header">
               <div class="review-avatar">A</div>
               <div class="review-author">
-                <h4>AlexGamer99</h4>
+                <h3>AlexGamer99</h3>
                 <span>🇻🇪 Caracas, Venezuela</span>
               </div>
             </div>
@@ -2970,7 +2945,7 @@
             <div class="review-header">
               <div class="review-avatar" style="background: linear-gradient(135deg, #00b4d8, #0077b6);">C</div>
               <div class="review-author">
-                <h4>Carlos_COD</h4>
+                <h3>Carlos_COD</h3>
                 <span>🇨🇴 Medellín, Colombia</span>
               </div>
             </div>
@@ -2989,7 +2964,7 @@
             <div class="review-header">
               <div class="review-avatar" style="background: linear-gradient(135deg, #e5a910, #b45309);">V</div>
               <div class="review-author">
-                <h4>Val_Sniper</h4>
+                <h3>Val_Sniper</h3>
                 <span>🇨🇱 Santiago, Chile</span>
               </div>
             </div>
@@ -3008,7 +2983,7 @@
             <div class="review-header">
               <div class="review-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">R</div>
               <div class="review-author">
-                <h4>RobuxMaster</h4>
+                <h3>RobuxMaster</h3>
                 <span>🇲🇽 CDMX, México</span>
               </div>
             </div>
@@ -3024,9 +2999,8 @@
     </section>
 
     <!-- 8. SECCIÓN: MÉTODOS DE PAGO OFICIALES ACEPTADOS -->
-    <section class="section-wrap" style="padding-top: 20px;">
+    <section class="section-wrap" style="padding-top: 10px;">
       <div class="section-header-center">
-        <span class="section-eyebrow">// PASARELAS BLINDADAS</span>
         <h2 class="section-main-title">Paga Como Quieras en <span>X7 Store</span></h2>
         <p class="section-subtitle-text">
           Integración directa con los sistemas bancarios más rápidos y criptopagos automáticos con acreditación en 30s.
@@ -3036,32 +3010,32 @@
       <div class="payments-grid">
         <div class="payment-card">
           <div class="payment-card-icon">🇻🇪</div>
-          <h4>Pago Móvil</h4>
+          <h3>Pago Móvil</h3>
           <p>Tasa Oficial BCV</p>
         </div>
         <div class="payment-card">
           <div class="payment-card-icon">⚡</div>
-          <h4>Binance Pay</h4>
+          <h3>Binance Pay</h3>
           <p>USDT // 0% FEE</p>
         </div>
         <div class="payment-card">
           <div class="payment-card-icon">🇨🇴</div>
-          <h4>Nequi / Daviplata</h4>
-          <p>Colombia Directo</p>
+          <h3>Nequi / Daviplata</h3>
+          <p>Colombia</p>
         </div>
         <div class="payment-card">
           <div class="payment-card-icon">🌐</div>
-          <h4>Zelle / Zinli</h4>
-          <p>USD Internacional</p>
+          <h3>Zelle / Zinli</h3>
+          <p>USD Digital</p>
         </div>
         <div class="payment-card">
           <div class="payment-card-icon">💳</div>
-          <h4>Tarjetas Visa/MC</h4>
-          <p>3D Secure Blindado</p>
+          <h3>Tarjetas Visa/MC</h3>
+          <p>3D Secure</p>
         </div>
         <div class="payment-card">
           <div class="payment-card-icon">🛡️</div>
-          <h4>PayPal</h4>
+          <h3>PayPal</h3>
           <p>Protección Total</p>
         </div>
       </div>
@@ -3070,7 +3044,6 @@
     <!-- 9. SECCIÓN: PREGUNTAS FRECUENTES -->
     <section class="section-wrap" id="faq">
       <div class="section-header-center">
-        <span class="section-eyebrow">// DUDAS FRECUENTES</span>
         <h2 class="section-main-title">Preguntas Frecuentes sobre <span>X7 Store</span></h2>
         <p class="section-subtitle-text">
           Todo lo que necesitas saber sobre nuestras recargas y métodos de entrega.
@@ -3122,13 +3095,12 @@
 
     <!-- 10. FOOTER X7 STORE CON TELEMETRÍA EN VIVO -->
     <footer class="site-footer">
-      <!-- Barra de telemetría en vivo -->
       <div class="footer-telemetry-bar">
         <div class="telemetry-status-ok">
           <span class="telemetry-dot"></span>
-          <span>SISTEMA X7 STORE: 100% OPERATIVO</span>
+          <span>SISTEMA X7 STORE: OPERATIVO</span>
         </div>
-        <div>LATENCIA DE API: <strong>14ms</strong> // TIEMPO MEDIO DE ENTREGA: <strong>22s</strong></div>
+        <div>LATENCIA DE API: 14ms // TIEMPO MEDIO: 22s</div>
         <div>BLINDAJE SSL 256-BIT // CLOUDFLARE GAMING PROTECTION</div>
       </div>
 
@@ -3138,16 +3110,10 @@
           <p>
             La plataforma líder en recargas instantáneas de videojuegos y saldos digitales en Latinoamérica. Rapidez, seguridad y garantía total en cada compra.
           </p>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">🇻🇪 Pago Móvil</span>
-            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">⚡ Binance Pay</span>
-            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">🇨🇴 Nequi</span>
-            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">💳 Tarjetas</span>
-          </div>
         </div>
 
         <div class="footer-col">
-          <h4>Juegos</h4>
+          <h3>Juegos</h3>
           <ul>
             <li><a href="#catalogo" onclick="catalogPickGame('freefire')">Free Fire</a></li>
             <li><a href="#catalogo" onclick="catalogPickGame('cod')">Call of Duty Mobile</a></li>
@@ -3158,7 +3124,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Plataforma</h4>
+          <h3>Plataforma</h3>
           <ul>
             <li><a href="#pasos">¿Cómo Funciona?</a></li>
             <li><a href="#servicios">Servicios</a></li>
@@ -3169,7 +3135,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Soporte 24/7</h4>
+          <h3>Soporte 24/7</h3>
           <ul>
             <li><a href="https://discord.com" target="_blank">Discord Oficial</a></li>
             <li><a href="https://whatsapp.com" target="_blank">WhatsApp Directo</a></li>
@@ -3185,11 +3151,35 @@
       </div>
     </footer>
 
+    <!-- 11. BARRA DE NAVEGACIÓN INFERIOR PARA CELULARES (THUMB BAR) -->
+    <nav class="mobile-bottom-bar" aria-label="Navegación Móvil">
+      <a href="#portada" class="mobile-tab-item active" onclick="selectMobileTab(this)">
+        <span class="mobile-tab-icon">🏠</span>
+        <span>Inicio</span>
+      </a>
+      <a href="#catalogo" class="mobile-tab-item" onclick="selectMobileTab(this)">
+        <span class="mobile-tab-icon">🎮</span>
+        <span>Juegos</span>
+      </a>
+      <a href="#portada" class="mobile-tab-item recharge-highlight" onclick="selectMobileTab(this); document.getElementById('terminal-box').scrollIntoView({behavior: 'smooth'});">
+        <span class="mobile-tab-icon">⚡</span>
+        <span>Recargar</span>
+      </a>
+      <a href="#ofertas" class="mobile-tab-item" onclick="selectMobileTab(this)">
+        <span class="mobile-tab-icon">🔥</span>
+        <span>Ofertas</span>
+      </a>
+      <a href="https://whatsapp.com" target="_blank" class="mobile-tab-item">
+        <span class="mobile-tab-icon">💬</span>
+        <span>Soporte</span>
+      </a>
+    </nav>
+
   </div>
 
   <!-- MODAL DE CONFIRMACIÓN DE RECARGA CON LOGO OFICIAL -->
   <div class="recharge-modal-backdrop" id="recharge-modal">
-    <div class="modal-card">
+    <div class="modal-dialog">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
       <div class="modal-logo-wrap">
         <img id="modal-game-logo" src="assets/logos/freefire.svg" class="modal-logo-img" alt="Logo Juego">
@@ -3216,7 +3206,7 @@
         </div>
         <div class="order-line">
           <span>Total a Pagar:</span>
-          <span id="modal-field-price" style="color: #fff; font-size: 17px; font-weight: 900;">$2.99 USD</span>
+          <span id="modal-field-price" style="color: #fff; font-size: 16px; font-weight: 900;">$2.99 USD</span>
         </div>
       </div>
 
@@ -3239,15 +3229,14 @@
         currencyName: 'Diamantes',
         currencyIcon: '💎',
         currencyFull: 'DIAMANTES 💎',
-        badge: 'MÁS POPULAR 🔥',
         idPlaceholder: 'Ej: 2849102847 (ID de Jugador)',
         packages: [
           { amount: '100 💎', bonus: '+10 Extra', price: '$0.99', tag: '' },
-          { amount: '310 💎', bonus: '+31 Extra', price: '$2.99', tag: 'TOP 🔥', active: true },
+          { amount: '310 💎', bonus: '+31 Extra', price: '$2.99', tag: 'TOP', active: true },
           { amount: '520 💎', bonus: '+52 Extra', price: '$4.99', tag: 'PRO' },
-          { amount: '1,060 💎', bonus: '+106 Extra', price: '$9.99', tag: 'VALOR ⭐' },
+          { amount: '1,060 💎', bonus: '+106 Extra', price: '$9.99', tag: 'VALOR' },
           { amount: '2,180 💎', bonus: '+218 Extra', price: '$19.99', tag: 'VIP' },
-          { amount: 'Pase Booyah 🏆', bonus: 'Acceso Élite', price: '$3.99', tag: 'PASE' }
+          { amount: 'Pase Booyah', bonus: 'Acceso Élite', price: '$3.99', tag: 'PASE' }
         ]
       },
       'cod': {
@@ -3258,15 +3247,14 @@
         currencyName: 'CP Points',
         currencyIcon: '🎖️',
         currencyFull: 'CP POINTS 🎖️',
-        badge: 'ACTIVISION 🎖️',
         idPlaceholder: 'Ej: 67491028492019482 (Player ID)',
         packages: [
           { amount: '80 CP 🎖️', bonus: 'Directo', price: '$0.99', tag: '' },
-          { amount: '420 CP 🎖️', bonus: '+42 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '420 CP 🎖️', bonus: '+42 Extra', price: '$4.99', tag: 'TOP', active: true },
           { amount: '880 CP 🎖️', bonus: '+88 Extra', price: '$9.99', tag: 'PRO' },
-          { amount: '2,400 CP 🎖️', bonus: '+400 Extra', price: '$24.99', tag: 'VALOR ⭐' },
+          { amount: '2,400 CP 🎖️', bonus: '+400 Extra', price: '$24.99', tag: 'VALOR' },
           { amount: '5,000 CP 🎖️', bonus: '+1,000 Extra', price: '$49.99', tag: 'VIP' },
-          { amount: 'Pase de Batalla 🎖️', bonus: 'Premium Pass', price: '$6.49', tag: 'PASE' }
+          { amount: 'Pase Batalla', bonus: 'Premium Pass', price: '$6.49', tag: 'PASE' }
         ]
       },
       'valorant': {
@@ -3277,13 +3265,12 @@
         currencyName: 'Valorant Points',
         currencyIcon: '⚔️',
         currencyFull: 'VP POINTS ⚔️',
-        badge: 'RIOT MESH 🛡️',
         idPlaceholder: 'Ej: Reyna#LAN1 (Riot ID)',
         packages: [
           { amount: '475 VP ⚔️', bonus: 'Directo', price: '$4.99', tag: '' },
-          { amount: '1,000 VP ⚔️', bonus: '+50 Extra', price: '$9.99', tag: 'TOP 🔥', active: true },
+          { amount: '1,000 VP ⚔️', bonus: '+50 Extra', price: '$9.99', tag: 'TOP', active: true },
           { amount: '2,050 VP ⚔️', bonus: '+150 Extra', price: '$19.99', tag: 'PRO' },
-          { amount: '3,650 VP ⚔️', bonus: '+300 Extra', price: '$34.99', tag: 'VALOR ⭐' },
+          { amount: '3,650 VP ⚔️', bonus: '+300 Extra', price: '$34.99', tag: 'VALOR' },
           { amount: '5,350 VP ⚔️', bonus: '+500 Extra', price: '$49.99', tag: 'VIP' },
           { amount: '11,000 VP ⚔️', bonus: '+1,500 Extra', price: '$99.99', tag: 'ÉLITE' }
         ]
@@ -3296,15 +3283,14 @@
         currencyName: 'Robux',
         currencyIcon: '🧱',
         currencyFull: 'ROBUX 🧱',
-        badge: 'ENTREGA INMEDIATA',
         idPlaceholder: 'Ej: GamerMaster_2026 (Usuario Roblox)',
         packages: [
           { amount: '400 R$ 🧱', bonus: 'Directo', price: '$4.99', tag: '' },
-          { amount: '800 R$ 🧱', bonus: '+80 Extra', price: '$9.99', tag: 'TOP 🔥', active: true },
+          { amount: '800 R$ 🧱', bonus: '+80 Extra', price: '$9.99', tag: 'TOP', active: true },
           { amount: '1,700 R$ 🧱', bonus: '+200 Extra', price: '$19.99', tag: 'PRO' },
-          { amount: '4,500 R$ 🧱', bonus: '+600 Extra', price: '$49.99', tag: 'VALOR ⭐' },
+          { amount: '4,500 R$ 🧱', bonus: '+600 Extra', price: '$49.99', tag: 'VALOR' },
           { amount: '10,000 R$ 🧱', bonus: '+1,500 Extra', price: '$99.99', tag: 'VIP' },
-          { amount: 'Roblox Premium 👑', bonus: 'Membresía VIP', price: '$4.99', tag: 'VIP' }
+          { amount: 'Premium Pass', bonus: 'Membresía VIP', price: '$4.99', tag: 'VIP' }
         ]
       },
       'brawlstars': {
@@ -3315,15 +3301,14 @@
         currencyName: 'Gemas',
         currencyIcon: '⭐',
         currencyFull: 'GEMAS ⭐',
-        badge: 'SUPERCELL',
         idPlaceholder: 'Ej: #8YPL92QC (Player Tag)',
         packages: [
           { amount: '30 Gemas ⭐', bonus: 'Directo', price: '$1.99', tag: '' },
-          { amount: '80 Gemas ⭐', bonus: '+8 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '80 Gemas ⭐', bonus: '+8 Extra', price: '$4.99', tag: 'TOP', active: true },
           { amount: '170 Gemas ⭐', bonus: '+20 Extra', price: '$9.99', tag: 'PRO' },
-          { amount: '360 Gemas ⭐', bonus: '+50 Extra', price: '$19.99', tag: 'VALOR ⭐' },
+          { amount: '360 Gemas ⭐', bonus: '+50 Extra', price: '$19.99', tag: 'VALOR' },
           { amount: '950 Gemas ⭐', bonus: '+150 Extra', price: '$49.99', tag: 'VIP' },
-          { amount: 'Brawl Pass Plus 🏆', bonus: 'Desbloqueo Total', price: '$9.99', tag: 'PASE' }
+          { amount: 'Brawl Pass Plus', bonus: 'Desbloqueo Total', price: '$9.99', tag: 'PASE' }
         ]
       },
       'mobilelegends': {
@@ -3334,15 +3319,14 @@
         currencyName: 'Diamonds',
         currencyIcon: '🔮',
         currencyFull: 'DIAMONDS 🔮',
-        badge: 'MOONTON',
         idPlaceholder: 'Ej: 19482019 (Zone ID: 2014)',
         packages: [
           { amount: '50 🔮', bonus: '+5 Extra', price: '$0.99', tag: '' },
-          { amount: '250 🔮', bonus: '+25 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '250 🔮', bonus: '+25 Extra', price: '$4.99', tag: 'TOP', active: true },
           { amount: '500 🔮', bonus: '+65 Extra', price: '$9.99', tag: 'PRO' },
-          { amount: '1,000 🔮', bonus: '+150 Extra', price: '$18.99', tag: 'VALOR ⭐' },
+          { amount: '1,000 🔮', bonus: '+150 Extra', price: '$18.99', tag: 'VALOR' },
           { amount: '2,000 🔮', bonus: '+350 Extra', price: '$37.99', tag: 'VIP' },
-          { amount: 'Pase Semanal 🔮', bonus: 'Suscripción VIP', price: '$1.99', tag: 'PASE' }
+          { amount: 'Pase Semanal', bonus: 'Suscripción VIP', price: '$1.99', tag: 'PASE' }
         ]
       },
       'pubg': {
@@ -3353,15 +3337,14 @@
         currencyName: 'UC Cash',
         currencyIcon: '🪂',
         currencyFull: 'UC UNKNOWN CASH 🪂',
-        badge: 'TENCENT',
         idPlaceholder: 'Ej: 5192840192 (Character ID)',
         packages: [
           { amount: '60 UC 🪂', bonus: 'Directo', price: '$0.99', tag: '' },
-          { amount: '325 UC 🪂', bonus: '+25 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '325 UC 🪂', bonus: '+25 Extra', price: '$4.99', tag: 'TOP', active: true },
           { amount: '660 UC 🪂', bonus: '+60 Extra', price: '$9.99', tag: 'PRO' },
-          { amount: '1,800 UC 🪂', bonus: '+300 Extra', price: '$24.99', tag: 'VALOR ⭐' },
+          { amount: '1,800 UC 🪂', bonus: '+300 Extra', price: '$24.99', tag: 'VALOR' },
           { amount: '3,850 UC 🪂', bonus: '+850 Extra', price: '$49.99', tag: 'VIP' },
-          { amount: 'Royale Pass 🏆', bonus: 'Pase Élite', price: '$9.99', tag: 'PASE' }
+          { amount: 'Royale Pass', bonus: 'Pase Élite', price: '$9.99', tag: 'PASE' }
         ]
       },
       'genshin': {
@@ -3372,15 +3355,14 @@
         currencyName: 'Cristales Génesis',
         currencyIcon: '🌌',
         currencyFull: 'CRISTALES GÉNESIS 🌌',
-        badge: 'HOYOVERSE',
         idPlaceholder: 'Ej: 704918291 (UID de Jugador)',
         packages: [
           { amount: '300 🌌', bonus: '+30 Extra', price: '$4.99', tag: '' },
-          { amount: '980 🌌', bonus: '+110 Extra', price: '$14.99', tag: 'TOP 🔥', active: true },
+          { amount: '980 🌌', bonus: '+110 Extra', price: '$14.99', tag: 'TOP', active: true },
           { amount: '1,980 🌌', bonus: '+260 Extra', price: '$29.99', tag: 'PRO' },
-          { amount: '3,280 🌌', bonus: '+600 Extra', price: '$49.99', tag: 'VALOR ⭐' },
+          { amount: '3,280 🌌', bonus: '+600 Extra', price: '$49.99', tag: 'VALOR' },
           { amount: '6,480 🌌', bonus: '+1,600 Extra', price: '$99.99', tag: 'VIP' },
-          { amount: 'Bendición Lunar 🌙', bonus: '30 Días Protogemas', price: '$4.99', tag: 'PASE' }
+          { amount: 'Bendición Lunar', bonus: '30 Días Protogemas', price: '$4.99', tag: 'PASE' }
         ]
       },
       'steam': {
@@ -3391,22 +3373,21 @@
         currencyName: 'Saldo USD',
         currencyIcon: '🎮',
         currencyFull: 'SALDO GLOBAL USD 🎮',
-        badge: 'VALVE GLOBAL',
-        idPlaceholder: 'Ej: Tu nombre de cuenta de Steam o correo',
+        idPlaceholder: 'Ej: Nombre de cuenta o correo de Steam',
         packages: [
           { amount: '$5 USD 🎮', bonus: 'Directo Cartera', price: '$5.00', tag: '' },
-          { amount: '$10 USD 🎮', bonus: 'Directo Cartera', price: '$10.00', tag: 'TOP 🔥', active: true },
+          { amount: '$10 USD 🎮', bonus: 'Directo Cartera', price: '$10.00', tag: 'TOP', active: true },
           { amount: '$20 USD 🎮', bonus: 'Directo Cartera', price: '$20.00', tag: 'PRO' },
-          { amount: '$50 USD 🎮', bonus: 'Directo Cartera', price: '$50.00', tag: 'VALOR ⭐' },
+          { amount: '$50 USD 🎮', bonus: 'Directo Cartera', price: '$50.00', tag: 'VALOR' },
           { amount: '$100 USD 🎮', bonus: 'Directo Cartera', price: '$100.00', tag: 'VIP' },
-          { amount: 'Steam Card Digital ⚡', bonus: 'Código Inmediato', price: '$15.00', tag: 'GIFT' }
+          { amount: 'Digital Card', bonus: 'Código Inmediato', price: '$15.00', tag: 'GIFT' }
         ]
       }
     };
 
     // ESTADO GENERAL DE LA APLICACIÓN
     const state = {
-      theme: 'red', // 'red', 'blue' o 'yellow'
+      theme: 'red',
       audio: false,
       currentGameKey: 'freefire',
       selectedPkg: '310 💎',
@@ -3415,7 +3396,7 @@
       mobileMenuOpen: false
     };
 
-    // FUNCIÓN PARA ABRIR/CERRAR MENÚ MÓVIL EN CELULARES
+    // CONTROL DEL MENÚ MÓVIL
     function toggleMobileMenu() {
       state.mobileMenuOpen = !state.mobileMenuOpen;
       const drawer = document.getElementById('mobile-drawer');
@@ -3434,6 +3415,12 @@
       state.mobileMenuOpen = false;
       document.getElementById('mobile-drawer').classList.remove('open');
       document.getElementById('menu-icon-symbol').innerText = '☰';
+    }
+
+    function selectMobileTab(tab) {
+      document.querySelectorAll('.mobile-tab-item').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      playSfx('click');
     }
 
     // RENDERIZADO DE LOS PAQUETES, BANNER Y LOGO EN LA TERMINAL
@@ -3513,11 +3500,11 @@
       // Scroll suave hacia la portada
       document.getElementById('portada').scrollIntoView({ behavior: 'smooth' });
 
-      // Resplandor elegante y no cegador en la terminal
+      // Resplandor sobrio en la terminal
       const termBox = document.getElementById('terminal-box');
-      termBox.style.boxShadow = '0 0 24px var(--accent-glow)';
+      termBox.style.borderColor = 'var(--accent)';
       setTimeout(() => {
-        termBox.style.boxShadow = '';
+        termBox.style.borderColor = '';
       }, 700);
     }
 
@@ -3541,7 +3528,7 @@
           osc.type = 'sine';
           osc.frequency.setValueAtTime(440, now);
           osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
-          gain.gain.setValueAtTime(0.06, now);
+          gain.gain.setValueAtTime(0.05, now);
           gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
           osc.start(now);
           osc.stop(now + 0.09);
@@ -3550,7 +3537,7 @@
           osc.frequency.setValueAtTime(520, now);
           osc.frequency.linearRampToValueAtTime(780, now + 0.08);
           osc.frequency.linearRampToValueAtTime(1040, now + 0.18);
-          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.setValueAtTime(0.07, now);
           gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
           osc.start(now);
           osc.stop(now + 0.25);
@@ -3567,7 +3554,7 @@
       if (state.audio) playSfx('click');
     }
 
-    // TEMA X7 STORE: SOLO ROJO, AZUL Y AMARILLO (CON BRILLO CONTROLADO)
+    // TEMA X7 STORE: SOLO ROJO, AZUL Y AMARILLO
     function setGamerTheme(themeName) {
       state.theme = themeName;
       if (themeName === 'red') {
@@ -3672,7 +3659,7 @@
     setInterval(updateCountdown, 1000);
 
     // =========================================================================
-    // EFECTO DE CURSOR GAMER: HUMO Y DESTELLOS CON BRILLO SUAVE Y CERO ENCANDILAMIENTO
+    // EFECTO DE CURSOR GAMER: HUMO Y DESTELLOS LUMINOSOS EQUILIBRADOS
     // =========================================================================
     const trailCanvas = document.getElementById('cursor-trail-canvas');
     const tCtx = trailCanvas.getContext('2d');
@@ -3695,7 +3682,6 @@
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist > 3) {
-        // Tonalidad suave según el tema activo: Rojo, Azul o Amarillo
         let pR = 255, pG = 42, pB = 74;
         let sparkColor = '#ffffff';
 
@@ -3706,38 +3692,37 @@
           pR = 229; pG = 169; pB = 16;
           sparkColor = (Math.random() > 0.45) ? '#ffffff' : '#e5a910';
         } else {
-          // Rojo
           pR = 255; pG = 42; pB = 74;
           sparkColor = (Math.random() > 0.45) ? '#ffffff' : '#ff2a4a';
         }
 
-        // Puffs de humo suave con opacidad balanceada
+        // Partículas de humo
         for (let i = 0; i < 2; i++) {
-          if (smokeParticles.length < 45) {
+          if (smokeParticles.length < 40) {
             smokeParticles.push({
               x: e.clientX + (Math.random() - 0.5) * 6,
               y: e.clientY + (Math.random() - 0.5) * 6,
-              radius: Math.random() * 6 + 5,
-              maxRadius: Math.random() * 22 + 14,
-              vx: (dx * 0.1) + (Math.random() - 0.5) * 0.6,
-              vy: (dy * 0.1) - Math.random() * 0.6 - 0.15,
-              alpha: 0.32, /* Reducida la opacidad para evitar brillo alto */
-              decay: 0.022 + Math.random() * 0.012,
+              radius: Math.random() * 5 + 4,
+              maxRadius: Math.random() * 18 + 12,
+              vx: (dx * 0.08) + (Math.random() - 0.5) * 0.5,
+              vy: (dy * 0.08) - Math.random() * 0.5 - 0.1,
+              alpha: 0.28,
+              decay: 0.02 + Math.random() * 0.01,
               r: pR, g: pG, b: pB
             });
           }
         }
 
-        // Chispas luminiscentes con brillo fino
-        if (Math.random() > 0.4 && sparkParticles.length < 25) {
+        // Chispas luminiscentes con desenfoque fino
+        if (Math.random() > 0.45 && sparkParticles.length < 20) {
           sparkParticles.push({
             x: e.clientX,
             y: e.clientY,
-            radius: Math.random() * 1.8 + 1,
-            vx: (Math.random() - 0.5) * 2.8,
-            vy: (Math.random() - 0.5) * 2.8 - 0.4,
-            alpha: 0.8,
-            decay: 0.045 + Math.random() * 0.03,
+            radius: Math.random() * 1.6 + 0.8,
+            vx: (Math.random() - 0.5) * 2.4,
+            vy: (Math.random() - 0.5) * 2.4 - 0.3,
+            alpha: 0.75,
+            decay: 0.045 + Math.random() * 0.025,
             color: sparkColor
           });
         }
@@ -3751,7 +3736,6 @@
       tCtx.clearRect(0, 0, tWidth, tHeight);
       tCtx.globalCompositeOperation = 'screen';
 
-      // Dibujar partículas de humo
       for (let i = smokeParticles.length - 1; i >= 0; i--) {
         const p = smokeParticles[i];
         p.x += p.vx;
@@ -3765,8 +3749,8 @@
         }
 
         const grad = tCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
-        grad.addColorStop(0, `rgba(${p.r}, ${p.g}, ${p.b}, ${p.alpha * 0.4})`);
-        grad.addColorStop(0.5, `rgba(${p.r}, ${p.g}, ${p.b}, ${p.alpha * 0.15})`);
+        grad.addColorStop(0, `rgba(${p.r}, ${p.g}, ${p.b}, ${p.alpha * 0.35})`);
+        grad.addColorStop(0.5, `rgba(${p.r}, ${p.g}, ${p.b}, ${p.alpha * 0.12})`);
         grad.addColorStop(1, `rgba(${p.r}, ${p.g}, ${p.b}, 0)`);
 
         tCtx.beginPath();
@@ -3775,7 +3759,6 @@
         tCtx.fill();
       }
 
-      // Dibujar chispas con desenfoque suave (sin brillo cegador)
       for (let i = sparkParticles.length - 1; i >= 0; i--) {
         const s = sparkParticles[i];
         s.x += s.vx;
@@ -3792,7 +3775,7 @@
         tCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
         tCtx.fillStyle = s.color;
         tCtx.shadowColor = s.color;
-        tCtx.shadowBlur = 4; /* Rebajado de 12 para evitar exceso de brillo */
+        tCtx.shadowBlur = 3;
         tCtx.globalAlpha = s.alpha;
         tCtx.fill();
         tCtx.restore();
@@ -3803,7 +3786,7 @@
     requestAnimationFrame(renderCursorTrail);
 
     // =========================================================================
-    // CANVAS DE FONDO GAMER: PARTÍCULAS DE ENERGÍA Y LÍNEAS TECH SUAVES
+    // CANVAS DE FONDO GAMER: PARTÍCULAS DE ENERGÍA SUTILES
     // =========================================================================
     const canvas = document.getElementById('ambient-canvas');
     const ctx = canvas.getContext('2d');
@@ -3816,14 +3799,14 @@
     });
 
     const ambientParticles = [];
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 30; i++) {
       ambientParticles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: -Math.random() * 0.4 - 0.1,
-        size: Math.random() * 1.8 + 0.8,
-        alpha: Math.random() * 0.2 + 0.08
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: -Math.random() * 0.35 - 0.08,
+        size: Math.random() * 1.6 + 0.8,
+        alpha: Math.random() * 0.18 + 0.06
       });
     }
 
@@ -3855,12 +3838,12 @@
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 85) {
+          if (dist < 80) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.strokeStyle = themeColor;
-            ctx.globalAlpha = (1 - dist / 85) * 0.04; /* Líneas muy tenues y elegantes */
+            ctx.globalAlpha = (1 - dist / 80) * 0.03;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
