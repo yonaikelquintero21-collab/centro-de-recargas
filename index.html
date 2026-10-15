@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <!-- impeccable-disable tiny-text, nested-cards -- calibrated esports terminal metrics -->
+  <!-- impeccable-disable tiny-text, nested-cards, body-text-viewport-edge -- calibrated esports terminal metrics -->
   <title>X7 STORE — Centro Gamer de Recargas Instantáneas 24/7</title>
 
   <!-- Google Fonts: Outfit (Titulares Gamer), Rajdhani (Acentos Tech), Manrope (UI & Cuerpo) -->
@@ -30,9 +30,9 @@
       --accent: #ff2a4a;
       --accent-glow: rgba(255, 42, 74, 0.24);
       --accent-dim: rgba(255, 42, 74, 0.08);
-      --accent-secondary: #00d4ff;
+      --accent-secondary: #ff5277;
       --accent-gradient: linear-gradient(135deg, #ffffff 0%, #ff2a4a 60%, #b30026 100%);
-      --btn-gradient: linear-gradient(135deg, #ff2a4a 0%, #d80032 100%);
+      --btn-gradient: linear-gradient(135deg, #e6193c 0%, #b80028 100%);
       --badge-bg: rgba(255, 42, 74, 0.10);
       --theme-active-color: #ff2a4a;
     }
@@ -148,7 +148,7 @@
       inset: 0;
       background:
         radial-gradient(circle at 15% 20%, var(--accent-dim) 0%, transparent 45%),
-        radial-gradient(circle at 85% 35%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 85% 35%, var(--accent-dim) 0%, transparent 50%);
       pointer-events: none;
       z-index: 2;
     }
@@ -200,7 +200,7 @@
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255, 42, 74, 0.18) 0%, rgba(0, 212, 255, 0.1) 100%);
+      background: linear-gradient(135deg, var(--badge-bg) 0%, rgba(255, 255, 255, 0.04) 100%);
       border: 1.5px solid var(--accent);
       display: flex;
       align-items: center;
@@ -436,10 +436,13 @@
       min-height: calc(100vh - 74px);
       padding: 44px 40px;
       display: grid;
-      grid-template-columns: 1.15fr 0.95fr;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
       gap: 40px;
       align-items: center;
       overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     /* FONDO GAMER TIPO VIDEO CON ANIMACIÓN CONTINUA DE CÁMARA (KEN BURNS) */
@@ -449,7 +452,7 @@
       background:
         linear-gradient(90deg, rgba(7, 9, 14, 0.95) 0%, rgba(12, 16, 26, 0.8) 50%, rgba(7, 9, 14, 0.95) 100%),
         radial-gradient(circle at 10% 40%, var(--accent-dim) 0%, transparent 60%),
-        radial-gradient(circle at 80% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 65%),
+        radial-gradient(circle at 80% 30%, var(--accent-dim) 0%, transparent 65%),
         url('assets/games/hero-bg.jpg') center/cover no-repeat;
       opacity: 0.85;
       pointer-events: none;
@@ -488,6 +491,10 @@
       display: flex;
       flex-direction: column;
       z-index: 20;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
     }
 
     .hero-badge-pill {
@@ -1553,7 +1560,7 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent) 0%, rgba(0, 212, 255, 0.5) 100%);
+      background: linear-gradient(135deg, #b80028 0%, #7f0019 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1908,16 +1915,19 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 62px;
-      background: rgba(7, 9, 14, 0.95);
+      height: calc(62px + env(safe-area-inset-bottom, 0px));
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      background: rgba(7, 9, 14, 0.96);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border-card);
-      z-index: 99;
-      padding: 0 10px;
+      z-index: 1000;
+      padding-left: 10px;
+      padding-right: 10px;
       align-items: center;
       justify-content: space-around;
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+      box-sizing: border-box;
     }
 
     .mobile-tab-item {
@@ -2134,7 +2144,7 @@
         scroll-padding-top: 72px;
       }
       body {
-        padding-bottom: 66px; /* Espacio para barra de navegación inferior móvil */
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
       }
       .app-container {
         padding-top: 64px;
@@ -2145,9 +2155,6 @@
       .navbar {
         height: 64px;
         padding: 0 16px;
-      }
-      .mobile-menu-drawer {
-        top: 64px;
       }
       .brand-badge-x7 {
         width: 36px;
@@ -2168,15 +2175,52 @@
         padding: 16px;
       }
       .hero-section {
+        grid-template-columns: 1fr;
         padding: 20px 16px 28px;
         gap: 24px;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+      }
+      .hero-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+      .hero-badge-pill {
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.35;
+        padding: 6px 12px;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        box-sizing: border-box;
       }
       .hero-title {
-        font-size: 28px;
+        font-size: clamp(20px, 5.8vw, 26px);
+        word-break: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.12;
+        max-width: 100%;
       }
       .hero-subtitle {
-        font-size: 14px;
+        font-size: 13.5px;
         margin-bottom: 20px;
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      .catalog-filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .catalog-filters::-webkit-scrollbar {
+        display: none;
       }
       .hero-cta-group {
         margin-bottom: 24px;
@@ -2966,7 +3010,7 @@
         <div class="review-card">
           <div>
             <div class="review-header">
-              <div class="review-avatar" style="background: linear-gradient(135deg, #00b4d8, #0077b6);">C</div>
+              <div class="review-avatar" style="background: linear-gradient(135deg, #1d4ed8, #1e3a8a);">C</div>
               <div class="review-author">
                 <h3>Carlos_COD</h3>
                 <span>🇨🇴 Medellín, Colombia</span>
@@ -2985,7 +3029,7 @@
         <div class="review-card">
           <div>
             <div class="review-header">
-              <div class="review-avatar" style="background: linear-gradient(135deg, #e5a910, #b45309);">V</div>
+              <div class="review-avatar" style="background: linear-gradient(135deg, #b45309, #78350f);">V</div>
               <div class="review-author">
                 <h3>Val_Sniper</h3>
                 <span>🇨🇱 Santiago, Chile</span>
@@ -3004,7 +3048,7 @@
         <div class="review-card">
           <div>
             <div class="review-header">
-              <div class="review-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">R</div>
+              <div class="review-avatar" style="background: linear-gradient(135deg, #047857, #064e3b);">R</div>
               <div class="review-author">
                 <h3>RobuxMaster</h3>
                 <span>🇲🇽 CDMX, México</span>
