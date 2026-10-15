@@ -15,10 +15,10 @@
       /* PALETA GAMER PROFESIONAL */
       --bg-deep: #06080c;
       --bg-surface: #0c0f17;
-      --bg-card: rgba(16, 20, 30, 0.75);
-      --bg-card-hover: rgba(22, 28, 42, 0.9);
+      --bg-card: rgba(15, 19, 29, 0.82);
+      --bg-card-hover: rgba(22, 28, 44, 0.95);
       --border-card: rgba(255, 255, 255, 0.08);
-      --border-card-hover: rgba(255, 255, 255, 0.2);
+      --border-card-hover: rgba(255, 255, 255, 0.22);
 
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
@@ -69,6 +69,14 @@
       line-height: 1.5;
     }
 
+    /* CURSOR GAMER CON HUMO Y DESTELLOS LUMINISCENTES */
+    #cursor-trail-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
     /* TIPOGRAFÍA GAMER */
     h1, h2, h3, .font-gamer {
       font-family: 'Outfit', sans-serif;
@@ -80,7 +88,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* FONDO GAMER CIBERNÉTICO CON CANVAS INTERACTIVO */
+    /* FONDO AMBIENTAL DE ENERGÍA GAMER */
     #ambient-canvas {
       position: fixed;
       inset: 0;
@@ -92,11 +100,11 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 15%, var(--accent-dim) 0%, transparent 55%),
+        radial-gradient(circle at 50% 15%, var(--accent-dim) 0%, transparent 60%),
         radial-gradient(circle at 85% 75%, rgba(0, 180, 216, 0.05) 0%, transparent 45%),
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 54px 54px, 54px 54px;
       pointer-events: none;
       z-index: 2;
     }
@@ -121,8 +129,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(6, 8, 12, 0.85);
-      backdrop-filter: blur(16px);
+      background: rgba(6, 8, 12, 0.88);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border-card);
       z-index: 100;
     }
@@ -146,7 +154,7 @@
       justify-content: center;
       font-size: 18px;
       color: var(--accent);
-      box-shadow: 0 0 16px var(--accent-glow);
+      box-shadow: 0 0 18px var(--accent-glow);
       transition: transform 0.25s;
     }
 
@@ -290,19 +298,34 @@
     }
 
     /* =========================================================================
-       2. PORTADA (HERO GAMER DE ALTO IMPACTO)
+       2. PORTADA (HERO GAMER CON FONDO DEDICADO DE ALTO IMPACTO)
        ========================================================================= */
     .hero-section {
       position: relative;
       min-height: calc(100vh - 74px);
-      padding: 48px;
+      padding: 56px 48px;
       display: grid;
       grid-template-columns: 1.15fr 0.95fr;
       gap: 48px;
       align-items: center;
+      overflow: hidden;
+    }
+
+    /* FONDO GAMER DEDICADO PARA LA PORTADA (Fondo temático con arte gamer) */
+    .hero-gamer-backdrop {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(6, 8, 12, 0.96) 0%, rgba(6, 8, 12, 0.85) 50%, rgba(6, 8, 12, 0.92) 100%),
+        radial-gradient(circle at 75% 35%, var(--accent-dim) 0%, transparent 60%),
+        url('assets/games/hero-bg.jpg') center/cover no-repeat;
+      opacity: 0.65;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .hero-content {
+      position: relative;
       display: flex;
       flex-direction: column;
       z-index: 20;
@@ -414,7 +437,7 @@
       transform: translateY(-2px);
     }
 
-    /* ESTADÍSTICAS EN VIVO DE CONFIANZA */
+    /* ESTADÍSTICAS EN VIVO */
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -440,7 +463,7 @@
     }
 
     /* -------------------------------------------------------------------------
-       TERMINAL GAMER INTERACTIVA (HERO DERECHA)
+       TERMINAL GAMER CON MONEDAS ESPECÍFICAS DE CADA JUEGO (PORTADA DERECHA)
        ------------------------------------------------------------------------- */
     .hero-terminal {
       position: relative;
@@ -448,8 +471,8 @@
       border: 1px solid var(--border-card);
       border-radius: 24px;
       padding: 28px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-dim);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px var(--accent-dim);
       z-index: 20;
     }
 
@@ -540,28 +563,32 @@
       box-shadow: 0 0 14px var(--accent-glow);
     }
 
-    /* GRID DE PAQUETES EN LA TERMINAL */
+    /* GRID DINÁMICO DE PAQUETES CON MONEDAS REALES DEL JUEGO */
     .packages-terminal-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-bottom: 18px;
+      min-height: 148px;
     }
 
     .pkg-chip {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-card);
       border-radius: 12px;
-      padding: 12px;
+      padding: 12px 10px;
       cursor: pointer;
       transition: all 0.2s;
       position: relative;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .pkg-chip:hover {
       border-color: var(--accent);
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.06);
       transform: translateY(-2px);
     }
 
@@ -589,6 +616,10 @@
       font-weight: 800;
       color: #fff;
       margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
     }
 
     .pkg-chip-bonus {
@@ -613,7 +644,7 @@
     .input-box {
       display: flex;
       align-items: center;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
       border: 1px solid var(--border-card);
       border-radius: 12px;
       padding: 4px 6px 4px 16px;
@@ -685,18 +716,20 @@
     }
 
     /* =========================================================================
-       3. SECCIÓN: CATÁLOGO COMPLETO DE JUEGOS
+       3. SECCIÓN: CATÁLOGO DE JUEGOS CON IMÁGENES REALES
        ========================================================================= */
     .section-wrap {
+      position: relative;
       padding: 96px 48px;
       max-width: 1360px;
       margin: 0 auto;
       width: 100%;
+      z-index: 10;
     }
 
     .section-header-center {
       text-align: center;
-      max-width: 640px;
+      max-width: 660px;
       margin: 0 auto 56px;
     }
 
@@ -712,7 +745,7 @@
     }
 
     .section-main-title {
-      font-size: clamp(32px, 3.8vw, 46px);
+      font-size: clamp(32px, 3.8vw, 48px);
       font-weight: 900;
       text-transform: uppercase;
       margin-bottom: 16px;
@@ -758,11 +791,11 @@
       box-shadow: 0 0 14px var(--accent-dim);
     }
 
-    /* GRID DEL CATÁLOGO DE JUEGOS */
+    /* GRID DEL CATÁLOGO CON IMÁGENES REALES */
     .catalog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 26px;
     }
 
     .game-card {
@@ -780,39 +813,62 @@
     .game-card:hover {
       transform: translateY(-6px);
       border-color: var(--accent);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 24px var(--accent-dim);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 24px var(--accent-dim);
     }
 
+    /* BANNER DE IMAGEN REAL DEL JUEGO */
     .game-card-banner {
-      height: 140px;
+      height: 165px;
       position: relative;
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-start;
-      justify-content: flex-end;
+      justify-content: space-between;
       padding: 12px;
+      overflow: hidden;
+      transition: transform 0.4s ease;
+    }
+
+    .game-card:hover .game-card-banner {
+      transform: scale(1.04);
     }
 
     .game-card-banner::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, var(--bg-card) 100%);
+      background: linear-gradient(180deg, rgba(6, 8, 12, 0.15) 0%, rgba(6, 8, 12, 0.85) 100%);
     }
 
     .game-badge-tag {
       position: relative;
       z-index: 2;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.75);
       border: 1px solid var(--accent);
       color: var(--accent);
       font-size: 10px;
       font-weight: 800;
-      padding: 3px 8px;
+      padding: 4px 9px;
       border-radius: 6px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .game-currency-pill {
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
       backdrop-filter: blur(8px);
     }
 
@@ -822,19 +878,22 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      z-index: 3;
+      background: var(--bg-card);
     }
 
     .game-card-name {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 800;
       color: #fff;
       margin-bottom: 4px;
     }
 
     .game-card-currency {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -855,14 +914,14 @@
     }
 
     .game-card-price-val {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 800;
       color: #fff;
       font-family: 'Rajdhani', monospace;
     }
 
     .btn-card-select {
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 8px;
       background: var(--accent-dim);
       border: 1px solid var(--accent);
@@ -870,13 +929,14 @@
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
       transition: all 0.2s;
     }
 
     .game-card:hover .btn-card-select {
       background: var(--accent);
       color: #06080c;
-      box-shadow: 0 0 12px var(--accent-glow);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     /* =========================================================================
@@ -932,34 +992,22 @@
     }
 
     /* =========================================================================
-       5. SECCIÓN: OFERTAS FLASH DE TEMPORADA
+       5. SECCIÓN: OFERTAS FLASH CON ARTE Y CUENTA REGRESIVA
        ========================================================================= */
     .flash-banner {
       position: relative;
-      background: linear-gradient(135deg, rgba(20, 26, 40, 0.9) 0%, rgba(10, 14, 22, 0.95) 100%);
+      background:
+        linear-gradient(90deg, rgba(6, 8, 12, 0.95) 0%, rgba(10, 14, 22, 0.9) 60%, rgba(6, 8, 12, 0.95) 100%),
+        url('assets/games/cyberpunk.jpg') center/cover no-repeat;
       border: 1px solid var(--accent);
       border-radius: 28px;
       padding: 48px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 40px;
       align-items: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px var(--accent-dim);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px var(--accent-dim);
       overflow: hidden;
-    }
-
-    .flash-banner::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: var(--accent-glow);
-      filter: blur(90px);
-      opacity: 0.3;
-      pointer-events: none;
     }
 
     .flash-left h2 {
@@ -984,12 +1032,13 @@
     }
 
     .count-unit {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       border: 1px solid var(--border-card);
       border-radius: 12px;
       padding: 10px 16px;
       text-align: center;
       min-width: 68px;
+      backdrop-filter: blur(8px);
     }
 
     .count-num {
@@ -1013,12 +1062,13 @@
     }
 
     .flash-item-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(15, 19, 29, 0.85);
       border: 1px solid var(--border-card);
-      border-radius: 16px;
-      padding: 18px;
+      border-radius: 18px;
+      padding: 20px 16px;
       text-align: center;
       transition: all 0.2s;
+      backdrop-filter: blur(12px);
     }
 
     .flash-item-card:hover {
@@ -1030,7 +1080,7 @@
        6. SECCIÓN TICKER: RECARGAS EN VIVO (PRUEBA SOCIAL)
        ========================================================================= */
     .live-ticker-wrap {
-      background: rgba(12, 15, 23, 0.9);
+      background: rgba(10, 13, 20, 0.92);
       border-top: 1px solid var(--border-card);
       border-bottom: 1px solid var(--border-card);
       padding: 16px 48px;
@@ -1039,6 +1089,7 @@
       gap: 24px;
       overflow: hidden;
       white-space: nowrap;
+      z-index: 20;
     }
 
     .ticker-lead-badge {
@@ -1162,6 +1213,8 @@
       border-top: 1px solid var(--border-card);
       padding: 64px 48px 32px;
       margin-top: 48px;
+      position: relative;
+      z-index: 10;
     }
 
     .footer-grid {
@@ -1373,7 +1426,10 @@
 </head>
 <body>
 
-  <!-- CANVAS GAMER INTERACTIVO EN EL FONDO -->
+  <!-- CANVAS OVERLAY PARA EL EFECTO DE CURSOR GAMER (HUMO Y DESTELLOS LUMINISCENTES) -->
+  <canvas id="cursor-trail-canvas"></canvas>
+
+  <!-- CANVAS DE ENERGÍA AMBIENTAL EN EL FONDO -->
   <canvas id="ambient-canvas"></canvas>
   <div class="cyber-grid-overlay"></div>
 
@@ -1425,9 +1481,12 @@
       </div>
     </header>
 
-    <!-- 2. PORTADA (HERO PRINCIPAL) -->
+    <!-- 2. PORTADA (HERO PRINCIPAL CON FONDO GAMER DEDICADO) -->
     <section class="hero-section" id="portada">
       
+      <!-- Fondo gamer temático de la portada -->
+      <div class="hero-gamer-backdrop"></div>
+
       <div class="hero-content">
         <div class="hero-badge-pill">
           <span class="pulse-dot"></span>
@@ -1440,7 +1499,7 @@
         </h1>
 
         <p class="hero-subtitle">
-          Potencia tu cuenta con recargas oficiales directamente a tu ID de jugador. Precios preferenciales, acreditación inmediata y soporte gamer 24 horas al día.
+          Potencia tu inventario con recargas oficiales directamente a tu ID de jugador. Precios preferenciales, acreditación inmediata y soporte gamer las 24 horas del día.
         </p>
 
         <div class="hero-cta-group">
@@ -1469,7 +1528,7 @@
         </div>
       </div>
 
-      <!-- TERMINAL GAMER DE RECARGA RÁPIDA (PORTADA DERECHA) -->
+      <!-- TERMINAL GAMER DE RECARGA DIRECTA (CON MONEDAS ESPECÍFICAS DE CADA JUEGO) -->
       <div class="hero-terminal" id="terminal-box">
         <div class="terminal-header">
           <div class="terminal-title-cluster">
@@ -1478,7 +1537,7 @@
           </div>
           <div class="terminal-live-badge">
             <span class="pulse-dot"></span>
-            <span>EN LÍNEA 24/7</span>
+            <span id="terminal-currency-label">DIAMANTES 💎</span>
           </div>
         </div>
 
@@ -1488,62 +1547,34 @@
           <span id="terminal-game-name" style="color: var(--accent);">FREE FIRE</span>
         </div>
         <div class="game-chips-row" id="terminal-chips">
-          <button class="game-chip active" onclick="terminalSelectGame('Free Fire', 'Diamantes 💎', this)">🔥 Free Fire</button>
-          <button class="game-chip" onclick="terminalSelectGame('COD Mobile', 'CP Points 🎖️', this)">🎯 COD Mobile</button>
-          <button class="game-chip" onclick="terminalSelectGame('Valorant', 'VP Points ⚔️', this)">🗡️ Valorant</button>
-          <button class="game-chip" onclick="terminalSelectGame('Roblox', 'Robux 🧱', this)">🧱 Roblox</button>
-          <button class="game-chip" onclick="terminalSelectGame('Brawl Stars', 'Gemas ⭐', this)">⭐ Brawl Stars</button>
+          <button class="game-chip active" onclick="terminalSelectGame('freefire', this)">🔥 Free Fire</button>
+          <button class="game-chip" onclick="terminalSelectGame('cod', this)">🎯 COD Mobile</button>
+          <button class="game-chip" onclick="terminalSelectGame('valorant', this)">🗡️ Valorant</button>
+          <button class="game-chip" onclick="terminalSelectGame('roblox', this)">🧱 Roblox</button>
+          <button class="game-chip" onclick="terminalSelectGame('brawlstars', this)">⭐ Brawl Stars</button>
+          <button class="game-chip" onclick="terminalSelectGame('mobilelegends', this)">🔮 Mobile Legends</button>
+          <button class="game-chip" onclick="terminalSelectGame('pubg', this)">🪂 PUBG Mobile</button>
+          <button class="game-chip" onclick="terminalSelectGame('genshin', this)">🌌 Genshin</button>
+          <button class="game-chip" onclick="terminalSelectGame('steam', this)">🎮 Steam</button>
         </div>
 
-        <!-- 2. Paquetes de Saldo -->
+        <!-- 2. Paquetes con la Moneda del Juego Seleccionado -->
         <div class="terminal-field-label">
-          <span>2. ELIGE TU PAQUETE</span>
-          <span id="terminal-pkg-badge" style="color: var(--accent);">+31 EXTRA</span>
+          <span>2. PAQUETES DE <span id="terminal-currency-name-header">DIAMANTES 💎</span></span>
+          <span id="terminal-pkg-badge" style="color: var(--accent);">BONUS EXTRA ACTIVO</span>
         </div>
         <div class="packages-terminal-grid" id="terminal-pkgs-grid">
-          <div class="pkg-chip" onclick="terminalSelectPkg('100 💎', '+$0.10', '$0.99', this)">
-            <div class="pkg-chip-amount">100 💎</div>
-            <div class="pkg-chip-bonus">+10 Extra</div>
-            <div class="pkg-chip-price">$0.99 USD</div>
-          </div>
-          <div class="pkg-chip active" onclick="terminalSelectPkg('310 💎', 'POPULAR', '$2.99', this)">
-            <span class="pkg-chip-tag">TOP 🔥</span>
-            <div class="pkg-chip-amount">310 💎</div>
-            <div class="pkg-chip-bonus">+31 Extra</div>
-            <div class="pkg-chip-price">$2.99 USD</div>
-          </div>
-          <div class="pkg-chip" onclick="terminalSelectPkg('520 💎', 'PRO', '$4.99', this)">
-            <div class="pkg-chip-amount">520 💎</div>
-            <div class="pkg-chip-bonus">+52 Extra</div>
-            <div class="pkg-chip-price">$4.99 USD</div>
-          </div>
-          <div class="pkg-chip" onclick="terminalSelectPkg('1,060 💎', 'VALOR', '$9.99', this)">
-            <span class="pkg-chip-tag">VALOR ⭐</span>
-            <div class="pkg-chip-amount">1,060 💎</div>
-            <div class="pkg-chip-bonus">+106 Extra</div>
-            <div class="pkg-chip-price">$9.99 USD</div>
-          </div>
-          <div class="pkg-chip" onclick="terminalSelectPkg('2,180 💎', 'VIP', '$19.99', this)">
-            <div class="pkg-chip-amount">2,180 💎</div>
-            <div class="pkg-chip-bonus">+218 Extra</div>
-            <div class="pkg-chip-price">$19.99 USD</div>
-          </div>
-          <div class="pkg-chip" onclick="terminalSelectPkg('Pase Élite', 'TEMPORADA', '$3.99', this)">
-            <span class="pkg-chip-tag">PASES 🏆</span>
-            <div class="pkg-chip-amount">Pase Élite</div>
-            <div class="pkg-chip-bonus">Acceso VIP</div>
-            <div class="pkg-chip-price">$3.99 USD</div>
-          </div>
+          <!-- Inyectado dinámicamente según el juego activo con su moneda respectiva -->
         </div>
 
         <!-- 3. Entrada de ID del Jugador -->
         <div class="terminal-field-label">
-          <span>3. ID DE JUGADOR (UID)</span>
+          <span id="terminal-id-label">3. ID DE JUGADOR (UID)</span>
           <span style="font-size: 9px; color: var(--text-dim);">SOLO TU ID (SIN CONTRASEÑAS)</span>
         </div>
         <div class="terminal-input-wrap">
           <div class="input-box">
-            <input type="text" id="terminal-id-input" placeholder="Ej: 2849102847" />
+            <input type="text" id="terminal-id-input" placeholder="Ej: 2849102847 (ID de Jugador)" />
             <button class="input-verify-btn" onclick="verifyId()">VERIFICAR</button>
           </div>
         </div>
@@ -1572,10 +1603,13 @@
           <span class="ticker-player">Val_Sniper (Chile)</span> recargó <span class="ticker-val">2,050 VP Valorant</span> <span class="ticker-time">hace 34s</span>
         </div>
         <div class="ticker-item">
-          <span class="ticker-player">RobuxMaster (México)</span> recargó <span class="ticker-val">1,200 Robux Roblox</span> <span class="ticker-time">hace 48s</span>
+          <span class="ticker-player">RobuxMaster (México)</span> recargó <span class="ticker-val">1,700 Robux Roblox</span> <span class="ticker-time">hace 48s</span>
         </div>
         <div class="ticker-item">
           <span class="ticker-player">StarsPro (Argentina)</span> recargó <span class="ticker-val">170 Gemas Brawl Stars</span> <span class="ticker-time">hace 59s</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-player">GenshinFan (Perú)</span> recargó <span class="ticker-val">1,980 🌌 Cristales Génesis</span> <span class="ticker-time">hace 1m</span>
         </div>
         <!-- Duplicado para loop continuo -->
         <div class="ticker-item">
@@ -1587,7 +1621,7 @@
       </div>
     </div>
 
-    <!-- 3. SECCIÓN: CATÁLOGO DE JUEGOS POPULARES -->
+    <!-- 3. SECCIÓN: CATÁLOGO DE JUEGOS CON IMÁGENES REALES -->
     <section class="section-wrap" id="catalogo">
       <div class="section-header-center">
         <span class="section-eyebrow">// CATÁLOGO OFICIAL 2026</span>
@@ -1606,18 +1640,19 @@
         <button class="filter-btn" onclick="filterCatalog('pc', this)">PC & Consola</button>
       </div>
 
-      <!-- Grid de Tarjetas de Juegos -->
+      <!-- Grid de Tarjetas de Juegos con Imágenes Reales y Monedas Específicas -->
       <div class="catalog-grid" id="games-grid">
         
-        <!-- FREE FIRE -->
-        <div class="game-card" data-category="battle-royale mobile" onclick="openGameModal('Free Fire', 'Diamantes 💎')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 68, 0, 0.4), rgba(0,0,0,0.8));">
+        <!-- 1. FREE FIRE -->
+        <div class="game-card" data-category="battle-royale mobile" onclick="catalogPickGame('freefire')">
+          <div class="game-card-banner" style="background-image: url('assets/games/freefire.jpg');">
             <span class="game-badge-tag">MÁS POPULAR 🔥</span>
+            <span class="game-currency-pill">💎 Diamantes</span>
           </div>
           <div class="game-card-body">
             <div>
               <h3 class="game-card-name">Free Fire</h3>
-              <div class="game-card-currency">💎 Diamantes & Pases</div>
+              <div class="game-card-currency">💎 Diamantes & Pase Booyah</div>
             </div>
             <div class="game-card-footer">
               <div>
@@ -1629,30 +1664,32 @@
           </div>
         </div>
 
-        <!-- COD MOBILE -->
-        <div class="game-card" data-category="shooter mobile" onclick="openGameModal('Call of Duty: Mobile', 'CP Points 🎖️')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(0, 180, 216, 0.4), rgba(0,0,0,0.8));">
-            <span class="game-badge-tag">TEMPORADA 🎯</span>
+        <!-- 2. COD MOBILE -->
+        <div class="game-card" data-category="shooter mobile" onclick="catalogPickGame('cod')">
+          <div class="game-card-banner" style="background-image: url('assets/games/cod.jpg');">
+            <span class="game-badge-tag">ACTIVISION 🎖️</span>
+            <span class="game-currency-pill">🎖️ CP Points</span>
           </div>
           <div class="game-card-body">
             <div>
-              <h3 class="game-card-name">COD Mobile</h3>
-              <div class="game-card-currency">🎖️ CP Points & BattlePass</div>
+              <h3 class="game-card-name">Call of Duty: Mobile</h3>
+              <div class="game-card-currency">🎖️ CP Points & Pase de Batalla</div>
             </div>
             <div class="game-card-footer">
               <div>
                 <span class="game-card-price-start">Desde</span>
-                <div class="game-card-price-val">$1.49 USD</div>
+                <div class="game-card-price-val">$0.99 USD</div>
               </div>
               <button class="btn-card-select">RECARGAR</button>
             </div>
           </div>
         </div>
 
-        <!-- VALORANT -->
-        <div class="game-card" data-category="shooter pc" onclick="openGameModal('Valorant', 'VP Points ⚔️')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 0, 68, 0.4), rgba(0,0,0,0.8));">
+        <!-- 3. VALORANT -->
+        <div class="game-card" data-category="shooter pc" onclick="catalogPickGame('valorant')">
+          <div class="game-card-banner" style="background-image: url('assets/games/valorant.jpg');">
             <span class="game-badge-tag">RIOT MESH 🛡️</span>
+            <span class="game-currency-pill">⚔️ VP Points</span>
           </div>
           <div class="game-card-body">
             <div>
@@ -1669,35 +1706,37 @@
           </div>
         </div>
 
-        <!-- ROBLOX -->
-        <div class="game-card" data-category="all pc mobile" onclick="openGameModal('Roblox', 'Robux 🧱')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(0, 255, 136, 0.4), rgba(0,0,0,0.8));">
+        <!-- 4. ROBLOX -->
+        <div class="game-card" data-category="all pc mobile" onclick="catalogPickGame('roblox')">
+          <div class="game-card-banner" style="background-image: url('assets/games/roblox.jpg');">
             <span class="game-badge-tag">ENTREGA DIRECTA</span>
+            <span class="game-currency-pill">🧱 Robux</span>
           </div>
           <div class="game-card-body">
             <div>
               <h3 class="game-card-name">Roblox</h3>
-              <div class="game-card-currency">🧱 Robux Oficiales</div>
+              <div class="game-card-currency">🧱 Robux Oficiales & Premium</div>
             </div>
             <div class="game-card-footer">
               <div>
                 <span class="game-card-price-start">Desde</span>
-                <div class="game-card-price-val">$2.99 USD</div>
+                <div class="game-card-price-val">$4.99 USD</div>
               </div>
               <button class="btn-card-select">RECARGAR</button>
             </div>
           </div>
         </div>
 
-        <!-- BRAWL STARS -->
-        <div class="game-card" data-category="mobile" onclick="openGameModal('Brawl Stars', 'Gemas ⭐')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 200, 0, 0.4), rgba(0,0,0,0.8));">
+        <!-- 5. BRAWL STARS -->
+        <div class="game-card" data-category="mobile" onclick="catalogPickGame('brawlstars')">
+          <div class="game-card-banner" style="background-image: url('assets/games/brawlstars.jpg');">
             <span class="game-badge-tag">SUPERCELL</span>
+            <span class="game-currency-pill">⭐ Gemas</span>
           </div>
           <div class="game-card-body">
             <div>
               <h3 class="game-card-name">Brawl Stars</h3>
-              <div class="game-card-currency">⭐ Gemas & Brawl Pass</div>
+              <div class="game-card-currency">⭐ Gemas & Brawl Pass Plus</div>
             </div>
             <div class="game-card-footer">
               <div>
@@ -1709,15 +1748,16 @@
           </div>
         </div>
 
-        <!-- MOBILE LEGENDS -->
-        <div class="game-card" data-category="mobile" onclick="openGameModal('Mobile Legends', 'Diamonds 🔮')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(160, 32, 240, 0.4), rgba(0,0,0,0.8));">
+        <!-- 6. MOBILE LEGENDS -->
+        <div class="game-card" data-category="mobile" onclick="catalogPickGame('mobilelegends')">
+          <div class="game-card-banner" style="background-image: url('assets/games/mobilelegends.jpg');">
             <span class="game-badge-tag">MOONTON</span>
+            <span class="game-currency-pill">🔮 Diamonds</span>
           </div>
           <div class="game-card-body">
             <div>
               <h3 class="game-card-name">Mobile Legends</h3>
-              <div class="game-card-currency">🔮 Diamonds & Pases</div>
+              <div class="game-card-currency">🔮 Diamonds & Pase Semanal</div>
             </div>
             <div class="game-card-footer">
               <div>
@@ -1729,35 +1769,58 @@
           </div>
         </div>
 
-        <!-- PUBG MOBILE -->
-        <div class="game-card" data-category="battle-royale mobile" onclick="openGameModal('PUBG Mobile', 'UC Cash 🪂')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 120, 0, 0.4), rgba(0,0,0,0.8));">
+        <!-- 7. PUBG MOBILE -->
+        <div class="game-card" data-category="battle-royale mobile" onclick="catalogPickGame('pubg')">
+          <div class="game-card-banner" style="background-image: url('assets/games/pubg.jpg');">
             <span class="game-badge-tag">TENCENT</span>
+            <span class="game-currency-pill">🪂 UC Cash</span>
           </div>
           <div class="game-card-body">
             <div>
               <h3 class="game-card-name">PUBG Mobile</h3>
-              <div class="game-card-currency">🪂 UC Unknown Cash</div>
+              <div class="game-card-currency">🪂 UC Unknown Cash & Royale Pass</div>
             </div>
             <div class="game-card-footer">
               <div>
                 <span class="game-card-price-start">Desde</span>
-                <div class="game-card-price-val">$1.20 USD</div>
+                <div class="game-card-price-val">$0.99 USD</div>
               </div>
               <button class="btn-card-select">RECARGAR</button>
             </div>
           </div>
         </div>
 
-        <!-- STEAM WALLET -->
-        <div class="game-card" data-category="pc" onclick="openGameModal('Steam Wallet', 'Saldo USD 🎮')">
-          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(30, 80, 160, 0.4), rgba(0,0,0,0.8));">
+        <!-- 8. GENSHIN IMPACT -->
+        <div class="game-card" data-category="pc mobile" onclick="catalogPickGame('genshin')">
+          <div class="game-card-banner" style="background-image: url('assets/games/genshin.jpg');">
+            <span class="game-badge-tag">HOYOVERSE</span>
+            <span class="game-currency-pill">🌌 Cristales</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">Genshin Impact</h3>
+              <div class="game-card-currency">🌌 Cristales Génesis & Bendición</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$4.99 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. STEAM WALLET -->
+        <div class="game-card" data-category="pc" onclick="catalogPickGame('steam')">
+          <div class="game-card-banner" style="background-image: url('assets/games/steam.jpg');">
             <span class="game-badge-tag">VALVE GLOBAL</span>
+            <span class="game-currency-pill">🎮 Saldo USD</span>
           </div>
           <div class="game-card-body">
             <div>
               <h3 class="game-card-name">Steam Wallet</h3>
-              <div class="game-card-currency">🎮 Tarjetas de Saldo Digital</div>
+              <div class="game-card-currency">🎮 Saldo Digital Global USD</div>
             </div>
             <div class="game-card-footer">
               <div>
@@ -1809,14 +1872,14 @@
       </div>
     </section>
 
-    <!-- 5. SECCIÓN: OFERTAS FLASH -->
+    <!-- 5. SECCIÓN: OFERTAS FLASH CON IMAGEN Y CUENTA REGRESIVA -->
     <section class="section-wrap" id="ofertas">
       <div class="flash-banner">
         <div class="flash-left">
-          <span class="section-eyebrow" style="color: var(--accent);">⚡ OFERTA RELÁMPAGO</span>
-          <h2>BONIFICACIÓN DEL +20% EXTRA EN DIAMANTES</h2>
+          <span class="section-eyebrow" style="color: var(--accent);">⚡ OFERTA RELÁMPAGO DE TEMPORADA</span>
+          <h2>BONIFICACIÓN DEL +20% EXTRA EN RECARGAS</h2>
           <p>
-            Aprovecha la recarga bonificada de fin de semana. Válido en todos los paquetes superiores a 520 diamantes o 1,000 robux.
+            Aprovecha la recarga bonificada activa este fin de semana. Válido en todos los paquetes superiores a 520 diamantes, 880 CP o 1,000 robux.
           </p>
 
           <!-- Cuenta Regresiva -->
@@ -1836,22 +1899,34 @@
           </div>
 
           <a href="#catalogo" class="btn-hero-primary" style="width: fit-content;" onclick="playSfx('click')">
-            <span>RECLAMAR BONUS AHORA</span>
+            <span>RECLAMAR BONUS AHORA 🚀</span>
           </a>
         </div>
 
         <div class="flash-right-cards">
-          <div class="flash-item-card">
-            <div style="font-size: 24px; margin-bottom: 8px;">💎</div>
-            <h4 style="color: #fff; font-size: 15px;">Pack 1,060 + 212 Bonus</h4>
-            <div style="font-size: 12px; color: var(--accent); margin: 4px 0;">Ahorro de $3.50</div>
-            <div style="font-size: 16px; font-weight: 800; font-family: 'Rajdhani', monospace;">$8.99 USD</div>
+          <div class="flash-item-card" onclick="catalogPickGame('freefire')">
+            <div style="font-size: 26px; margin-bottom: 6px;">💎</div>
+            <h4 style="color: #fff; font-size: 15px;">Free Fire 1,060 + 212 Bonus</h4>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0;">Ahorro del 20%</div>
+            <div style="font-size: 17px; font-weight: 800; font-family: 'Rajdhani', monospace;">$8.99 USD</div>
           </div>
-          <div class="flash-item-card">
-            <div style="font-size: 24px; margin-bottom: 8px;">🧱</div>
+          <div class="flash-item-card" onclick="catalogPickGame('roblox')">
+            <div style="font-size: 26px; margin-bottom: 6px;">🧱</div>
             <h4 style="color: #fff; font-size: 15px;">2,000 Robux Especial</h4>
             <div style="font-size: 12px; color: var(--accent); margin: 4px 0;">Ahorro de $4.00</div>
-            <div style="font-size: 16px; font-weight: 800; font-family: 'Rajdhani', monospace;">$16.99 USD</div>
+            <div style="font-size: 17px; font-weight: 800; font-family: 'Rajdhani', monospace;">$16.99 USD</div>
+          </div>
+          <div class="flash-item-card" onclick="catalogPickGame('cod')">
+            <div style="font-size: 26px; margin-bottom: 6px;">🎖️</div>
+            <h4 style="color: #fff; font-size: 15px;">COD 2,400 CP + 400 Extra</h4>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0;">BattlePass Listo</div>
+            <div style="font-size: 17px; font-weight: 800; font-family: 'Rajdhani', monospace;">$22.99 USD</div>
+          </div>
+          <div class="flash-item-card" onclick="catalogPickGame('valorant')">
+            <div style="font-size: 26px; margin-bottom: 6px;">⚔️</div>
+            <h4 style="color: #fff; font-size: 15px;">Valorant 3,650 VP</h4>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0;">Bonus de Verano</div>
+            <div style="font-size: 17px; font-weight: 800; font-family: 'Rajdhani', monospace;">$31.99 USD</div>
           </div>
         </div>
       </div>
@@ -1894,7 +1969,7 @@
             <span class="faq-toggle-icon">+</span>
           </div>
           <div class="faq-answer">
-            Cero riesgo. Todas nuestras recargas se realizan mediante canales y convenios oficiales autorizados (Garena, Riot Games, Valve, Tencent). Tu cuenta está 100% blindada contra bloqueos.
+            Cero riesgo. Todas nuestras recargas se realizan mediante canales y convenios oficiales autorizados (Garena, Riot Games, Valve, Tencent, Hoyoverse). Tu cuenta está 100% blindada contra bloqueos.
           </div>
         </div>
 
@@ -1931,11 +2006,11 @@
         <div class="footer-col">
           <h4>Juegos</h4>
           <ul>
-            <li><a href="#catalogo">Free Fire</a></li>
-            <li><a href="#catalogo">Call of Duty Mobile</a></li>
-            <li><a href="#catalogo">Valorant</a></li>
-            <li><a href="#catalogo">Roblox</a></li>
-            <li><a href="#catalogo">Brawl Stars</a></li>
+            <li><a href="#catalogo" onclick="catalogPickGame('freefire')">Free Fire</a></li>
+            <li><a href="#catalogo" onclick="catalogPickGame('cod')">Call of Duty Mobile</a></li>
+            <li><a href="#catalogo" onclick="catalogPickGame('valorant')">Valorant</a></li>
+            <li><a href="#catalogo" onclick="catalogPickGame('roblox')">Roblox</a></li>
+            <li><a href="#catalogo" onclick="catalogPickGame('genshin')">Genshin Impact</a></li>
           </ul>
         </div>
 
@@ -1982,7 +2057,7 @@
           <span id="modal-field-game">Free Fire</span>
         </div>
         <div class="order-line">
-          <span style="color: var(--text-dim);">Paquete:</span>
+          <span style="color: var(--text-dim);">Paquete de Moneda:</span>
           <span id="modal-field-pkg">310 Diamantes (+31 Bonus)</span>
         </div>
         <div class="order-line">
@@ -2006,15 +2081,245 @@
   </div>
 
   <script>
-    // ESTADO GENERAL
+    // =========================================================================
+    // BASE DE DATOS DE JUEGOS Y MONEDAS ESPECÍFICAS PARA "RECARGA DIRECTA"
+    // =========================================================================
+    const gameCurrenciesData = {
+      'freefire': {
+        name: 'Free Fire',
+        currencyName: 'Diamantes',
+        currencyIcon: '💎',
+        currencyFull: 'DIAMANTES 💎',
+        badge: 'MÁS POPULAR 🔥',
+        idPlaceholder: 'Ej: 2849102847 (ID de Jugador)',
+        packages: [
+          { amount: '100 💎', bonus: '+10 Extra', price: '$0.99', tag: '' },
+          { amount: '310 💎', bonus: '+31 Extra', price: '$2.99', tag: 'TOP 🔥', active: true },
+          { amount: '520 💎', bonus: '+52 Extra', price: '$4.99', tag: 'PRO' },
+          { amount: '1,060 💎', bonus: '+106 Extra', price: '$9.99', tag: 'VALOR ⭐' },
+          { amount: '2,180 💎', bonus: '+218 Extra', price: '$19.99', tag: 'VIP' },
+          { amount: 'Pase Booyah 🏆', bonus: 'Acceso Élite', price: '$3.99', tag: 'PASE' }
+        ]
+      },
+      'cod': {
+        name: 'Call of Duty: Mobile',
+        currencyName: 'CP Points',
+        currencyIcon: '🎖️',
+        currencyFull: 'CP POINTS 🎖️',
+        badge: 'ACTIVISION 🎖️',
+        idPlaceholder: 'Ej: 67491028492019482 (Player ID)',
+        packages: [
+          { amount: '80 CP 🎖️', bonus: 'Directo', price: '$0.99', tag: '' },
+          { amount: '420 CP 🎖️', bonus: '+42 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '880 CP 🎖️', bonus: '+88 Extra', price: '$9.99', tag: 'PRO' },
+          { amount: '2,400 CP 🎖️', bonus: '+400 Extra', price: '$24.99', tag: 'VALOR ⭐' },
+          { amount: '5,000 CP 🎖️', bonus: '+1,000 Extra', price: '$49.99', tag: 'VIP' },
+          { amount: 'Pase de Batalla 🎖️', bonus: 'Premium Pass', price: '$6.49', tag: 'PASE' }
+        ]
+      },
+      'valorant': {
+        name: 'Valorant',
+        currencyName: 'Valorant Points',
+        currencyIcon: '⚔️',
+        currencyFull: 'VP POINTS ⚔️',
+        badge: 'RIOT MESH 🛡️',
+        idPlaceholder: 'Ej: Reyna#LAN1 (Riot ID)',
+        packages: [
+          { amount: '475 VP ⚔️', bonus: 'Directo', price: '$4.99', tag: '' },
+          { amount: '1,000 VP ⚔️', bonus: '+50 Extra', price: '$9.99', tag: 'TOP 🔥', active: true },
+          { amount: '2,050 VP ⚔️', bonus: '+150 Extra', price: '$19.99', tag: 'PRO' },
+          { amount: '3,650 VP ⚔️', bonus: '+300 Extra', price: '$34.99', tag: 'VALOR ⭐' },
+          { amount: '5,350 VP ⚔️', bonus: '+500 Extra', price: '$49.99', tag: 'VIP' },
+          { amount: '11,000 VP ⚔️', bonus: '+1,500 Extra', price: '$99.99', tag: 'ÉLITE' }
+        ]
+      },
+      'roblox': {
+        name: 'Roblox',
+        currencyName: 'Robux',
+        currencyIcon: '🧱',
+        currencyFull: 'ROBUX 🧱',
+        badge: 'ENTREGA INMEDIATA',
+        idPlaceholder: 'Ej: GamerMaster_2026 (Usuario Roblox)',
+        packages: [
+          { amount: '400 R$ 🧱', bonus: 'Directo', price: '$4.99', tag: '' },
+          { amount: '800 R$ 🧱', bonus: '+80 Extra', price: '$9.99', tag: 'TOP 🔥', active: true },
+          { amount: '1,700 R$ 🧱', bonus: '+200 Extra', price: '$19.99', tag: 'PRO' },
+          { amount: '4,500 R$ 🧱', bonus: '+600 Extra', price: '$49.99', tag: 'VALOR ⭐' },
+          { amount: '10,000 R$ 🧱', bonus: '+1,500 Extra', price: '$99.99', tag: 'VIP' },
+          { amount: 'Roblox Premium 👑', bonus: 'Membresía VIP', price: '$4.99', tag: 'VIP' }
+        ]
+      },
+      'brawlstars': {
+        name: 'Brawl Stars',
+        currencyName: 'Gemas',
+        currencyIcon: '⭐',
+        currencyFull: 'GEMAS ⭐',
+        badge: 'SUPERCELL',
+        idPlaceholder: 'Ej: #8YPL92QC (Player Tag)',
+        packages: [
+          { amount: '30 Gemas ⭐', bonus: 'Directo', price: '$1.99', tag: '' },
+          { amount: '80 Gemas ⭐', bonus: '+8 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '170 Gemas ⭐', bonus: '+20 Extra', price: '$9.99', tag: 'PRO' },
+          { amount: '360 Gemas ⭐', bonus: '+50 Extra', price: '$19.99', tag: 'VALOR ⭐' },
+          { amount: '950 Gemas ⭐', bonus: '+150 Extra', price: '$49.99', tag: 'VIP' },
+          { amount: 'Brawl Pass Plus 🏆', bonus: 'Desbloqueo Total', price: '$9.99', tag: 'PASE' }
+        ]
+      },
+      'mobilelegends': {
+        name: 'Mobile Legends',
+        currencyName: 'Diamonds',
+        currencyIcon: '🔮',
+        currencyFull: 'DIAMONDS 🔮',
+        badge: 'MOONTON',
+        idPlaceholder: 'Ej: 19482019 (Zone ID: 2014)',
+        packages: [
+          { amount: '50 🔮', bonus: '+5 Extra', price: '$0.99', tag: '' },
+          { amount: '250 🔮', bonus: '+25 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '500 🔮', bonus: '+65 Extra', price: '$9.99', tag: 'PRO' },
+          { amount: '1,000 🔮', bonus: '+150 Extra', price: '$18.99', tag: 'VALOR ⭐' },
+          { amount: '2,000 🔮', bonus: '+350 Extra', price: '$37.99', tag: 'VIP' },
+          { amount: 'Pase Semanal 🔮', bonus: 'Suscripción VIP', price: '$1.99', tag: 'PASE' }
+        ]
+      },
+      'pubg': {
+        name: 'PUBG Mobile',
+        currencyName: 'UC Cash',
+        currencyIcon: '🪂',
+        currencyFull: 'UC UNKNOWN CASH 🪂',
+        badge: 'TENCENT',
+        idPlaceholder: 'Ej: 5192840192 (Character ID)',
+        packages: [
+          { amount: '60 UC 🪂', bonus: 'Directo', price: '$0.99', tag: '' },
+          { amount: '325 UC 🪂', bonus: '+25 Extra', price: '$4.99', tag: 'TOP 🔥', active: true },
+          { amount: '660 UC 🪂', bonus: '+60 Extra', price: '$9.99', tag: 'PRO' },
+          { amount: '1,800 UC 🪂', bonus: '+300 Extra', price: '$24.99', tag: 'VALOR ⭐' },
+          { amount: '3,850 UC 🪂', bonus: '+850 Extra', price: '$49.99', tag: 'VIP' },
+          { amount: 'Royale Pass 🏆', bonus: 'Pase Élite', price: '$9.99', tag: 'PASE' }
+        ]
+      },
+      'genshin': {
+        name: 'Genshin Impact',
+        currencyName: 'Cristales Génesis',
+        currencyIcon: '🌌',
+        currencyFull: 'CRISTALES GÉNESIS 🌌',
+        badge: 'HOYOVERSE',
+        idPlaceholder: 'Ej: 704918291 (UID de Jugador)',
+        packages: [
+          { amount: '300 🌌', bonus: '+30 Extra', price: '$4.99', tag: '' },
+          { amount: '980 🌌', bonus: '+110 Extra', price: '$14.99', tag: 'TOP 🔥', active: true },
+          { amount: '1,980 🌌', bonus: '+260 Extra', price: '$29.99', tag: 'PRO' },
+          { amount: '3,280 🌌', bonus: '+600 Extra', price: '$49.99', tag: 'VALOR ⭐' },
+          { amount: '6,480 🌌', bonus: '+1,600 Extra', price: '$99.99', tag: 'VIP' },
+          { amount: 'Bendición Lunar 🌙', bonus: '30 Días Protogemas', price: '$4.99', tag: 'PASE' }
+        ]
+      },
+      'steam': {
+        name: 'Steam Wallet',
+        currencyName: 'Saldo USD',
+        currencyIcon: '🎮',
+        currencyFull: 'SALDO GLOBAL USD 🎮',
+        badge: 'VALVE GLOBAL',
+        idPlaceholder: 'Ej: Tu nombre de cuenta de Steam o correo',
+        packages: [
+          { amount: '$5 USD 🎮', bonus: 'Directo Cartera', price: '$5.00', tag: '' },
+          { amount: '$10 USD 🎮', bonus: 'Directo Cartera', price: '$10.00', tag: 'TOP 🔥', active: true },
+          { amount: '$20 USD 🎮', bonus: 'Directo Cartera', price: '$20.00', tag: 'PRO' },
+          { amount: '$50 USD 🎮', bonus: 'Directo Cartera', price: '$50.00', tag: 'VALOR ⭐' },
+          { amount: '$100 USD 🎮', bonus: 'Directo Cartera', price: '$100.00', tag: 'VIP' },
+          { amount: 'Steam Card Digital ⚡', bonus: 'Código Inmediato', price: '$15.00', tag: 'GIFT' }
+        ]
+      }
+    };
+
+    // ESTADO GENERAL DE LA APLICACIÓN
     const state = {
       theme: 'green',
       audio: false,
-      selectedGame: 'Free Fire',
+      currentGameKey: 'freefire',
       selectedPkg: '310 💎',
       selectedPrice: '$2.99 USD',
       playerId: ''
     };
+
+    // RENDERIZADO DE LOS PAQUETES CON LA MONEDA ESPECÍFICA EN LA TERMINAL
+    function renderTerminalPackages(gameKey) {
+      const data = gameCurrenciesData[gameKey] || gameCurrenciesData['freefire'];
+      state.currentGameKey = gameKey;
+
+      // Actualizar encabezados con la moneda
+      document.getElementById('terminal-game-name').innerText = data.name.toUpperCase();
+      document.getElementById('terminal-currency-label').innerText = data.currencyFull;
+      document.getElementById('terminal-currency-name-header').innerText = `${data.currencyName.toUpperCase()} ${data.currencyIcon}`;
+      document.getElementById('terminal-id-input').placeholder = data.idPlaceholder;
+
+      const grid = document.getElementById('terminal-pkgs-grid');
+      grid.innerHTML = '';
+
+      data.packages.forEach((pkg, index) => {
+        const chip = document.createElement('div');
+        chip.className = `pkg-chip ${pkg.active ? 'active' : ''}`;
+        if (pkg.active) {
+          state.selectedPkg = pkg.amount;
+          state.selectedPrice = `${pkg.price} USD`;
+          document.getElementById('terminal-pkg-badge').innerText = pkg.bonus;
+        }
+
+        chip.onclick = () => {
+          document.querySelectorAll('.pkg-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          state.selectedPkg = pkg.amount;
+          state.selectedPrice = `${pkg.price} USD`;
+          document.getElementById('terminal-pkg-badge').innerText = pkg.bonus;
+          playSfx('click');
+        };
+
+        let tagHtml = pkg.tag ? `<span class="pkg-chip-tag">${pkg.tag}</span>` : '';
+        chip.innerHTML = `
+          ${tagHtml}
+          <div class="pkg-chip-amount">${pkg.amount}</div>
+          <div class="pkg-chip-bonus">${pkg.bonus}</div>
+          <div class="pkg-chip-price">${pkg.price} USD</div>
+        `;
+        grid.appendChild(chip);
+      });
+    }
+
+    // SELECCIÓN DE JUEGO EN LA TERMINAL
+    function terminalSelectGame(gameKey, btn) {
+      document.querySelectorAll('.game-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderTerminalPackages(gameKey);
+      playSfx('click');
+    }
+
+    // CUANDO SE HACE CLIC EN UNA TARJETA DEL CATÁLOGO
+    function catalogPickGame(gameKey) {
+      // Activar el chip correspondiente en la terminal
+      const chips = document.querySelectorAll('.game-chip');
+      chips.forEach(c => {
+        if (c.getAttribute('onclick') && c.getAttribute('onclick').includes(`'${gameKey}'`)) {
+          c.classList.add('active');
+        } else {
+          c.classList.remove('active');
+        }
+      });
+
+      renderTerminalPackages(gameKey);
+      playSfx('click');
+
+      // Scroll suave hacia la terminal de recarga directa en la portada
+      document.getElementById('portada').scrollIntoView({ behavior: 'smooth' });
+
+      // Efecto de resplandor momentáneo en la terminal
+      const termBox = document.getElementById('terminal-box');
+      termBox.style.boxShadow = '0 0 50px var(--accent-glow)';
+      setTimeout(() => {
+        termBox.style.boxShadow = '';
+      }, 900);
+    }
+
+    // INICIALIZAR LA TERMINAL CON FREE FIRE POR DEFECTO
+    renderTerminalPackages('freefire');
 
     // SÍNTESIS DE AUDIO WEB CON EFECTOS GAMER
     let audioCtx = null;
@@ -2059,7 +2364,7 @@
       if (state.audio) playSfx('click');
     }
 
-    // TEMA GAMER
+    // TEMA GAMER (🟢 Verde Neón Razer, 🔵 Azul Cyber, 🔴 Rojo Gamer)
     function setGamerTheme(themeName) {
       state.theme = themeName;
       if (themeName === 'green') {
@@ -2073,57 +2378,33 @@
       playSfx('click');
     }
 
-    // SELECCIÓN EN TERMINAL DE LA PORTADA
-    function terminalSelectGame(name, curr, btn) {
-      document.querySelectorAll('.game-chip').forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
-      state.selectedGame = name;
-      document.getElementById('terminal-game-name').innerText = name.toUpperCase();
-      playSfx('click');
-    }
-
-    function terminalSelectPkg(name, badge, price, chip) {
-      document.querySelectorAll('.pkg-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      state.selectedPkg = name;
-      state.selectedPrice = `${price} USD`;
-      document.getElementById('terminal-pkg-badge').innerText = badge;
-      playSfx('click');
-    }
-
     function verifyId() {
       const input = document.getElementById('terminal-id-input');
       const val = input.value.trim();
+      const gameData = gameCurrenciesData[state.currentGameKey];
       if (!val) {
-        alert('Por favor ingresa tu ID de jugador');
+        alert('Por favor ingresa tu identificador de jugador');
         input.focus();
         return;
       }
       playSfx('success');
-      alert(`✅ ID ${val} Verificado correctamente en los servidores de ${state.selectedGame}`);
+      alert(`✅ Identificador "${val}" verificado exitosamente en los servidores de ${gameData.name}`);
     }
 
     function executeFastRecharge() {
       const input = document.getElementById('terminal-id-input');
       const val = input.value.trim();
+      const gameData = gameCurrenciesData[state.currentGameKey];
       if (!val) {
-        alert('Por favor ingresa tu ID de jugador antes de continuar.');
+        alert('Por favor ingresa tu identificador de jugador antes de continuar.');
         input.focus();
         return;
       }
       state.playerId = val;
-      openModalWithData(state.selectedGame, state.selectedPkg, state.playerId, state.selectedPrice);
+      openModalWithData(gameData.name, state.selectedPkg, state.playerId, state.selectedPrice);
     }
 
     // MODAL DE COMPRA
-    function openGameModal(gameName, curr) {
-      state.selectedGame = gameName;
-      state.selectedPkg = `Pack Inicial ${curr}`;
-      state.selectedPrice = '$2.99 USD';
-      state.playerId = 'Ingresar en pasarela';
-      openModalWithData(gameName, state.selectedPkg, state.playerId, state.selectedPrice);
-    }
-
     function openModalWithData(game, pkg, id, price) {
       document.getElementById('modal-game-title').innerText = game;
       document.getElementById('modal-field-game').innerText = game;
@@ -2141,7 +2422,7 @@
 
     function confirmPurchase() {
       playSfx('success');
-      alert(`🚀 ¡Redirigiendo a pasarela segura para recargar ${state.selectedPkg} en ${state.selectedGame}!`);
+      alert(`🚀 ¡Redirigiendo a pasarela segura para recargar ${state.selectedPkg} en ${state.currentGameKey.toUpperCase()}!`);
       closeModal();
     }
 
@@ -2185,6 +2466,126 @@
     setInterval(updateCountdown, 1000);
 
     // =========================================================================
+    // EFECTO DE CURSOR GAMER: HUMO CIBERNÉTICO Y DESTELLOS LUMINOSOS
+    // =========================================================================
+    const trailCanvas = document.getElementById('cursor-trail-canvas');
+    const tCtx = trailCanvas.getContext('2d');
+    let tWidth = trailCanvas.width = window.innerWidth;
+    let tHeight = trailCanvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      tWidth = trailCanvas.width = window.innerWidth;
+      tHeight = trailCanvas.height = window.innerHeight;
+    });
+
+    const smokeParticles = [];
+    const sparkParticles = [];
+    let lastMouseX = window.innerWidth / 2;
+    let lastMouseY = window.innerHeight / 2;
+
+    window.addEventListener('mousemove', (e) => {
+      const dx = e.clientX - lastMouseX;
+      const dy = e.clientY - lastMouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      // Si el mouse se mueve lo suficiente, generar estela de humo y chispas
+      if (dist > 3) {
+        // 1. Puffs de humo suave con desvanecimiento
+        for (let i = 0; i < 2; i++) {
+          if (smokeParticles.length < 55) {
+            smokeParticles.push({
+              x: e.clientX + (Math.random() - 0.5) * 6,
+              y: e.clientY + (Math.random() - 0.5) * 6,
+              radius: Math.random() * 8 + 6,
+              maxRadius: Math.random() * 26 + 18,
+              vx: (dx * 0.12) + (Math.random() - 0.5) * 0.8,
+              vy: (dy * 0.12) - Math.random() * 0.8 - 0.2, // Flota ligeramente hacia arriba como humo
+              alpha: 0.45,
+              decay: 0.02 + Math.random() * 0.012
+            });
+          }
+        }
+
+        // 2. Chispas brillantes luminiscentes
+        if (Math.random() > 0.4 && sparkParticles.length < 35) {
+          sparkParticles.push({
+            x: e.clientX,
+            y: e.clientY,
+            radius: Math.random() * 2 + 1.2,
+            vx: (Math.random() - 0.5) * 3,
+            vy: (Math.random() - 0.5) * 3 - 0.5,
+            alpha: 1,
+            decay: 0.04 + Math.random() * 0.03
+          });
+        }
+
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+      }
+    }, { passive: true });
+
+    function renderCursorTrail() {
+      tCtx.clearRect(0, 0, tWidth, tHeight);
+
+      // Obtener el color del tema actual
+      let r = 0, g = 255, b = 136; // Green
+      if (state.theme === 'blue') { r = 0; g = 210; b = 255; }
+      if (state.theme === 'red') { r = 255; g = 0; b = 68; }
+
+      // Modo de composición luminoso
+      tCtx.globalCompositeOperation = 'screen';
+
+      // Dibujar partículas de humo
+      for (let i = smokeParticles.length - 1; i >= 0; i--) {
+        const p = smokeParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.radius += (p.maxRadius - p.radius) * 0.06;
+        p.alpha -= p.decay;
+
+        if (p.alpha <= 0) {
+          smokeParticles.splice(i, 1);
+          continue;
+        }
+
+        const grad = tCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
+        grad.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${p.alpha * 0.5})`);
+        grad.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${p.alpha * 0.2})`);
+        grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+        tCtx.beginPath();
+        tCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        tCtx.fillStyle = grad;
+        tCtx.fill();
+      }
+
+      // Dibujar chispas brillantes
+      for (let i = sparkParticles.length - 1; i >= 0; i--) {
+        const s = sparkParticles[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.alpha -= s.decay;
+
+        if (s.alpha <= 0) {
+          sparkParticles.splice(i, 1);
+          continue;
+        }
+
+        tCtx.save();
+        tCtx.beginPath();
+        tCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        tCtx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+        tCtx.shadowColor = `rgb(${r}, ${g}, ${b})`;
+        tCtx.shadowBlur = 10;
+        tCtx.fill();
+        tCtx.restore();
+      }
+
+      requestAnimationFrame(renderCursorTrail);
+    }
+    requestAnimationFrame(renderCursorTrail);
+
+    // =========================================================================
     // CANVAS DE FONDO GAMER: PARTÍCULAS DE ENERGÍA Y LÍNEAS TECH
     // =========================================================================
     const canvas = document.getElementById('ambient-canvas');
@@ -2197,15 +2598,15 @@
       height = canvas.height = window.innerHeight;
     });
 
-    const particles = [];
-    for (let i = 0; i < 45; i++) {
-      particles.push({
+    const ambientParticles = [];
+    for (let i = 0; i < 40; i++) {
+      ambientParticles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: -Math.random() * 0.5 - 0.15,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: -Math.random() * 0.45 - 0.12,
         size: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.4 + 0.15
+        alpha: Math.random() * 0.35 + 0.12
       });
     }
 
@@ -2216,9 +2617,8 @@
       if (state.theme === 'blue') themeColor = '#00d2ff';
       if (state.theme === 'red') themeColor = '#ff0044';
 
-      // Dibujar partículas de energía
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
+      for (let i = 0; i < ambientParticles.length; i++) {
+        const p = ambientParticles[i];
         p.x += p.vx;
         p.y += p.vy;
 
@@ -2233,18 +2633,18 @@
         ctx.fill();
 
         // Conectar partículas cercanas con líneas tenues
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
+        for (let j = i + 1; j < ambientParticles.length; j++) {
+          const p2 = ambientParticles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 100) {
+          if (dist < 90) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.strokeStyle = themeColor;
-            ctx.globalAlpha = (1 - dist / 100) * 0.12;
+            ctx.globalAlpha = (1 - dist / 90) * 0.1;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
