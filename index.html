@@ -3,56 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SYSTEM / 88 — Red Técnica de Operaciones Conectadas</title>
+  <title>NEXUS RECARGAS — Centro Gamer de Recargas Instantáneas 24/7</title>
 
-  <!-- Google Fonts: Manrope (400, 500, 600) & Instrument Sans (500..700) -->
+  <!-- Google Fonts: Outfit (Titulares Gamer), Rajdhani (Acentos Tech), Manrope (UI & Cuerpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:ital,wght@0,400;0,500;0,600&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,500..700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=Rajdhani:wght@600;700&display=swap">
 
   <style>
-    /* VARIABLES DE COLOR Y SISTEMA TÉCNICO */
     :root {
-      --bg: #090A0C;
-      --text: #F1F2EC;
-      --gray: #777873;
-      --gray-dim: rgba(119, 120, 115, 0.18);
-      --gray-line: rgba(119, 120, 115, 0.28);
-      --lime: #C8FF45;
-      --lime-glow: rgba(200, 255, 69, 0.6);
-      --lime-dim: rgba(200, 255, 69, 0.12);
-      --blue: #4C6FFF;
-      --blue-glow: rgba(76, 111, 255, 0.6);
-      --blue-dim: rgba(76, 111, 255, 0.14);
-      --red: #FF003C;
-      --red-glow: rgba(255, 0, 60, 0.6);
-      --red-dim: rgba(255, 0, 60, 0.14);
+      /* PALETA GAMER PROFESIONAL */
+      --bg-deep: #06080c;
+      --bg-surface: #0c0f17;
+      --bg-card: rgba(16, 20, 30, 0.75);
+      --bg-card-hover: rgba(22, 28, 42, 0.9);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-card-hover: rgba(255, 255, 255, 0.2);
 
-      /* Tema activo (por defecto Lima System/88) */
-      --accent: var(--lime);
-      --accent-glow: var(--lime-glow);
-      --accent-dim: var(--lime-dim);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      /* TEMA VERDE NEÓN GAMER (POR DEFECTO - ESTILO RAZER / MATRIX) */
+      --accent: #00ff88;
+      --accent-glow: rgba(0, 255, 136, 0.65);
+      --accent-dim: rgba(0, 255, 136, 0.12);
+      --accent-light: #66ffb2;
+      --accent-gradient: linear-gradient(135deg, #00ff88 0%, #00b4d8 100%);
     }
 
     [data-theme="blue"] {
-      --accent: var(--blue);
-      --accent-glow: var(--blue-glow);
-      --accent-dim: var(--blue-dim);
+      /* TEMA AZUL CYBERPUNK */
+      --accent: #00d2ff;
+      --accent-glow: rgba(0, 210, 255, 0.65);
+      --accent-dim: rgba(0, 210, 255, 0.12);
+      --accent-light: #70e1ff;
+      --accent-gradient: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
     }
 
     [data-theme="red"] {
-      --accent: var(--red);
-      --accent-glow: var(--red-glow);
-      --accent-dim: var(--red-dim);
-    }
-
-    /* TIPOGRAFÍAS SEGÚN ESPECIFICACIÓN */
-    .section-copy, .section-nav {
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    .section-title {
-      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      /* TEMA ROJO CYBER GAMER */
+      --accent: #ff0044;
+      --accent-glow: rgba(255, 0, 68, 0.65);
+      --accent-dim: rgba(255, 0, 68, 0.12);
+      --accent-light: #ff5c8a;
+      --accent-gradient: linear-gradient(135deg, #ff0044 0%, #ff7700 100%);
     }
 
     * {
@@ -61,96 +56,172 @@
       padding: 0;
     }
 
-    html, body {
-      width: 100%;
-      min-height: 100vh;
-      background-color: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* SECCIÓN PRINCIPAL: ÚNICA SECCIÓN PREMIUM DE INTEGRACIONES */
-    .system-section {
-      position: relative;
-      width: 100vw;
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      overflow-x: hidden;
       min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* TIPOGRAFÍA GAMER */
+    h1, h2, h3, .font-gamer {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .font-tech {
+      font-family: 'Rajdhani', monospace, sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* FONDO GAMER CIBERNÉTICO CON CANVAS INTERACTIVO */
+    #ambient-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cyber-grid-overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 15%, var(--accent-dim) 0%, transparent 55%),
+        radial-gradient(circle at 85% 75%, rgba(0, 180, 216, 0.05) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* WRAPPER PRINCIPAL */
+    .app-container {
+      position: relative;
+      z-index: 10;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      background:
-        radial-gradient(circle at 75% 45%, var(--accent-dim) 0%, transparent 45%),
-        radial-gradient(circle at 20% 80%, rgba(76, 111, 255, 0.05) 0%, transparent 50%),
-        linear-gradient(rgba(241, 242, 236, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(241, 242, 236, 0.015) 1px, transparent 1px),
-        #090A0C;
-      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px, 100% 100%;
-      overflow: hidden;
     }
 
-    /* BARRA SUPERIOR SUTIL DE NAVEGACIÓN Y TEMA */
-    .system-header {
-      padding: 24px 48px 0;
+    /* =========================================================================
+       1. BARRA DE NAVEGACIÓN STICKY
+       ========================================================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 74px;
+      padding: 0 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      z-index: 40;
+      background: rgba(6, 8, 12, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-card);
+      z-index: 100;
     }
 
-    .system-brand {
+    .brand-logo {
       display: flex;
       align-items: center;
       gap: 12px;
+      text-decoration: none;
+      color: inherit;
     }
 
-    .brand-cube {
-      width: 24px;
-      height: 24px;
-      border: 1.5px solid var(--accent);
-      border-radius: 4px;
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 12px var(--accent-glow);
-      transition: border-color 0.3s, box-shadow 0.3s;
+      font-size: 18px;
+      color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
+      transition: transform 0.25s;
     }
 
-    .brand-cube::after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 1px;
-      transition: background 0.3s;
+    .brand-logo:hover .brand-icon {
+      transform: scale(1.08) rotate(5deg);
     }
 
-    .brand-name {
-      font-size: 13px;
-      font-weight: 600;
+    .brand-title-box h1 {
+      font-size: 19px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .brand-title-box span {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Rajdhani', sans-serif;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--text);
     }
 
-    .controls-cluster {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 32px;
+      list-style: none;
     }
 
-    .theme-selector {
-      display: inline-flex;
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+      border-radius: 2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .theme-picker {
+      display: flex;
       align-items: center;
       gap: 6px;
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--gray-dim);
+      border: 1px solid var(--border-card);
       padding: 4px 8px;
       border-radius: 9999px;
     }
 
-    .theme-dot-btn {
-      width: 14px;
-      height: 14px;
+    .theme-btn {
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       border: 1.5px solid transparent;
       cursor: pointer;
@@ -162,938 +233,1793 @@
       transition: transform 0.2s;
     }
 
-    .theme-dot-btn:hover {
-      transform: scale(1.25);
+    .theme-btn:hover {
+      transform: scale(1.2);
     }
 
-    .theme-dot-btn.active {
+    .theme-btn.active {
       border-color: #fff;
     }
 
-    .theme-dot-inner {
+    .theme-btn-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
     }
 
-    .btn-audio {
+    .btn-sfx {
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--gray-dim);
-      color: var(--gray);
-      padding: 5px 12px;
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+      padding: 6px 12px;
       border-radius: 9999px;
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 6px;
       transition: all 0.2s;
     }
 
-    .btn-audio:hover {
-      color: var(--text);
+    .btn-sfx:hover {
+      color: #fff;
       border-color: var(--accent);
     }
 
-    /* CONTENEDOR PRINCIPAL: IZQUIERDA (LISTA DE INTEGRACIONES) | DERECHA (CANVAS + ROBOT) */
-    .system-main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: minmax(380px, 1fr) 1.25fr;
-      gap: 40px;
-      padding: 32px 48px;
+    .btn-nav-recharge {
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #06080c;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
       align-items: center;
-      z-index: 10;
+      gap: 8px;
+      box-shadow: 0 4px 18px var(--accent-glow);
+      transition: transform 0.2s, filter 0.2s;
     }
 
-    /* -------------------------------------------------------------------------
-       COLUMNA IZQUIERDA: ETIQUETA, H2 Y LISTA DE SEIS INTEGRACIONES
-       ------------------------------------------------------------------------- */
-    .section-left {
+    .btn-nav-recharge:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    /* =========================================================================
+       2. PORTADA (HERO GAMER DE ALTO IMPACTO)
+       ========================================================================= */
+    .hero-section {
+      position: relative;
+      min-height: calc(100vh - 74px);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-content {
       display: flex;
       flex-direction: column;
-      max-width: 540px;
       z-index: 20;
     }
 
-    .section-tag {
+    .hero-badge-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      transition: color 0.3s;
-    }
-
-    .section-tag::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-glow);
-      animation: pulseDot 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.75); }
-    }
-
-    .section-title {
-      font-size: clamp(36px, 4.4vw, 54px);
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-      color: var(--text);
-      margin-bottom: 18px;
-    }
-
-    .section-desc {
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--gray);
-      margin-bottom: 32px;
-      max-width: 460px;
-    }
-
-    /* LISTA VERTICAL DE SEIS INTEGRACIONES */
-    .section-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      list-style: none;
-      /* "no muevas el layout" -> Contenedor con altura y márgenes fijos */
-    }
-
-    .integration-item {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 13px 18px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.015);
-      border: 1px solid transparent;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      outline: none;
-      transition: background 0.22s, border-color 0.22s, box-shadow 0.22s;
-      /* Importante: No usar translateY ni cambio de padding para evitar mover el layout */
-    }
-
-    .integration-item:hover,
-    .integration-item:focus-visible,
-    .integration-item.active {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: var(--gray-dim);
-    }
-
-    .integration-item.active {
-      border-color: var(--accent);
-      background: linear-gradient(90deg, var(--accent-dim) 0%, rgba(255, 255, 255, 0.02) 100%);
-      box-shadow: 0 0 24px -6px var(--accent-dim);
-    }
-
-    .integration-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .integration-index {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--gray);
-      letter-spacing: 0.08em;
-      min-width: 22px;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .integration-item.active .integration-index {
-      color: var(--accent);
-    }
-
-    .integration-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -0.01em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .integration-protocol {
-      font-size: 11px;
-      color: var(--gray);
-      font-weight: 400;
-    }
-
-    .integration-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--gray);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .integration-status-pill .node-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gray);
-      transition: background 0.2s, box-shadow 0.2s;
-    }
-
-    .integration-item.active .integration-status-pill {
-      color: var(--text);
-    }
-
-    .integration-item.active .integration-status-pill .node-dot {
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-
-    /* -------------------------------------------------------------------------
-       COLUMNA DERECHA: ESCENARIO CIRCULAR CANVAS + ROBOT COMPANION
-       ------------------------------------------------------------------------- */
-    .section-right {
-      position: relative;
-      width: 100%;
-      height: min(620px, 78vh);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* CONTENEDOR DEL CANVAS DE RED TÉCNICA */
-    .canvas-stage-wrapper {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 5;
-    }
-
-    #network-canvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-      cursor: crosshair;
-    }
-
-    /* FALLBACK CSS/SVG VISIBLE SEGÚN ESPECIFICACIÓN */
-    .canvas-fallback {
-      display: none;
-      position: absolute;
-      width: min(440px, 90vw);
-      height: min(440px, 90vw);
-      pointer-events: none;
-      opacity: 0.6;
-    }
-
-    /* Si JavaScript falla o no hay canvas 2d, se muestra el fallback */
-    .no-canvas #network-canvas { display: none; }
-    .no-canvas .canvas-fallback { display: block; }
-
-    /* -------------------------------------------------------------------------
-       ROBOT REALISTA COMPLETO ("robot completo, con calidad, estable")
-       ------------------------------------------------------------------------- */
-    .robot-companion-container {
-      position: absolute;
-      bottom: -15px;
-      right: 2%;
-      width: min(390px, 34vw);
-      height: min(540px, 68vh);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      transform-origin: 50% 90%;
-      transform-style: preserve-3d;
-      perspective: 1200px;
-      pointer-events: none;
-      z-index: 15;
-      will-change: transform;
-    }
-
-    /* SOMBRA AMBIENTAL BAJO EL ROBOT */
-    .robot-floor-shadow {
-      position: absolute;
-      bottom: 10px;
-      left: 15%;
-      width: 70%;
-      height: 28px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 0%, transparent 70%);
-      filter: blur(8px);
-      z-index: 1;
-    }
-
-    /* RIG DEL ROBOT: CUERPO COMPLETO CON RESPIRACIÓN Y ROTACIÓN 3D */
-    .robot-rig {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      transform-style: preserve-3d;
-      animation: naturalBreathing 5.5s ease-in-out infinite;
-      will-change: transform;
-      z-index: 2;
-    }
-
-    @keyframes naturalBreathing {
-      0%, 100% {
-        transform: translateY(0px) scale(1);
-      }
-      50% {
-        transform: translateY(-4px) scale(1.003);
-      }
-    }
-
-    /* IMAGEN MASTER DEL ROBOT (LIMPIA, SIN CURSOR, SIN HUECOS) */
-    .robot-photo-layer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      z-index: 2;
-    }
-
-    .robot-photo-layer img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: bottom center;
-      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    /* PANTALLA CRT OVERLAY EXACTA DENTRO DEL MONITOR DEL ROBOT */
-    /* Coordenadas calculadas: left: 23.12%, top: 9.28%, width: 50.17%, height: 39.00% */
-    .crt-screen-overlay {
-      position: absolute;
-      top: 9.28%;
-      left: 23.12%;
-      width: 50.17%;
-      height: 39.00%;
-      border-radius: 16px;
-      overflow: hidden;
-      transform-style: preserve-3d;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    /* FONDO CRT DE VIDRIO OSCURO */
-    .crt-glass-back {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(18, 22, 28, 0.96) 0%, rgba(7, 9, 12, 0.99) 90%);
-    }
-
-    /* LÍNEAS DE ESCANEO DE TUBO CRT */
-    .crt-scanlines {
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.6) 0px,
-        rgba(0, 0, 0, 0.6) 1.5px,
-        transparent 1.5px,
-        transparent 3px
-      );
-      opacity: 0.45;
-      z-index: 10;
-    }
-
-    /* REFLEJO CURVO DEL CRISTAL */
-    .crt-glare {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.12) 0%,
-        rgba(255, 255, 255, 0.03) 30%,
-        transparent 65%
-      );
-      border-radius: 16px;
-      z-index: 11;
-    }
-
-    /* OJOS LUMINISCENTES EN EL CRT QUE SIGUEN AL CURSOR CON EFECTO ÓPTICO REAL */
-    .crt-pupil {
-      position: absolute;
-      width: 25.5%;
-      height: 37%;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at center,
-        #ffffff 32%,
-        var(--accent) 70%,
-        var(--accent-glow) 90%,
-        transparent 100%
-      );
-      box-shadow:
-        0 0 28px 10px var(--accent-glow),
-        inset 0 0 12px 3px #ffffff,
-        0 0 55px 20px var(--accent-dim);
-      transform-origin: center center;
-      transition: height 0.12s, border-radius 0.12s;
-      will-change: transform;
-      z-index: 6;
-    }
-
-    /* Posición neutra del ojo izquierdo */
-    .eye-left {
-      top: 31%;
-      left: 17%;
-    }
-
-    /* Posición neutra del ojo derecho */
-    .eye-right {
-      top: 32.5%;
-      right: 17%;
-    }
-
-    /* ESTADO DE PARPADEO */
-    .eye-blink {
-      height: 3px !important;
-      border-radius: 2px !important;
-      opacity: 0.4 !important;
-    }
-
-    /* ESTADO FELIZ / REACTIVO */
-    .eye-happy {
-      height: 18% !important;
-      border-radius: 14px 14px 2px 2px !important;
-    }
-
-    /* GLOBO HOLOGRÁFICO SUPERIOR DEL ROBOT (FEEDBACK DE RED) */
-    .robot-hud-tag {
-      position: absolute;
-      top: 2%;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      background: rgba(9, 10, 12, 0.94);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--accent);
-      color: #ffffff;
+      color: var(--accent);
       font-size: 11px;
-      font-weight: 600;
-      font-family: 'Manrope', monospace;
-      padding: 5px 12px;
-      border-radius: 6px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 16px var(--accent-glow);
-      backdrop-filter: blur(12px);
-      opacity: 0;
-      transition: opacity 0.25s, transform 0.25s;
-      z-index: 30;
-      pointer-events: none;
-    }
-
-    .robot-hud-tag.active {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-6px);
-    }
-
-    .robot-hud-tag::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 6px;
-      height: 6px;
-      background: rgba(9, 10, 12, 0.94);
-      border-right: 1px solid var(--accent);
-      border-bottom: 1px solid var(--accent);
-    }
-
-    /* -------------------------------------------------------------------------
-       BORDE INFERIOR: TELEMETRÍA (ESTADO, LATENCIA, NÚMERO DE EVENTOS)
-       ------------------------------------------------------------------------- */
-    .system-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 48px;
-      border-top: 1px solid var(--gray-dim);
-      background: rgba(9, 10, 12, 0.85);
-      backdrop-filter: blur(10px);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--gray);
-      z-index: 40;
-    }
-
-    .telemetry-group {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .telemetry-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .telemetry-label {
-      color: var(--gray);
-      font-size: 11px;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      margin-bottom: 24px;
+      width: fit-content;
+      box-shadow: 0 0 16px var(--accent-dim);
     }
 
-    .telemetry-value {
-      color: var(--text);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .telemetry-dot {
+    .pulse-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 10px var(--accent);
-      animation: pulseDot 1.8s infinite ease-in-out;
+      animation: pulseAnim 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-size: clamp(42px, 5.2vw, 68px);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title .highlight {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .btn-hero-primary {
+      padding: 16px 34px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #06080c;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 30px var(--accent-glow);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      filter: brightness(1.1);
+      box-shadow: 0 12px 36px var(--accent-glow);
+    }
+
+    .btn-hero-secondary {
+      padding: 16px 28px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ESTADÍSTICAS EN VIVO DE CONFIANZA */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .stat-box h4 {
+      font-size: 26px;
+      font-weight: 900;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .stat-box p {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     /* -------------------------------------------------------------------------
-       RESPONSIVE MÓVIL Y ACCESIBILIDAD
+       TERMINAL GAMER INTERACTIVA (HERO DERECHA)
        ------------------------------------------------------------------------- */
-    @media (max-width: 960px) {
-      .system-header {
-        padding: 18px 24px 0;
-      }
-
-      .system-main {
-        grid-template-columns: 1fr;
-        padding: 24px;
-        gap: 24px;
-        height: auto;
-      }
-
-      .section-left {
-        max-width: 100%;
-      }
-
-      /* "En móvil sitúa el Canvas bajo el texto y convierte la lista en una fila desplazable con controles accesibles." */
-      .section-nav {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 12px;
-        padding-bottom: 8px;
-        scrollbar-width: none;
-      }
-      .section-nav::-webkit-scrollbar {
-        display: none;
-      }
-
-      .integration-item {
-        flex: 0 0 auto;
-        min-width: 220px;
-        scroll-snap-align: start;
-      }
-
-      .section-right {
-        height: 480px;
-        order: 2;
-      }
-
-      .robot-companion-container {
-        width: 260px;
-        height: 360px;
-        right: 0;
-      }
-
-      .system-footer {
-        flex-direction: column;
-        gap: 10px;
-        padding: 16px 24px;
-        align-items: flex-start;
-      }
-
-      .telemetry-group {
-        flex-wrap: wrap;
-        gap: 16px;
-      }
+    .hero-terminal {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-dim);
+      z-index: 20;
     }
 
-    /* PREFERS-REDUCED-MOTION: RESPETA MOSTRANDO LA RED ESTÁTICA */
-    @media (prefers-reduced-motion: reduce) {
-      .robot-rig {
-        animation: none !important;
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .terminal-title-cluster {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .terminal-title-cluster h3 {
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .terminal-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-family: 'Rajdhani', monospace;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+    }
+
+    /* SELECTOR RÁPIDO DE JUEGOS EN TERMINAL */
+    .terminal-field-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .game-chips-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+      scrollbar-width: none;
+    }
+    .game-chips-row::-webkit-scrollbar { display: none; }
+
+    .game-chip {
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .game-chip:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .game-chip.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    /* GRID DE PAQUETES EN LA TERMINAL */
+    .packages-terminal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pkg-chip {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      text-align: center;
+    }
+
+    .pkg-chip:hover {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .pkg-chip.active {
+      background: linear-gradient(135deg, var(--bg-card), var(--accent-dim));
+      border-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
+    }
+
+    .pkg-chip-tag {
+      position: absolute;
+      top: -6px;
+      right: 6px;
+      background: var(--accent);
+      color: #000;
+      font-size: 8px;
+      font-weight: 900;
+      padding: 1px 5px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .pkg-chip-amount {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .pkg-chip-bonus {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .pkg-chip-price {
+      font-size: 12px;
+      font-family: 'Rajdhani', monospace;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* INPUT DE ID DE JUGADOR */
+    .terminal-input-wrap {
+      margin-bottom: 18px;
+    }
+
+    .input-box {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      padding: 4px 6px 4px 16px;
+      transition: all 0.2s;
+    }
+
+    .input-box:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-dim);
+    }
+
+    .input-box input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: 'Rajdhani', monospace;
+      font-size: 15px;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .input-box input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .input-verify-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .input-verify-btn:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* BOTÓN EJECUTAR RECARGA */
+    .btn-terminal-submit {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #06080c;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 24px var(--accent-glow);
+      transition: all 0.2s;
+    }
+
+    .btn-terminal-submit:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================================
+       3. SECCIÓN: CATÁLOGO COMPLETO DE JUEGOS
+       ========================================================================= */
+    .section-wrap {
+      padding: 96px 48px;
+      max-width: 1360px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-header-center {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 56px;
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-family: 'Rajdhani', monospace;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-main-title {
+      font-size: clamp(32px, 3.8vw, 46px);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* FILTROS DEL CATÁLOGO */
+    .catalog-filters {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 14px var(--accent-dim);
+    }
+
+    /* GRID DEL CATÁLOGO DE JUEGOS */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .game-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 24px var(--accent-dim);
+    }
+
+    .game-card-banner {
+      height: 140px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 12px;
+    }
+
+    .game-card-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, var(--bg-card) 100%);
+    }
+
+    .game-badge-tag {
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .game-card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .game-card-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .game-card-currency {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .game-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .game-card-price-start {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .game-card-price-val {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Rajdhani', monospace;
+    }
+
+    .btn-card-select {
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .game-card:hover .btn-card-select {
+      background: var(--accent);
+      color: #06080c;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    /* =========================================================================
+       4. SECCIÓN: SERVICIOS Y BENEFICIOS GAMER
+       ========================================================================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .service-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 32px 24px;
+      transition: all 0.28s;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .service-box:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px var(--accent-dim);
+    }
+
+    .service-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--accent);
+      box-shadow: 0 0 18px var(--accent-dim);
+    }
+
+    .service-box h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .service-box p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================================================
+       5. SECCIÓN: OFERTAS FLASH DE TEMPORADA
+       ========================================================================= */
+    .flash-banner {
+      position: relative;
+      background: linear-gradient(135deg, rgba(20, 26, 40, 0.9) 0%, rgba(10, 14, 22, 0.95) 100%);
+      border: 1px solid var(--accent);
+      border-radius: 28px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px var(--accent-dim);
+      overflow: hidden;
+    }
+
+    .flash-banner::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: var(--accent-glow);
+      filter: blur(90px);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .flash-left h2 {
+      font-size: clamp(32px, 3.5vw, 44px);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .flash-left p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+
+    .countdown-cluster {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .count-unit {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      padding: 10px 16px;
+      text-align: center;
+      min-width: 68px;
+    }
+
+    .count-num {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--accent);
+      font-family: 'Rajdhani', monospace;
+    }
+
+    .count-label {
+      font-size: 9px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .flash-right-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .flash-item-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .flash-item-card:hover {
+      border-color: var(--accent);
+      transform: scale(1.03);
+    }
+
+    /* =========================================================================
+       6. SECCIÓN TICKER: RECARGAS EN VIVO (PRUEBA SOCIAL)
+       ========================================================================= */
+    .live-ticker-wrap {
+      background: rgba(12, 15, 23, 0.9);
+      border-top: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-card);
+      padding: 16px 48px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-lead-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    .ticker-feed {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      animation: tickerScroll 24s linear infinite;
+    }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .ticker-player {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .ticker-val {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .ticker-time {
+      font-size: 10px;
+      color: var(--text-dim);
+      font-family: 'Rajdhani', monospace;
+    }
+
+    /* =========================================================================
+       7. SECCIÓN FAQ
+       ========================================================================= */
+    .faq-accordion {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .faq-item.active {
+      border-color: var(--accent);
+    }
+
+    .faq-question {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      user-select: none;
+    }
+
+    .faq-toggle-icon {
+      font-size: 18px;
+      color: var(--accent);
+      transition: transform 0.25s;
+    }
+
+    .faq-item.active .faq-toggle-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* =========================================================================
+       8. FOOTER GAMER
+       ========================================================================= */
+    .site-footer {
+      background: #040508;
+      border-top: 1px solid var(--border-card);
+      padding: 64px 48px 32px;
+      margin-top: 48px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 48px;
+      max-width: 1360px;
+      margin: 0 auto 48px;
+    }
+
+    .footer-brand h2 {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      max-width: 380px;
+      margin-bottom: 24px;
+    }
+
+    .payment-icons-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .payment-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+      color: #fff;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* MODAL DE CONFIRMACIÓN DE RECARGA */
+    .recharge-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 10, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .recharge-modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--accent);
+      border-radius: 24px;
+      padding: 36px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--accent-glow);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--accent);
+      margin: 0 auto 18px;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .modal-card h3 {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .modal-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .order-details-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 24px;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .order-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .order-line:last-child {
+      margin-bottom: 0;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-card);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .btn-modal-confirm {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #06080c;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    /* RESPONSIVE MÓVIL */
+    @media (max-width: 1024px) {
+      .navbar { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        gap: 40px;
       }
-      .section-tag::before,
-      .telemetry-dot {
-        animation: none !important;
-      }
-      .integration-item {
-        transition: none !important;
-      }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .flash-banner { grid-template-columns: 1fr; padding: 32px 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .section-wrap { padding: 64px 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats { grid-template-columns: 1fr; gap: 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .packages-terminal-grid { grid-template-columns: repeat(2, 1fr); }
+      .flash-right-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <main class="system-section section-copy" id="system-root">
-    
-    <!-- ENCABEZADO SUPERIOR -->
-    <header class="system-header">
-      <div class="system-brand">
-        <div class="brand-cube"></div>
-        <span class="brand-name">Nexus Ops Engine</span>
-      </div>
+  <!-- CANVAS GAMER INTERACTIVO EN EL FONDO -->
+  <canvas id="ambient-canvas"></canvas>
+  <div class="cyber-grid-overlay"></div>
 
-      <div class="controls-cluster">
-        <!-- Selector de tema Lima / Azul / Rojo -->
-        <div class="theme-selector" role="group" aria-label="Selector de Tema">
-          <button class="theme-dot-btn active" id="theme-btn-lime" onclick="setAccentTheme('lime')" title="Modo Lima (#C8FF45)">
-            <span class="theme-dot-inner" style="background: #C8FF45;"></span>
+  <div class="app-container">
+
+    <!-- 1. BARRA DE NAVEGACIÓN -->
+    <header class="navbar">
+      <a href="#portada" class="brand-logo">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-title-box">
+          <h1>Nexus Recargas</h1>
+          <span>Gamer Top-Up Hub 24/7</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#portada" class="nav-link active">Inicio</a></li>
+          <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="#servicios" class="nav-link">Servicios</a></li>
+          <li><a href="#ofertas" class="nav-link">Ofertas Flash</a></li>
+          <li><a href="#faq" class="nav-link">Preguntas</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Selector de Color Gamer -->
+        <div class="theme-picker" title="Personaliza tu color gamer">
+          <button class="theme-btn active" id="btn-theme-green" onclick="setGamerTheme('green')">
+            <span class="theme-btn-dot" style="background: #00ff88;"></span>
           </button>
-          <button class="theme-dot-btn" id="theme-btn-blue" onclick="setAccentTheme('blue')" title="Modo Azul (#4C6FFF)">
-            <span class="theme-dot-inner" style="background: #4C6FFF;"></span>
+          <button class="theme-btn" id="btn-theme-blue" onclick="setGamerTheme('blue')">
+            <span class="theme-btn-dot" style="background: #00d2ff;"></span>
           </button>
-          <button class="theme-dot-btn" id="theme-btn-red" onclick="setAccentTheme('red')" title="Modo Rojo (#FF003C)">
-            <span class="theme-dot-inner" style="background: #FF003C;"></span>
+          <button class="theme-btn" id="btn-theme-red" onclick="setGamerTheme('red')">
+            <span class="theme-btn-dot" style="background: #ff0044;"></span>
           </button>
         </div>
 
-        <!-- Audio sintético opcional -->
-        <button class="btn-audio" id="btn-audio" onclick="toggleAudio()" title="Activar sonido robótico y pulsos de datos">
+        <!-- Audio sintético -->
+        <button class="btn-sfx" id="btn-audio-sfx" onclick="toggleAudio()" title="Activar sonido gamer">
           <span id="audio-icon">🔇</span>
-          <span>SFX</span>
+          <span>AUDIO</span>
         </button>
+
+        <a href="#catalogo" class="btn-nav-recharge">
+          <span>⚡ RECARGAR</span>
+        </a>
       </div>
     </header>
 
-    <!-- CUERPO PRINCIPAL -->
-    <section class="system-main">
+    <!-- 2. PORTADA (HERO PRINCIPAL) -->
+    <section class="hero-section" id="portada">
       
-      <!-- COLUMNA IZQUIERDA: ETIQUETA, H2 Y 6 INTEGRACIONES -->
-      <div class="section-left">
-        <span class="section-tag">SYSTEM / 88</span>
-        <h2 class="section-title">Todo habla con todo.</h2>
-        <p class="section-desc">
-          Red técnica de liquidación instantánea para plataformas de recargas gamer y pasarelas de operaciones conectadas. Enrutamiento dinámico en malla con latencia sub-15ms.
-        </p>
-
-        <!-- LISTA VERTICAL DE SEIS INTEGRACIONES -->
-        <nav class="section-nav" role="tablist" aria-label="Integraciones de Operaciones Conectadas">
-          
-          <button
-            class="integration-item active"
-            role="tab"
-            aria-selected="true"
-            data-index="0"
-            data-label="GARENA API"
-            data-node="01: GARENA"
-            onmouseenter="activateIntegration(0)"
-            onfocus="activateIntegration(0)">
-            <div class="integration-meta">
-              <span class="integration-index">01</span>
-              <div>
-                <div class="integration-title">Garena Direct Gateway</div>
-                <div class="integration-protocol">Free Fire & Diamonds Top-Up API</div>
-              </div>
-            </div>
-            <div class="integration-status-pill">
-              <span class="node-dot"></span>
-              <span>12ms</span>
-            </div>
-          </button>
-
-          <button
-            class="integration-item"
-            role="tab"
-            aria-selected="false"
-            data-index="1"
-            data-label="RIOT MESH"
-            data-node="02: RIOT"
-            onmouseenter="activateIntegration(1)"
-            onfocus="activateIntegration(1)">
-            <div class="integration-meta">
-              <span class="integration-index">02</span>
-              <div>
-                <div class="integration-title">Riot Games Protocol</div>
-                <div class="integration-protocol">Valorant & LoL Core Mesh</div>
-              </div>
-            </div>
-            <div class="integration-status-pill">
-              <span class="node-dot"></span>
-              <span>9ms</span>
-            </div>
-          </button>
-
-          <button
-            class="integration-item"
-            role="tab"
-            aria-selected="false"
-            data-index="2"
-            data-label="STEAM WALLET"
-            data-node="03: STEAM"
-            onmouseenter="activateIntegration(2)"
-            onfocus="activateIntegration(2)">
-            <div class="integration-meta">
-              <span class="integration-index">03</span>
-              <div>
-                <div class="integration-title">Steam Clearing Gateway</div>
-                <div class="integration-protocol">Instant Wallet Clearing Node</div>
-              </div>
-            </div>
-            <div class="integration-status-pill">
-              <span class="node-dot"></span>
-              <span>14ms</span>
-            </div>
-          </button>
-
-          <button
-            class="integration-item"
-            role="tab"
-            aria-selected="false"
-            data-index="3"
-            data-label="ACTIVISION"
-            data-node="04: ACTIVISION"
-            onmouseenter="activateIntegration(3)"
-            onfocus="activateIntegration(3)">
-            <div class="integration-meta">
-              <span class="integration-index">04</span>
-              <div>
-                <div class="integration-title">Activision COD Node</div>
-                <div class="integration-protocol">Call of Duty CP Points Sync</div>
-              </div>
-            </div>
-            <div class="integration-status-pill">
-              <span class="node-dot"></span>
-              <span>11ms</span>
-            </div>
-          </button>
-
-          <button
-            class="integration-item"
-            role="tab"
-            aria-selected="false"
-            data-index="4"
-            data-label="ROBLOX CLOUD"
-            data-node="05: ROBLOX"
-            onmouseenter="activateIntegration(4)"
-            onfocus="activateIntegration(4)">
-            <div class="integration-meta">
-              <span class="integration-index">05</span>
-              <div>
-                <div class="integration-title">Roblox Developer Cloud</div>
-                <div class="integration-protocol">Robux Mint & Security Protocol</div>
-              </div>
-            </div>
-            <div class="integration-status-pill">
-              <span class="node-dot"></span>
-              <span>15ms</span>
-            </div>
-          </button>
-
-          <button
-            class="integration-item"
-            role="tab"
-            aria-selected="false"
-            data-index="5"
-            data-label="DISCORD SYNC"
-            data-node="06: DISCORD"
-            onmouseenter="activateIntegration(5)"
-            onfocus="activateIntegration(5)">
-            <div class="integration-meta">
-              <span class="integration-index">06</span>
-              <div>
-                <div class="integration-title">Discord Bot Webhook</div>
-                <div class="integration-protocol">Real-time Delivery Event Stream</div>
-              </div>
-            </div>
-            <div class="integration-status-pill">
-              <span class="node-dot"></span>
-              <span>8ms</span>
-            </div>
-          </button>
-
-        </nav>
-      </div>
-
-      <!-- COLUMNA DERECHA: ESCENARIO CIRCULAR CANVAS 2D + ROBOT COMPANION -->
-      <div class="section-right" id="stage-container">
-        
-        <!-- CANVAS 2D CON RED TÉCNICA VIVA (12 NODOS, 2 ÓRBITAS, NÚCLEO MESH) -->
-        <div class="canvas-stage-wrapper" id="canvas-wrapper">
-          <canvas id="network-canvas"></canvas>
-
-          <!-- FALLBACK CSS/SVG VISIBLE SEGÚN ESPECIFICACIÓN -->
-          <svg class="canvas-fallback" viewBox="0 0 500 500" aria-label="Diagrama estático de red MESH">
-            <circle cx="250" cy="250" r="130" stroke="#777873" stroke-width="1" stroke-dasharray="4 4" fill="none" opacity="0.4"/>
-            <circle cx="250" cy="250" r="220" stroke="#777873" stroke-width="1" stroke-dasharray="4 4" fill="none" opacity="0.3"/>
-            <circle cx="250" cy="250" r="36" fill="#090A0C" stroke="#C8FF45" stroke-width="1.5"/>
-            <text x="250" y="254" text-anchor="middle" fill="#F1F2EC" font-size="10" font-family="Manrope">MESH</text>
-          </svg>
+      <div class="hero-content">
+        <div class="hero-badge-pill">
+          <span class="pulse-dot"></span>
+          <span>ENTREGA AUTOMÁTICA EN MENOS DE 30 SEGUNDOS</span>
         </div>
 
-        <!-- ROBOT COMPANION REALISTA COMPLETO ("robot completo, con calidad, ojos que siguen cursor") -->
-        <div class="robot-companion-container" id="robot-container">
-          <div class="robot-floor-shadow"></div>
+        <h1 class="hero-title">
+          RECARGAS GAMER <br>
+          <span class="highlight">AL INSTANTE //</span>
+        </h1>
 
-          <!-- RIG CON ROTACIÓN 3D Y RESPIRACIÓN -->
-          <div class="robot-rig" id="robot-rig">
-            
-            <!-- GLOBO HOLOGRÁFICO REACTIVO -->
-            <div class="robot-hud-tag" id="robot-hud">
-              MESH / CONECTADO ⚡ 12ms
-            </div>
+        <p class="hero-subtitle">
+          Potencia tu cuenta con recargas oficiales directamente a tu ID de jugador. Precios preferenciales, acreditación inmediata y soporte gamer 24 horas al día.
+        </p>
 
-            <!-- CAPA PRINCIPAL DEL ROBOT (IMAGEN FOTORREALISTA COMPLETA LIMPIA) -->
-            <div class="robot-photo-layer">
-              <img src="robot-final-master.png" alt="Robot TV Companion Operador" id="robot-photo-img" />
-            </div>
+        <div class="hero-cta-group">
+          <a href="#catalogo" class="btn-hero-primary" onclick="playSfx('click')">
+            <span>EXPLORAR CATÁLOGO</span>
+            <span>⚡</span>
+          </a>
+          <a href="#servicios" class="btn-hero-secondary" onclick="playSfx('click')">
+            <span>Ver Métodos de Pago 🛡️</span>
+          </a>
+        </div>
 
-            <!-- PANTALLA CRT OVERLAY EXACTA CON CRISTAL OSCURO Y SCANLINES -->
-            <div class="crt-screen-overlay" id="crt-overlay">
-              <div class="crt-glass-back"></div>
-              <div class="crt-scanlines"></div>
-              <div class="crt-glare"></div>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <h4>+180,000</h4>
+            <p>Recargas Exitosas</p>
+          </div>
+          <div class="stat-box">
+            <h4>&lt; 30 Seg</h4>
+            <p>Tiempo de Entrega</p>
+          </div>
+          <div class="stat-box">
+            <h4>4.9 / 5 ⭐</h4>
+            <p>TrustScore Gamer</p>
+          </div>
+        </div>
+      </div>
 
-              <!-- OJOS LUMINOSOS CON SEGUIMIENTO DE CURSOR SUBPÍXEL REAL -->
-              <div class="crt-pupil eye-left" id="eye-left"></div>
-              <div class="crt-pupil eye-right" id="eye-right"></div>
-            </div>
-
+      <!-- TERMINAL GAMER DE RECARGA RÁPIDA (PORTADA DERECHA) -->
+      <div class="hero-terminal" id="terminal-box">
+        <div class="terminal-header">
+          <div class="terminal-title-cluster">
+            <span>🎮</span>
+            <h3>Recarga Directa</h3>
+          </div>
+          <div class="terminal-live-badge">
+            <span class="pulse-dot"></span>
+            <span>EN LÍNEA 24/7</span>
           </div>
         </div>
 
+        <!-- 1. Selector de Juego Rápido -->
+        <div class="terminal-field-label">
+          <span>1. SELECCIONA TU JUEGO</span>
+          <span id="terminal-game-name" style="color: var(--accent);">FREE FIRE</span>
+        </div>
+        <div class="game-chips-row" id="terminal-chips">
+          <button class="game-chip active" onclick="terminalSelectGame('Free Fire', 'Diamantes 💎', this)">🔥 Free Fire</button>
+          <button class="game-chip" onclick="terminalSelectGame('COD Mobile', 'CP Points 🎖️', this)">🎯 COD Mobile</button>
+          <button class="game-chip" onclick="terminalSelectGame('Valorant', 'VP Points ⚔️', this)">🗡️ Valorant</button>
+          <button class="game-chip" onclick="terminalSelectGame('Roblox', 'Robux 🧱', this)">🧱 Roblox</button>
+          <button class="game-chip" onclick="terminalSelectGame('Brawl Stars', 'Gemas ⭐', this)">⭐ Brawl Stars</button>
+        </div>
+
+        <!-- 2. Paquetes de Saldo -->
+        <div class="terminal-field-label">
+          <span>2. ELIGE TU PAQUETE</span>
+          <span id="terminal-pkg-badge" style="color: var(--accent);">+31 EXTRA</span>
+        </div>
+        <div class="packages-terminal-grid" id="terminal-pkgs-grid">
+          <div class="pkg-chip" onclick="terminalSelectPkg('100 💎', '+$0.10', '$0.99', this)">
+            <div class="pkg-chip-amount">100 💎</div>
+            <div class="pkg-chip-bonus">+10 Extra</div>
+            <div class="pkg-chip-price">$0.99 USD</div>
+          </div>
+          <div class="pkg-chip active" onclick="terminalSelectPkg('310 💎', 'POPULAR', '$2.99', this)">
+            <span class="pkg-chip-tag">TOP 🔥</span>
+            <div class="pkg-chip-amount">310 💎</div>
+            <div class="pkg-chip-bonus">+31 Extra</div>
+            <div class="pkg-chip-price">$2.99 USD</div>
+          </div>
+          <div class="pkg-chip" onclick="terminalSelectPkg('520 💎', 'PRO', '$4.99', this)">
+            <div class="pkg-chip-amount">520 💎</div>
+            <div class="pkg-chip-bonus">+52 Extra</div>
+            <div class="pkg-chip-price">$4.99 USD</div>
+          </div>
+          <div class="pkg-chip" onclick="terminalSelectPkg('1,060 💎', 'VALOR', '$9.99', this)">
+            <span class="pkg-chip-tag">VALOR ⭐</span>
+            <div class="pkg-chip-amount">1,060 💎</div>
+            <div class="pkg-chip-bonus">+106 Extra</div>
+            <div class="pkg-chip-price">$9.99 USD</div>
+          </div>
+          <div class="pkg-chip" onclick="terminalSelectPkg('2,180 💎', 'VIP', '$19.99', this)">
+            <div class="pkg-chip-amount">2,180 💎</div>
+            <div class="pkg-chip-bonus">+218 Extra</div>
+            <div class="pkg-chip-price">$19.99 USD</div>
+          </div>
+          <div class="pkg-chip" onclick="terminalSelectPkg('Pase Élite', 'TEMPORADA', '$3.99', this)">
+            <span class="pkg-chip-tag">PASES 🏆</span>
+            <div class="pkg-chip-amount">Pase Élite</div>
+            <div class="pkg-chip-bonus">Acceso VIP</div>
+            <div class="pkg-chip-price">$3.99 USD</div>
+          </div>
+        </div>
+
+        <!-- 3. Entrada de ID del Jugador -->
+        <div class="terminal-field-label">
+          <span>3. ID DE JUGADOR (UID)</span>
+          <span style="font-size: 9px; color: var(--text-dim);">SOLO TU ID (SIN CONTRASEÑAS)</span>
+        </div>
+        <div class="terminal-input-wrap">
+          <div class="input-box">
+            <input type="text" id="terminal-id-input" placeholder="Ej: 2849102847" />
+            <button class="input-verify-btn" onclick="verifyId()">VERIFICAR</button>
+          </div>
+        </div>
+
+        <button class="btn-terminal-submit" onclick="executeFastRecharge()">
+          <span>⚡ RECARGAR AHORA</span>
+        </button>
       </div>
 
     </section>
 
-    <!-- BORDE INFERIOR: TELEMETRÍA (ESTADO, LATENCIA, NÚMERO DE EVENTOS) -->
-    <footer class="system-footer">
-      <div class="telemetry-group">
-        <div class="telemetry-item">
-          <span class="telemetry-dot"></span>
-          <span class="telemetry-label">ESTADO:</span>
-          <span class="telemetry-value" id="status-text">NÚCLEO MESH ACTIVO</span>
+    <!-- TICKER DE COMPRAS EN VIVO (PRUEBA SOCIAL GAMER) -->
+    <div class="live-ticker-wrap">
+      <div class="ticker-lead-badge">
+        <span class="pulse-dot"></span>
+        <span>EN VIVO</span>
+      </div>
+      <div class="ticker-feed">
+        <div class="ticker-item">
+          <span class="ticker-player">AlexGamer99 (Venezuela)</span> recargó <span class="ticker-val">1,060 💎 Free Fire</span> <span class="ticker-time">hace 8s</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-player">Carlos_COD (Colombia)</span> recargó <span class="ticker-val">2,400 CP Call of Duty</span> <span class="ticker-time">hace 19s</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-player">Val_Sniper (Chile)</span> recargó <span class="ticker-val">2,050 VP Valorant</span> <span class="ticker-time">hace 34s</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-player">RobuxMaster (México)</span> recargó <span class="ticker-val">1,200 Robux Roblox</span> <span class="ticker-time">hace 48s</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-player">StarsPro (Argentina)</span> recargó <span class="ticker-val">170 Gemas Brawl Stars</span> <span class="ticker-time">hace 59s</span>
+        </div>
+        <!-- Duplicado para loop continuo -->
+        <div class="ticker-item">
+          <span class="ticker-player">AlexGamer99 (Venezuela)</span> recargó <span class="ticker-val">1,060 💎 Free Fire</span> <span class="ticker-time">hace 8s</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-player">Carlos_COD (Colombia)</span> recargó <span class="ticker-val">2,400 CP Call of Duty</span> <span class="ticker-time">hace 19s</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SECCIÓN: CATÁLOGO DE JUEGOS POPULARES -->
+    <section class="section-wrap" id="catalogo">
+      <div class="section-header-center">
+        <span class="section-eyebrow">// CATÁLOGO OFICIAL 2026</span>
+        <h2 class="section-main-title">Tus Juegos Favoritos en un Solo Lugar</h2>
+        <p class="section-subtitle-text">
+          Selecciona tu título preferido, ingresa tu identificador de jugador y recibe tus monedas o pases de temporada en segundos.
+        </p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="catalog-filters">
+        <button class="filter-btn active" onclick="filterCatalog('all', this)">Todos los Juegos</button>
+        <button class="filter-btn" onclick="filterCatalog('battle-royale', this)">Battle Royale</button>
+        <button class="filter-btn" onclick="filterCatalog('shooter', this)">Shooters</button>
+        <button class="filter-btn" onclick="filterCatalog('mobile', this)">Móviles</button>
+        <button class="filter-btn" onclick="filterCatalog('pc', this)">PC & Consola</button>
+      </div>
+
+      <!-- Grid de Tarjetas de Juegos -->
+      <div class="catalog-grid" id="games-grid">
+        
+        <!-- FREE FIRE -->
+        <div class="game-card" data-category="battle-royale mobile" onclick="openGameModal('Free Fire', 'Diamantes 💎')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 68, 0, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">MÁS POPULAR 🔥</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">Free Fire</h3>
+              <div class="game-card-currency">💎 Diamantes & Pases</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$0.99 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
         </div>
 
-        <div class="telemetry-item">
-          <span class="telemetry-label">LATENCIA:</span>
-          <span class="telemetry-value" id="latency-text">12ms</span>
+        <!-- COD MOBILE -->
+        <div class="game-card" data-category="shooter mobile" onclick="openGameModal('Call of Duty: Mobile', 'CP Points 🎖️')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(0, 180, 216, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">TEMPORADA 🎯</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">COD Mobile</h3>
+              <div class="game-card-currency">🎖️ CP Points & BattlePass</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$1.49 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
         </div>
 
-        <div class="telemetry-item">
-          <span class="telemetry-label">EVENTOS:</span>
-          <span class="telemetry-value" id="events-text">4,892/s</span>
+        <!-- VALORANT -->
+        <div class="game-card" data-category="shooter pc" onclick="openGameModal('Valorant', 'VP Points ⚔️')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 0, 68, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">RIOT MESH 🛡️</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">Valorant</h3>
+              <div class="game-card-currency">⚔️ Valorant Points (VP)</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$4.99 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROBLOX -->
+        <div class="game-card" data-category="all pc mobile" onclick="openGameModal('Roblox', 'Robux 🧱')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(0, 255, 136, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">ENTREGA DIRECTA</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">Roblox</h3>
+              <div class="game-card-currency">🧱 Robux Oficiales</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$2.99 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BRAWL STARS -->
+        <div class="game-card" data-category="mobile" onclick="openGameModal('Brawl Stars', 'Gemas ⭐')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 200, 0, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">SUPERCELL</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">Brawl Stars</h3>
+              <div class="game-card-currency">⭐ Gemas & Brawl Pass</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$1.99 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOBILE LEGENDS -->
+        <div class="game-card" data-category="mobile" onclick="openGameModal('Mobile Legends', 'Diamonds 🔮')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(160, 32, 240, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">MOONTON</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">Mobile Legends</h3>
+              <div class="game-card-currency">🔮 Diamonds & Pases</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$0.99 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PUBG MOBILE -->
+        <div class="game-card" data-category="battle-royale mobile" onclick="openGameModal('PUBG Mobile', 'UC Cash 🪂')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(255, 120, 0, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">TENCENT</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">PUBG Mobile</h3>
+              <div class="game-card-currency">🪂 UC Unknown Cash</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$1.20 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEAM WALLET -->
+        <div class="game-card" data-category="pc" onclick="openGameModal('Steam Wallet', 'Saldo USD 🎮')">
+          <div class="game-card-banner" style="background-image: linear-gradient(135deg, rgba(30, 80, 160, 0.4), rgba(0,0,0,0.8));">
+            <span class="game-badge-tag">VALVE GLOBAL</span>
+          </div>
+          <div class="game-card-body">
+            <div>
+              <h3 class="game-card-name">Steam Wallet</h3>
+              <div class="game-card-currency">🎮 Tarjetas de Saldo Digital</div>
+            </div>
+            <div class="game-card-footer">
+              <div>
+                <span class="game-card-price-start">Desde</span>
+                <div class="game-card-price-val">$5.00 USD</div>
+              </div>
+              <button class="btn-card-select">RECARGAR</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. SECCIÓN: SERVICIOS Y BENEFICIOS GAMER -->
+    <section class="section-wrap" id="servicios">
+      <div class="section-header-center">
+        <span class="section-eyebrow">// POR QUÉ ELEGIRNOS</span>
+        <h2 class="section-main-title">Servicios Diseñados para Gamers Exigentes</h2>
+        <p class="section-subtitle-text">
+          Diseñado para erradicar las esperas manuales y riesgos de estafa. Infraestructura técnica directa con los distribuidores autorizados.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-box">
+          <div class="service-icon-box">⚡</div>
+          <h3>Entrega por API en 30s</h3>
+          <p>Nuestros servidores liquidan la transacción inmediatamente al confirmar tu pago. Tu saldo llega a tu cuenta de juego sin esperas.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-icon-box">🛡️</div>
+          <h3>100% Antiban por ID</h3>
+          <p>Solo solicitamos tu ID de jugador o UID. Jamás te pediremos contraseñas ni correos. Todo el proceso es oficial y seguro.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-icon-box">💳</div>
+          <h3>Pagos Locales y Cripto</h3>
+          <p>Aceptamos Pago Móvil, Binance Pay (USDT con cero comisiones), Nequi, Zelle, Tarjetas de Débito/Crédito y PayPal.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-icon-box">🎧</div>
+          <h3>Soporte Real 24/7</h3>
+          <p>Atención inmediata por WhatsApp y Discord los 365 días del año. Si surge cualquier duda, nuestro equipo te asiste en tiempo real.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SECCIÓN: OFERTAS FLASH -->
+    <section class="section-wrap" id="ofertas">
+      <div class="flash-banner">
+        <div class="flash-left">
+          <span class="section-eyebrow" style="color: var(--accent);">⚡ OFERTA RELÁMPAGO</span>
+          <h2>BONIFICACIÓN DEL +20% EXTRA EN DIAMANTES</h2>
+          <p>
+            Aprovecha la recarga bonificada de fin de semana. Válido en todos los paquetes superiores a 520 diamantes o 1,000 robux.
+          </p>
+
+          <!-- Cuenta Regresiva -->
+          <div class="countdown-cluster">
+            <div class="count-unit">
+              <div class="count-num" id="countdown-h">08</div>
+              <div class="count-label">Horas</div>
+            </div>
+            <div class="count-unit">
+              <div class="count-num" id="countdown-m">42</div>
+              <div class="count-label">Minutos</div>
+            </div>
+            <div class="count-unit">
+              <div class="count-num" id="countdown-s">19</div>
+              <div class="count-label">Segundos</div>
+            </div>
+          </div>
+
+          <a href="#catalogo" class="btn-hero-primary" style="width: fit-content;" onclick="playSfx('click')">
+            <span>RECLAMAR BONUS AHORA</span>
+          </a>
+        </div>
+
+        <div class="flash-right-cards">
+          <div class="flash-item-card">
+            <div style="font-size: 24px; margin-bottom: 8px;">💎</div>
+            <h4 style="color: #fff; font-size: 15px;">Pack 1,060 + 212 Bonus</h4>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0;">Ahorro de $3.50</div>
+            <div style="font-size: 16px; font-weight: 800; font-family: 'Rajdhani', monospace;">$8.99 USD</div>
+          </div>
+          <div class="flash-item-card">
+            <div style="font-size: 24px; margin-bottom: 8px;">🧱</div>
+            <h4 style="color: #fff; font-size: 15px;">2,000 Robux Especial</h4>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0;">Ahorro de $4.00</div>
+            <div style="font-size: 16px; font-weight: 800; font-family: 'Rajdhani', monospace;">$16.99 USD</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SECCIÓN: PREGUNTAS FRECUENTES -->
+    <section class="section-wrap" id="faq">
+      <div class="section-header-center">
+        <span class="section-eyebrow">// DUDAS FRECUENTES</span>
+        <h2 class="section-main-title">¿Tienes Preguntas? Te Respondemos</h2>
+        <p class="section-subtitle-text">
+          Todo lo que necesitas saber sobre nuestras recargas y métodos de entrega.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item active" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>¿Cómo recargo solo con mi ID de jugador?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Solo debes seleccionar tu juego, ingresar tu ID numérico o nombre de usuario según el juego, y elegir el paquete. Nuestro sistema se conecta a la API autorizada de recargas para acreditar el saldo directamente a tu cuenta sin requerir contraseñas.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>¿Cuánto tiempo tarda en llegar mi saldo?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            En el 98% de los casos, la entrega es completamente automática y tarda entre 10 y 45 segundos una vez confirmado tu pago. En casos excepcionales de mantenimiento del juego, el tiempo máximo es de 15 minutos.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>¿Mi cuenta corre riesgo de ban?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Cero riesgo. Todas nuestras recargas se realizan mediante canales y convenios oficiales autorizados (Garena, Riot Games, Valve, Tencent). Tu cuenta está 100% blindada contra bloqueos.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>¿Qué métodos de pago tienen disponibles?</span>
+            <span class="faq-toggle-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            Aceptamos Pago Móvil en Bolívares (a tasa actualizada), Binance Pay (USDT sin comisiones), Nequi y Daviplata en Colombia, Zelle, Tarjetas de Débito/Crédito internacionales y PayPal.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FOOTER GAMER -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h2>⚡ NEXUS RECARGAS</h2>
+          <p>
+            La plataforma líder en recargas instantáneas de videojuegos y saldos digitales en Latinoamérica. Rapidez, seguridad y garantía total en cada compra.
+          </p>
+          <div class="payment-icons-row">
+            <span class="payment-tag">Pago Móvil</span>
+            <span class="payment-tag">Binance Pay</span>
+            <span class="payment-tag">Nequi</span>
+            <span class="payment-tag">Zelle</span>
+            <span class="payment-tag">Visa/Mastercard</span>
+            <span class="payment-tag">PayPal</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Juegos</h4>
+          <ul>
+            <li><a href="#catalogo">Free Fire</a></li>
+            <li><a href="#catalogo">Call of Duty Mobile</a></li>
+            <li><a href="#catalogo">Valorant</a></li>
+            <li><a href="#catalogo">Roblox</a></li>
+            <li><a href="#catalogo">Brawl Stars</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Plataforma</h4>
+          <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#ofertas">Ofertas Flash</a></li>
+            <li><a href="#faq">Preguntas Frecuentes</a></li>
+            <li><a href="#portada">Calculadora de ID</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Soporte 24/7</h4>
+          <ul>
+            <li><a href="https://discord.com" target="_blank">Discord Oficial</a></li>
+            <li><a href="https://whatsapp.com" target="_blank">WhatsApp Directo</a></li>
+            <li><a href="https://t.me" target="_blank">Canal de Telegram</a></li>
+            <li><a href="mailto:soporte@nexusrecargas.com">soporte@nexusrecargas.com</a></li>
+          </ul>
         </div>
       </div>
 
-      <div style="font-size: 11px; color: var(--gray);">
-        <span>ARQUITECTURA DISTRIBUIDA // V2.8</span>
+      <div class="footer-bottom">
+        <div>© 2026 Nexus Recargas Gamer. Todos los derechos reservados. No afiliado directamente a ninguna marca comercial citada.</div>
+        <div>Blindaje SSL 256-Bit // Entrega Verificada</div>
       </div>
     </footer>
 
-  </main>
+  </div>
+
+  <!-- MODAL DE CONFIRMACIÓN DE RECARGA -->
+  <div class="recharge-modal-backdrop" id="recharge-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      <div class="modal-icon">⚡</div>
+      <h3 id="modal-game-title">Free Fire</h3>
+      <p id="modal-desc">Verifica los datos de tu recarga antes de proceder a la pasarela de pago seguro.</p>
+
+      <div class="order-details-box">
+        <div class="order-line">
+          <span style="color: var(--text-dim);">Juego:</span>
+          <span id="modal-field-game">Free Fire</span>
+        </div>
+        <div class="order-line">
+          <span style="color: var(--text-dim);">Paquete:</span>
+          <span id="modal-field-pkg">310 Diamantes (+31 Bonus)</span>
+        </div>
+        <div class="order-line">
+          <span style="color: var(--text-dim);">ID de Jugador:</span>
+          <span id="modal-field-id" style="color: var(--accent); font-family: 'Rajdhani', monospace;">2849102847</span>
+        </div>
+        <div class="order-line">
+          <span style="color: var(--text-dim);">Tiempo Estimado:</span>
+          <span style="color: var(--accent);">~30 Segundos</span>
+        </div>
+        <div class="order-line">
+          <span>Total a Pagar:</span>
+          <span id="modal-field-price" style="color: var(--accent); font-size: 16px;">$2.99 USD</span>
+        </div>
+      </div>
+
+      <button class="btn-modal-confirm" onclick="confirmPurchase()">
+        <span>CONTINUAR AL PAGO 🚀</span>
+      </button>
+    </div>
+  </div>
 
   <script>
-    /**
-     * SYSTEM / 88 — MOTOR DE CANVAS 2D Y ROBOT COMPANION
-     * Cumple con:
-     * - 12 nodos sobre dos órbitas
-     * - Enlaces con pulsos discretos
-     * - Movimiento lento con requestAnimationFrame
-     * - Resalta solo su ruta y actualiza etiqueta central al enfocar
-     * - DPR limitado a 1.5
-     * - ResizeObserver
-     * - IntersectionObserver pausa
-     * - prefers-reduced-motion estático
-     * - Robot completo con seguimiento 3D de cursor y ojos luminiscentes CRT
-     */
-
     // ESTADO GENERAL
-    const appState = {
-      theme: 'lime', // 'lime', 'blue', 'red'
-      audioEnabled: false,
-      activeIntegration: 0,
-      activeLabel: 'GARENA API',
-      centralMeshText: 'MESH / GARENA',
-      reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-      isIntersecting: true,
-      mouseX: window.innerWidth * 0.7,
-      mouseY: window.innerHeight * 0.5,
-      normX: 0,
-      normY: 0,
-      currentNormX: 0,
-      currentNormY: 0,
-      speechTimer: 180,
-      eventsCount: 4892,
-      latencyVal: 12
+    const state = {
+      theme: 'green',
+      audio: false,
+      selectedGame: 'Free Fire',
+      selectedPkg: '310 💎',
+      selectedPrice: '$2.99 USD',
+      playerId: ''
     };
 
-    // ELEMENTOS DOM
-    const canvas = document.getElementById('network-canvas');
-    const ctx = canvas.getContext('2d');
-    const stageContainer = document.getElementById('stage-container');
-    const robotRig = document.getElementById('robot-rig');
-    const eyeLeft = document.getElementById('eye-left');
-    const eyeRight = document.getElementById('eye-right');
-    const robotHud = document.getElementById('robot-hud');
-    const latencyEl = document.getElementById('latency-text');
-    const eventsEl = document.getElementById('events-text');
-    const statusEl = document.getElementById('status-text');
-    const btnAudio = document.getElementById('btn-audio');
-    const audioIcon = document.getElementById('audio-icon');
-
-    // PALETA DE COLORES
-    const colorThemes = {
-      lime: {
-        accent: '#C8FF45',
-        glow: 'rgba(200, 255, 69, 0.8)',
-        dim: 'rgba(200, 255, 69, 0.15)',
-        packet: '#C8FF45'
-      },
-      blue: {
-        accent: '#4C6FFF',
-        glow: 'rgba(76, 111, 255, 0.8)',
-        dim: 'rgba(76, 111, 255, 0.15)',
-        packet: '#4C6FFF'
-      },
-      red: {
-        accent: '#FF003C',
-        glow: 'rgba(255, 0, 60, 0.8)',
-        dim: 'rgba(255, 0, 60, 0.15)',
-        packet: '#FF003C'
-      }
-    };
-
-    // SÍNTESIS DE AUDIO WEB (SFX TÉCNICOS SUTILES)
+    // SÍNTESIS DE AUDIO WEB CON EFECTOS GAMER
     let audioCtx = null;
     function playSfx(type) {
-      if (!appState.audioEnabled) return;
+      if (!state.audio) return;
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -1103,477 +2029,231 @@
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
-        if (type === 'focus') {
+        if (type === 'click') {
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(620, now);
-          osc.frequency.exponentialRampToValueAtTime(1040, now + 0.08);
-          gain.gain.setValueAtTime(0.05, now);
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+          gain.gain.setValueAtTime(0.08, now);
           gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
           osc.start(now);
           osc.stop(now + 0.09);
-        } else if (type === 'blink') {
+        } else if (type === 'success') {
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(800, now);
-          osc.frequency.linearRampToValueAtTime(540, now + 0.05);
-          gain.gain.setValueAtTime(0.02, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.frequency.setValueAtTime(520, now);
+          osc.frequency.linearRampToValueAtTime(780, now + 0.08);
+          osc.frequency.linearRampToValueAtTime(1040, now + 0.18);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
           osc.start(now);
-          osc.stop(now + 0.05);
+          osc.stop(now + 0.25);
         }
-      } catch (err) {
-        console.warn(err);
+      } catch (e) {
+        console.warn(e);
       }
     }
 
     function toggleAudio() {
-      appState.audioEnabled = !appState.audioEnabled;
-      audioIcon.innerText = appState.audioEnabled ? '🔊' : '🔇';
-      btnAudio.style.borderColor = appState.audioEnabled ? 'var(--accent)' : 'var(--gray-dim)';
-      if (appState.audioEnabled) {
-        playSfx('focus');
-        setHudText('AUDIO MESH: EN LÍNEA 🔊');
-      }
+      state.audio = !state.audio;
+      document.getElementById('audio-icon').innerText = state.audio ? '🔊' : '🔇';
+      document.getElementById('btn-audio-sfx').style.borderColor = state.audio ? 'var(--accent)' : 'var(--border-card)';
+      if (state.audio) playSfx('click');
     }
 
-    // CAMBIO DE TEMA
-    function setAccentTheme(themeName) {
-      appState.theme = themeName;
-      if (themeName === 'lime') {
+    // TEMA GAMER
+    function setGamerTheme(themeName) {
+      state.theme = themeName;
+      if (themeName === 'green') {
         document.documentElement.removeAttribute('data-theme');
       } else {
         document.documentElement.setAttribute('data-theme', themeName);
       }
-      document.querySelectorAll('.theme-dot-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = document.getElementById(`theme-btn-${themeName}`);
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-theme-${themeName}`);
       if (activeBtn) activeBtn.classList.add('active');
-      playSfx('focus');
-      setHudText(`TEMA ACTIVO: ${themeName.toUpperCase()}`);
+      playSfx('click');
     }
 
-    // FEEDBACK HOLOGRÁFICO DEL ROBOT
-    function setHudText(text) {
-      robotHud.innerText = text;
-      robotHud.classList.add('active');
-      appState.speechTimer = 220;
+    // SELECCIÓN EN TERMINAL DE LA PORTADA
+    function terminalSelectGame(name, curr, btn) {
+      document.querySelectorAll('.game-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      state.selectedGame = name;
+      document.getElementById('terminal-game-name').innerText = name.toUpperCase();
+      playSfx('click');
     }
 
-    // -------------------------------------------------------------------------
-    // DEFINICIÓN DE 12 NODOS Y 2 ÓRBITAS
-    // -------------------------------------------------------------------------
-    // Órbita 1 (interior): 5 nodos
-    // Órbita 2 (exterior): 7 nodos
-    // Total = 12 nodos
-    const nodeConfigs = [
-      // 6 Integraciones principales conectadas a la lista izquierda:
-      { id: 0, orbit: 1, angleOffset: 0.0, label: '01: GARENA', tag: 'GAR', integrationIndex: 0, lat: '12ms' },
-      { id: 1, orbit: 1, angleOffset: (Math.PI * 2) * (1 / 5), label: '02: RIOT', tag: 'RIO', integrationIndex: 1, lat: '9ms' },
-      { id: 2, orbit: 1, angleOffset: (Math.PI * 2) * (2 / 5), label: '03: STEAM', tag: 'STM', integrationIndex: 2, lat: '14ms' },
-      { id: 3, orbit: 2, angleOffset: (Math.PI * 2) * (0 / 7), label: '04: ACTIVISION', tag: 'ACT', integrationIndex: 3, lat: '11ms' },
-      { id: 4, orbit: 2, angleOffset: (Math.PI * 2) * (1 / 7), label: '05: ROBLOX', tag: 'RBX', integrationIndex: 4, lat: '15ms' },
-      { id: 5, orbit: 2, angleOffset: (Math.PI * 2) * (2 / 7), label: '06: DISCORD', tag: 'DSC', integrationIndex: 5, lat: '8ms' },
-      // 6 Nodos auxiliares de la red técnica en malla:
-      { id: 6, orbit: 1, angleOffset: (Math.PI * 2) * (3 / 5), label: '07: SOLANA PAY', tag: 'SOL', integrationIndex: -1, lat: '13ms' },
-      { id: 7, orbit: 1, angleOffset: (Math.PI * 2) * (4 / 5), label: '08: ZERO-HOP', tag: 'ZHP', integrationIndex: -1, lat: '7ms' },
-      { id: 8, orbit: 2, angleOffset: (Math.PI * 2) * (3 / 7), label: '09: CLEARING', tag: 'CLR', integrationIndex: -1, lat: '16ms' },
-      { id: 9, orbit: 2, angleOffset: (Math.PI * 2) * (4 / 7), label: '10: AUTH NODE', tag: 'ATH', integrationIndex: -1, lat: '10ms' },
-      { id: 10, orbit: 2, angleOffset: (Math.PI * 2) * (5 / 7), label: '11: LATAM ROUTE', tag: 'LTM', integrationIndex: -1, lat: '14ms' },
-      { id: 11, orbit: 2, angleOffset: (Math.PI * 2) * (6 / 7), label: '12: MESH-88', tag: 'M88', integrationIndex: -1, lat: '12ms' }
-    ];
-
-    // PULSOS DISCRETOS (DATA PACKETS)
-    const packets = [];
-    for (let i = 0; i < 16; i++) {
-      packets.push({
-        nodeId: i % 12,
-        progress: (i / 16),
-        speed: 0.003 + (i % 4) * 0.0015,
-        reverse: (i % 2 === 0)
-      });
+    function terminalSelectPkg(name, badge, price, chip) {
+      document.querySelectorAll('.pkg-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      state.selectedPkg = name;
+      state.selectedPrice = `${price} USD`;
+      document.getElementById('terminal-pkg-badge').innerText = badge;
+      playSfx('click');
     }
 
-    // ROTACIÓN DE ÓRBITAS
-    let orbitAngle1 = 0;
-    let orbitAngle2 = 0;
-
-    // INTERACCIÓN CON LISTA IZQUIERDA
-    function activateIntegration(index) {
-      if (appState.activeIntegration === index) return;
-      appState.activeIntegration = index;
-
-      const items = document.querySelectorAll('.integration-item');
-      items.forEach((item, idx) => {
-        const isActive = idx === index;
-        item.classList.toggle('active', isActive);
-        item.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        if (isActive) {
-          const label = item.getAttribute('data-label') || 'INTEGRACIÓN';
-          const node = item.getAttribute('data-node') || '';
-          appState.activeLabel = label;
-          appState.centralMeshText = `MESH / ${label.replace(' API', '').replace(' PROTOCOL', '')}`;
-          statusEl.innerText = `${label} ENRUTADO`;
-          setHudText(`SYNC: ${node} ⚡`);
-        }
-      });
-
-      playSfx('focus');
-      triggerEyeReaction();
-    }
-
-    function triggerEyeReaction() {
-      // Reacción momentánea de los ojos
-      eyeLeft.classList.add('eye-happy');
-      eyeRight.classList.add('eye-happy');
-      setTimeout(() => {
-        eyeLeft.classList.remove('eye-happy');
-        eyeRight.classList.remove('eye-happy');
-      }, 400);
-    }
-
-    // -------------------------------------------------------------------------
-    // MOTOR DE DIBUJO CANVAS 2D CON DPR LIMITADO A 1.5
-    // -------------------------------------------------------------------------
-    let viewWidth = 500;
-    let viewHeight = 500;
-    let dpr = 1;
-
-    function resizeCanvas() {
-      const rect = stageContainer.getBoundingClientRect();
-      viewWidth = rect.width;
-      viewHeight = rect.height;
-
-      // Limitar DPR a 1.5 según especificación estricta
-      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = Math.floor(viewWidth * dpr);
-      canvas.height = Math.floor(viewHeight * dpr);
-      canvas.style.width = `${viewWidth}px`;
-      canvas.style.height = `${viewHeight}px`;
-
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    // ResizeObserver según requerimiento
-    const resizeObserver = new ResizeObserver(() => {
-      resizeCanvas();
-    });
-    resizeObserver.observe(stageContainer);
-
-    // IntersectionObserver para pausar cuando no sea visible
-    const intersectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        appState.isIntersecting = entry.isIntersecting;
-      });
-    }, { threshold: 0.05 });
-    intersectionObserver.observe(stageContainer);
-
-    // -------------------------------------------------------------------------
-    // BUCLE DE RENDERIZADO CON REQUESTANIMATIONFRAME
-    // -------------------------------------------------------------------------
-    function renderLoop() {
-      if (appState.isIntersecting) {
-        drawNetwork();
-        updateRobotRig();
-        updateTelemetry();
+    function verifyId() {
+      const input = document.getElementById('terminal-id-input');
+      const val = input.value.trim();
+      if (!val) {
+        alert('Por favor ingresa tu ID de jugador');
+        input.focus();
+        return;
       }
-      requestAnimationFrame(renderLoop);
+      playSfx('success');
+      alert(`✅ ID ${val} Verificado correctamente en los servidores de ${state.selectedGame}`);
     }
 
-    function drawNetwork() {
-      ctx.clearRect(0, 0, viewWidth, viewHeight);
-
-      // Centro del Canvas técnico
-      const cx = viewWidth * 0.44;
-      const cy = viewHeight * 0.50;
-      const minDim = Math.min(viewWidth, viewHeight);
-
-      // Radios de las dos órbitas
-      const r1 = minDim * 0.27; // Órbita 1 interior
-      const r2 = minDim * 0.42; // Órbita 2 exterior
-
-      // Rotación suave si no se solicita movimiento reducido
-      if (!appState.reducedMotion) {
-        orbitAngle1 += 0.0007;
-        orbitAngle2 -= 0.0005;
+    function executeFastRecharge() {
+      const input = document.getElementById('terminal-id-input');
+      const val = input.value.trim();
+      if (!val) {
+        alert('Por favor ingresa tu ID de jugador antes de continuar.');
+        input.focus();
+        return;
       }
+      state.playerId = val;
+      openModalWithData(state.selectedGame, state.selectedPkg, state.playerId, state.selectedPrice);
+    }
 
-      const activeColor = colorThemes[appState.theme].accent;
-      const activeGlow = colorThemes[appState.theme].glow;
-      const activeDim = colorThemes[appState.theme].dim;
+    // MODAL DE COMPRA
+    function openGameModal(gameName, curr) {
+      state.selectedGame = gameName;
+      state.selectedPkg = `Pack Inicial ${curr}`;
+      state.selectedPrice = '$2.99 USD';
+      state.playerId = 'Ingresar en pasarela';
+      openModalWithData(gameName, state.selectedPkg, state.playerId, state.selectedPrice);
+    }
 
-      // 1. DIBUJAR GUÍAS DE ÓRBITAS CIRCULARES FINAS
-      ctx.save();
-      ctx.lineWidth = 1;
-      ctx.setLineDash([3, 5]);
+    function openModalWithData(game, pkg, id, price) {
+      document.getElementById('modal-game-title').innerText = game;
+      document.getElementById('modal-field-game').innerText = game;
+      document.getElementById('modal-field-pkg').innerText = pkg;
+      document.getElementById('modal-field-id').innerText = id || 'No especificado';
+      document.getElementById('modal-field-price').innerText = price;
+      document.getElementById('recharge-modal').classList.add('active');
+      playSfx('click');
+    }
 
-      // Órbita 1
-      ctx.strokeStyle = 'rgba(119, 120, 115, 0.22)';
-      ctx.beginPath();
-      ctx.arc(cx, cy, r1, 0, Math.PI * 2);
-      ctx.stroke();
+    function closeModal() {
+      document.getElementById('recharge-modal').classList.remove('active');
+      playSfx('click');
+    }
 
-      // Órbita 2
-      ctx.strokeStyle = 'rgba(119, 120, 115, 0.16)';
-      ctx.beginPath();
-      ctx.arc(cx, cy, r2, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
+    function confirmPurchase() {
+      playSfx('success');
+      alert(`🚀 ¡Redirigiendo a pasarela segura para recargar ${state.selectedPkg} en ${state.selectedGame}!`);
+      closeModal();
+    }
 
-      // 2. CALCULAR COORDENADAS DE LOS 12 NODOS
-      const computedNodes = nodeConfigs.map(n => {
-        const baseAngle = (n.orbit === 1 ? orbitAngle1 : orbitAngle2);
-        const theta = baseAngle + n.angleOffset;
-        const rad = (n.orbit === 1 ? r1 : r2);
-        const x = cx + Math.cos(theta) * rad;
-        const y = cy + Math.sin(theta) * rad;
-        const isSelected = (n.integrationIndex === appState.activeIntegration);
-        return { ...n, x, y, theta, isSelected };
-      });
+    // FILTRO DE CATÁLOGO
+    function filterCatalog(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      playSfx('click');
 
-      // 3. DIBUJAR ENLACES FINOS DE LA RED TÉCNICA
-      // a) Enlaces hacia el núcleo MESH central
-      computedNodes.forEach(node => {
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.lineTo(node.x, node.y);
-
-        if (node.isSelected) {
-          // RUTA RESALTADA: solo la ruta de la integración seleccionada
-          ctx.strokeStyle = activeColor;
-          ctx.lineWidth = 1.8;
-          ctx.shadowColor = activeGlow;
-          ctx.shadowBlur = 10;
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        const cats = card.getAttribute('data-category') || '';
+        if (category === 'all' || cats.includes(category)) {
+          card.style.display = 'flex';
         } else {
-          ctx.strokeStyle = 'rgba(119, 120, 115, 0.14)';
-          ctx.lineWidth = 0.8;
+          card.style.display = 'none';
         }
-        ctx.stroke();
-        ctx.restore();
       });
+    }
 
-      // b) Enlaces entre nodos de la misma órbita y cruzados (Malla técnica)
-      ctx.save();
-      ctx.strokeStyle = 'rgba(119, 120, 115, 0.10)';
-      ctx.lineWidth = 0.6;
-      for (let i = 0; i < computedNodes.length; i++) {
-        for (let j = i + 1; j < computedNodes.length; j++) {
-          const nA = computedNodes[i];
-          const nB = computedNodes[j];
-          const dx = nA.x - nB.x;
-          const dy = nA.y - nB.y;
+    // FAQ ACORDEÓN
+    function toggleFaq(item) {
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+      playSfx('click');
+    }
+
+    // CUENTA REGRESIVA FLASH
+    let timeLeft = 8 * 3600 + 42 * 60 + 19;
+    function updateCountdown() {
+      if (timeLeft <= 0) timeLeft = 24 * 3600;
+      timeLeft--;
+      const h = Math.floor(timeLeft / 3600);
+      const m = Math.floor((timeLeft % 3600) / 60);
+      const s = timeLeft % 60;
+      document.getElementById('countdown-h').innerText = String(h).padStart(2, '0');
+      document.getElementById('countdown-m').innerText = String(m).padStart(2, '0');
+      document.getElementById('countdown-s').innerText = String(s).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+
+    // =========================================================================
+    // CANVAS DE FONDO GAMER: PARTÍCULAS DE ENERGÍA Y LÍNEAS TECH
+    // =========================================================================
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    for (let i = 0; i < 45; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: -Math.random() * 0.5 - 0.15,
+        size: Math.random() * 2 + 1,
+        alpha: Math.random() * 0.4 + 0.15
+      });
+    }
+
+    function renderGamerCanvas() {
+      ctx.clearRect(0, 0, width, height);
+
+      let themeColor = '#00ff88';
+      if (state.theme === 'blue') themeColor = '#00d2ff';
+      if (state.theme === 'red') themeColor = '#ff0044';
+
+      // Dibujar partículas de energía
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.y < 0) p.y = height;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = themeColor;
+        ctx.globalAlpha = p.alpha;
+        ctx.fill();
+
+        // Conectar partículas cercanas con líneas tenues
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          // Unir nodos cercanos formando la telaraña técnica
-          if (dist < minDim * 0.28) {
+
+          if (dist < 100) {
             ctx.beginPath();
-            ctx.moveTo(nA.x, nA.y);
-            ctx.lineTo(nB.x, nB.y);
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = themeColor;
+            ctx.globalAlpha = (1 - dist / 100) * 0.12;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
         }
       }
-      ctx.restore();
 
-      // 4. PULSOS DISCRETOS DE DATOS VIAJANDO POR LOS ENLACES
-      if (!appState.reducedMotion) {
-        packets.forEach(pkt => {
-          pkt.progress += pkt.speed;
-          if (pkt.progress >= 1) pkt.progress = 0;
-
-          const targetNode = computedNodes[pkt.nodeId];
-          if (!targetNode) return;
-
-          // Si el nodo es el seleccionado, acelerar pulso y colorear brillante
-          const isHighlight = targetNode.isSelected;
-          const p = pkt.reverse ? (1 - pkt.progress) : pkt.progress;
-          const px = cx + (targetNode.x - cx) * p;
-          const py = cy + (targetNode.y - cy) * p;
-
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(px, py, isHighlight ? 2.8 : 1.6, 0, Math.PI * 2);
-          ctx.fillStyle = isHighlight ? activeColor : 'rgba(241, 242, 236, 0.45)';
-          if (isHighlight) {
-            ctx.shadowColor = activeGlow;
-            ctx.shadowBlur = 8;
-          }
-          ctx.fill();
-          ctx.restore();
-        });
-      }
-
-      // 5. DIBUJAR LOS 12 NODOS ETIQUETADOS
-      computedNodes.forEach(node => {
-        const isSelected = node.isSelected;
-        const nodeRadius = isSelected ? 13 : 9;
-
-        // Halo / resplandor para el nodo seleccionado
-        if (isSelected) {
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, nodeRadius + 6, 0, Math.PI * 2);
-          ctx.fillStyle = activeDim;
-          ctx.fill();
-          ctx.restore();
-        }
-
-        // Círculo base del nodo
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, nodeRadius, 0, Math.PI * 2);
-        ctx.fillStyle = isSelected ? '#090A0C' : '#0e1117';
-        ctx.strokeStyle = isSelected ? activeColor : 'rgba(119, 120, 115, 0.45)';
-        ctx.lineWidth = isSelected ? 2 : 1;
-        if (isSelected) {
-          ctx.shadowColor = activeGlow;
-          ctx.shadowBlur = 10;
-        }
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
-
-        // Punto central interno del nodo
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, isSelected ? 3.5 : 2, 0, Math.PI * 2);
-        ctx.fillStyle = isSelected ? activeColor : '#777873';
-        ctx.fill();
-        ctx.restore();
-
-        // Etiqueta del nodo
-        ctx.save();
-        ctx.font = isSelected ? '600 10px Manrope' : '500 9px Manrope';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = isSelected ? '#F1F2EC' : '#777873';
-        const labelOffsetY = (node.y > cy) ? nodeRadius + 11 : -(nodeRadius + 11);
-        ctx.fillText(node.tag, node.x, node.y + labelOffsetY);
-        ctx.restore();
-      });
-
-      // 6. NÚCLEO MESH CENTRAL ("núcleo MESH... actualiza la etiqueta central; no muevas el layout")
-      const coreRadius = 38;
-
-      // Anillo exterior decorativo
-      ctx.save();
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = activeDim;
-      ctx.beginPath();
-      ctx.arc(cx, cy, coreRadius + 10, 0, Math.PI * 2);
-      ctx.stroke();
-
-      // Disco del núcleo
-      ctx.beginPath();
-      ctx.arc(cx, cy, coreRadius, 0, Math.PI * 2);
-      ctx.fillStyle = '#090A0C';
-      ctx.strokeStyle = activeColor;
-      ctx.lineWidth = 1.8;
-      ctx.shadowColor = activeGlow;
-      ctx.shadowBlur = 16;
-      ctx.fill();
-      ctx.stroke();
-      ctx.restore();
-
-      // Texto central dinámico: "actualiza la etiqueta central; no muevas el layout"
-      ctx.save();
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-
-      // Etiqueta superior diminuta
-      ctx.font = '600 8px Manrope';
-      ctx.fillStyle = activeColor;
-      ctx.fillText('NÚCLEO MESH', cx, cy - 8);
-
-      // Etiqueta central activa
-      ctx.font = '700 10px Manrope';
-      ctx.fillStyle = '#F1F2EC';
-      ctx.fillText(appState.centralMeshText.replace('MESH / ', ''), cx, cy + 6);
-      ctx.restore();
+      requestAnimationFrame(renderGamerCanvas);
     }
-
-    // -------------------------------------------------------------------------
-    // KINEMÁTICA REALISTA DEL ROBOT COMPLETO Y OJOS CRT
-    // -------------------------------------------------------------------------
-    window.addEventListener('mousemove', (e) => {
-      appState.mouseX = e.clientX;
-      appState.mouseY = e.clientY;
-
-      // Ubicación relativa del robot en pantalla
-      const rect = robotRig.getBoundingClientRect();
-      const rX = rect.left + rect.width * 0.5;
-      const rY = rect.top + rect.height * 0.35;
-
-      // Normalizar distancia al cursor (-1 a 1)
-      appState.normX = Math.max(-1.15, Math.min(1.15, (e.clientX - rX) / (window.innerWidth * 0.45)));
-      appState.normY = Math.max(-1.15, Math.min(1.15, (e.clientY - rY) / (window.innerHeight * 0.45)));
-    }, { passive: true });
-
-    function updateRobotRig() {
-      // Suavizado (Lerp) para movimiento orgánico
-      appState.currentNormX += (appState.normX - appState.currentNormX) * 0.085;
-      appState.currentNormY += (appState.normY - appState.currentNormY) * 0.085;
-
-      // 1. ROTACIÓN 3D DEL ROBOT COMPLETO (BASE FIRME, GIRA CARA Y TORSO EN PERSPECTIVA)
-      const rotY = appState.currentNormX * 18;  // Yaw: voltea a ver hacia la izquierda o derecha
-      const rotX = -appState.currentNormY * 11; // Pitch: inclina la cabeza arriba / abajo
-      const rotZ = appState.currentNormX * 2.2; // Roll: balanceo sutil orgánico
-
-      robotRig.style.transform = `perspective(1200px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg)`;
-
-      // 2. SEGUIMIENTO DE LOS OJOS CRT DENTRO DE LA PANTALLA
-      // Los ojos se desplazan sobre el fósforo del monitor siguiendo el puntero
-      const maxShiftX = 18; // px
-      const maxShiftY = 12; // px
-
-      const shiftX = appState.currentNormX * maxShiftX;
-      const shiftY = appState.currentNormY * maxShiftY;
-
-      eyeLeft.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
-      eyeRight.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
-
-      // 3. Temporizador del diálogo HUD
-      if (appState.speechTimer > 0) {
-        appState.speechTimer--;
-        if (appState.speechTimer === 0) {
-          robotHud.classList.remove('active');
-        }
-      }
-    }
-
-    // PARPADEO REALISTA DEL ROBOT
-    let blinkCounter = 0;
-    function triggerRandomBlink() {
-      blinkCounter++;
-      if (blinkCounter > 260 + Math.random() * 120) {
-        blinkCounter = 0;
-        eyeLeft.classList.add('eye-blink');
-        eyeRight.classList.add('eye-blink');
-        playSfx('blink');
-        setTimeout(() => {
-          eyeLeft.classList.remove('eye-blink');
-          eyeRight.classList.remove('eye-blink');
-        }, 130);
-      }
-    }
-    setInterval(triggerRandomBlink, 30);
-
-    // TELEMETRÍA EN VIVO (LATENCIA Y EVENTOS DINÁMICOS)
-    let telemCycle = 0;
-    function updateTelemetry() {
-      telemCycle++;
-      if (telemCycle % 45 === 0) {
-        // Fluctuación sutil de eventos
-        appState.eventsCount += Math.floor(Math.random() * 9) - 3;
-        eventsEl.innerText = `${appState.eventsCount.toLocaleString()}/s`;
-      }
-      if (telemCycle % 90 === 0) {
-        // Fluctuación sutil de latencia
-        const delta = Math.floor(Math.random() * 3) - 1;
-        appState.latencyVal = Math.max(8, Math.min(16, 12 + delta));
-        latencyEl.innerText = `${appState.latencyVal}ms`;
-      }
-    }
-
-    // INICIAR BUCLE
-    renderLoop();
+    requestAnimationFrame(renderGamerCanvas);
   </script>
 </body>
 </html>
