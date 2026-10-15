@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+      <linearGradient id="cod-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="50%" stop-color="#d4af37"/>
+        <stop offset="100%" stop-color="#8a6d1c"/>
+      </linearGradient>
+      <filter id="glow-cod">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#d4af37" flood-opacity="0.5"/>
+      </filter>
+    </defs>
+    <!-- Tactical Hexagonal Emblem -->
+    <polygon points="50,10 88,26 88,74 50,90 12,74 12,26" fill="#0d1117" stroke="url(#cod-gold)" stroke-width="3" filter="url(#glow-cod)"/>
+    <!-- Military Wings -->
+    <path d="M22 42 L38 46 L34 56 L20 50 Z" fill="#d4af37"/>
+    <path d="M78 42 L62 46 L66 56 L80 50 Z" fill="#d4af37"/>
+    <!-- Central Skull Silhouette -->
+    <path d="M42 34 C42 30 58 30 58 34 C63 36 64 45 61 50 C61 54 59 58 58 62 H42 C41 58 39 54 39 50 C36 45 37 36 42 34 Z" fill="#ffffff"/>
+    <!-- Eye sockets & Teeth -->
+    <ellipse cx="46" cy="44" rx="3.5" ry="4" fill="#0d1117"/>
+    <ellipse cx="54" cy="44" rx="3.5" ry="4" fill="#0d1117"/>
+    <rect x="44" y="56" width="3" height="5" fill="#0d1117"/>
+    <rect x="49" y="56" width="2" height="5" fill="#0d1117"/>
+    <rect x="53" y="56" width="3" height="5" fill="#0d1117"/>
+    <!-- Star Banner -->
+    <polygon points="50,68 53,74 59,75 55,79 56,85 50,82 44,85 45,79 41,75 47,74" fill="url(#cod-gold)"/>
+  </svg>

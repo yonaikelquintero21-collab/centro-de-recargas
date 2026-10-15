@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+      <filter id="rbx-glow">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#ffffff" flood-opacity="0.5"/>
+      </filter>
+    </defs>
+    <!-- Background rounded tile -->
+    <rect x="8" y="8" width="84" height="84" rx="22" fill="#111624" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+    <!-- Iconic Tilted Roblox Square with Inner Cutout -->
+    <g transform="rotate(-15 50 50)" filter="url(#rbx-glow)">
+      <rect x="23" y="23" width="54" height="54" rx="9" fill="#ffffff"/>
+      <rect x="38" y="38" width="24" height="24" rx="4" fill="#111624"/>
+    </g>
+  </svg>

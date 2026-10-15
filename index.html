@@ -2174,43 +2174,237 @@
         top: 64px;
         padding: 16px;
       }
+      /* 2. SECCIÓN PORTADA & HERO GAMER ADAPTADA A CELULAR */
       .hero-section {
         grid-template-columns: 1fr;
-        padding: 20px 16px 28px;
-        gap: 24px;
+        padding: 24px 14px 32px;
+        gap: 20px;
         width: 100%;
         max-width: 100vw;
         box-sizing: border-box;
+        overflow: hidden;
+      }
+      .hero-gamer-backdrop {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(7, 9, 14, 0.45) 0%, rgba(7, 9, 14, 0.78) 35%, rgba(7, 9, 14, 0.96) 75%, rgba(7, 9, 14, 1) 100%),
+          radial-gradient(circle at 50% 12%, var(--accent-dim) 0%, transparent 60%),
+          url('assets/games/hero-bg.jpg') center top / 100% auto no-repeat;
+        opacity: 0.95;
+        animation: none;
       }
       .hero-content {
         width: 100%;
         max-width: 100%;
         min-width: 0;
         box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 6px 0 0;
       }
       .hero-badge-pill {
         max-width: 100%;
         white-space: normal;
         line-height: 1.35;
-        padding: 6px 12px;
+        padding: 6px 14px;
         font-size: 11px;
         letter-spacing: 0.04em;
         box-sizing: border-box;
+        margin: 0 auto 12px;
       }
       .hero-title {
-        font-size: clamp(20px, 5.8vw, 26px);
+        font-size: clamp(22px, 6.2vw, 28px);
         word-break: break-word;
         overflow-wrap: break-word;
-        line-height: 1.12;
+        line-height: 1.15;
         max-width: 100%;
+        text-align: center;
+        margin-bottom: 12px;
       }
       .hero-subtitle {
         font-size: 13.5px;
-        margin-bottom: 20px;
-        max-width: 100%;
+        line-height: 1.55;
+        margin: 0 auto 18px;
+        max-width: 380px;
+        text-align: center;
         word-break: break-word;
         overflow-wrap: break-word;
       }
+      .hero-cta-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .btn-hero-primary {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        padding: 13px 20px;
+        font-size: 13px;
+        min-height: 48px;
+        box-sizing: border-box;
+      }
+      .btn-hero-secondary {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        padding: 11px 18px;
+        font-size: 12.5px;
+        min-height: 42px;
+        box-sizing: border-box;
+      }
+      .hero-stats {
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding-top: 14px;
+        box-sizing: border-box;
+      }
+      .stat-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-card);
+        border-radius: 12px;
+        padding: 8px 4px;
+        text-align: center;
+        min-width: 0;
+      }
+      .stat-number {
+        font-size: 17px;
+        margin-bottom: 2px;
+      }
+      .stat-label {
+        font-size: 11px;
+        line-height: 1.2;
+      }
+
+      /* TERMINAL DE RECARGA DIRECTA ADAPTADA A CELULAR */
+      .hero-terminal {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 16px 14px;
+        border-radius: 20px;
+        margin-top: 4px;
+        background: rgba(14, 18, 28, 0.94);
+        border: 1px solid var(--border-card);
+      }
+      .terminal-game-banner-preview {
+        min-height: 84px;
+        padding: 10px 14px;
+        margin-bottom: 14px;
+        border-radius: 14px;
+      }
+      .terminal-game-logo-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+      }
+      .terminal-title-cluster h2 {
+        font-size: 15px;
+        letter-spacing: 0.04em;
+      }
+      .terminal-game-subtitle {
+        font-size: 11px;
+      }
+      .terminal-live-badge {
+        font-size: 11px;
+        padding: 4px 9px;
+      }
+
+      /* SELECTOR DE JUEGO TOUCH EN MÓVIL */
+      .terminal-field-label {
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+      .game-chips-row {
+        gap: 8px;
+        padding-bottom: 10px;
+        margin-bottom: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .game-chip {
+        scroll-snap-align: start;
+        padding: 9px 14px;
+        font-size: 12.5px;
+        min-height: 44px;
+        border-radius: 12px;
+        border: 1px solid var(--border-card);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .game-chip.active {
+        border-color: var(--accent);
+        background: var(--badge-bg);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        color: #fff;
+      }
+      .chip-game-logo {
+        width: 22px;
+        height: 22px;
+      }
+
+      /* PAQUETES DE MONEDA TOUCH */
+      .packages-terminal-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 16px;
+        min-height: auto;
+      }
+      .pkg-chip {
+        padding: 11px 8px;
+        min-height: 70px;
+        border-radius: 12px;
+        border: 1px solid var(--border-card);
+      }
+      .pkg-chip-amount {
+        font-size: 14px;
+        margin-bottom: 2px;
+      }
+      .pkg-chip-bonus {
+        font-size: 11px;
+      }
+      .pkg-chip-price {
+        font-size: 13px;
+      }
+
+      /* INPUT ID DE JUGADOR TOUCH */
+      .terminal-input-wrap {
+        margin-bottom: 14px;
+      }
+      .input-box {
+        padding: 4px 6px 4px 14px;
+        min-height: 48px;
+        border-radius: 12px;
+      }
+      .input-box input {
+        font-size: 16px;
+        min-height: 42px;
+      }
+      .input-box input::placeholder {
+        font-size: 13px;
+      }
+      .input-verify-btn {
+        min-height: 40px;
+        padding: 0 16px;
+        font-size: 11.5px;
+        border-radius: 8px;
+      }
+
+      /* BOTÓN RECARGA TOUCH */
+      .btn-terminal-submit {
+        min-height: 52px;
+        font-size: 14px;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+      }
+
       .catalog-filters {
         justify-content: flex-start;
         overflow-x: auto;
@@ -2221,50 +2415,6 @@
       }
       .catalog-filters::-webkit-scrollbar {
         display: none;
-      }
-      .hero-cta-group {
-        margin-bottom: 24px;
-      }
-      .btn-hero-primary, .btn-hero-secondary {
-        width: 100%;
-        justify-content: center;
-        padding: 14px;
-        min-height: 48px;
-      }
-      .hero-stats {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-        padding-top: 16px;
-      }
-      .stat-number {
-        font-size: 19px;
-      }
-      .stat-label {
-        font-size: 11px;
-      }
-      .hero-terminal {
-        padding: 16px 12px;
-        border-radius: 18px;
-      }
-      .terminal-game-banner-preview {
-        min-height: 80px;
-        padding: 10px 12px;
-        margin-bottom: 12px;
-      }
-      .terminal-game-logo-box {
-        width: 36px;
-        height: 36px;
-      }
-      .terminal-title-cluster h2 {
-        font-size: 14px;
-      }
-      .terminal-live-badge {
-        font-size: 11px;
-        padding: 4px 8px;
-      }
-      .packages-terminal-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
       }
       .section-wrap, .section-catalog-wrap, .steps-section {
         padding: 40px 16px;
@@ -3284,6 +3434,24 @@
   </div>
 
   <script>
+    // RESILIENCIA DE CARGA DE IMÁGENES Y LOGOS EN CELULARES
+    window.addEventListener('error', function(e) {
+      if (e.target && e.target.tagName === 'IMG') {
+        const img = e.target;
+        if (!img.dataset.retried) {
+          img.dataset.retried = '1';
+          const src = img.getAttribute('src');
+          if (src && !src.startsWith('data:') && !src.startsWith('http')) {
+            if (src.startsWith('assets/')) {
+              img.src = './' + src;
+            } else if (src.startsWith('./assets/')) {
+              img.src = src.substring(2);
+            }
+          }
+        }
+      }
+    }, true);
+
     // =========================================================================
     // BASE DE DATOS DE JUEGOS CON IMAGEN HD, LOGO OFICIAL Y MONEDAS ESPECÍFICAS
     // =========================================================================
@@ -3545,7 +3713,10 @@
     // SELECCIÓN DE JUEGO EN LA TERMINAL
     function terminalSelectGame(gameKey, btn) {
       document.querySelectorAll('.game-chip').forEach(c => c.classList.remove('active'));
-      if (btn) btn.classList.add('active');
+      if (btn) {
+        btn.classList.add('active');
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
       renderTerminalPackages(gameKey);
       playSfx('click');
     }
@@ -3556,6 +3727,7 @@
       chips.forEach(c => {
         if (c.getAttribute('onclick') && c.getAttribute('onclick').includes(`'${gameKey}'`)) {
           c.classList.add('active');
+          c.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
           c.classList.remove('active');
         }
