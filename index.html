@@ -3,404 +3,470 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centro de Recargas Gamer — Nexus Top-Up 24/7</title>
+  <title>SYSTEM / 88 — Red Técnica de Operaciones Conectadas</title>
+
+  <!-- Google Fonts: Manrope (400, 500, 600) & Instrument Sans (500..700) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:ital,wght@0,400;0,500;0,600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,500..700&display=swap">
+
   <style>
+    /* VARIABLES DE COLOR Y SISTEMA TÉCNICO */
     :root {
-      --bg: #07080c;
-      --card-bg: rgba(14, 17, 24, 0.85);
-      --card-border: rgba(255, 255, 255, 0.08);
-      /* TEMA VERDE NEÓN GAMER POR DEFECTO (ESTILO RAZER / MATRIX) */
-      --accent: #00ff88;
-      --accent-glow: rgba(0, 255, 136, 0.7);
-      --accent-dim: rgba(0, 255, 136, 0.12);
-      --eye-fringe: rgba(0, 200, 255, 0.5);
+      --bg: #090A0C;
+      --text: #F1F2EC;
+      --gray: #777873;
+      --gray-dim: rgba(119, 120, 115, 0.18);
+      --gray-line: rgba(119, 120, 115, 0.28);
+      --lime: #C8FF45;
+      --lime-glow: rgba(200, 255, 69, 0.6);
+      --lime-dim: rgba(200, 255, 69, 0.12);
+      --blue: #4C6FFF;
+      --blue-glow: rgba(76, 111, 255, 0.6);
+      --blue-dim: rgba(76, 111, 255, 0.14);
+      --red: #FF003C;
+      --red-glow: rgba(255, 0, 60, 0.6);
+      --red-dim: rgba(255, 0, 60, 0.14);
+
+      /* Tema activo (por defecto Lima System/88) */
+      --accent: var(--lime);
+      --accent-glow: var(--lime-glow);
+      --accent-dim: var(--lime-dim);
+    }
+
+    [data-theme="blue"] {
+      --accent: var(--blue);
+      --accent-glow: var(--blue-glow);
+      --accent-dim: var(--blue-dim);
     }
 
     [data-theme="red"] {
-      /* TEMA ROJO CYBERPUNK GAMER */
-      --accent: #ff003c;
-      --accent-glow: rgba(255, 0, 60, 0.7);
-      --accent-dim: rgba(255, 0, 60, 0.12);
-      --eye-fringe: rgba(255, 120, 0, 0.6);
+      --accent: var(--red);
+      --accent-glow: var(--red-glow);
+      --accent-dim: var(--red-dim);
+    }
+
+    /* TIPOGRAFÍAS SEGÚN ESPECIFICACIÓN */
+    .section-copy, .section-nav {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .section-title {
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     html, body {
       width: 100%;
-      height: 100%;
-      overflow-x: hidden;
+      min-height: 100vh;
       background-color: var(--bg);
-      color: #f1f5f9;
-      user-select: none;
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* FONDO GAMER CIBERNÉTICO */
-    .app-viewport {
+    /* SECCIÓN PRINCIPAL: ÚNICA SECCIÓN PREMIUM DE INTEGRACIONES */
+    .system-section {
       position: relative;
       width: 100vw;
       min-height: 100vh;
       display: flex;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at var(--mouse-x, 80%) var(--mouse-y, 40%), var(--accent-dim) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 65%, rgba(0, 0, 0, 0.7) 0%, transparent 60%),
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(180deg, #06070a 0%, #0a0d14 100%);
-      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px, 100% 100%;
-    }
-
-    /* CANVAS DE PARTÍCULAS / CHISPAS CIBERNÉTICAS */
-    #ambient-canvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    /* GRID PRINCIPAL: IZQUIERDA (TIENDA GAMER) | DERECHA (ROBOT REALISTA) */
-    .layout-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      z-index: 10;
-    }
-
-    /* ----------------------------------------------------
-       LADO IZQUIERDO: CENTRO DE RECARGAS GAMER
-       ---------------------------------------------------- */
-    .store-panel {
-      padding: 32px 48px;
-      display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 100vh;
-      overflow-y: auto;
-      z-index: 20;
+      background:
+        radial-gradient(circle at 75% 45%, var(--accent-dim) 0%, transparent 45%),
+        radial-gradient(circle at 20% 80%, rgba(76, 111, 255, 0.05) 0%, transparent 50%),
+        linear-gradient(rgba(241, 242, 236, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(241, 242, 236, 0.015) 1px, transparent 1px),
+        #090A0C;
+      background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px, 100% 100%;
+      overflow: hidden;
     }
 
-    .store-header {
+    /* BARRA SUPERIOR SUTIL DE NAVEGACIÓN Y TEMA */
+    .system-header {
+      padding: 24px 48px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 24px;
+      z-index: 40;
     }
 
-    .brand-group {
+    .system-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-cube {
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid var(--accent);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px var(--accent-glow);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .brand-cube::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 1px;
+      transition: background 0.3s;
+    }
+
+    .brand-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .controls-cluster {
       display: flex;
       align-items: center;
       gap: 14px;
     }
 
-    .brand-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent);
+    .theme-selector {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--gray-dim);
+      padding: 4px 8px;
+      border-radius: 9999px;
+    }
+
+    .theme-dot-btn {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      background: transparent;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 0 20px var(--accent-glow);
+      transition: transform 0.2s;
     }
 
-    .brand-text h1 {
-      font-size: 19px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .theme-dot-btn:hover {
+      transform: scale(1.25);
     }
 
-    .brand-text p {
+    .theme-dot-btn.active {
+      border-color: #fff;
+    }
+
+    .theme-dot-inner {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .btn-audio {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--gray-dim);
+      color: var(--gray);
+      padding: 5px 12px;
+      border-radius: 9999px;
       font-size: 11px;
-      color: #64748b;
-      font-family: ui-monospace, SFMono-Regular, monospace;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .status-pill {
+      font-weight: 600;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      background: rgba(12, 15, 22, 0.85);
-      border: 1px solid var(--card-border);
-      font-size: 11px;
-      font-family: ui-monospace, monospace;
-      color: #94a3b8;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-      animation: pulseGlow 1.8s infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.85); }
-    }
-
-    /* SELECTOR DE JUEGOS */
-    .section-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #64748b;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .games-scroll {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .game-tab {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      color: #94a3b8;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .game-tab:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .game-tab.active {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 0 16px var(--accent-glow);
-    }
-
-    /* GRID DE PAQUETES DE RECARGA */
-    .packages-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .package-card {
-      position: relative;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 16px;
-      cursor: pointer;
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(12px);
-      overflow: hidden;
-    }
-
-    .package-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), 0 0 15px var(--accent-glow);
-    }
-
-    .package-card.selected {
-      border-color: var(--accent);
-      background: linear-gradient(135deg, rgba(14, 17, 24, 0.95), var(--accent-dim));
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    .package-badge {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: var(--accent);
-      color: #000;
-      font-size: 9px;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 6px;
-      letter-spacing: 0.04em;
-    }
-
-    .package-amount {
-      font-size: 16px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 2px;
-      display: flex;
-      align-items: center;
       gap: 6px;
-    }
-
-    .package-bonus {
-      font-size: 11px;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .package-price {
-      font-size: 14px;
-      font-weight: 700;
-      color: #cbd5e1;
-      font-family: ui-monospace, monospace;
-    }
-
-    /* FORMULARIO DE RECARGA RÁPIDA (ID DE JUGADOR) */
-    .recharge-form {
-      background: rgba(14, 17, 24, 0.92);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 18px;
-      backdrop-filter: blur(16px);
-      margin-bottom: 20px;
-    }
-
-    .input-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .player-input {
-      flex: 1;
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 12px 16px;
-      border-radius: 12px;
-      color: #fff;
-      font-size: 13px;
-      font-family: ui-monospace, monospace;
-      outline: none;
       transition: all 0.2s;
     }
 
-    .player-input:focus {
+    .btn-audio:hover {
+      color: var(--text);
       border-color: var(--accent);
-      box-shadow: 0 0 15px var(--accent-glow);
     }
 
-    .btn-recharge {
-      padding: 12px 24px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #000;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      border: none;
-      cursor: pointer;
+    /* CONTENEDOR PRINCIPAL: IZQUIERDA (LISTA DE INTEGRACIONES) | DERECHA (CANVAS + ROBOT) */
+    .system-main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(380px, 1fr) 1.25fr;
+      gap: 40px;
+      padding: 32px 48px;
+      align-items: center;
+      z-index: 10;
+    }
+
+    /* -------------------------------------------------------------------------
+       COLUMNA IZQUIERDA: ETIQUETA, H2 Y LISTA DE SEIS INTEGRACIONES
+       ------------------------------------------------------------------------- */
+    .section-left {
       display: flex;
+      flex-direction: column;
+      max-width: 540px;
+      z-index: 20;
+    }
+
+    .section-tag {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 18px var(--accent-glow);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      transition: color 0.3s;
     }
 
-    .btn-recharge:hover {
-      transform: scale(1.03);
-      filter: brightness(1.1);
+    .section-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-glow);
+      animation: pulseDot 2s infinite ease-in-out;
     }
 
-    /* FOOTER DE LA TIENDA */
-    .store-footer {
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.75); }
+    }
+
+    .section-title {
+      font-size: clamp(36px, 4.4vw, 54px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--gray);
+      margin-bottom: 32px;
+      max-width: 460px;
+    }
+
+    /* LISTA VERTICAL DE SEIS INTEGRACIONES */
+    .section-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      list-style: none;
+      /* "no muevas el layout" -> Contenedor con altura y márgenes fijos */
+    }
+
+    .integration-item {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 11px;
-      color: #64748b;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 13px 18px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      outline: none;
+      transition: background 0.22s, border-color 0.22s, box-shadow 0.22s;
+      /* Importante: No usar translateY ni cambio de padding para evitar mover el layout */
     }
 
-    .theme-toggle-group {
+    .integration-item:hover,
+    .integration-item:focus-visible,
+    .integration-item.active {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--gray-dim);
+    }
+
+    .integration-item.active {
+      border-color: var(--accent);
+      background: linear-gradient(90deg, var(--accent-dim) 0%, rgba(255, 255, 255, 0.02) 100%);
+      box-shadow: 0 0 24px -6px var(--accent-dim);
+    }
+
+    .integration-meta {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 16px;
     }
 
-    .theme-chip {
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.04);
-      color: #94a3b8;
-      transition: all 0.2s;
+    .integration-index {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      min-width: 22px;
+      font-variant-numeric: tabular-nums;
     }
 
-    .theme-chip.active {
-      border-color: var(--accent);
-      color: #fff;
-      background: var(--accent-dim);
+    .integration-item.active .integration-index {
+      color: var(--accent);
     }
 
-    /* ----------------------------------------------------
-       LADO DERECHO: ROBOT REALISTA ESTABLE CON CABEZA Y OJOS QUE SIGUEN EL CURSOR
-       ---------------------------------------------------- */
-    .robot-stage {
-      position: relative;
-      height: 100vh;
+    .integration-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: hidden;
-      perspective: 1000px;
-      z-index: 25;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* CONTENEDOR ANCLADO DEL ROBOT (ESTABLE Y BIEN UBICADO A LA DERECHA) */
-    .robot-figure-box {
+    .integration-protocol {
+      font-size: 11px;
+      color: var(--gray);
+      font-weight: 400;
+    }
+
+    .integration-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .integration-status-pill .node-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gray);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .integration-item.active .integration-status-pill {
+      color: var(--text);
+    }
+
+    .integration-item.active .integration-status-pill .node-dot {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    /* -------------------------------------------------------------------------
+       COLUMNA DERECHA: ESCENARIO CIRCULAR CANVAS + ROBOT COMPANION
+       ------------------------------------------------------------------------- */
+    .section-right {
       position: relative;
-      width: min(560px, 48vw);
-      height: min(780px, 92vh);
+      width: 100%;
+      height: min(620px, 78vh);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* CONTENEDOR DEL CANVAS DE RED TÉCNICA */
+    .canvas-stage-wrapper {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    #network-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    /* FALLBACK CSS/SVG VISIBLE SEGÚN ESPECIFICACIÓN */
+    .canvas-fallback {
+      display: none;
+      position: absolute;
+      width: min(440px, 90vw);
+      height: min(440px, 90vw);
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    /* Si JavaScript falla o no hay canvas 2d, se muestra el fallback */
+    .no-canvas #network-canvas { display: none; }
+    .no-canvas .canvas-fallback { display: block; }
+
+    /* -------------------------------------------------------------------------
+       ROBOT REALISTA COMPLETO ("robot completo, con calidad, estable")
+       ------------------------------------------------------------------------- */
+    .robot-companion-container {
+      position: absolute;
+      bottom: -15px;
+      right: 2%;
+      width: min(390px, 34vw);
+      height: min(540px, 68vh);
       display: flex;
       align-items: flex-end;
       justify-content: center;
       transform-origin: 50% 90%;
+      transform-style: preserve-3d;
+      perspective: 1200px;
       pointer-events: none;
+      z-index: 15;
+      will-change: transform;
     }
 
-    /* CAPA 1: CUERPO / PECHO / CUELLO (ESTABLE CON RESPIRACIÓN SUTIL) */
-    .robot-body-layer {
+    /* SOMBRA AMBIENTAL BAJO EL ROBOT */
+    .robot-floor-shadow {
+      position: absolute;
+      bottom: 10px;
+      left: 15%;
+      width: 70%;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 0%, transparent 70%);
+      filter: blur(8px);
+      z-index: 1;
+    }
+
+    /* RIG DEL ROBOT: CUERPO COMPLETO CON RESPIRACIÓN Y ROTACIÓN 3D */
+    .robot-rig {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      transform-style: preserve-3d;
+      animation: naturalBreathing 5.5s ease-in-out infinite;
+      will-change: transform;
+      z-index: 2;
+    }
+
+    @keyframes naturalBreathing {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-4px) scale(1.003);
+      }
+    }
+
+    /* IMAGEN MASTER DEL ROBOT (LIMPIA, SIN CURSOR, SIN HUECOS) */
+    .robot-photo-layer {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -409,625 +475,1105 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      animation: bodyBreathe 5s ease-in-out infinite;
-      z-index: 1;
+      z-index: 2;
     }
 
-    @keyframes bodyBreathe {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-3px) scale(1.002); }
-    }
-
-    .robot-body-img {
+    .robot-photo-layer img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: bottom center;
-      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.85));
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
-    /* CAPA 2: CABEZA TV ARTICULADA QUE GIRA Y VE AL CURSOR */
-    .robot-head-pivot {
+    /* PANTALLA CRT OVERLAY EXACTA DENTRO DEL MONITOR DEL ROBOT */
+    /* Coordenadas calculadas: left: 23.12%, top: 9.28%, width: 50.17%, height: 39.00% */
+    .crt-screen-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      transform-style: preserve-3d;
-      transform-origin: 50% 68%; /* Pivote del cuello realista */
-      will-change: transform;
-      z-index: 2;
-    }
-
-    .robot-head-img {
-      width: 100%;
-      height: 75%;
-      object-fit: contain;
-      object-position: top center;
-      filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
-    }
-
-    /* PANTALLA CRT OSCURA DENTRO DE LA CABEZA */
-    .crt-screen-box {
-      position: absolute;
-      top: 7.5%;
-      left: 23%;
-      width: 54%;
-      height: 48%;
-      border-radius: 20px;
+      top: 9.28%;
+      left: 23.12%;
+      width: 50.17%;
+      height: 39.00%;
+      border-radius: 16px;
       overflow: hidden;
       transform-style: preserve-3d;
       pointer-events: none;
       z-index: 5;
     }
 
-    .crt-black-screen {
+    /* FONDO CRT DE VIDRIO OSCURO */
+    .crt-glass-back {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, #0e1318 0%, #050709 92%);
-      opacity: 0.98;
+      background: radial-gradient(circle at 50% 50%, rgba(18, 22, 28, 0.96) 0%, rgba(7, 9, 12, 0.99) 90%);
     }
 
-    .crt-scan-mesh {
+    /* LÍNEAS DE ESCANEO DE TUBO CRT */
+    .crt-scanlines {
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.65) 0px,
-        rgba(0, 0, 0, 0.65) 1.5px,
+        rgba(0, 0, 0, 0.6) 0px,
+        rgba(0, 0, 0, 0.6) 1.5px,
         transparent 1.5px,
         transparent 3px
       );
-      opacity: 0.35;
+      opacity: 0.45;
       z-index: 10;
     }
 
-    .crt-glass-glare {
+    /* REFLEJO CURVO DEL CRISTAL */
+    .crt-glare {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.08) 0%,
-        rgba(255, 255, 255, 0.02) 25%,
-        transparent 60%
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.03) 30%,
+        transparent 65%
       );
+      border-radius: 16px;
       z-index: 11;
     }
 
-    /* OJOS DEL ROBOT QUE SIGUEN AL CURSOR EN TIEMPO REAL */
-    .robot-pupil {
+    /* OJOS LUMINISCENTES EN EL CRT QUE SIGUEN AL CURSOR CON EFECTO ÓPTICO REAL */
+    .crt-pupil {
       position: absolute;
-      width: 25%;
-      height: 38%;
+      width: 25.5%;
+      height: 37%;
       border-radius: 50%;
       background: radial-gradient(
         circle at center,
-        #ffffff 35%,
+        #ffffff 32%,
         var(--accent) 70%,
         var(--accent-glow) 90%,
         transparent 100%
       );
       box-shadow:
-        0 0 35px 12px var(--accent-glow),
-        inset 0 0 15px 4px #ffffff,
-        -4px 0 16px var(--eye-fringe),
-        4px 0 16px var(--accent-glow);
+        0 0 28px 10px var(--accent-glow),
+        inset 0 0 12px 3px #ffffff,
+        0 0 55px 20px var(--accent-dim);
       transform-origin: center center;
       transition: height 0.12s, border-radius 0.12s;
       will-change: transform;
       z-index: 6;
     }
 
-    .pupil-l {
+    /* Posición neutra del ojo izquierdo */
+    .eye-left {
       top: 31%;
       left: 17%;
     }
 
-    .pupil-r {
-      top: 29.5%;
+    /* Posición neutra del ojo derecho */
+    .eye-right {
+      top: 32.5%;
       right: 17%;
     }
 
-    .pupil-blink {
+    /* ESTADO DE PARPADEO */
+    .eye-blink {
       height: 3px !important;
       border-radius: 2px !important;
-      opacity: 0.3 !important;
+      opacity: 0.4 !important;
     }
 
-    .pupil-happy {
+    /* ESTADO FELIZ / REACTIVO */
+    .eye-happy {
       height: 18% !important;
-      border-radius: 12px 12px 2px 2px !important;
+      border-radius: 14px 14px 2px 2px !important;
     }
 
-    /* GLOBO HOLOGRÁFICO DEL ROBOT */
-    .robot-hud-speech {
+    /* GLOBO HOLOGRÁFICO SUPERIOR DEL ROBOT (FEEDBACK DE RED) */
+    .robot-hud-tag {
       position: absolute;
-      top: 0px;
+      top: 2%;
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
-      background: rgba(9, 12, 18, 0.94);
+      background: rgba(9, 10, 12, 0.94);
       border: 1px solid var(--accent);
       color: #ffffff;
       font-size: 11px;
-      font-weight: 700;
-      font-family: ui-monospace, monospace;
-      padding: 6px 14px;
-      border-radius: 8px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 18px var(--accent-glow);
-      backdrop-filter: blur(14px);
+      font-weight: 600;
+      font-family: 'Manrope', monospace;
+      padding: 5px 12px;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 16px var(--accent-glow);
+      backdrop-filter: blur(12px);
       opacity: 0;
-      transition: all 0.25s ease;
+      transition: opacity 0.25s, transform 0.25s;
       z-index: 30;
+      pointer-events: none;
     }
 
-    .robot-hud-speech.active {
+    .robot-hud-tag.active {
       opacity: 1;
-      transform: translateX(-50%) translateY(-10px);
+      transform: translateX(-50%) translateY(-6px);
     }
 
-    .robot-hud-speech::after {
+    .robot-hud-tag::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: -4px;
       left: 50%;
       transform: translateX(-50%) rotate(45deg);
-      width: 8px;
-      height: 8px;
-      background: rgba(9, 12, 18, 0.94);
+      width: 6px;
+      height: 6px;
+      background: rgba(9, 10, 12, 0.94);
       border-right: 1px solid var(--accent);
       border-bottom: 1px solid var(--accent);
     }
 
-    /* RESPONSIVE */
+    /* -------------------------------------------------------------------------
+       BORDE INFERIOR: TELEMETRÍA (ESTADO, LATENCIA, NÚMERO DE EVENTOS)
+       ------------------------------------------------------------------------- */
+    .system-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      border-top: 1px solid var(--gray-dim);
+      background: rgba(9, 10, 12, 0.85);
+      backdrop-filter: blur(10px);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray);
+      z-index: 40;
+    }
+
+    .telemetry-group {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .telemetry-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .telemetry-label {
+      color: var(--gray);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .telemetry-value {
+      color: var(--text);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .telemetry-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulseDot 1.8s infinite ease-in-out;
+    }
+
+    /* -------------------------------------------------------------------------
+       RESPONSIVE MÓVIL Y ACCESIBILIDAD
+       ------------------------------------------------------------------------- */
     @media (max-width: 960px) {
-      .layout-container {
+      .system-header {
+        padding: 18px 24px 0;
+      }
+
+      .system-main {
         grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 24px;
         height: auto;
       }
-      .robot-stage {
-        height: 60vh;
+
+      .section-left {
+        max-width: 100%;
       }
-      .robot-figure-box {
-        width: 85vw;
+
+      /* "En móvil sitúa el Canvas bajo el texto y convierte la lista en una fila desplazable con controles accesibles." */
+      .section-nav {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+      }
+      .section-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .integration-item {
+        flex: 0 0 auto;
+        min-width: 220px;
+        scroll-snap-align: start;
+      }
+
+      .section-right {
+        height: 480px;
+        order: 2;
+      }
+
+      .robot-companion-container {
+        width: 260px;
+        height: 360px;
+        right: 0;
+      }
+
+      .system-footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 24px;
+        align-items: flex-start;
+      }
+
+      .telemetry-group {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+    }
+
+    /* PREFERS-REDUCED-MOTION: RESPETA MOSTRANDO LA RED ESTÁTICA */
+    @media (prefers-reduced-motion: reduce) {
+      .robot-rig {
+        animation: none !important;
+      }
+      .section-tag::before,
+      .telemetry-dot {
+        animation: none !important;
+      }
+      .integration-item {
+        transition: none !important;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="app-viewport" id="viewport">
-    <canvas id="ambient-canvas"></canvas>
+  <main class="system-section section-copy" id="system-root">
+    
+    <!-- ENCABEZADO SUPERIOR -->
+    <header class="system-header">
+      <div class="system-brand">
+        <div class="brand-cube"></div>
+        <span class="brand-name">Nexus Ops Engine</span>
+      </div>
 
-    <div class="layout-container">
-      <!-- ----------------------------------------------------
-           LADO IZQUIERDO: CENTRO DE RECARGAS GAMER
-           ---------------------------------------------------- -->
-      <section class="store-panel">
-        <div>
-          <!-- Header de Marca -->
-          <div class="store-header">
-            <div class="brand-group">
-              <div class="brand-badge">⚡</div>
-              <div class="brand-text">
-                <h1>Nexus Recargas</h1>
-                <p>Centro Gamer de Recargas Instantáneas</p>
+      <div class="controls-cluster">
+        <!-- Selector de tema Lima / Azul / Rojo -->
+        <div class="theme-selector" role="group" aria-label="Selector de Tema">
+          <button class="theme-dot-btn active" id="theme-btn-lime" onclick="setAccentTheme('lime')" title="Modo Lima (#C8FF45)">
+            <span class="theme-dot-inner" style="background: #C8FF45;"></span>
+          </button>
+          <button class="theme-dot-btn" id="theme-btn-blue" onclick="setAccentTheme('blue')" title="Modo Azul (#4C6FFF)">
+            <span class="theme-dot-inner" style="background: #4C6FFF;"></span>
+          </button>
+          <button class="theme-dot-btn" id="theme-btn-red" onclick="setAccentTheme('red')" title="Modo Rojo (#FF003C)">
+            <span class="theme-dot-inner" style="background: #FF003C;"></span>
+          </button>
+        </div>
+
+        <!-- Audio sintético opcional -->
+        <button class="btn-audio" id="btn-audio" onclick="toggleAudio()" title="Activar sonido robótico y pulsos de datos">
+          <span id="audio-icon">🔇</span>
+          <span>SFX</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL -->
+    <section class="system-main">
+      
+      <!-- COLUMNA IZQUIERDA: ETIQUETA, H2 Y 6 INTEGRACIONES -->
+      <div class="section-left">
+        <span class="section-tag">SYSTEM / 88</span>
+        <h2 class="section-title">Todo habla con todo.</h2>
+        <p class="section-desc">
+          Red técnica de liquidación instantánea para plataformas de recargas gamer y pasarelas de operaciones conectadas. Enrutamiento dinámico en malla con latencia sub-15ms.
+        </p>
+
+        <!-- LISTA VERTICAL DE SEIS INTEGRACIONES -->
+        <nav class="section-nav" role="tablist" aria-label="Integraciones de Operaciones Conectadas">
+          
+          <button
+            class="integration-item active"
+            role="tab"
+            aria-selected="true"
+            data-index="0"
+            data-label="GARENA API"
+            data-node="01: GARENA"
+            onmouseenter="activateIntegration(0)"
+            onfocus="activateIntegration(0)">
+            <div class="integration-meta">
+              <span class="integration-index">01</span>
+              <div>
+                <div class="integration-title">Garena Direct Gateway</div>
+                <div class="integration-protocol">Free Fire & Diamonds Top-Up API</div>
               </div>
             </div>
-
-            <div class="status-pill">
-              <div class="status-dot"></div>
-              <span>SISTEMAS 24/7 EN LÍNEA</span>
+            <div class="integration-status-pill">
+              <span class="node-dot"></span>
+              <span>12ms</span>
             </div>
-          </div>
+          </button>
 
-          <!-- Selector de Juegos Populares -->
-          <div class="section-label">1. Selecciona tu Juego</div>
-          <div class="games-scroll">
-            <button class="game-tab active" onclick="selectGame('Free Fire', 'Diamantes 💎', this)">
-              🔥 Free Fire
-            </button>
-            <button class="game-tab" onclick="selectGame('COD Mobile', 'CP Points 🎖️', this)">
-              🎯 COD Mobile
-            </button>
-            <button class="game-tab" onclick="selectGame('Valorant', 'VP Points ⚔️', this)">
-              🗡️ Valorant
-            </button>
-            <button class="game-tab" onclick="selectGame('Roblox', 'Robux 🧱', this)">
-              🧱 Roblox
-            </button>
-            <button class="game-tab" onclick="selectGame('Brawl Stars', 'Gemas ⭐', this)">
-              ⭐ Brawl Stars
-            </button>
-          </div>
+          <button
+            class="integration-item"
+            role="tab"
+            aria-selected="false"
+            data-index="1"
+            data-label="RIOT MESH"
+            data-node="02: RIOT"
+            onmouseenter="activateIntegration(1)"
+            onfocus="activateIntegration(1)">
+            <div class="integration-meta">
+              <span class="integration-index">02</span>
+              <div>
+                <div class="integration-title">Riot Games Protocol</div>
+                <div class="integration-protocol">Valorant & LoL Core Mesh</div>
+              </div>
+            </div>
+            <div class="integration-status-pill">
+              <span class="node-dot"></span>
+              <span>9ms</span>
+            </div>
+          </button>
 
-          <!-- Catálogo de Paquetes -->
-          <div class="section-label">2. Elige el Paquete de Saldo</div>
-          <div class="packages-grid" id="packages-container">
-            <div class="package-card" onclick="selectPackage(100, '$0.99', this)">
-              <div class="package-amount">100 💎</div>
-              <div class="package-bonus">+10 Diamantes Extra</div>
-              <div class="package-price">$0.99 USD</div>
+          <button
+            class="integration-item"
+            role="tab"
+            aria-selected="false"
+            data-index="2"
+            data-label="STEAM WALLET"
+            data-node="03: STEAM"
+            onmouseenter="activateIntegration(2)"
+            onfocus="activateIntegration(2)">
+            <div class="integration-meta">
+              <span class="integration-index">03</span>
+              <div>
+                <div class="integration-title">Steam Clearing Gateway</div>
+                <div class="integration-protocol">Instant Wallet Clearing Node</div>
+              </div>
+            </div>
+            <div class="integration-status-pill">
+              <span class="node-dot"></span>
+              <span>14ms</span>
+            </div>
+          </button>
+
+          <button
+            class="integration-item"
+            role="tab"
+            aria-selected="false"
+            data-index="3"
+            data-label="ACTIVISION"
+            data-node="04: ACTIVISION"
+            onmouseenter="activateIntegration(3)"
+            onfocus="activateIntegration(3)">
+            <div class="integration-meta">
+              <span class="integration-index">04</span>
+              <div>
+                <div class="integration-title">Activision COD Node</div>
+                <div class="integration-protocol">Call of Duty CP Points Sync</div>
+              </div>
+            </div>
+            <div class="integration-status-pill">
+              <span class="node-dot"></span>
+              <span>11ms</span>
+            </div>
+          </button>
+
+          <button
+            class="integration-item"
+            role="tab"
+            aria-selected="false"
+            data-index="4"
+            data-label="ROBLOX CLOUD"
+            data-node="05: ROBLOX"
+            onmouseenter="activateIntegration(4)"
+            onfocus="activateIntegration(4)">
+            <div class="integration-meta">
+              <span class="integration-index">05</span>
+              <div>
+                <div class="integration-title">Roblox Developer Cloud</div>
+                <div class="integration-protocol">Robux Mint & Security Protocol</div>
+              </div>
+            </div>
+            <div class="integration-status-pill">
+              <span class="node-dot"></span>
+              <span>15ms</span>
+            </div>
+          </button>
+
+          <button
+            class="integration-item"
+            role="tab"
+            aria-selected="false"
+            data-index="5"
+            data-label="DISCORD SYNC"
+            data-node="06: DISCORD"
+            onmouseenter="activateIntegration(5)"
+            onfocus="activateIntegration(5)">
+            <div class="integration-meta">
+              <span class="integration-index">06</span>
+              <div>
+                <div class="integration-title">Discord Bot Webhook</div>
+                <div class="integration-protocol">Real-time Delivery Event Stream</div>
+              </div>
+            </div>
+            <div class="integration-status-pill">
+              <span class="node-dot"></span>
+              <span>8ms</span>
+            </div>
+          </button>
+
+        </nav>
+      </div>
+
+      <!-- COLUMNA DERECHA: ESCENARIO CIRCULAR CANVAS 2D + ROBOT COMPANION -->
+      <div class="section-right" id="stage-container">
+        
+        <!-- CANVAS 2D CON RED TÉCNICA VIVA (12 NODOS, 2 ÓRBITAS, NÚCLEO MESH) -->
+        <div class="canvas-stage-wrapper" id="canvas-wrapper">
+          <canvas id="network-canvas"></canvas>
+
+          <!-- FALLBACK CSS/SVG VISIBLE SEGÚN ESPECIFICACIÓN -->
+          <svg class="canvas-fallback" viewBox="0 0 500 500" aria-label="Diagrama estático de red MESH">
+            <circle cx="250" cy="250" r="130" stroke="#777873" stroke-width="1" stroke-dasharray="4 4" fill="none" opacity="0.4"/>
+            <circle cx="250" cy="250" r="220" stroke="#777873" stroke-width="1" stroke-dasharray="4 4" fill="none" opacity="0.3"/>
+            <circle cx="250" cy="250" r="36" fill="#090A0C" stroke="#C8FF45" stroke-width="1.5"/>
+            <text x="250" y="254" text-anchor="middle" fill="#F1F2EC" font-size="10" font-family="Manrope">MESH</text>
+          </svg>
+        </div>
+
+        <!-- ROBOT COMPANION REALISTA COMPLETO ("robot completo, con calidad, ojos que siguen cursor") -->
+        <div class="robot-companion-container" id="robot-container">
+          <div class="robot-floor-shadow"></div>
+
+          <!-- RIG CON ROTACIÓN 3D Y RESPIRACIÓN -->
+          <div class="robot-rig" id="robot-rig">
+            
+            <!-- GLOBO HOLOGRÁFICO REACTIVO -->
+            <div class="robot-hud-tag" id="robot-hud">
+              MESH / CONECTADO ⚡ 12ms
             </div>
 
-            <div class="package-card selected" onclick="selectPackage(310, '$2.99', this)">
-              <div class="package-badge">POPULAR 🔥</div>
-              <div class="package-amount">310 💎</div>
-              <div class="package-bonus">+31 Diamantes Extra</div>
-              <div class="package-price">$2.99 USD</div>
+            <!-- CAPA PRINCIPAL DEL ROBOT (IMAGEN FOTORREALISTA COMPLETA LIMPIA) -->
+            <div class="robot-photo-layer">
+              <img src="robot-final-master.png" alt="Robot TV Companion Operador" id="robot-photo-img" />
             </div>
 
-            <div class="package-card" onclick="selectPackage(520, '$4.99', this)">
-              <div class="package-amount">520 💎</div>
-              <div class="package-bonus">+52 Diamantes Extra</div>
-              <div class="package-price">$4.99 USD</div>
+            <!-- PANTALLA CRT OVERLAY EXACTA CON CRISTAL OSCURO Y SCANLINES -->
+            <div class="crt-screen-overlay" id="crt-overlay">
+              <div class="crt-glass-back"></div>
+              <div class="crt-scanlines"></div>
+              <div class="crt-glare"></div>
+
+              <!-- OJOS LUMINOSOS CON SEGUIMIENTO DE CURSOR SUBPÍXEL REAL -->
+              <div class="crt-pupil eye-left" id="eye-left"></div>
+              <div class="crt-pupil eye-right" id="eye-right"></div>
             </div>
 
-            <div class="package-card" onclick="selectPackage(1060, '$9.99', this)">
-              <div class="package-badge">MEJOR VALOR ⭐</div>
-              <div class="package-amount">1,060 💎</div>
-              <div class="package-bonus">+106 Diamantes Extra</div>
-              <div class="package-price">$9.99 USD</div>
-            </div>
-
-            <div class="package-card" onclick="selectPackage(2180, '$19.99', this)">
-              <div class="package-amount">2,180 💎</div>
-              <div class="package-bonus">+218 Diamantes Extra</div>
-              <div class="package-price">$19.99 USD</div>
-            </div>
-
-            <div class="package-card" onclick="selectPackage('Pase Élite', '$3.99', this)">
-              <div class="package-badge">TEMPORADA 🏆</div>
-              <div class="package-amount">Pase Élite</div>
-              <div class="package-bonus">Desbloqueo Completo</div>
-              <div class="package-price">$3.99 USD</div>
-            </div>
-          </div>
-
-          <!-- Formulario de ID -->
-          <div class="section-label">3. Datos del Jugador</div>
-          <div class="recharge-form">
-            <div style="font-size: 11px; color: #94a3b8; font-family: ui-monospace, monospace;">
-              INGRESA TU ID DE JUGADOR (UID)
-            </div>
-            <div class="input-row">
-              <input
-                type="text"
-                id="player-id-input"
-                class="player-input"
-                placeholder="Ejemplo: 2849102847"
-                onfocus="onInputFocus()"
-              />
-              <button class="btn-recharge" onclick="executeRecharge()">
-                <span>⚡ RECARGAR AHORA</span>
-              </button>
-            </div>
           </div>
         </div>
 
-        <!-- Footer Izquierdo -->
-        <div class="store-footer">
-          <div>Entrega automática garantizada en menos de 60 segundos 🛡️</div>
-          <div class="theme-toggle-group">
-            <span style="font-size: 10px;">Color Gamer:</span>
-            <button class="theme-chip active" id="chip-green" onclick="setGamerTheme('green')">
-              🟢 Verde Neón
-            </button>
-            <button class="theme-chip" id="chip-red" onclick="setGamerTheme('red')">
-              🔴 Rojo Cyber
-            </button>
-            <button id="btn-audio-toggle" style="background: none; border: none; font-size: 14px; cursor: pointer; margin-left: 8px;" onclick="toggleAudio()" title="Activar sonido robótico">
-              🔇
-            </button>
-          </div>
+      </div>
+
+    </section>
+
+    <!-- BORDE INFERIOR: TELEMETRÍA (ESTADO, LATENCIA, NÚMERO DE EVENTOS) -->
+    <footer class="system-footer">
+      <div class="telemetry-group">
+        <div class="telemetry-item">
+          <span class="telemetry-dot"></span>
+          <span class="telemetry-label">ESTADO:</span>
+          <span class="telemetry-value" id="status-text">NÚCLEO MESH ACTIVO</span>
         </div>
-      </section>
 
-      <!-- ----------------------------------------------------
-           LADO DERECHO: ROBOT REALISTA ESTABLE CON CABEZA Y OJOS QUE VEN AL CURSOR
-           ---------------------------------------------------- -->
-      <section class="robot-stage" id="robot-stage">
-        <div class="robot-figure-box" id="robot-box">
-
-          <!-- Globo de voz holográfico -->
-          <div id="robot-speech" class="robot-hud-speech">
-            ¡SISTEMAS ONLINE! LISTO PARA RECARGAR 🎮
-          </div>
-
-          <!-- CAPA 1: CUERPO / PECHO / CUELLO (ESTABLE Y RESPIRANDO) -->
-          <div class="robot-body-layer">
-            <img src="robot-body.png" alt="Robot Torso" class="robot-body-img" />
-          </div>
-
-          <!-- CAPA 2: CABEZA TV ARTICULADA QUE GIRA Y VE AL CURSOR -->
-          <div class="robot-head-pivot" id="robot-head">
-            <img src="robot-head.png" alt="Robot Head" class="robot-head-img" />
-
-            <!-- PANTALLA CRT OSCURA DENTRO DE LA CABEZA -->
-            <div class="crt-screen-box">
-              <div class="crt-black-screen"></div>
-              <div class="crt-scan-mesh"></div>
-              <div class="crt-glass-glare"></div>
-
-              <!-- OJOS LUMINISCENTES QUE VEN Y SIGUEN EL CURSOR -->
-              <div id="pupil-left" class="robot-pupil pupil-l"></div>
-              <div id="pupil-right" class="robot-pupil pupil-r"></div>
-            </div>
-          </div>
-
+        <div class="telemetry-item">
+          <span class="telemetry-label">LATENCIA:</span>
+          <span class="telemetry-value" id="latency-text">12ms</span>
         </div>
-      </section>
-    </div>
-  </div>
+
+        <div class="telemetry-item">
+          <span class="telemetry-label">EVENTOS:</span>
+          <span class="telemetry-value" id="events-text">4,892/s</span>
+        </div>
+      </div>
+
+      <div style="font-size: 11px; color: var(--gray);">
+        <span>ARQUITECTURA DISTRIBUIDA // V2.8</span>
+      </div>
+    </footer>
+
+  </main>
 
   <script>
+    /**
+     * SYSTEM / 88 — MOTOR DE CANVAS 2D Y ROBOT COMPANION
+     * Cumple con:
+     * - 12 nodos sobre dos órbitas
+     * - Enlaces con pulsos discretos
+     * - Movimiento lento con requestAnimationFrame
+     * - Resalta solo su ruta y actualiza etiqueta central al enfocar
+     * - DPR limitado a 1.5
+     * - ResizeObserver
+     * - IntersectionObserver pausa
+     * - prefers-reduced-motion estático
+     * - Robot completo con seguimiento 3D de cursor y ojos luminiscentes CRT
+     */
+
     // ESTADO GENERAL
-    const state = {
-      mouseX: window.innerWidth * 0.5,
+    const appState = {
+      theme: 'lime', // 'lime', 'blue', 'red'
+      audioEnabled: false,
+      activeIntegration: 0,
+      activeLabel: 'GARENA API',
+      centralMeshText: 'MESH / GARENA',
+      reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      isIntersecting: true,
+      mouseX: window.innerWidth * 0.7,
       mouseY: window.innerHeight * 0.5,
-      targetNormX: 0,
-      targetNormY: 0,
+      normX: 0,
+      normY: 0,
       currentNormX: 0,
       currentNormY: 0,
-      headRotX: 0,
-      headRotY: 0,
-      headRotZ: 0,
-      theme: 'green',
-      audio: false,
-      speechTimer: 240,
-      selectedGame: 'Free Fire',
-      selectedPkg: '310 💎'
+      speechTimer: 180,
+      eventsCount: 4892,
+      latencyVal: 12
     };
 
-    // DOM ELEMENTS
-    const viewport = document.getElementById('viewport');
-    const robotBox = document.getElementById('robot-box');
-    const robotHead = document.getElementById('robot-head');
-    const pupilLeft = document.getElementById('pupil-left');
-    const pupilRight = document.getElementById('pupil-right');
-    const robotSpeech = document.getElementById('robot-speech');
-    const btnAudioToggle = document.getElementById('btn-audio-toggle');
+    // ELEMENTOS DOM
+    const canvas = document.getElementById('network-canvas');
+    const ctx = canvas.getContext('2d');
+    const stageContainer = document.getElementById('stage-container');
+    const robotRig = document.getElementById('robot-rig');
+    const eyeLeft = document.getElementById('eye-left');
+    const eyeRight = document.getElementById('eye-right');
+    const robotHud = document.getElementById('robot-hud');
+    const latencyEl = document.getElementById('latency-text');
+    const eventsEl = document.getElementById('events-text');
+    const statusEl = document.getElementById('status-text');
+    const btnAudio = document.getElementById('btn-audio');
+    const audioIcon = document.getElementById('audio-icon');
 
-    // WEB AUDIO API
+    // PALETA DE COLORES
+    const colorThemes = {
+      lime: {
+        accent: '#C8FF45',
+        glow: 'rgba(200, 255, 69, 0.8)',
+        dim: 'rgba(200, 255, 69, 0.15)',
+        packet: '#C8FF45'
+      },
+      blue: {
+        accent: '#4C6FFF',
+        glow: 'rgba(76, 111, 255, 0.8)',
+        dim: 'rgba(76, 111, 255, 0.15)',
+        packet: '#4C6FFF'
+      },
+      red: {
+        accent: '#FF003C',
+        glow: 'rgba(255, 0, 60, 0.8)',
+        dim: 'rgba(255, 0, 60, 0.15)',
+        packet: '#FF003C'
+      }
+    };
+
+    // SÍNTESIS DE AUDIO WEB (SFX TÉCNICOS SUTILES)
     let audioCtx = null;
     function playSfx(type) {
-      if (!state.audio) return;
+      if (!appState.audioEnabled) return;
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
-
         const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
-        if (type === 'beep') {
+        if (type === 'focus') {
           osc.type = 'sine';
-          osc.frequency.setValueAtTime(540, now);
-          osc.frequency.exponentialRampToValueAtTime(920, now + 0.1);
-          gain.gain.setValueAtTime(0.08, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.frequency.setValueAtTime(620, now);
+          osc.frequency.exponentialRampToValueAtTime(1040, now + 0.08);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
           osc.start(now);
-          osc.stop(now + 0.12);
-        } else if (type === 'recharge') {
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(320, now);
-          osc.frequency.linearRampToValueAtTime(640, now + 0.08);
-          osc.frequency.linearRampToValueAtTime(960, now + 0.18);
-          gain.gain.setValueAtTime(0.1, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-          osc.start(now);
-          osc.stop(now + 0.25);
+          osc.stop(now + 0.09);
         } else if (type === 'blink') {
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(700, now);
-          osc.frequency.linearRampToValueAtTime(520, now + 0.06);
-          gain.gain.setValueAtTime(0.04, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(800, now);
+          osc.frequency.linearRampToValueAtTime(540, now + 0.05);
+          gain.gain.setValueAtTime(0.02, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
           osc.start(now);
-          osc.stop(now + 0.06);
+          osc.stop(now + 0.05);
         }
-      } catch (e) {
-        console.warn(e);
+      } catch (err) {
+        console.warn(err);
       }
     }
 
     function toggleAudio() {
-      state.audio = !state.audio;
-      btnAudioToggle.innerText = state.audio ? '🔊' : '🔇';
-      if (state.audio) {
-        playSfx('beep');
-        speak('AUDIO GAMER: CONECTADO 🔊');
+      appState.audioEnabled = !appState.audioEnabled;
+      audioIcon.innerText = appState.audioEnabled ? '🔊' : '🔇';
+      btnAudio.style.borderColor = appState.audioEnabled ? 'var(--accent)' : 'var(--gray-dim)';
+      if (appState.audioEnabled) {
+        playSfx('focus');
+        setHudText('AUDIO MESH: EN LÍNEA 🔊');
       }
     }
 
-    function speak(text) {
-      robotSpeech.innerText = text;
-      robotSpeech.classList.add('active');
-      state.speechTimer = 220;
-    }
-
-    // CAMBIAR COLOR GAMER (VERDE NEÓN O ROJO CYBER)
-    function setGamerTheme(theme) {
-      state.theme = theme;
-      if (theme === 'red') {
-        document.documentElement.setAttribute('data-theme', 'red');
-        document.getElementById('chip-red').classList.add('active');
-        document.getElementById('chip-green').classList.remove('active');
-        speak('MODO CYBER ROJO ACTIVADO 🔴');
-      } else {
+    // CAMBIO DE TEMA
+    function setAccentTheme(themeName) {
+      appState.theme = themeName;
+      if (themeName === 'lime') {
         document.documentElement.removeAttribute('data-theme');
-        document.getElementById('chip-green').classList.add('active');
-        document.getElementById('chip-red').classList.remove('active');
-        speak('MODO NEÓN VERDE ACTIVADO 🟢');
+      } else {
+        document.documentElement.setAttribute('data-theme', themeName);
       }
-      playSfx('beep');
+      document.querySelectorAll('.theme-dot-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`theme-btn-${themeName}`);
+      if (activeBtn) activeBtn.classList.add('active');
+      playSfx('focus');
+      setHudText(`TEMA ACTIVO: ${themeName.toUpperCase()}`);
     }
 
-    // INTERACCIONES CON LA TIENDA DE RECARGAS
-    function selectGame(gameName, curr, btn) {
-      document.querySelectorAll('.game-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      state.selectedGame = gameName;
-      speak(`JUEGO: ${gameName.toUpperCase()} • ${curr}`);
-      playSfx('beep');
+    // FEEDBACK HOLOGRÁFICO DEL ROBOT
+    function setHudText(text) {
+      robotHud.innerText = text;
+      robotHud.classList.add('active');
+      appState.speechTimer = 220;
     }
 
-    function selectPackage(amount, price, card) {
-      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      state.selectedPkg = `${amount} (${price})`;
-      speak(`SELECCIONASTE ${amount} POR ${price} 💎`);
-      playSfx('beep');
-    }
+    // -------------------------------------------------------------------------
+    // DEFINICIÓN DE 12 NODOS Y 2 ÓRBITAS
+    // -------------------------------------------------------------------------
+    // Órbita 1 (interior): 5 nodos
+    // Órbita 2 (exterior): 7 nodos
+    // Total = 12 nodos
+    const nodeConfigs = [
+      // 6 Integraciones principales conectadas a la lista izquierda:
+      { id: 0, orbit: 1, angleOffset: 0.0, label: '01: GARENA', tag: 'GAR', integrationIndex: 0, lat: '12ms' },
+      { id: 1, orbit: 1, angleOffset: (Math.PI * 2) * (1 / 5), label: '02: RIOT', tag: 'RIO', integrationIndex: 1, lat: '9ms' },
+      { id: 2, orbit: 1, angleOffset: (Math.PI * 2) * (2 / 5), label: '03: STEAM', tag: 'STM', integrationIndex: 2, lat: '14ms' },
+      { id: 3, orbit: 2, angleOffset: (Math.PI * 2) * (0 / 7), label: '04: ACTIVISION', tag: 'ACT', integrationIndex: 3, lat: '11ms' },
+      { id: 4, orbit: 2, angleOffset: (Math.PI * 2) * (1 / 7), label: '05: ROBLOX', tag: 'RBX', integrationIndex: 4, lat: '15ms' },
+      { id: 5, orbit: 2, angleOffset: (Math.PI * 2) * (2 / 7), label: '06: DISCORD', tag: 'DSC', integrationIndex: 5, lat: '8ms' },
+      // 6 Nodos auxiliares de la red técnica en malla:
+      { id: 6, orbit: 1, angleOffset: (Math.PI * 2) * (3 / 5), label: '07: SOLANA PAY', tag: 'SOL', integrationIndex: -1, lat: '13ms' },
+      { id: 7, orbit: 1, angleOffset: (Math.PI * 2) * (4 / 5), label: '08: ZERO-HOP', tag: 'ZHP', integrationIndex: -1, lat: '7ms' },
+      { id: 8, orbit: 2, angleOffset: (Math.PI * 2) * (3 / 7), label: '09: CLEARING', tag: 'CLR', integrationIndex: -1, lat: '16ms' },
+      { id: 9, orbit: 2, angleOffset: (Math.PI * 2) * (4 / 7), label: '10: AUTH NODE', tag: 'ATH', integrationIndex: -1, lat: '10ms' },
+      { id: 10, orbit: 2, angleOffset: (Math.PI * 2) * (5 / 7), label: '11: LATAM ROUTE', tag: 'LTM', integrationIndex: -1, lat: '14ms' },
+      { id: 11, orbit: 2, angleOffset: (Math.PI * 2) * (6 / 7), label: '12: MESH-88', tag: 'M88', integrationIndex: -1, lat: '12ms' }
+    ];
 
-    function onInputFocus() {
-      speak('ESCANEANDO TU ID DE JUGADOR 🔍');
-      playSfx('beep');
-    }
-
-    function executeRecharge() {
-      const input = document.getElementById('player-id-input');
-      const idVal = input.value.trim();
-      if (!idVal) {
-        speak('¡POR FAVOR INGRESA TU ID DE JUGADOR! ⚠️');
-        input.focus();
-        return;
-      }
-      playSfx('recharge');
-      speak(`¡RECARGA ENVIADA A ID ${idVal}! 🚀💎`);
-      pupilLeft.classList.add('pupil-happy');
-      pupilRight.classList.add('pupil-happy');
-      setTimeout(() => {
-        pupilLeft.classList.remove('pupil-happy');
-        pupilRight.classList.remove('pupil-happy');
-      }, 900);
-    }
-
-    // SEGUIMIENTO REALISTA: CUERPO ESTABLE, CABEZA Y OJOS VEN AL CURSOR
-    window.addEventListener('mousemove', (e) => {
-      state.mouseX = e.clientX;
-      state.mouseY = e.clientY;
-
-      // Ubicación de la cabeza del robot en pantalla
-      const rect = robotHead.getBoundingClientRect();
-      const headCenterX = rect.left + rect.width / 2;
-      const headCenterY = rect.top + rect.height * 0.45;
-
-      // Normalizar dirección del cursor hacia la cabeza
-      state.targetNormX = Math.max(-1.1, Math.min(1.1, (e.clientX - headCenterX) / (window.innerWidth * 0.5)));
-      state.targetNormY = Math.max(-1.1, Math.min(1.1, (e.clientY - headCenterY) / (window.innerHeight * 0.5)));
-
-      viewport.style.setProperty('--mouse-x', `${(e.clientX / window.innerWidth) * 100}%`);
-      viewport.style.setProperty('--mouse-y', `${(e.clientY / window.innerHeight) * 100}%`);
-    }, { passive: true });
-
-    // PARPADEO ALEATORIO
-    let blinkTimer = 0;
-    function triggerBlink() {
-      pupilLeft.classList.add('pupil-blink');
-      pupilRight.classList.add('pupil-blink');
-      playSfx('blink');
-      setTimeout(() => {
-        pupilLeft.classList.remove('pupil-blink');
-        pupilRight.classList.remove('pupil-blink');
-      }, 150);
-    }
-
-    // CANVAS DE POLVO / CHISPAS
-    const canvas = document.getElementById('ambient-canvas');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    });
-
-    const particles = [];
-    for (let i = 0; i < 35; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: -Math.random() * 0.4 - 0.1,
-        size: Math.random() * 2 + 0.8,
-        alpha: Math.random() * 0.4 + 0.15
+    // PULSOS DISCRETOS (DATA PACKETS)
+    const packets = [];
+    for (let i = 0; i < 16; i++) {
+      packets.push({
+        nodeId: i % 12,
+        progress: (i / 16),
+        speed: 0.003 + (i % 4) * 0.0015,
+        reverse: (i % 2 === 0)
       });
     }
 
-    // BUCLE DE FÍSICA CINEMÁTICA REALISTA
-    function loop() {
-      // 1. Suavizar movimiento (Lerp)
-      state.currentNormX += (state.targetNormX - state.currentNormX) * 0.085;
-      state.currentNormY += (state.targetNormY - state.currentNormY) * 0.085;
+    // ROTACIÓN DE ÓRBITAS
+    let orbitAngle1 = 0;
+    let orbitAngle2 = 0;
 
-      // 2. ROTACIÓN 3D DE LA CABEZA TV (EL CUERPO PERMANECE FIRME EN SU LUGAR)
-      // Yaw (giro lateral): el robot voltea a ver los juegos a la izquierda
-      const targetRotY = state.currentNormX * 26;
-      // Pitch (inclinación vertical): ve hacia arriba o hacia el formulario
-      const targetRotX = -state.currentNormY * 18;
-      // Roll (inclinación sutil)
-      const targetRotZ = state.currentNormX * 3.5;
+    // INTERACCIÓN CON LISTA IZQUIERDA
+    function activateIntegration(index) {
+      if (appState.activeIntegration === index) return;
+      appState.activeIntegration = index;
 
-      state.headRotY += (targetRotY - state.headRotY) * 0.1;
-      state.headRotX += (targetRotX - state.headRotX) * 0.1;
-      state.headRotZ += (targetRotZ - state.headRotZ) * 0.1;
-
-      robotHead.style.transform = `perspective(1000px) rotateX(${state.headRotX}deg) rotateY(${state.headRotY}deg) rotateZ(${state.headRotZ}deg)`;
-
-      // 3. DESPLAZAMIENTO OCULAR (LOS OJOS VEN DIRECTAMENTE AL CURSOR SOBRE EL MONITOR)
-      const maxEyeShiftX = 22; // px
-      const maxEyeShiftY = 16; // px
-
-      const shiftX = state.currentNormX * maxEyeShiftX;
-      const shiftY = state.currentNormY * maxEyeShiftY;
-
-      pupilLeft.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
-      pupilRight.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
-
-      // 4. Parpadeo realista cada 4-6 segundos
-      blinkTimer++;
-      if (blinkTimer > 270 + Math.random() * 80) {
-        triggerBlink();
-        blinkTimer = 0;
-      }
-
-      // 5. Ocultar diálogo después de un tiempo
-      if (state.speechTimer > 0) {
-        state.speechTimer--;
-        if (state.speechTimer === 0) {
-          robotSpeech.classList.remove('active');
+      const items = document.querySelectorAll('.integration-item');
+      items.forEach((item, idx) => {
+        const isActive = idx === index;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        if (isActive) {
+          const label = item.getAttribute('data-label') || 'INTEGRACIÓN';
+          const node = item.getAttribute('data-node') || '';
+          appState.activeLabel = label;
+          appState.centralMeshText = `MESH / ${label.replace(' API', '').replace(' PROTOCOL', '')}`;
+          statusEl.innerText = `${label} ENRUTADO`;
+          setHudText(`SYNC: ${node} ⚡`);
         }
-      }
+      });
 
-      // 6. Dibujar partículas
-      ctx.clearRect(0, 0, width, height);
-      const color = state.theme === 'red' ? '#ff003c' : '#00ff88';
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.y < 0) p.y = height;
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.globalAlpha = p.alpha;
-        ctx.fill();
-      }
-
-      requestAnimationFrame(loop);
+      playSfx('focus');
+      triggerEyeReaction();
     }
 
-    requestAnimationFrame(loop);
+    function triggerEyeReaction() {
+      // Reacción momentánea de los ojos
+      eyeLeft.classList.add('eye-happy');
+      eyeRight.classList.add('eye-happy');
+      setTimeout(() => {
+        eyeLeft.classList.remove('eye-happy');
+        eyeRight.classList.remove('eye-happy');
+      }, 400);
+    }
+
+    // -------------------------------------------------------------------------
+    // MOTOR DE DIBUJO CANVAS 2D CON DPR LIMITADO A 1.5
+    // -------------------------------------------------------------------------
+    let viewWidth = 500;
+    let viewHeight = 500;
+    let dpr = 1;
+
+    function resizeCanvas() {
+      const rect = stageContainer.getBoundingClientRect();
+      viewWidth = rect.width;
+      viewHeight = rect.height;
+
+      // Limitar DPR a 1.5 según especificación estricta
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.floor(viewWidth * dpr);
+      canvas.height = Math.floor(viewHeight * dpr);
+      canvas.style.width = `${viewWidth}px`;
+      canvas.style.height = `${viewHeight}px`;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    // ResizeObserver según requerimiento
+    const resizeObserver = new ResizeObserver(() => {
+      resizeCanvas();
+    });
+    resizeObserver.observe(stageContainer);
+
+    // IntersectionObserver para pausar cuando no sea visible
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        appState.isIntersecting = entry.isIntersecting;
+      });
+    }, { threshold: 0.05 });
+    intersectionObserver.observe(stageContainer);
+
+    // -------------------------------------------------------------------------
+    // BUCLE DE RENDERIZADO CON REQUESTANIMATIONFRAME
+    // -------------------------------------------------------------------------
+    function renderLoop() {
+      if (appState.isIntersecting) {
+        drawNetwork();
+        updateRobotRig();
+        updateTelemetry();
+      }
+      requestAnimationFrame(renderLoop);
+    }
+
+    function drawNetwork() {
+      ctx.clearRect(0, 0, viewWidth, viewHeight);
+
+      // Centro del Canvas técnico
+      const cx = viewWidth * 0.44;
+      const cy = viewHeight * 0.50;
+      const minDim = Math.min(viewWidth, viewHeight);
+
+      // Radios de las dos órbitas
+      const r1 = minDim * 0.27; // Órbita 1 interior
+      const r2 = minDim * 0.42; // Órbita 2 exterior
+
+      // Rotación suave si no se solicita movimiento reducido
+      if (!appState.reducedMotion) {
+        orbitAngle1 += 0.0007;
+        orbitAngle2 -= 0.0005;
+      }
+
+      const activeColor = colorThemes[appState.theme].accent;
+      const activeGlow = colorThemes[appState.theme].glow;
+      const activeDim = colorThemes[appState.theme].dim;
+
+      // 1. DIBUJAR GUÍAS DE ÓRBITAS CIRCULARES FINAS
+      ctx.save();
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 5]);
+
+      // Órbita 1
+      ctx.strokeStyle = 'rgba(119, 120, 115, 0.22)';
+      ctx.beginPath();
+      ctx.arc(cx, cy, r1, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Órbita 2
+      ctx.strokeStyle = 'rgba(119, 120, 115, 0.16)';
+      ctx.beginPath();
+      ctx.arc(cx, cy, r2, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      // 2. CALCULAR COORDENADAS DE LOS 12 NODOS
+      const computedNodes = nodeConfigs.map(n => {
+        const baseAngle = (n.orbit === 1 ? orbitAngle1 : orbitAngle2);
+        const theta = baseAngle + n.angleOffset;
+        const rad = (n.orbit === 1 ? r1 : r2);
+        const x = cx + Math.cos(theta) * rad;
+        const y = cy + Math.sin(theta) * rad;
+        const isSelected = (n.integrationIndex === appState.activeIntegration);
+        return { ...n, x, y, theta, isSelected };
+      });
+
+      // 3. DIBUJAR ENLACES FINOS DE LA RED TÉCNICA
+      // a) Enlaces hacia el núcleo MESH central
+      computedNodes.forEach(node => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(node.x, node.y);
+
+        if (node.isSelected) {
+          // RUTA RESALTADA: solo la ruta de la integración seleccionada
+          ctx.strokeStyle = activeColor;
+          ctx.lineWidth = 1.8;
+          ctx.shadowColor = activeGlow;
+          ctx.shadowBlur = 10;
+        } else {
+          ctx.strokeStyle = 'rgba(119, 120, 115, 0.14)';
+          ctx.lineWidth = 0.8;
+        }
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // b) Enlaces entre nodos de la misma órbita y cruzados (Malla técnica)
+      ctx.save();
+      ctx.strokeStyle = 'rgba(119, 120, 115, 0.10)';
+      ctx.lineWidth = 0.6;
+      for (let i = 0; i < computedNodes.length; i++) {
+        for (let j = i + 1; j < computedNodes.length; j++) {
+          const nA = computedNodes[i];
+          const nB = computedNodes[j];
+          const dx = nA.x - nB.x;
+          const dy = nA.y - nB.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          // Unir nodos cercanos formando la telaraña técnica
+          if (dist < minDim * 0.28) {
+            ctx.beginPath();
+            ctx.moveTo(nA.x, nA.y);
+            ctx.lineTo(nB.x, nB.y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.restore();
+
+      // 4. PULSOS DISCRETOS DE DATOS VIAJANDO POR LOS ENLACES
+      if (!appState.reducedMotion) {
+        packets.forEach(pkt => {
+          pkt.progress += pkt.speed;
+          if (pkt.progress >= 1) pkt.progress = 0;
+
+          const targetNode = computedNodes[pkt.nodeId];
+          if (!targetNode) return;
+
+          // Si el nodo es el seleccionado, acelerar pulso y colorear brillante
+          const isHighlight = targetNode.isSelected;
+          const p = pkt.reverse ? (1 - pkt.progress) : pkt.progress;
+          const px = cx + (targetNode.x - cx) * p;
+          const py = cy + (targetNode.y - cy) * p;
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(px, py, isHighlight ? 2.8 : 1.6, 0, Math.PI * 2);
+          ctx.fillStyle = isHighlight ? activeColor : 'rgba(241, 242, 236, 0.45)';
+          if (isHighlight) {
+            ctx.shadowColor = activeGlow;
+            ctx.shadowBlur = 8;
+          }
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+
+      // 5. DIBUJAR LOS 12 NODOS ETIQUETADOS
+      computedNodes.forEach(node => {
+        const isSelected = node.isSelected;
+        const nodeRadius = isSelected ? 13 : 9;
+
+        // Halo / resplandor para el nodo seleccionado
+        if (isSelected) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, nodeRadius + 6, 0, Math.PI * 2);
+          ctx.fillStyle = activeDim;
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // Círculo base del nodo
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, nodeRadius, 0, Math.PI * 2);
+        ctx.fillStyle = isSelected ? '#090A0C' : '#0e1117';
+        ctx.strokeStyle = isSelected ? activeColor : 'rgba(119, 120, 115, 0.45)';
+        ctx.lineWidth = isSelected ? 2 : 1;
+        if (isSelected) {
+          ctx.shadowColor = activeGlow;
+          ctx.shadowBlur = 10;
+        }
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        // Punto central interno del nodo
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, isSelected ? 3.5 : 2, 0, Math.PI * 2);
+        ctx.fillStyle = isSelected ? activeColor : '#777873';
+        ctx.fill();
+        ctx.restore();
+
+        // Etiqueta del nodo
+        ctx.save();
+        ctx.font = isSelected ? '600 10px Manrope' : '500 9px Manrope';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = isSelected ? '#F1F2EC' : '#777873';
+        const labelOffsetY = (node.y > cy) ? nodeRadius + 11 : -(nodeRadius + 11);
+        ctx.fillText(node.tag, node.x, node.y + labelOffsetY);
+        ctx.restore();
+      });
+
+      // 6. NÚCLEO MESH CENTRAL ("núcleo MESH... actualiza la etiqueta central; no muevas el layout")
+      const coreRadius = 38;
+
+      // Anillo exterior decorativo
+      ctx.save();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = activeDim;
+      ctx.beginPath();
+      ctx.arc(cx, cy, coreRadius + 10, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Disco del núcleo
+      ctx.beginPath();
+      ctx.arc(cx, cy, coreRadius, 0, Math.PI * 2);
+      ctx.fillStyle = '#090A0C';
+      ctx.strokeStyle = activeColor;
+      ctx.lineWidth = 1.8;
+      ctx.shadowColor = activeGlow;
+      ctx.shadowBlur = 16;
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+
+      // Texto central dinámico: "actualiza la etiqueta central; no muevas el layout"
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Etiqueta superior diminuta
+      ctx.font = '600 8px Manrope';
+      ctx.fillStyle = activeColor;
+      ctx.fillText('NÚCLEO MESH', cx, cy - 8);
+
+      // Etiqueta central activa
+      ctx.font = '700 10px Manrope';
+      ctx.fillStyle = '#F1F2EC';
+      ctx.fillText(appState.centralMeshText.replace('MESH / ', ''), cx, cy + 6);
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // KINEMÁTICA REALISTA DEL ROBOT COMPLETO Y OJOS CRT
+    // -------------------------------------------------------------------------
+    window.addEventListener('mousemove', (e) => {
+      appState.mouseX = e.clientX;
+      appState.mouseY = e.clientY;
+
+      // Ubicación relativa del robot en pantalla
+      const rect = robotRig.getBoundingClientRect();
+      const rX = rect.left + rect.width * 0.5;
+      const rY = rect.top + rect.height * 0.35;
+
+      // Normalizar distancia al cursor (-1 a 1)
+      appState.normX = Math.max(-1.15, Math.min(1.15, (e.clientX - rX) / (window.innerWidth * 0.45)));
+      appState.normY = Math.max(-1.15, Math.min(1.15, (e.clientY - rY) / (window.innerHeight * 0.45)));
+    }, { passive: true });
+
+    function updateRobotRig() {
+      // Suavizado (Lerp) para movimiento orgánico
+      appState.currentNormX += (appState.normX - appState.currentNormX) * 0.085;
+      appState.currentNormY += (appState.normY - appState.currentNormY) * 0.085;
+
+      // 1. ROTACIÓN 3D DEL ROBOT COMPLETO (BASE FIRME, GIRA CARA Y TORSO EN PERSPECTIVA)
+      const rotY = appState.currentNormX * 18;  // Yaw: voltea a ver hacia la izquierda o derecha
+      const rotX = -appState.currentNormY * 11; // Pitch: inclina la cabeza arriba / abajo
+      const rotZ = appState.currentNormX * 2.2; // Roll: balanceo sutil orgánico
+
+      robotRig.style.transform = `perspective(1200px) rotateY(${rotY}deg) rotateX(${rotX}deg) rotateZ(${rotZ}deg)`;
+
+      // 2. SEGUIMIENTO DE LOS OJOS CRT DENTRO DE LA PANTALLA
+      // Los ojos se desplazan sobre el fósforo del monitor siguiendo el puntero
+      const maxShiftX = 18; // px
+      const maxShiftY = 12; // px
+
+      const shiftX = appState.currentNormX * maxShiftX;
+      const shiftY = appState.currentNormY * maxShiftY;
+
+      eyeLeft.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
+      eyeRight.style.transform = `translate(${shiftX}px, ${shiftY}px)`;
+
+      // 3. Temporizador del diálogo HUD
+      if (appState.speechTimer > 0) {
+        appState.speechTimer--;
+        if (appState.speechTimer === 0) {
+          robotHud.classList.remove('active');
+        }
+      }
+    }
+
+    // PARPADEO REALISTA DEL ROBOT
+    let blinkCounter = 0;
+    function triggerRandomBlink() {
+      blinkCounter++;
+      if (blinkCounter > 260 + Math.random() * 120) {
+        blinkCounter = 0;
+        eyeLeft.classList.add('eye-blink');
+        eyeRight.classList.add('eye-blink');
+        playSfx('blink');
+        setTimeout(() => {
+          eyeLeft.classList.remove('eye-blink');
+          eyeRight.classList.remove('eye-blink');
+        }, 130);
+      }
+    }
+    setInterval(triggerRandomBlink, 30);
+
+    // TELEMETRÍA EN VIVO (LATENCIA Y EVENTOS DINÁMICOS)
+    let telemCycle = 0;
+    function updateTelemetry() {
+      telemCycle++;
+      if (telemCycle % 45 === 0) {
+        // Fluctuación sutil de eventos
+        appState.eventsCount += Math.floor(Math.random() * 9) - 3;
+        eventsEl.innerText = `${appState.eventsCount.toLocaleString()}/s`;
+      }
+      if (telemCycle % 90 === 0) {
+        // Fluctuación sutil de latencia
+        const delta = Math.floor(Math.random() * 3) - 1;
+        appState.latencyVal = Math.max(8, Math.min(16, 12 + delta));
+        latencyEl.innerText = `${appState.latencyVal}ms`;
+      }
+    }
+
+    // INICIAR BUCLE
+    renderLoop();
   </script>
 </body>
 </html>
