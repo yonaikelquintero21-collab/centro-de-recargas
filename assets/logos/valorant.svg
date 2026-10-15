@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+      <linearGradient id="val-red" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff4655"/>
+        <stop offset="100%" stop-color="#bd1827"/>
+      </linearGradient>
+      <filter id="val-glow">
+        <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#ff4655" flood-opacity="0.7"/>
+      </filter>
+    </defs>
+    <!-- Background Circle -->
+    <circle cx="50" cy="50" r="42" fill="#0f1923" stroke="#ff4655" stroke-width="2" stroke-opacity="0.4"/>
+    <!-- Valorant Official Geometric Slash V -->
+    <g filter="url(#val-glow)">
+      <!-- Left Angled Trapezoid -->
+      <polygon points="18,30 46,30 26,72 10,72" fill="url(#val-red)"/>
+      <!-- Right Angled Slashed Wing -->
+      <polygon points="54,30 90,30 54,72" fill="url(#val-red)"/>
+    </g>
+  </svg>

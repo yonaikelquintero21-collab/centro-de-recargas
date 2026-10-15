@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+      <linearGradient id="pubg-steel" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#4a5568"/>
+        <stop offset="50%" stop-color="#2d3748"/>
+        <stop offset="100%" stop-color="#1a202c"/>
+      </linearGradient>
+      <linearGradient id="pubg-visor" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00d4ff"/>
+        <stop offset="50%" stop-color="#ffffff"/>
+        <stop offset="100%" stop-color="#00d4ff"/>
+      </linearGradient>
+      <filter id="pubg-glow">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#f59e0b" flood-opacity="0.5"/>
+      </filter>
+    </defs>
+    <!-- Background Circle -->
+    <circle cx="50" cy="50" r="42" fill="#0c1017" stroke="#f59e0b" stroke-width="2"/>
+    <!-- Helmet Dome -->
+    <path d="M24 50 C24 28 40 18 50 18 C60 18 76 28 76 50 C76 60 74 68 70 74 L30 74 C26 68 24 60 24 50 Z" fill="url(#pubg-steel)" stroke="#f59e0b" stroke-width="2.5" filter="url(#pubg-glow)"/>
+    <!-- Visor Slit Plate -->
+    <rect x="28" y="44" width="44" height="12" rx="3" fill="#111827" stroke="#718096" stroke-width="1.5"/>
+    <rect x="32" y="48" width="36" height="4" rx="1.5" fill="url(#pubg-visor)"/>
+    <!-- Chin Guard Rivets -->
+    <circle cx="36" cy="66" r="2" fill="#f59e0b"/>
+    <circle cx="50" cy="67" r="2" fill="#f59e0b"/>
+    <circle cx="64" cy="66" r="2" fill="#f59e0b"/>
+  </svg>

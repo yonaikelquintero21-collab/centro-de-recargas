@@ -12,60 +12,57 @@
 
   <style>
     :root {
-      /* PALETA X7 STORE: BLANCO, ROJO HYPER Y AZUL ELÉCTRICO */
-      --bg-deep: #080a10;
-      --bg-surface: #0e121c;
-      --bg-card: rgba(16, 22, 34, 0.85);
-      --bg-card-hover: rgba(24, 32, 50, 0.95);
+      /* PALETA BASE X7 STORE */
+      --bg-deep: #07090e;
+      --bg-surface: #0c101a;
+      --bg-card: rgba(14, 18, 28, 0.88);
+      --bg-card-hover: rgba(22, 28, 44, 0.95);
       --border-card: rgba(255, 255, 255, 0.1);
-      --border-card-hover: rgba(255, 30, 70, 0.4);
+      --border-card-hover: rgba(255, 30, 70, 0.45);
 
       --text-pure: #ffffff;
       --text-main: #f1f5f9;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
 
-      /* TEMA PRINCIPAL: X7 CRIMSON & ICE BLUE (Blanco, Rojo y Azul) */
-      --red-main: #ff1e46;
-      --red-glow: rgba(255, 30, 70, 0.7);
-      --red-dim: rgba(255, 30, 70, 0.15);
-
-      --blue-main: #00d4ff;
-      --blue-glow: rgba(0, 212, 255, 0.7);
-      --blue-dim: rgba(0, 212, 255, 0.15);
-
-      /* Accent activo (Rojo primario con toques azul hielo) */
-      --accent: var(--red-main);
-      --accent-glow: var(--red-glow);
-      --accent-dim: var(--red-dim);
-      --accent-secondary: var(--blue-main);
-      --accent-secondary-glow: var(--blue-glow);
-      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #ff1e46 55%, #00d4ff 100%);
+      /* TEMA 1: X7 CRIMSON RED (ROJO GAMER // DEFAULT) */
+      --accent: #ff1e46;
+      --accent-glow: rgba(255, 30, 70, 0.75);
+      --accent-dim: rgba(255, 30, 70, 0.16);
+      --accent-secondary: #00d4ff;
+      --accent-secondary-glow: rgba(0, 212, 255, 0.6);
+      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #ff1e46 55%, #b30026 100%);
       --btn-gradient: linear-gradient(135deg, #ff1e46 0%, #d80032 100%);
+      --badge-bg: rgba(255, 30, 70, 0.15);
+      --theme-active-color: #ff1e46;
     }
 
     [data-theme="blue"] {
-      /* TEMA X7 HYPER BLUE */
-      --accent: #00b4d8;
-      --accent-glow: rgba(0, 180, 216, 0.7);
-      --accent-dim: rgba(0, 180, 216, 0.15);
-      --accent-secondary: #ff1e46;
-      --accent-secondary-glow: rgba(255, 30, 70, 0.6);
-      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #00b4d8 60%, #0077b6 100%);
-      --btn-gradient: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
-      --border-card-hover: rgba(0, 180, 216, 0.45);
+      /* TEMA 2: X7 CYBER BLUE (AZUL ELÉCTRICO) */
+      --accent: #00d4ff;
+      --accent-glow: rgba(0, 212, 255, 0.75);
+      --accent-dim: rgba(0, 212, 255, 0.16);
+      --accent-secondary: #0077b6;
+      --accent-secondary-glow: rgba(0, 119, 182, 0.6);
+      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #00d4ff 55%, #0077b6 100%);
+      --btn-gradient: linear-gradient(135deg, #00d4ff 0%, #0077b6 100%);
+      --border-card-hover: rgba(0, 212, 255, 0.5);
+      --badge-bg: rgba(0, 212, 255, 0.15);
+      --theme-active-color: #00d4ff;
     }
 
-    [data-theme="white-red"] {
-      /* TEMA X7 ARCTIC RED & WHITE */
-      --accent: #ff3355;
-      --accent-glow: rgba(255, 51, 85, 0.75);
-      --accent-dim: rgba(255, 255, 255, 0.12);
-      --accent-secondary: #ffffff;
-      --accent-secondary-glow: rgba(255, 255, 255, 0.5);
-      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #ff3355 100%);
-      --btn-gradient: linear-gradient(135deg, #ff3355 0%, #c40026 100%);
-      --border-card-hover: rgba(255, 255, 255, 0.4);
+    [data-theme="yellow"] {
+      /* TEMA 3: X7 CYBER GOLD (AMARILLO ESPORTS) */
+      --accent: #ffcc00;
+      --accent-glow: rgba(255, 204, 0, 0.8);
+      --accent-dim: rgba(255, 204, 0, 0.16);
+      --accent-secondary: #ff9100;
+      --accent-secondary-glow: rgba(255, 145, 0, 0.6);
+      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #ffcc00 55%, #ff8800 100%);
+      --btn-gradient: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+      --border-card-hover: rgba(255, 204, 0, 0.5);
+      --badge-bg: rgba(255, 204, 0, 0.15);
+      --theme-active-color: #ffcc00;
     }
 
     * {
@@ -87,7 +84,7 @@
       line-height: 1.5;
     }
 
-    /* CURSOR GAMER: HUMO Y DESTELLOS LUMINISCENTES EN ROJO Y AZUL */
+    /* CURSOR GAMER: HUMO Y DESTELLOS LUMINISCENTES */
     #cursor-trail-canvas {
       position: fixed;
       inset: 0;
@@ -106,7 +103,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* FONDO DE ENERGÍA AMBIENTAL CON DESTELLOS ROJO Y AZUL */
+    /* FONDO DE ENERGÍA AMBIENTAL CON CHISPAS REACTIVAS */
     #ambient-canvas {
       position: fixed;
       inset: 0;
@@ -118,8 +115,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(circle at 15% 20%, var(--red-dim) 0%, transparent 50%),
-        radial-gradient(circle at 85% 35%, var(--blue-dim) 0%, transparent 55%),
+        radial-gradient(circle at 15% 20%, var(--accent-dim) 0%, transparent 50%),
+        radial-gradient(circle at 85% 35%, rgba(0, 212, 255, 0.1) 0%, transparent 55%),
         radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 60%),
         linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
@@ -148,7 +145,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(8, 10, 16, 0.9);
+      background: rgba(7, 9, 14, 0.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-card);
       z-index: 100;
@@ -181,8 +178,8 @@
 
     .brand-logo:hover .brand-badge-x7 {
       transform: scale(1.08) rotate(4deg);
-      border-color: var(--blue-main);
-      box-shadow: 0 0 25px var(--blue-glow);
+      border-color: var(--accent);
+      box-shadow: 0 0 25px var(--accent-glow);
     }
 
     .brand-title-box h1 {
@@ -200,7 +197,7 @@
 
     .brand-title-box p {
       font-size: 11px;
-      color: var(--blue-main);
+      color: var(--accent-secondary);
       font-family: 'Rajdhani', sans-serif;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -246,42 +243,55 @@
       gap: 16px;
     }
 
+    /* SELECTOR DE TEMAS X7: SOLAMENTE ROJO, AZUL Y AMARILLO */
     .theme-picker {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-card);
-      padding: 4px 8px;
+      padding: 5px 10px;
       border-radius: 9999px;
     }
 
+    .theme-picker-label {
+      font-size: 10px;
+      font-family: 'Rajdhani', monospace;
+      font-weight: 800;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 2px;
+    }
+
     .theme-btn {
-      width: 18px;
-      height: 18px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      border: 1.5px solid transparent;
+      border: 2px solid transparent;
       cursor: pointer;
       background: transparent;
       padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s;
+      transition: transform 0.2s, border-color 0.2s;
     }
 
     .theme-btn:hover {
-      transform: scale(1.2);
+      transform: scale(1.22);
     }
 
     .theme-btn.active {
-      border-color: #fff;
+      border-color: #ffffff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
     .theme-btn-dot {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
+      box-shadow: 0 0 8px currentColor;
     }
 
     .btn-sfx {
@@ -329,7 +339,7 @@
     }
 
     /* =========================================================================
-       2. PORTADA (HERO CON FONDO LLAMATIVO Y ENERGÍA ROJO/AZUL/BLANCO)
+       2. PORTADA (HERO CON FONDO TIPO VIDEO ANIMADO)
        ========================================================================= */
     .hero-section {
       position: relative;
@@ -342,18 +352,71 @@
       overflow: hidden;
     }
 
-    /* FONDO GAMER DINÁMICO DE LA PORTADA */
+    /* FONDO GAMER TIPO VIDEO CON ANIMACIÓN CONTINUA DE CÁMARA (KEN BURNS) */
     .hero-gamer-backdrop {
+      position: absolute;
+      inset: -40px;
+      background:
+        linear-gradient(90deg, rgba(7, 9, 14, 0.95) 0%, rgba(12, 16, 26, 0.76) 50%, rgba(7, 9, 14, 0.95) 100%),
+        radial-gradient(circle at 10% 40%, var(--accent-dim) 0%, transparent 60%),
+        radial-gradient(circle at 80% 30%, rgba(0, 212, 255, 0.2) 0%, transparent 65%),
+        url('assets/games/hero-bg.jpg') center/cover no-repeat;
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 1;
+      animation: heroLiveVideo 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroLiveVideo {
+      0% {
+        transform: scale(1.02) translate(0, 0);
+        filter: brightness(0.95) contrast(1.05);
+      }
+      50% {
+        transform: scale(1.08) translate(-1.5%, -1%);
+        filter: brightness(1.12) contrast(1.12);
+      }
+      100% {
+        transform: scale(1.04) translate(1%, -1.5%);
+        filter: brightness(1.0) contrast(1.05);
+      }
+    }
+
+    /* CAPAS DE ANIMACIÓN DE VIDEO: SCANLINES Y RAYOS DE LUZ EN MOVIMIENTO */
+    .hero-video-scanlines {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(8, 10, 16, 0.96) 0%, rgba(12, 16, 26, 0.85) 50%, rgba(8, 10, 16, 0.94) 100%),
-        radial-gradient(circle at 10% 40%, rgba(255, 30, 70, 0.22) 0%, transparent 60%),
-        radial-gradient(circle at 80% 30%, rgba(0, 212, 255, 0.22) 0%, transparent 65%),
-        url('assets/games/hero-bg.jpg') center/cover no-repeat;
-      opacity: 0.7;
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 212, 255, 0.02));
+      background-size: 100% 4px, 6px 100%;
       pointer-events: none;
-      z-index: 1;
+      z-index: 2;
+      opacity: 0.65;
+      animation: scanlinesVideoScroll 8s linear infinite;
+    }
+
+    @keyframes scanlinesVideoScroll {
+      0% { background-position: 0 0, 0 0; }
+      100% { background-position: 0 160px, 0 0; }
+    }
+
+    .hero-light-beam {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 50% 30%, var(--accent-glow) 0%, transparent 50%);
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 2;
+      animation: lightBeamSweep 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes lightBeamSweep {
+      0% { transform: rotate(-12deg) translateY(-6%); }
+      100% { transform: rotate(14deg) translateY(8%); }
     }
 
     .hero-content {
@@ -369,7 +432,7 @@
       gap: 8px;
       padding: 7px 16px;
       border-radius: 9999px;
-      background: rgba(255, 30, 70, 0.12);
+      background: var(--badge-bg);
       border: 1.5px solid var(--accent);
       color: #fff;
       font-size: 11px;
@@ -410,8 +473,8 @@
     }
 
     .hero-title .highlight-blue {
-      color: var(--blue-main);
-      text-shadow: 0 0 35px var(--blue-glow);
+      color: var(--accent-secondary);
+      text-shadow: 0 0 35px var(--accent-secondary-glow);
     }
 
     .hero-subtitle {
@@ -462,7 +525,7 @@
       padding: 16px 30px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid rgba(0, 212, 255, 0.4);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
       color: #ffffff;
       font-size: 14px;
       font-weight: 800;
@@ -470,15 +533,15 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       transition: all 0.2s;
     }
 
     .btn-hero-secondary:hover {
-      background: rgba(0, 212, 255, 0.12);
-      border-color: var(--blue-main);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 0 25px var(--blue-glow);
+      box-shadow: 0 0 25px var(--accent-glow);
     }
 
     /* ESTADÍSTICAS EN VIVO */
@@ -504,7 +567,7 @@
 
     .stat-box p {
       font-size: 12px;
-      color: var(--blue-main);
+      color: var(--accent-secondary);
       font-family: 'Rajdhani', sans-serif;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -512,17 +575,22 @@
     }
 
     /* -------------------------------------------------------------------------
-       TERMINAL GAMER CON MONEDAS ESPECÍFICAS (PORTADA DERECHA)
+       TERMINAL GAMER CON LOGO OFICIAL Y MONEDAS ESPECÍFICAS
        ------------------------------------------------------------------------- */
     .hero-terminal {
       position: relative;
       background: var(--bg-card);
-      border: 1px solid rgba(255, 30, 70, 0.3);
+      border: 1.5px solid var(--border-card);
       border-radius: 26px;
       padding: 28px;
       backdrop-filter: blur(24px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px var(--accent-dim);
       z-index: 20;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .hero-terminal:hover {
+      border-color: var(--accent);
     }
 
     .terminal-header {
@@ -537,7 +605,28 @@
     .terminal-title-cluster {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+    }
+
+    .terminal-game-logo-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 16px var(--accent-glow);
+      padding: 6px;
+      flex-shrink: 0;
+      transition: all 0.25s;
+    }
+
+    .terminal-game-logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .terminal-title-cluster h3 {
@@ -546,6 +635,18 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #fff;
+      line-height: 1.1;
+    }
+
+    .terminal-game-subtitle {
+      font-size: 10px;
+      color: var(--accent);
+      font-family: 'Rajdhani', monospace;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
     }
 
     .terminal-live-badge {
@@ -555,15 +656,15 @@
       font-size: 11px;
       font-family: 'Rajdhani', monospace;
       font-weight: 800;
-      color: var(--blue-main);
-      background: var(--blue-dim);
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--blue-main);
+      color: var(--accent-secondary);
+      background: rgba(0, 212, 255, 0.1);
+      padding: 5px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--accent-secondary);
       box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
     }
 
-    /* SELECTOR RÁPIDO DE JUEGOS EN TERMINAL */
+    /* SELECTOR RÁPIDO DE JUEGOS EN TERMINAL CON LOGOS REALES */
     .terminal-field-label {
       font-size: 11px;
       font-weight: 800;
@@ -587,8 +688,8 @@
     .game-chips-row::-webkit-scrollbar { display: none; }
 
     .game-chip {
-      padding: 9px 15px;
-      border-radius: 10px;
+      padding: 8px 14px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-card);
       color: var(--text-muted);
@@ -598,14 +699,27 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: all 0.2s;
+    }
+
+    .chip-game-logo {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+      transition: transform 0.2s;
     }
 
     .game-chip:hover {
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
       transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .game-chip:hover .chip-game-logo {
+      transform: scale(1.18);
     }
 
     .game-chip.active {
@@ -613,6 +727,10 @@
       border-color: var(--accent);
       color: #fff;
       box-shadow: 0 0 16px var(--accent-glow);
+    }
+
+    .game-chip.active .chip-game-logo {
+      transform: scale(1.15);
     }
 
     /* GRID DINÁMICO DE PAQUETES CON MONEDAS ESPECÍFICAS */
@@ -639,13 +757,13 @@
     }
 
     .pkg-chip:hover {
-      border-color: var(--blue-main);
-      background: rgba(0, 212, 255, 0.06);
+      border-color: var(--accent);
+      background: var(--accent-dim);
       transform: translateY(-2px);
     }
 
     .pkg-chip.active {
-      background: linear-gradient(135deg, rgba(255, 30, 70, 0.2), rgba(0, 212, 255, 0.15));
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0, 212, 255, 0.12));
       border-color: var(--accent);
       box-shadow: 0 0 18px var(--accent-glow);
     }
@@ -676,7 +794,7 @@
 
     .pkg-chip-bonus {
       font-size: 11px;
-      color: var(--blue-main);
+      color: var(--accent-secondary);
       font-weight: 700;
       margin-bottom: 6px;
     }
@@ -704,8 +822,8 @@
     }
 
     .input-box:focus-within {
-      border-color: var(--blue-main);
-      box-shadow: 0 0 18px var(--blue-dim);
+      border-color: var(--accent);
+      box-shadow: 0 0 18px var(--accent-dim);
     }
 
     .input-box input {
@@ -726,9 +844,9 @@
     .input-verify-btn {
       padding: 8px 16px;
       border-radius: 8px;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid var(--blue-main);
-      color: var(--blue-main);
+      background: var(--badge-bg);
+      border: 1px solid var(--accent);
+      color: #fff;
       font-size: 11px;
       font-weight: 800;
       cursor: pointer;
@@ -736,9 +854,9 @@
     }
 
     .input-verify-btn:hover {
-      background: var(--blue-main);
+      background: var(--accent);
       color: #06080c;
-      box-shadow: 0 0 12px var(--blue-glow);
+      box-shadow: 0 0 12px var(--accent-glow);
     }
 
     /* BOTÓN EJECUTAR RECARGA */
@@ -769,21 +887,133 @@
     }
 
     /* =========================================================================
-       3. SECCIÓN: CATÁLOGO DE JUEGOS CON IMÁGENES REALES Y FONDO DIFERENTE
+       3. SECCIÓN: GUÍA DE RECARGA EN 3 PASOS (NUEVO & ULTRA-VISUAL)
+       ========================================================================= */
+    .steps-section {
+      position: relative;
+      padding: 80px 48px;
+      background:
+        linear-gradient(180deg, rgba(7, 9, 14, 0.98) 0%, rgba(13, 17, 28, 0.95) 50%, rgba(7, 9, 14, 0.98) 100%);
+      border-top: 1px solid var(--border-card);
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 22px;
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 24px var(--accent-dim);
+    }
+
+    .step-number-watermark {
+      position: absolute;
+      top: -15px;
+      right: 15px;
+      font-size: 80px;
+      font-weight: 900;
+      font-family: 'Rajdhani', sans-serif;
+      color: rgba(255, 255, 255, 0.03);
+      user-select: none;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .step-card:hover .step-number-watermark {
+      color: var(--accent-dim);
+    }
+
+    .step-icon-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--badge-bg);
+      border: 1.5px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 18px var(--accent-dim);
+    }
+
+    .step-badge-tag {
+      font-size: 11px;
+      font-family: 'Rajdhani', monospace;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .step-card h3 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .step-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================================================
+       4. SECCIÓN: CATÁLOGO DE JUEGOS CON FONDO DE VIDEO Y LOGOS OFICIALES
        ========================================================================= */
     .section-catalog-wrap {
       position: relative;
       padding: 100px 48px;
-      background:
-        linear-gradient(180deg, rgba(8, 10, 16, 0.95) 0%, rgba(13, 18, 30, 0.98) 50%, rgba(8, 10, 16, 0.95) 100%),
-        radial-gradient(circle at 50% 25%, rgba(0, 212, 255, 0.08) 0%, transparent 60%);
-      border-top: 1px solid var(--border-card);
+      background: #080b12;
+      overflow: hidden;
       border-bottom: 1px solid var(--border-card);
+    }
+
+    /* FONDO DE VIDEO / ANIMACIÓN GAMER DEL CATÁLOGO */
+    .catalog-live-backdrop {
+      position: absolute;
+      inset: -40px;
+      background:
+        linear-gradient(180deg, rgba(7, 9, 14, 0.96) 0%, rgba(11, 15, 26, 0.86) 50%, rgba(7, 9, 14, 0.96) 100%),
+        radial-gradient(circle at 50% 20%, var(--accent-dim) 0%, transparent 60%),
+        url('assets/games/cs2.jpg') center/cover no-repeat;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 1;
+      animation: catalogLiveVideo 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes catalogLiveVideo {
+      0% { transform: scale(1.0) translateY(0); }
+      50% { transform: scale(1.06) translateY(-2%); }
+      100% { transform: scale(1.03) translateY(1%); }
     }
 
     .section-container-inner {
       max-width: 1360px;
       margin: 0 auto;
+      position: relative;
+      z-index: 10;
     }
 
     .section-header-center {
@@ -796,7 +1026,7 @@
       font-size: 12px;
       font-family: 'Rajdhani', monospace;
       font-weight: 800;
-      color: var(--blue-main);
+      color: var(--accent);
       letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 12px;
@@ -845,7 +1075,7 @@
 
     .filter-btn:hover {
       color: #fff;
-      border-color: rgba(0, 212, 255, 0.4);
+      border-color: var(--accent);
     }
 
     .filter-btn.active {
@@ -855,7 +1085,7 @@
       box-shadow: 0 0 16px var(--accent-glow);
     }
 
-    /* GRID DEL CATÁLOGO CON IMÁGENES REALES */
+    /* GRID DEL CATÁLOGO CON LOGOS Y FONDOS HD */
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -876,13 +1106,13 @@
 
     .game-card:hover {
       transform: translateY(-6px);
-      border-color: var(--blue-main);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 26px rgba(0, 212, 255, 0.25);
+      border-color: var(--accent);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 26px var(--accent-glow);
     }
 
-    /* BANNER DE IMAGEN REAL DEL JUEGO */
+    /* BANNER DE IMAGEN REAL DEL JUEGO CON LOGO FLOTANTE */
     .game-card-banner {
-      height: 170px;
+      height: 175px;
       position: relative;
       background-size: cover;
       background-position: center;
@@ -902,13 +1132,45 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(8, 10, 16, 0.1) 0%, rgba(8, 10, 16, 0.9) 100%);
+      background: linear-gradient(180deg, rgba(7, 9, 14, 0.15) 0%, rgba(7, 9, 14, 0.92) 100%);
+    }
+
+    /* LOGO OFICIAL FLOTANTE EN CADA TARJETA */
+    .game-card-logo-float {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 3;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(7, 9, 14, 0.88);
+      border: 1.5px solid var(--accent);
+      backdrop-filter: blur(8px);
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 14px var(--accent-dim);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .game-card:hover .game-card-logo-float {
+      transform: scale(1.15) rotate(5deg);
+      border-color: #ffffff;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .game-card-logo-float img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .game-badge-tag {
       position: relative;
       z-index: 2;
-      background: rgba(8, 10, 16, 0.85);
+      background: rgba(7, 9, 14, 0.85);
       border: 1.5px solid var(--accent);
       color: #ffffff;
       font-size: 10px;
@@ -918,14 +1180,17 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       backdrop-filter: blur(8px);
+      margin-left: auto;
     }
 
     .game-currency-pill {
-      position: relative;
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
       z-index: 2;
-      background: rgba(8, 10, 16, 0.85);
-      border: 1px solid var(--blue-main);
-      color: var(--blue-main);
+      background: rgba(7, 9, 14, 0.88);
+      border: 1px solid var(--accent-secondary);
+      color: var(--accent-secondary);
       font-size: 10px;
       font-weight: 800;
       padding: 4px 10px;
@@ -947,16 +1212,28 @@
       background: var(--bg-card);
     }
 
+    .game-card-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .card-inline-logo {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
     .game-card-name {
       font-size: 19px;
       font-weight: 900;
       color: #ffffff;
-      margin-bottom: 4px;
     }
 
     .game-card-currency {
       font-size: 13px;
-      color: var(--blue-main);
+      color: var(--accent-secondary);
       font-weight: 800;
       margin-bottom: 14px;
       display: flex;
@@ -1003,11 +1280,11 @@
     }
 
     /* =========================================================================
-       4. SECCIÓN: SERVICIOS Y BENEFICIOS GAMER
+       5. SECCIÓN: SERVICIOS Y GARANTÍAS GAMER (MEJORADO)
        ========================================================================= */
     .section-wrap {
       position: relative;
-      padding: 100px 48px;
+      padding: 90px 48px;
       max-width: 1360px;
       margin: 0 auto;
       width: 100%;
@@ -1029,6 +1306,8 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      position: relative;
+      overflow: hidden;
     }
 
     .service-box:hover {
@@ -1041,7 +1320,7 @@
       width: 52px;
       height: 52px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255, 30, 70, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
+      background: var(--badge-bg);
       border: 1.5px solid var(--accent);
       display: flex;
       align-items: center;
@@ -1064,13 +1343,10 @@
     }
 
     /* =========================================================================
-       5. SECCIÓN: OFERTAS FLASH CON FONDO DINÁMICO CYBERPUNK
+       6. SECCIÓN: OFERTAS FLASH CON FONDO DE VIDEO CYBERPUNK
        ========================================================================= */
     .flash-banner {
       position: relative;
-      background:
-        linear-gradient(90deg, rgba(8, 10, 16, 0.96) 0%, rgba(16, 22, 36, 0.9) 60%, rgba(8, 10, 16, 0.96) 100%),
-        url('assets/games/cyberpunk.jpg') center/cover no-repeat;
       border: 1.5px solid var(--accent);
       border-radius: 28px;
       padding: 52px;
@@ -1080,6 +1356,29 @@
       align-items: center;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--accent-dim);
       overflow: hidden;
+    }
+
+    .flash-banner-backdrop {
+      position: absolute;
+      inset: -30px;
+      background:
+        linear-gradient(90deg, rgba(7, 9, 14, 0.96) 0%, rgba(16, 22, 36, 0.88) 60%, rgba(7, 9, 14, 0.96) 100%),
+        url('assets/games/cyberpunk.jpg') center/cover no-repeat;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 1;
+      animation: flashLiveVideo 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes flashLiveVideo {
+      0% { transform: scale(1.02); filter: brightness(0.9); }
+      50% { transform: scale(1.08) translate(-1%, -1%); filter: brightness(1.15); }
+      100% { transform: scale(1.04) translate(1%, 0); filter: brightness(1.0); }
+    }
+
+    .flash-left {
+      position: relative;
+      z-index: 2;
     }
 
     .flash-left h2 {
@@ -1121,7 +1420,7 @@
     .count-num {
       font-size: 24px;
       font-weight: 900;
-      color: var(--blue-main);
+      color: var(--accent);
       font-family: 'Rajdhani', monospace;
     }
 
@@ -1137,10 +1436,12 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
+      position: relative;
+      z-index: 2;
     }
 
     .flash-item-card {
-      background: rgba(16, 22, 34, 0.9);
+      background: rgba(14, 18, 28, 0.9);
       border: 1px solid var(--border-card);
       border-radius: 18px;
       padding: 20px 16px;
@@ -1148,19 +1449,176 @@
       transition: all 0.2s;
       backdrop-filter: blur(12px);
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .flash-item-card:hover {
-      border-color: var(--blue-main);
+      border-color: var(--accent);
       transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .flash-card-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      margin-bottom: 8px;
     }
 
     /* =========================================================================
-       6. SECCIÓN TICKER: RECARGAS EN VIVO
+       7. SECCIÓN: COMPROBANTES Y RESEÑAS GAMER EN VIVO (SOCIAL PROOF)
+       ========================================================================= */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s;
+    }
+
+    .review-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-dim);
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, rgba(0, 212, 255, 0.6) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      border: 1.5px solid #fff;
+    }
+
+    .review-author h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .review-author span {
+      font-size: 11px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .review-stars {
+      color: #ffcc00;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .review-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    .review-order-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      font-size: 11px;
+      font-family: 'Rajdhani', monospace;
+    }
+
+    .review-game-tag {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .review-status-tag {
+      color: #10b981;
+      font-weight: 800;
+    }
+
+    /* =========================================================================
+       8. SECCIÓN: MÉTODOS DE PAGO OFICIALES CON LOGOS
+       ========================================================================= */
+    .payments-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .payment-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 20px 14px;
+      text-align: center;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .payment-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8), 0 0 18px var(--accent-dim);
+    }
+
+    .payment-card-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .payment-card h4 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .payment-card p {
+      font-size: 10px;
+      color: var(--accent-secondary);
+      font-family: 'Rajdhani', monospace;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================================
+       9. SECCIÓN TICKER: RECARGAS EN VIVO
        ========================================================================= */
     .live-ticker-wrap {
-      background: rgba(10, 14, 22, 0.95);
+      background: rgba(7, 9, 14, 0.98);
       border-top: 1px solid var(--border-card);
       border-bottom: 1px solid var(--border-card);
       padding: 16px 48px;
@@ -1176,7 +1634,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: var(--accent-dim);
+      background: var(--badge-bg);
       border: 1px solid var(--accent);
       color: #fff;
       font-size: 11px;
@@ -1214,7 +1672,7 @@
     }
 
     .ticker-val {
-      color: var(--blue-main);
+      color: var(--accent);
       font-weight: 800;
     }
 
@@ -1225,7 +1683,7 @@
     }
 
     /* =========================================================================
-       7. SECCIÓN FAQ
+       10. SECCIÓN FAQ
        ========================================================================= */
     .faq-accordion {
       max-width: 820px;
@@ -1244,11 +1702,12 @@
     }
 
     .faq-item:hover {
-      border-color: rgba(0, 212, 255, 0.4);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .faq-item.active {
       border-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-dim);
     }
 
     .faq-question {
@@ -1286,15 +1745,47 @@
     }
 
     /* =========================================================================
-       8. FOOTER X7 STORE
+       11. FOOTER X7 STORE CON TELEMETRÍA EN VIVO
        ========================================================================= */
     .site-footer {
-      background: #05070c;
+      background: #05060a;
       border-top: 1px solid var(--border-card);
       padding: 64px 48px 32px;
       margin-top: 48px;
       position: relative;
       z-index: 10;
+    }
+
+    .footer-telemetry-bar {
+      max-width: 1360px;
+      margin: 0 auto 40px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-family: 'Rajdhani', monospace;
+      color: var(--text-dim);
+    }
+
+    .telemetry-status-ok {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #10b981;
+      font-weight: 800;
+    }
+
+    .telemetry-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulseDot 1.5s infinite;
     }
 
     .footer-grid {
@@ -1322,23 +1813,6 @@
       line-height: 1.6;
       max-width: 380px;
       margin-bottom: 24px;
-    }
-
-    .payment-icons-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .payment-tag {
-      font-size: 11px;
-      font-weight: 800;
-      padding: 5px 12px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-card);
-      color: #fff;
     }
 
     .footer-col h4 {
@@ -1381,7 +1855,7 @@
       color: var(--text-dim);
     }
 
-    /* MODAL DE CONFIRMACIÓN DE RECARGA */
+    /* MODAL DE CONFIRMACIÓN DE RECARGA CON LOGO OFICIAL */
     .recharge-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1421,19 +1895,24 @@
       cursor: pointer;
     }
 
-    .modal-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255, 30, 70, 0.2) 0%, rgba(0, 212, 255, 0.2) 100%);
+    .modal-logo-wrap {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      background: var(--badge-bg);
       border: 2px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      color: #fff;
       margin: 0 auto 18px;
       box-shadow: 0 0 24px var(--accent-glow);
+      padding: 10px;
+    }
+
+    .modal-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .modal-card h3 {
@@ -1497,17 +1976,23 @@
         padding: 32px 24px;
         gap: 40px;
       }
+      .steps-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .payments-grid { grid-template-columns: repeat(3, 1fr); }
       .flash-banner { grid-template-columns: 1fr; padding: 32px 24px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .section-wrap, .section-catalog-wrap { padding: 64px 24px; }
+      .section-wrap, .section-catalog-wrap, .steps-section { padding: 64px 24px; }
     }
 
     @media (max-width: 640px) {
       .hero-stats { grid-template-columns: 1fr; gap: 16px; }
       .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .payments-grid { grid-template-columns: repeat(2, 1fr); }
       .packages-terminal-grid { grid-template-columns: repeat(2, 1fr); }
       .flash-right-cards { grid-template-columns: 1fr; }
+      .footer-telemetry-bar { flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
@@ -1516,7 +2001,7 @@
   <!-- CANVAS OVERLAY PARA EL EFECTO DE CURSOR GAMER (HUMO Y DESTELLOS LUMINISCENTES) -->
   <canvas id="cursor-trail-canvas"></canvas>
 
-  <!-- CANVAS DE ENERGÍA AMBIENTAL CON CHISPAS ROJAS Y AZULES -->
+  <!-- CANVAS DE ENERGÍA AMBIENTAL CON CHISPAS REACTIVAS -->
   <canvas id="ambient-canvas"></canvas>
   <div class="cyber-grid-overlay"></div>
 
@@ -1535,24 +2020,30 @@
       <nav>
         <ul class="nav-links">
           <li><a href="#portada" class="nav-link active">Inicio</a></li>
+          <li><a href="#pasos" class="nav-link">¿Cómo Recargar?</a></li>
           <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
           <li><a href="#servicios" class="nav-link">Servicios</a></li>
           <li><a href="#ofertas" class="nav-link">Ofertas Flash</a></li>
+          <li><a href="#opiniones" class="nav-link">Comprobantes</a></li>
           <li><a href="#faq" class="nav-link">Preguntas</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <!-- Selector de Tema X7 -->
-        <div class="theme-picker" title="Estilos de color X7 Store">
-          <button class="theme-btn active" id="btn-theme-red" onclick="setGamerTheme('red')" title="X7 Crimson & Ice Blue">
-            <span class="theme-btn-dot" style="background: #ff1e46;"></span>
+        <!-- Selector de Color X7: Solamente Rojo, Azul y Amarillo -->
+        <div class="theme-picker" title="Selecciona el color de X7 Store">
+          <span class="theme-picker-label">COLOR:</span>
+          <!-- 1. ROJO -->
+          <button class="theme-btn active" id="btn-theme-red" onclick="setGamerTheme('red')" title="X7 Carmesí (Rojo Gamer)">
+            <span class="theme-btn-dot" style="background: #ff1e46; color: #ff1e46;"></span>
           </button>
-          <button class="theme-btn" id="btn-theme-blue" onclick="setGamerTheme('blue')" title="X7 Hyper Blue">
-            <span class="theme-btn-dot" style="background: #00d4ff;"></span>
+          <!-- 2. AZUL -->
+          <button class="theme-btn" id="btn-theme-blue" onclick="setGamerTheme('blue')" title="X7 Cyber (Azul Eléctrico)">
+            <span class="theme-btn-dot" style="background: #00d4ff; color: #00d4ff;"></span>
           </button>
-          <button class="theme-btn" id="btn-theme-white-red" onclick="setGamerTheme('white-red')" title="X7 Arctic Red & White">
-            <span class="theme-btn-dot" style="background: #ffffff; border: 1px solid #ff1e46;"></span>
+          <!-- 3. AMARILLO -->
+          <button class="theme-btn" id="btn-theme-yellow" onclick="setGamerTheme('yellow')" title="X7 Cyber Gold (Amarillo Esports)">
+            <span class="theme-btn-dot" style="background: #ffcc00; color: #ffcc00;"></span>
           </button>
         </div>
 
@@ -1568,11 +2059,13 @@
       </div>
     </header>
 
-    <!-- 2. PORTADA (HERO PRINCIPAL CON FONDO LLAMATIVO Y ENERGÍA X7) -->
+    <!-- 2. PORTADA (HERO PRINCIPAL CON FONDO DE VIDEO ANIMADO Y TERMINAL GAMER) -->
     <section class="hero-section" id="portada">
       
-      <!-- Fondo gamer temático de la portada -->
+      <!-- Fondo gamer animado tipo video (Ken Burns motion + scanlines + volumetric beam) -->
       <div class="hero-gamer-backdrop"></div>
+      <div class="hero-video-scanlines"></div>
+      <div class="hero-light-beam"></div>
 
       <div class="hero-content">
         <div class="hero-badge-pill">
@@ -1594,8 +2087,8 @@
             <span>EXPLORAR CATÁLOGO</span>
             <span>⚡</span>
           </a>
-          <a href="#servicios" class="btn-hero-secondary" onclick="playSfx('click')">
-            <span>Ver Métodos de Pago 🛡️</span>
+          <a href="#pasos" class="btn-hero-secondary" onclick="playSfx('click')">
+            <span>¿Cómo Funciona? 🛡️</span>
           </a>
         </div>
 
@@ -1615,12 +2108,17 @@
         </div>
       </div>
 
-      <!-- TERMINAL GAMER DE RECARGA DIRECTA (CON MONEDAS ESPECÍFICAS DE CADA JUEGO) -->
+      <!-- TERMINAL GAMER DE RECARGA DIRECTA (CON LOGO OFICIAL DEL JUEGO Y SU MONEDA) -->
       <div class="hero-terminal" id="terminal-box">
         <div class="terminal-header">
           <div class="terminal-title-cluster">
-            <span style="color: var(--accent); font-size: 18px;">⚡</span>
-            <h3>Recarga Directa // X7</h3>
+            <div class="terminal-game-logo-box">
+              <img id="terminal-active-logo" src="assets/logos/freefire.svg" alt="Logo de Free Fire">
+            </div>
+            <div>
+              <h3 id="terminal-game-name">FREE FIRE</h3>
+              <span id="terminal-game-subtitle" class="terminal-game-subtitle">GARENA OFICIAL</span>
+            </div>
           </div>
           <div class="terminal-live-badge">
             <span class="pulse-dot-red"></span>
@@ -1628,27 +2126,54 @@
           </div>
         </div>
 
-        <!-- 1. Selector de Juego Rápido -->
+        <!-- 1. Selector de Juego Rápido con LOGO DE CADA JUEGO -->
         <div class="terminal-field-label">
           <span>1. SELECCIONA TU JUEGO</span>
-          <span id="terminal-game-name" style="color: var(--accent); font-weight: 800;">FREE FIRE</span>
+          <span style="font-size: 10px; color: var(--accent); font-weight: 800;">OFICIAL // VERIFICADO</span>
         </div>
         <div class="game-chips-row" id="terminal-chips">
-          <button class="game-chip active" onclick="terminalSelectGame('freefire', this)">🔥 Free Fire</button>
-          <button class="game-chip" onclick="terminalSelectGame('cod', this)">🎯 COD Mobile</button>
-          <button class="game-chip" onclick="terminalSelectGame('valorant', this)">🗡️ Valorant</button>
-          <button class="game-chip" onclick="terminalSelectGame('roblox', this)">🧱 Roblox</button>
-          <button class="game-chip" onclick="terminalSelectGame('brawlstars', this)">⭐ Brawl Stars</button>
-          <button class="game-chip" onclick="terminalSelectGame('mobilelegends', this)">🔮 Mobile Legends</button>
-          <button class="game-chip" onclick="terminalSelectGame('pubg', this)">🪂 PUBG Mobile</button>
-          <button class="game-chip" onclick="terminalSelectGame('genshin', this)">🌌 Genshin</button>
-          <button class="game-chip" onclick="terminalSelectGame('steam', this)">🎮 Steam</button>
+          <button class="game-chip active" onclick="terminalSelectGame('freefire', this)">
+            <img src="assets/logos/freefire.svg" class="chip-game-logo" alt="Free Fire logo">
+            <span>Free Fire</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('cod', this)">
+            <img src="assets/logos/cod.svg" class="chip-game-logo" alt="COD Mobile logo">
+            <span>COD Mobile</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('valorant', this)">
+            <img src="assets/logos/valorant.svg" class="chip-game-logo" alt="Valorant logo">
+            <span>Valorant</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('roblox', this)">
+            <img src="assets/logos/roblox.svg" class="chip-game-logo" alt="Roblox logo">
+            <span>Roblox</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('brawlstars', this)">
+            <img src="assets/logos/brawlstars.svg" class="chip-game-logo" alt="Brawl Stars logo">
+            <span>Brawl Stars</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('mobilelegends', this)">
+            <img src="assets/logos/mobilelegends.svg" class="chip-game-logo" alt="Mobile Legends logo">
+            <span>Mobile Legends</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('pubg', this)">
+            <img src="assets/logos/pubg.svg" class="chip-game-logo" alt="PUBG Mobile logo">
+            <span>PUBG Mobile</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('genshin', this)">
+            <img src="assets/logos/genshin.svg" class="chip-game-logo" alt="Genshin Impact logo">
+            <span>Genshin</span>
+          </button>
+          <button class="game-chip" onclick="terminalSelectGame('steam', this)">
+            <img src="assets/logos/steam.svg" class="chip-game-logo" alt="Steam Wallet logo">
+            <span>Steam</span>
+          </button>
         </div>
 
         <!-- 2. Paquetes con la Moneda del Juego Seleccionado -->
         <div class="terminal-field-label">
-          <span>2. PAQUETES DE <span id="terminal-currency-name-header" style="color: var(--blue-main);">DIAMANTES 💎</span></span>
-          <span id="terminal-pkg-badge" style="color: var(--accent);">BONUS EXTRA ACTIVO</span>
+          <span>2. PAQUETES DE <span id="terminal-currency-name-header" style="color: var(--accent);">DIAMANTES 💎</span></span>
+          <span id="terminal-pkg-badge" style="color: var(--accent); font-weight: 800;">BONUS EXTRA ACTIVO</span>
         </div>
         <div class="packages-terminal-grid" id="terminal-pkgs-grid">
           <!-- Inyectado dinámicamente según el juego activo con su moneda respectiva -->
@@ -1657,7 +2182,7 @@
         <!-- 3. Entrada de ID del Jugador -->
         <div class="terminal-field-label">
           <span id="terminal-id-label">3. ID DE JUGADOR (UID)</span>
-          <span style="font-size: 9px; color: var(--blue-main);">SIN CONTRASEÑAS // 100% SEGURO</span>
+          <span style="font-size: 9px; color: var(--accent); font-weight: 800;">SIN CONTRASEÑAS // 100% SEGURO</span>
         </div>
         <div class="terminal-input-wrap">
           <div class="input-box">
@@ -1698,7 +2223,7 @@
         <div class="ticker-item">
           <span class="ticker-player">GenshinFan (Perú)</span> recargó <span class="ticker-val">1,980 🌌 Cristales Génesis</span> <span class="ticker-time">hace 1m</span>
         </div>
-        <!-- Duplicado para loop continuo -->
+        <!-- Loop duplicado -->
         <div class="ticker-item">
           <span class="ticker-player">AlexGamer99 (Venezuela)</span> recargó <span class="ticker-val">1,060 💎 Free Fire</span> <span class="ticker-time">hace 6s</span>
         </div>
@@ -1708,8 +2233,53 @@
       </div>
     </div>
 
-    <!-- 3. SECCIÓN: CATÁLOGO DE JUEGOS CON IMÁGENES REALES Y FONDO DIFERENTE -->
+    <!-- 3. SECCIÓN: ¿CÓMO RECARGAR EN X7 STORE? (GUÍA EN 3 PASOS) -->
+    <section class="steps-section" id="pasos">
+      <div class="section-container-inner">
+        <div class="section-header-center">
+          <span class="section-eyebrow">// PROCESO 100% AUTOMÁTICO</span>
+          <h2 class="section-main-title">Recarga en 3 Simples Pasos en <span>X7 Store</span></h2>
+          <p class="section-subtitle-text">
+            Sin registros engorrosos ni compartir tus contraseñas. Diseñado por gamers para entregas en menos de 30 segundos.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- PASO 1 -->
+          <div class="step-card">
+            <div class="step-number-watermark">01</div>
+            <div class="step-icon-badge">🎮</div>
+            <span class="step-badge-tag">PASO 01 // SELECCIÓN</span>
+            <h3>Elige tu Juego y Pack</h3>
+            <p>Selecciona tu título preferido (Free Fire, COD, Valorant, Roblox...) y elige la cantidad exacta de diamantes, monedas o pases de temporada con bono extra.</p>
+          </div>
+
+          <!-- PASO 2 -->
+          <div class="step-card">
+            <div class="step-number-watermark">02</div>
+            <div class="step-icon-badge">🎯</div>
+            <span class="step-badge-tag">PASO 02 // BLINDAJE</span>
+            <h3>Ingresa tu ID de Jugador</h3>
+            <p>Solo digita tu UID o Gamertag oficial. Nuestro verificador de servidores confirma tu cuenta en tiempo real sin solicitar contraseñas ni correos confidenciales.</p>
+          </div>
+
+          <!-- PASO 3 -->
+          <div class="step-card">
+            <div class="step-number-watermark">03</div>
+            <div class="step-icon-badge">⚡</div>
+            <span class="step-badge-tag">PASO 03 // INSTANTÁNEO</span>
+            <h3>Paga y Recibe en Segundos</h3>
+            <p>Paga con Pago Móvil, Binance Pay (cero comisiones), Nequi, Zelle o Tarjetas. El sistema emite la orden por API y tus monedas caen a tu cuenta inmediatamente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SECCIÓN: CATÁLOGO DE JUEGOS CON FONDO DE VIDEO Y LOGOS OFICIALES -->
     <section class="section-catalog-wrap" id="catalogo">
+      <!-- Fondo animado tipo video gamer -->
+      <div class="catalog-live-backdrop"></div>
+
       <div class="section-container-inner">
         <div class="section-header-center">
           <span class="section-eyebrow">// CATÁLOGO OFICIAL X7 STORE</span>
@@ -1728,18 +2298,24 @@
           <button class="filter-btn" onclick="filterCatalog('pc', this)">PC & Consola</button>
         </div>
 
-        <!-- Grid de Tarjetas de Juegos con Imágenes Reales y Monedas Específicas -->
+        <!-- Grid de Tarjetas de Juegos con LOGOS OFICIALES e Imágenes Reales -->
         <div class="catalog-grid" id="games-grid">
           
           <!-- 1. FREE FIRE -->
           <div class="game-card" data-category="battle-royale mobile" onclick="catalogPickGame('freefire')">
             <div class="game-card-banner" style="background-image: url('assets/games/freefire.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/freefire.svg" alt="Free Fire Logo Oficial">
+              </div>
               <span class="game-badge-tag">TOP RECARGAS 🔥</span>
               <span class="game-currency-pill">💎 Diamantes</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Free Fire</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/freefire.svg" class="card-inline-logo" alt="FF">
+                  <h3 class="game-card-name">Free Fire</h3>
+                </div>
                 <div class="game-card-currency">💎 Diamantes & Pase Booyah</div>
               </div>
               <div class="game-card-footer">
@@ -1755,12 +2331,18 @@
           <!-- 2. COD MOBILE -->
           <div class="game-card" data-category="shooter mobile" onclick="catalogPickGame('cod')">
             <div class="game-card-banner" style="background-image: url('assets/games/cod.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/cod.svg" alt="COD Mobile Logo Oficial">
+              </div>
               <span class="game-badge-tag">ACTIVISION 🎖️</span>
               <span class="game-currency-pill">🎖️ CP Points</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Call of Duty: Mobile</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/cod.svg" class="card-inline-logo" alt="COD">
+                  <h3 class="game-card-name">Call of Duty: Mobile</h3>
+                </div>
                 <div class="game-card-currency">🎖️ CP Points & Pase de Batalla</div>
               </div>
               <div class="game-card-footer">
@@ -1776,12 +2358,18 @@
           <!-- 3. VALORANT -->
           <div class="game-card" data-category="shooter pc" onclick="catalogPickGame('valorant')">
             <div class="game-card-banner" style="background-image: url('assets/games/valorant.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/valorant.svg" alt="Valorant Logo Oficial">
+              </div>
               <span class="game-badge-tag">RIOT GAMES ⚔️</span>
               <span class="game-currency-pill">⚔️ VP Points</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Valorant</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/valorant.svg" class="card-inline-logo" alt="VAL">
+                  <h3 class="game-card-name">Valorant</h3>
+                </div>
                 <div class="game-card-currency">⚔️ Valorant Points (VP)</div>
               </div>
               <div class="game-card-footer">
@@ -1797,12 +2385,18 @@
           <!-- 4. ROBLOX -->
           <div class="game-card" data-category="all pc mobile" onclick="catalogPickGame('roblox')">
             <div class="game-card-banner" style="background-image: url('assets/games/roblox.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/roblox.svg" alt="Roblox Logo Oficial">
+              </div>
               <span class="game-badge-tag">ENTREGA DIRECTA</span>
               <span class="game-currency-pill">🧱 Robux</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Roblox</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/roblox.svg" class="card-inline-logo" alt="RBX">
+                  <h3 class="game-card-name">Roblox</h3>
+                </div>
                 <div class="game-card-currency">🧱 Robux Oficiales & Premium</div>
               </div>
               <div class="game-card-footer">
@@ -1818,12 +2412,18 @@
           <!-- 5. BRAWL STARS -->
           <div class="game-card" data-category="mobile" onclick="catalogPickGame('brawlstars')">
             <div class="game-card-banner" style="background-image: url('assets/games/brawlstars.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/brawlstars.svg" alt="Brawl Stars Logo Oficial">
+              </div>
               <span class="game-badge-tag">SUPERCELL ⭐</span>
               <span class="game-currency-pill">⭐ Gemas</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Brawl Stars</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/brawlstars.svg" class="card-inline-logo" alt="BS">
+                  <h3 class="game-card-name">Brawl Stars</h3>
+                </div>
                 <div class="game-card-currency">⭐ Gemas & Brawl Pass Plus</div>
               </div>
               <div class="game-card-footer">
@@ -1839,12 +2439,18 @@
           <!-- 6. MOBILE LEGENDS -->
           <div class="game-card" data-category="mobile" onclick="catalogPickGame('mobilelegends')">
             <div class="game-card-banner" style="background-image: url('assets/games/mobilelegends.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/mobilelegends.svg" alt="Mobile Legends Logo Oficial">
+              </div>
               <span class="game-badge-tag">MOONTON 🔮</span>
               <span class="game-currency-pill">🔮 Diamonds</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Mobile Legends</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/mobilelegends.svg" class="card-inline-logo" alt="ML">
+                  <h3 class="game-card-name">Mobile Legends</h3>
+                </div>
                 <div class="game-card-currency">🔮 Diamonds & Pase Semanal</div>
               </div>
               <div class="game-card-footer">
@@ -1860,12 +2466,18 @@
           <!-- 7. PUBG MOBILE -->
           <div class="game-card" data-category="battle-royale mobile" onclick="catalogPickGame('pubg')">
             <div class="game-card-banner" style="background-image: url('assets/games/pubg.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/pubg.svg" alt="PUBG Mobile Logo Oficial">
+              </div>
               <span class="game-badge-tag">TENCENT 🪂</span>
               <span class="game-currency-pill">🪂 UC Cash</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">PUBG Mobile</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/pubg.svg" class="card-inline-logo" alt="PUBG">
+                  <h3 class="game-card-name">PUBG Mobile</h3>
+                </div>
                 <div class="game-card-currency">🪂 UC Unknown Cash & Royale Pass</div>
               </div>
               <div class="game-card-footer">
@@ -1881,12 +2493,18 @@
           <!-- 8. GENSHIN IMPACT -->
           <div class="game-card" data-category="pc mobile" onclick="catalogPickGame('genshin')">
             <div class="game-card-banner" style="background-image: url('assets/games/genshin.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/genshin.svg" alt="Genshin Impact Logo Oficial">
+              </div>
               <span class="game-badge-tag">HOYOVERSE 🌌</span>
               <span class="game-currency-pill">🌌 Cristales</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Genshin Impact</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/genshin.svg" class="card-inline-logo" alt="GI">
+                  <h3 class="game-card-name">Genshin Impact</h3>
+                </div>
                 <div class="game-card-currency">🌌 Cristales Génesis & Bendición</div>
               </div>
               <div class="game-card-footer">
@@ -1902,12 +2520,18 @@
           <!-- 9. STEAM WALLET -->
           <div class="game-card" data-category="pc" onclick="catalogPickGame('steam')">
             <div class="game-card-banner" style="background-image: url('assets/games/steam.jpg');">
+              <div class="game-card-logo-float">
+                <img src="assets/logos/steam.svg" alt="Steam Logo Oficial">
+              </div>
               <span class="game-badge-tag">VALVE GLOBAL</span>
               <span class="game-currency-pill">🎮 Saldo USD</span>
             </div>
             <div class="game-card-body">
               <div>
-                <h3 class="game-card-name">Steam Wallet</h3>
+                <div class="game-card-title-row">
+                  <img src="assets/logos/steam.svg" class="card-inline-logo" alt="STM">
+                  <h3 class="game-card-name">Steam Wallet</h3>
+                </div>
                 <div class="game-card-currency">🎮 Saldo Digital Global USD</div>
               </div>
               <div class="game-card-footer">
@@ -1924,7 +2548,7 @@
       </div>
     </section>
 
-    <!-- 4. SECCIÓN: SERVICIOS Y BENEFICIOS GAMER -->
+    <!-- 5. SECCIÓN: SERVICIOS Y BENEFICIOS GAMER -->
     <section class="section-wrap" id="servicios">
       <div class="section-header-center">
         <span class="section-eyebrow">// VENTAJAS EXCLUSIVAS</span>
@@ -1961,11 +2585,14 @@
       </div>
     </section>
 
-    <!-- 5. SECCIÓN: OFERTAS FLASH CON FONDO DINÁMICO CYBERPUNK -->
+    <!-- 6. SECCIÓN: OFERTAS FLASH CON FONDO DE VIDEO CYBERPUNK -->
     <section class="section-wrap" id="ofertas">
       <div class="flash-banner">
+        <!-- Fondo animado tipo video cyberpunk -->
+        <div class="flash-banner-backdrop"></div>
+
         <div class="flash-left">
-          <span class="section-eyebrow" style="color: var(--blue-main);">⚡ OFERTA RELÁMPAGO // X7 STORE</span>
+          <span class="section-eyebrow" style="color: var(--accent);">⚡ OFERTA RELÁMPAGO // X7 STORE</span>
           <h2>BONIFICACIÓN DEL +20% EXTRA EN <span>TUS MONEDAS</span></h2>
           <p>
             Aprovecha la recarga bonificada de fin de semana en X7 Store. Válido en todos los paquetes superiores a 520 diamantes, 880 CP o 1,000 robux.
@@ -1993,26 +2620,30 @@
         </div>
 
         <div class="flash-right-cards">
+          <!-- CARD 1: FREE FIRE -->
           <div class="flash-item-card" onclick="catalogPickGame('freefire')">
-            <div style="font-size: 26px; margin-bottom: 6px;">💎</div>
+            <img src="assets/logos/freefire.svg" class="flash-card-logo" alt="Free Fire Logo">
             <h4 style="color: #fff; font-size: 15px; font-weight: 800;">Free Fire 1,060 + 212 Bonus</h4>
-            <div style="font-size: 12px; color: var(--blue-main); margin: 4px 0; font-weight: 700;">Ahorro del 20%</div>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">Ahorro del 20%</div>
             <div style="font-size: 18px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$8.99 USD</div>
           </div>
+          <!-- CARD 2: ROBLOX -->
           <div class="flash-item-card" onclick="catalogPickGame('roblox')">
-            <div style="font-size: 26px; margin-bottom: 6px;">🧱</div>
+            <img src="assets/logos/roblox.svg" class="flash-card-logo" alt="Roblox Logo">
             <h4 style="color: #fff; font-size: 15px; font-weight: 800;">2,000 Robux Especial</h4>
             <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">Ahorro de $4.00</div>
             <div style="font-size: 18px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$16.99 USD</div>
           </div>
+          <!-- CARD 3: COD -->
           <div class="flash-item-card" onclick="catalogPickGame('cod')">
-            <div style="font-size: 26px; margin-bottom: 6px;">🎖️</div>
+            <img src="assets/logos/cod.svg" class="flash-card-logo" alt="COD Mobile Logo">
             <h4 style="color: #fff; font-size: 15px; font-weight: 800;">COD 2,400 CP + 400 Extra</h4>
-            <div style="font-size: 12px; color: var(--blue-main); margin: 4px 0; font-weight: 700;">BattlePass Listo</div>
+            <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">BattlePass Listo</div>
             <div style="font-size: 18px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$22.99 USD</div>
           </div>
+          <!-- CARD 4: VALORANT -->
           <div class="flash-item-card" onclick="catalogPickGame('valorant')">
-            <div style="font-size: 26px; margin-bottom: 6px;">⚔️</div>
+            <img src="assets/logos/valorant.svg" class="flash-card-logo" alt="Valorant Logo">
             <h4 style="color: #fff; font-size: 15px; font-weight: 800;">Valorant 3,650 VP</h4>
             <div style="font-size: 12px; color: var(--accent); margin: 4px 0; font-weight: 700;">Bonus de Verano</div>
             <div style="font-size: 18px; font-weight: 900; font-family: 'Rajdhani', monospace; color: #fff;">$31.99 USD</div>
@@ -2021,7 +2652,140 @@
       </div>
     </section>
 
-    <!-- 6. SECCIÓN: PREGUNTAS FRECUENTES -->
+    <!-- 7. SECCIÓN: COMPROBANTES Y RESEÑAS GAMER EN VIVO (SOCIAL PROOF) -->
+    <section class="section-wrap" id="opiniones">
+      <div class="section-header-center">
+        <span class="section-eyebrow">// COMUNIDAD VERIFICADA</span>
+        <h2 class="section-main-title">Lo que dicen los Gamers en <span>X7 Store</span></h2>
+        <p class="section-subtitle-text">
+          Más de 180,000 pedidos completados en Venezuela, Colombia, México, Chile, Argentina y toda Latinoamérica.
+        </p>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Reseña 1 -->
+        <div class="review-card">
+          <div>
+            <div class="review-header">
+              <div class="review-avatar">A</div>
+              <div class="review-author">
+                <h4>AlexGamer99</h4>
+                <span>🇻🇪 Caracas, Venezuela</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Pagué por Pago Móvil a las 11:30 PM y en menos de 25 segundos ya me sonó la notificación de Free Fire con los 1,060 diamantes. 100% recomendados!"</p>
+          </div>
+          <div class="review-order-pill">
+            <span class="review-game-tag">Free Fire // 1,060 💎</span>
+            <span class="review-status-tag">✔ ENTREGADO</span>
+          </div>
+        </div>
+
+        <!-- Reseña 2 -->
+        <div class="review-card">
+          <div>
+            <div class="review-header">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #00d4ff, #0077b6);">C</div>
+              <div class="review-author">
+                <h4>Carlos_COD</h4>
+                <span>🇨🇴 Medellín, Colombia</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Compré los 2,400 CP para el Pase de Batalla de COD Mobile. Pagué con Nequi y la acreditación fue instantánea a mi UID sin pedir claves. La mejor tienda."</p>
+          </div>
+          <div class="review-order-pill">
+            <span class="review-game-tag">COD Mobile // 2,400 CP</span>
+            <span class="review-status-tag">✔ ENTREGADO</span>
+          </div>
+        </div>
+
+        <!-- Reseña 3 -->
+        <div class="review-card">
+          <div>
+            <div class="review-header">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #ffcc00, #ff8800);">V</div>
+              <div class="review-author">
+                <h4>Val_Sniper</h4>
+                <span>🇨🇱 Santiago, Chile</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Recargué 2,050 VP de Valorant usando Binance Pay USDT con cero comisiones. Comprobante al instante y los puntos cayeron a mi cuenta de Riot de una."</p>
+          </div>
+          <div class="review-order-pill">
+            <span class="review-game-tag">Valorant // 2,050 VP</span>
+            <span class="review-status-tag">✔ ENTREGADO</span>
+          </div>
+        </div>
+
+        <!-- Reseña 4 -->
+        <div class="review-card">
+          <div>
+            <div class="review-header">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">R</div>
+              <div class="review-author">
+                <h4>RobuxMaster</h4>
+                <span>🇲🇽 CDMX, México</span>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Tenía miedo de que fuera estafa pero el soporte por WhatsApp me atendió en 1 minuto. Los 1,700 Robux entraron de inmediato. X7 Store es top mundial."</p>
+          </div>
+          <div class="review-order-pill">
+            <span class="review-game-tag">Roblox // 1,700 R$</span>
+            <span class="review-status-tag">✔ ENTREGADO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. SECCIÓN: MÉTODOS DE PAGO OFICIALES ACEPTADOS -->
+    <section class="section-wrap" style="padding-top: 20px;">
+      <div class="section-header-center">
+        <span class="section-eyebrow">// PASARELAS BLINDADAS</span>
+        <h2 class="section-main-title">Paga Como Quieras en <span>X7 Store</span></h2>
+        <p class="section-subtitle-text">
+          Integración directa con los sistemas bancarios más rápidos y criptopagos automáticos con acreditación en 30s.
+        </p>
+      </div>
+
+      <div class="payments-grid">
+        <div class="payment-card">
+          <div class="payment-card-icon">🇻🇪</div>
+          <h4>Pago Móvil</h4>
+          <p>Tasa Oficial BCV</p>
+        </div>
+        <div class="payment-card">
+          <div class="payment-card-icon">⚡</div>
+          <h4>Binance Pay</h4>
+          <p>USDT // 0% FEE</p>
+        </div>
+        <div class="payment-card">
+          <div class="payment-card-icon">🇨🇴</div>
+          <h4>Nequi / Daviplata</h4>
+          <p>Colombia Directo</p>
+        </div>
+        <div class="payment-card">
+          <div class="payment-card-icon">🌐</div>
+          <h4>Zelle / Zinli</h4>
+          <p>USD Internacional</p>
+        </div>
+        <div class="payment-card">
+          <div class="payment-card-icon">💳</div>
+          <h4>Tarjetas Visa/MC</h4>
+          <p>3D Secure Blindado</p>
+        </div>
+        <div class="payment-card">
+          <div class="payment-card-icon">🛡️</div>
+          <h4>PayPal</h4>
+          <p>Protección Total</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. SECCIÓN: PREGUNTAS FRECUENTES -->
     <section class="section-wrap" id="faq">
       <div class="section-header-center">
         <span class="section-eyebrow">// DUDAS FRECUENTES</span>
@@ -2074,21 +2838,29 @@
       </div>
     </section>
 
-    <!-- 7. FOOTER X7 STORE -->
+    <!-- 10. FOOTER X7 STORE CON TELEMETRÍA EN VIVO -->
     <footer class="site-footer">
+      <!-- Barra de telemetría en vivo -->
+      <div class="footer-telemetry-bar">
+        <div class="telemetry-status-ok">
+          <span class="telemetry-dot"></span>
+          <span>SISTEMA X7 STORE: 100% OPERATIVO</span>
+        </div>
+        <div>LATENCIA DE API: <strong>14ms</strong> // TIEMPO MEDIO DE ENTREGA: <strong>22s</strong></div>
+        <div>BLINDAJE SSL 256-BIT // CLOUDFLARE GAMING PROTECTION</div>
+      </div>
+
       <div class="footer-grid">
         <div class="footer-brand">
           <h2>X7 <span>STORE</span></h2>
           <p>
             La plataforma líder en recargas instantáneas de videojuegos y saldos digitales en Latinoamérica. Rapidez, seguridad y garantía total en cada compra.
           </p>
-          <div class="payment-icons-row">
-            <span class="payment-tag">Pago Móvil</span>
-            <span class="payment-tag">Binance Pay</span>
-            <span class="payment-tag">Nequi</span>
-            <span class="payment-tag">Zelle</span>
-            <span class="payment-tag">Visa/Mastercard</span>
-            <span class="payment-tag">PayPal</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">🇻🇪 Pago Móvil</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">⚡ Binance Pay</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">🇨🇴 Nequi</span>
+            <span style="font-size: 11px; padding: 4px 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid var(--border-card);">💳 Tarjetas</span>
           </div>
         </div>
 
@@ -2106,10 +2878,11 @@
         <div class="footer-col">
           <h4>Plataforma</h4>
           <ul>
+            <li><a href="#pasos">¿Cómo Funciona?</a></li>
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#ofertas">Ofertas Flash</a></li>
+            <li><a href="#opiniones">Comprobantes en Vivo</a></li>
             <li><a href="#faq">Preguntas Frecuentes</a></li>
-            <li><a href="#portada">Calculadora de ID</a></li>
           </ul>
         </div>
 
@@ -2126,17 +2899,19 @@
 
       <div class="footer-bottom">
         <div>© 2026 X7 Store. Todos los derechos reservados. No afiliado directamente a ninguna marca comercial citada.</div>
-        <div style="color: var(--blue-main);">Blindaje SSL 256-Bit // Entrega Verificada X7</div>
+        <div style="color: var(--accent);">Blindaje SSL 256-Bit // Entrega Verificada X7</div>
       </div>
     </footer>
 
   </div>
 
-  <!-- MODAL DE CONFIRMACIÓN DE RECARGA -->
+  <!-- MODAL DE CONFIRMACIÓN DE RECARGA CON LOGO OFICIAL -->
   <div class="recharge-modal-backdrop" id="recharge-modal">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
-      <div class="modal-icon">⚡</div>
+      <div class="modal-logo-wrap">
+        <img id="modal-game-logo" src="assets/logos/freefire.svg" class="modal-logo-img" alt="Logo Juego">
+      </div>
       <h3 id="modal-game-title">Free Fire</h3>
       <p id="modal-desc">Verifica los datos de tu recarga en X7 Store antes de proceder al pago seguro.</p>
 
@@ -2151,11 +2926,11 @@
         </div>
         <div class="order-line">
           <span style="color: var(--text-dim);">ID de Jugador:</span>
-          <span id="modal-field-id" style="color: var(--blue-main); font-family: 'Rajdhani', monospace; font-weight: 800;">2849102847</span>
+          <span id="modal-field-id" style="color: var(--accent); font-family: 'Rajdhani', monospace; font-weight: 800;">2849102847</span>
         </div>
         <div class="order-line">
           <span style="color: var(--text-dim);">Tiempo Estimado:</span>
-          <span style="color: var(--accent); font-weight: 800;">~30 Segundos</span>
+          <span style="color: #10b981; font-weight: 800;">~20 a 30 Segundos</span>
         </div>
         <div class="order-line">
           <span>Total a Pagar:</span>
@@ -2171,11 +2946,13 @@
 
   <script>
     // =========================================================================
-    // BASE DE DATOS DE JUEGOS Y MONEDAS ESPECÍFICAS PARA "RECARGA DIRECTA"
+    // BASE DE DATOS DE JUEGOS CON LOGO OFICIAL Y MONEDAS ESPECÍFICAS
     // =========================================================================
     const gameCurrenciesData = {
       'freefire': {
         name: 'Free Fire',
+        logo: 'assets/logos/freefire.svg',
+        publisher: 'GARENA OFICIAL',
         currencyName: 'Diamantes',
         currencyIcon: '💎',
         currencyFull: 'DIAMANTES 💎',
@@ -2192,6 +2969,8 @@
       },
       'cod': {
         name: 'Call of Duty: Mobile',
+        logo: 'assets/logos/cod.svg',
+        publisher: 'ACTIVISION OFICIAL',
         currencyName: 'CP Points',
         currencyIcon: '🎖️',
         currencyFull: 'CP POINTS 🎖️',
@@ -2208,6 +2987,8 @@
       },
       'valorant': {
         name: 'Valorant',
+        logo: 'assets/logos/valorant.svg',
+        publisher: 'RIOT GAMES OFICIAL',
         currencyName: 'Valorant Points',
         currencyIcon: '⚔️',
         currencyFull: 'VP POINTS ⚔️',
@@ -2224,6 +3005,8 @@
       },
       'roblox': {
         name: 'Roblox',
+        logo: 'assets/logos/roblox.svg',
+        publisher: 'ROBLOX CORP',
         currencyName: 'Robux',
         currencyIcon: '🧱',
         currencyFull: 'ROBUX 🧱',
@@ -2240,6 +3023,8 @@
       },
       'brawlstars': {
         name: 'Brawl Stars',
+        logo: 'assets/logos/brawlstars.svg',
+        publisher: 'SUPERCELL OFICIAL',
         currencyName: 'Gemas',
         currencyIcon: '⭐',
         currencyFull: 'GEMAS ⭐',
@@ -2256,6 +3041,8 @@
       },
       'mobilelegends': {
         name: 'Mobile Legends',
+        logo: 'assets/logos/mobilelegends.svg',
+        publisher: 'MOONTON OFICIAL',
         currencyName: 'Diamonds',
         currencyIcon: '🔮',
         currencyFull: 'DIAMONDS 🔮',
@@ -2272,6 +3059,8 @@
       },
       'pubg': {
         name: 'PUBG Mobile',
+        logo: 'assets/logos/pubg.svg',
+        publisher: 'TENCENT OFICIAL',
         currencyName: 'UC Cash',
         currencyIcon: '🪂',
         currencyFull: 'UC UNKNOWN CASH 🪂',
@@ -2288,6 +3077,8 @@
       },
       'genshin': {
         name: 'Genshin Impact',
+        logo: 'assets/logos/genshin.svg',
+        publisher: 'HOYOVERSE OFICIAL',
         currencyName: 'Cristales Génesis',
         currencyIcon: '🌌',
         currencyFull: 'CRISTALES GÉNESIS 🌌',
@@ -2304,6 +3095,8 @@
       },
       'steam': {
         name: 'Steam Wallet',
+        logo: 'assets/logos/steam.svg',
+        publisher: 'VALVE GLOBAL',
         currencyName: 'Saldo USD',
         currencyIcon: '🎮',
         currencyFull: 'SALDO GLOBAL USD 🎮',
@@ -2322,7 +3115,7 @@
 
     // ESTADO GENERAL DE LA APLICACIÓN
     const state = {
-      theme: 'red', // X7 Crimson & Ice Blue por defecto
+      theme: 'red', // 'red', 'blue' o 'yellow'
       audio: false,
       currentGameKey: 'freefire',
       selectedPkg: '310 💎',
@@ -2330,13 +3123,17 @@
       playerId: ''
     };
 
-    // RENDERIZADO DE LOS PAQUETES CON LA MONEDA ESPECÍFICA EN LA TERMINAL
+    // RENDERIZADO DE LOS PAQUETES Y LOGO EN LA TERMINAL
     function renderTerminalPackages(gameKey) {
       const data = gameCurrenciesData[gameKey] || gameCurrenciesData['freefire'];
       state.currentGameKey = gameKey;
 
-      // Actualizar encabezados con la moneda
+      // Actualizar logo y encabezados
+      const logoEl = document.getElementById('terminal-active-logo');
+      if (logoEl) logoEl.src = data.logo;
+
       document.getElementById('terminal-game-name').innerText = data.name.toUpperCase();
+      document.getElementById('terminal-game-subtitle').innerText = data.publisher;
       document.getElementById('terminal-currency-label').innerText = data.currencyFull;
       document.getElementById('terminal-currency-name-header').innerText = `${data.currencyName.toUpperCase()} ${data.currencyIcon}`;
       document.getElementById('terminal-id-input').placeholder = data.idPlaceholder;
@@ -2452,7 +3249,7 @@
       if (state.audio) playSfx('click');
     }
 
-    // TEMA X7 STORE (🔴 Red & Ice Blue, 🔵 Hyper Blue, ⚪ Arctic Red & White)
+    // TEMA X7 STORE: SOLO ROJO, AZUL Y AMARILLO
     function setGamerTheme(themeName) {
       state.theme = themeName;
       if (themeName === 'red') {
@@ -2489,16 +3286,19 @@
         return;
       }
       state.playerId = val;
-      openModalWithData(gameData.name, state.selectedPkg, state.playerId, state.selectedPrice);
+      openModalWithData(gameData.name, state.selectedPkg, state.playerId, state.selectedPrice, gameData.logo);
     }
 
     // MODAL DE COMPRA
-    function openModalWithData(game, pkg, id, price) {
+    function openModalWithData(game, pkg, id, price, logo) {
       document.getElementById('modal-game-title').innerText = game;
       document.getElementById('modal-field-game').innerText = game;
       document.getElementById('modal-field-pkg').innerText = pkg;
       document.getElementById('modal-field-id').innerText = id || 'No especificado';
       document.getElementById('modal-field-price').innerText = price;
+      if (logo) {
+        document.getElementById('modal-game-logo').src = logo;
+      }
       document.getElementById('recharge-modal').classList.add('active');
       playSfx('click');
     }
@@ -2554,7 +3354,7 @@
     setInterval(updateCountdown, 1000);
 
     // =========================================================================
-    // EFECTO DE CURSOR GAMER: HUMO CIBERNÉTICO Y DESTELLOS LUMINOSOS (ROJO, AZUL Y BLANCO)
+    // EFECTO DE CURSOR GAMER: HUMO Y DESTELLOS ADAPTABLES AL TEMA (ROJO, AZUL, AMARILLO)
     // =========================================================================
     const trailCanvas = document.getElementById('cursor-trail-canvas');
     const tCtx = trailCanvas.getContext('2d');
@@ -2577,11 +3377,21 @@
       const dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist > 3) {
-        // Alternar color del humo entre Rojo Hyper (#ff1e46) y Azul Eléctrico (#00d4ff)
-        const isRed = (Math.random() > 0.45);
-        const pR = isRed ? 255 : 0;
-        const pG = isRed ? 30 : 212;
-        const pB = isRed ? 70 : 255;
+        // Color de humo y chispas reactivo según el tema activo: Rojo, Azul o Amarillo
+        let pR = 255, pG = 30, pB = 70;
+        let sparkColor = '#ffffff';
+
+        if (state.theme === 'blue') {
+          pR = 0; pG = 212; pB = 255;
+          sparkColor = (Math.random() > 0.45) ? '#ffffff' : '#00d4ff';
+        } else if (state.theme === 'yellow') {
+          pR = 255; pG = 204; pB = 0;
+          sparkColor = (Math.random() > 0.45) ? '#ffffff' : '#ffcc00';
+        } else {
+          // Rojo
+          pR = 255; pG = 30; pB = 70;
+          sparkColor = (Math.random() > 0.45) ? '#ffffff' : '#ff1e46';
+        }
 
         // 1. Puffs de humo suave con desvanecimiento
         for (let i = 0; i < 2; i++) {
@@ -2592,7 +3402,7 @@
               radius: Math.random() * 8 + 6,
               maxRadius: Math.random() * 26 + 18,
               vx: (dx * 0.12) + (Math.random() - 0.5) * 0.8,
-              vy: (dy * 0.12) - Math.random() * 0.8 - 0.2, // Flota ligeramente hacia arriba como humo
+              vy: (dy * 0.12) - Math.random() * 0.8 - 0.2,
               alpha: 0.48,
               decay: 0.02 + Math.random() * 0.012,
               r: pR, g: pG, b: pB
@@ -2600,7 +3410,7 @@
           }
         }
 
-        // 2. Chispas brillantes luminiscentes (Destellos blancos y cian)
+        // 2. Chispas brillantes luminiscentes
         if (Math.random() > 0.35 && sparkParticles.length < 35) {
           sparkParticles.push({
             x: e.clientX,
@@ -2610,7 +3420,7 @@
             vy: (Math.random() - 0.5) * 3.5 - 0.5,
             alpha: 1,
             decay: 0.04 + Math.random() * 0.03,
-            color: (Math.random() > 0.5) ? '#ffffff' : (isRed ? '#ff1e46' : '#00d4ff')
+            color: sparkColor
           });
         }
 
@@ -2621,8 +3431,6 @@
 
     function renderCursorTrail() {
       tCtx.clearRect(0, 0, tWidth, tHeight);
-
-      // Modo de composición luminoso
       tCtx.globalCompositeOperation = 'screen';
 
       // Dibujar partículas de humo
@@ -2677,7 +3485,7 @@
     requestAnimationFrame(renderCursorTrail);
 
     // =========================================================================
-    // CANVAS DE FONDO GAMER: PARTÍCULAS DE ENERGÍA Y LÍNEAS TECH (ROJO Y AZUL)
+    // CANVAS DE FONDO GAMER: PARTÍCULAS DE ENERGÍA Y LÍNEAS TECH
     // =========================================================================
     const canvas = document.getElementById('ambient-canvas');
     const ctx = canvas.getContext('2d');
@@ -2697,13 +3505,16 @@
         vx: (Math.random() - 0.5) * 0.35,
         vy: -Math.random() * 0.45 - 0.12,
         size: Math.random() * 2 + 1,
-        alpha: Math.random() * 0.35 + 0.12,
-        color: (i % 2 === 0) ? '#ff1e46' : '#00d4ff'
+        alpha: Math.random() * 0.35 + 0.12
       });
     }
 
     function renderGamerCanvas() {
       ctx.clearRect(0, 0, width, height);
+
+      let themeColor = '#ff1e46';
+      if (state.theme === 'blue') themeColor = '#00d4ff';
+      if (state.theme === 'yellow') themeColor = '#ffcc00';
 
       for (let i = 0; i < ambientParticles.length; i++) {
         const p = ambientParticles[i];
@@ -2716,11 +3527,10 @@
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
+        ctx.fillStyle = themeColor;
         ctx.globalAlpha = p.alpha;
         ctx.fill();
 
-        // Conectar partículas cercanas con líneas tenues
         for (let j = i + 1; j < ambientParticles.length; j++) {
           const p2 = ambientParticles[j];
           const dx = p.x - p2.x;
@@ -2731,7 +3541,7 @@
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = p.color;
+            ctx.strokeStyle = themeColor;
             ctx.globalAlpha = (1 - dist / 90) * 0.08;
             ctx.lineWidth = 0.8;
             ctx.stroke();

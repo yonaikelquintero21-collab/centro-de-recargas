@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+      <linearGradient id="bs-yellow" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#fff275"/>
+        <stop offset="100%" stop-color="#ff9900"/>
+      </linearGradient>
+      <filter id="bs-glow">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#ff9900" flood-opacity="0.6"/>
+      </filter>
+    </defs>
+    <!-- Background Circle -->
+    <circle cx="50" cy="50" r="42" fill="#0d1424" stroke="#ff9900" stroke-width="2.5"/>
+    <!-- Brawl Star Skull Shape -->
+    <g filter="url(#bs-glow)">
+      <!-- Star Spikes -->
+      <polygon points="50,14 59,32 78,32 64,46 70,66 50,54 30,66 36,46 22,32 41,32" fill="url(#bs-yellow)" stroke="#221400" stroke-width="3"/>
+      <!-- Skull Eyes -->
+      <circle cx="43" cy="40" r="4.5" fill="#221400"/>
+      <circle cx="57" cy="40" r="4.5" fill="#221400"/>
+      <!-- Cheek crosses or small smile -->
+      <path d="M44 50 Q50 54 56 50" stroke="#221400" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </g>
+  </svg>

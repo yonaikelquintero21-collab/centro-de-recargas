@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+    <defs>
+      <linearGradient id="primo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#7dd3fc"/>
+        <stop offset="35%" stop-color="#c084fc"/>
+        <stop offset="70%" stop-color="#f472b6"/>
+        <stop offset="100%" stop-color="#fde047"/>
+      </linearGradient>
+      <filter id="primo-glow">
+        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#38bdf8" flood-opacity="0.8"/>
+      </filter>
+    </defs>
+    <!-- Background Aura -->
+    <circle cx="50" cy="50" r="42" fill="#0a0e1a" stroke="rgba(56, 189, 248, 0.3)" stroke-width="2"/>
+    <!-- Primogem 4-pointed Star -->
+    <g filter="url(#primo-glow)">
+      <!-- Outer diamond structure -->
+      <polygon points="50,14 62,38 86,50 62,62 50,86 38,62 14,50 38,38" fill="url(#primo-grad)"/>
+      <!-- Inner star facet cuts -->
+      <polygon points="50,24 58,42 76,50 58,58 50,76 42,58 24,50 42,42" fill="#ffffff" fill-opacity="0.35"/>
+      <polygon points="50,34 54,46 66,50 54,54 50,66 46,54 34,50 46,46" fill="#ffffff"/>
+    </g>
+  </svg>
