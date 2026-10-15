@@ -72,6 +72,9 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 84px;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
     }
 
     body {
@@ -79,6 +82,8 @@
       background-color: var(--bg-deep);
       color: var(--text-main);
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
       min-height: 100vh;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -2147,40 +2152,78 @@
         padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
       }
       .app-container {
-        padding-top: 64px;
+        padding-top: 60px;
       }
       .mobile-bottom-bar {
         display: flex;
       }
       .navbar {
-        height: 64px;
-        padding: 0 16px;
+        height: 60px;
+        padding: 0 12px;
+      }
+      .brand-logo {
+        gap: 8px;
       }
       .brand-badge-x7 {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        border-radius: 8px;
       }
       .brand-title-box h1 {
-        font-size: 16px;
+        font-size: 15px;
       }
       .brand-title-box p {
         display: none;
+      }
+      .nav-actions {
+        gap: 6px;
+      }
+      .theme-picker {
+        padding: 2px 6px;
+        gap: 4px;
+      }
+      .theme-btn {
+        width: 18px;
+        height: 18px;
+      }
+      .theme-btn-dot {
+        width: 10px;
+        height: 10px;
+      }
+      .btn-sfx {
+        padding: 5px 7px;
+        font-size: 11px;
+        min-height: 32px;
+      }
+      .btn-sfx span:last-child {
+        display: none; /* Ocultar texto 'SFX' en celular, dejar solo el ícono 🔇 */
+      }
+      .mobile-menu-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+        border-radius: 8px;
+        display: flex;
+        flex-shrink: 0;
       }
       .btn-nav-recharge {
         display: none; /* Reemplazado por el botón central del bottom bar */
       }
       .mobile-menu-drawer {
-        top: 64px;
-        padding: 16px;
+        top: 60px;
+        padding: 14px;
       }
-      /* 2. SECCIÓN PORTADA & HERO GAMER ADAPTADA A CELULAR */
+      /* 2. SECCIÓN PORTADA & HERO GAMER TOTALMENTE ADAPTADA A CELULAR */
       .hero-section {
-        grid-template-columns: 1fr;
-        padding: 24px 14px 32px;
-        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+        padding: 14px 10px 24px;
+        gap: 14px;
         width: 100%;
-        max-width: 100vw;
+        max-width: 100%;
         box-sizing: border-box;
         overflow: hidden;
       }
@@ -2188,10 +2231,10 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(180deg, rgba(7, 9, 14, 0.45) 0%, rgba(7, 9, 14, 0.78) 35%, rgba(7, 9, 14, 0.96) 75%, rgba(7, 9, 14, 1) 100%),
-          radial-gradient(circle at 50% 12%, var(--accent-dim) 0%, transparent 60%),
-          url('assets/games/hero-bg.jpg') center top / 100% auto no-repeat;
-        opacity: 0.95;
+          linear-gradient(180deg, rgba(7, 9, 14, 0.5) 0%, rgba(7, 9, 14, 0.85) 35%, rgba(7, 9, 14, 0.98) 75%, rgba(7, 9, 14, 1) 100%),
+          radial-gradient(circle at 50% 10%, var(--accent-dim) 0%, transparent 65%),
+          url('assets/games/hero-bg.jpg') center top / cover no-repeat;
+        opacity: 0.92;
         animation: none;
       }
       .hero-content {
@@ -2203,80 +2246,85 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 6px 0 0;
+        padding: 0 4px;
       }
       .hero-badge-pill {
         max-width: 100%;
         white-space: normal;
         line-height: 1.35;
-        padding: 6px 14px;
+        padding: 5px 12px;
         font-size: 11px;
         letter-spacing: 0.04em;
         box-sizing: border-box;
-        margin: 0 auto 12px;
+        margin: 0 auto 8px;
       }
       .hero-title {
-        font-size: clamp(22px, 6.2vw, 28px);
+        font-size: clamp(19px, 5.2vw, 23px);
         word-break: break-word;
         overflow-wrap: break-word;
         line-height: 1.15;
         max-width: 100%;
         text-align: center;
-        margin-bottom: 12px;
+        margin: 0 auto 8px;
       }
       .hero-subtitle {
-        font-size: 13.5px;
-        line-height: 1.55;
-        margin: 0 auto 18px;
-        max-width: 380px;
+        font-size: 12.5px;
+        line-height: 1.45;
+        margin: 0 auto 12px;
+        max-width: 330px;
         text-align: center;
         word-break: break-word;
         overflow-wrap: break-word;
       }
       .hero-cta-group {
         width: 100%;
+        max-width: 320px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
+        justify-content: center;
+        gap: 8px;
+        margin: 0 auto 12px;
       }
       .btn-hero-primary {
-        width: 100%;
-        max-width: 320px;
+        flex: 1;
+        max-width: none;
         justify-content: center;
-        padding: 13px 20px;
-        font-size: 13px;
-        min-height: 48px;
+        padding: 10px 12px;
+        font-size: 11.5px;
+        min-height: 40px;
         box-sizing: border-box;
       }
       .btn-hero-secondary {
-        width: 100%;
-        max-width: 320px;
+        flex: 1;
+        max-width: none;
         justify-content: center;
-        padding: 11px 18px;
-        font-size: 12.5px;
-        min-height: 42px;
+        padding: 10px 12px;
+        font-size: 11.5px;
+        min-height: 40px;
         box-sizing: border-box;
       }
       .hero-stats {
         width: 100%;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        padding-top: 14px;
+        max-width: 340px;
+        margin: 0 auto;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        padding-top: 10px;
         box-sizing: border-box;
       }
       .stat-box {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--border-card);
-        border-radius: 12px;
-        padding: 8px 4px;
+        border-radius: 10px;
+        padding: 8px 6px;
         text-align: center;
         min-width: 0;
       }
       .stat-number {
-        font-size: 17px;
+        font-size: 14px;
         margin-bottom: 2px;
+        font-weight: 900;
       }
       .stat-label {
         font-size: 11px;
@@ -2287,44 +2335,57 @@
       .hero-terminal {
         width: 100%;
         max-width: 100%;
+        min-width: 0;
         box-sizing: border-box;
-        padding: 16px 14px;
-        border-radius: 20px;
-        margin-top: 4px;
+        padding: 16px 12px;
+        border-radius: 18px;
+        margin: 0;
         background: rgba(14, 18, 28, 0.94);
         border: 1px solid var(--border-card);
       }
       .terminal-game-banner-preview {
-        min-height: 84px;
-        padding: 10px 14px;
+        min-height: 78px;
+        padding: 10px 12px;
         margin-bottom: 14px;
-        border-radius: 14px;
+        border-radius: 12px;
+        background-size: cover;
+        background-position: center;
       }
       .terminal-game-logo-box {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         border-radius: 10px;
+        flex-shrink: 0;
+      }
+      .terminal-title-cluster {
+        gap: 10px;
+        min-width: 0;
       }
       .terminal-title-cluster h2 {
         font-size: 15px;
         letter-spacing: 0.04em;
+        line-height: 1.1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .terminal-game-subtitle {
         font-size: 11px;
       }
       .terminal-live-badge {
         font-size: 11px;
-        padding: 4px 9px;
+        padding: 3px 8px;
+        flex-shrink: 0;
       }
 
       /* SELECTOR DE JUEGO TOUCH EN MÓVIL */
       .terminal-field-label {
-        font-size: 12px;
+        font-size: 11.5px;
         margin-bottom: 8px;
       }
       .game-chips-row {
         gap: 8px;
-        padding-bottom: 10px;
+        padding-bottom: 8px;
         margin-bottom: 14px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -2332,12 +2393,13 @@
       }
       .game-chip {
         scroll-snap-align: start;
-        padding: 9px 14px;
-        font-size: 12.5px;
-        min-height: 44px;
-        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 12px;
+        min-height: 40px;
+        border-radius: 10px;
         border: 1px solid var(--border-card);
         background: rgba(255, 255, 255, 0.04);
+        flex-shrink: 0;
       }
       .game-chip.active {
         border-color: var(--accent);
@@ -2346,63 +2408,132 @@
         color: #fff;
       }
       .chip-game-logo {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
       }
 
-      /* PAQUETES DE MONEDA TOUCH */
+      /* PAQUETES DE MONEDA TOUCH TOTALMENTE SIMÉTRICOS Y CENTRADOS */
       .packages-terminal-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
         margin-bottom: 16px;
         min-height: auto;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
       }
       .pkg-chip {
-        padding: 11px 8px;
-        min-height: 70px;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 11px 6px;
+        min-height: 72px;
         border-radius: 12px;
         border: 1px solid var(--border-card);
+        background: rgba(255, 255, 255, 0.035);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .pkg-chip.active {
+        border-color: var(--accent);
+        background: var(--badge-bg);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      }
+      .pkg-chip-tag {
+        position: absolute;
+        top: -6px;
+        right: 6px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 900;
+        padding: 2px 6px;
+        border-radius: 9999px;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        line-height: 1;
+        z-index: 2;
       }
       .pkg-chip-amount {
-        font-size: 14px;
+        font-size: 13.5px;
+        font-weight: 900;
+        color: #fff;
         margin-bottom: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        width: 100%;
+        text-align: center;
       }
       .pkg-chip-bonus {
         font-size: 11px;
+        font-weight: 800;
+        color: var(--accent);
+        margin-bottom: 3px;
+        width: 100%;
+        text-align: center;
       }
       .pkg-chip-price {
-        font-size: 13px;
+        font-size: 12px;
+        font-family: 'Rajdhani', monospace, sans-serif;
+        font-weight: 800;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 6px;
+        padding: 2px 7px;
+        line-height: 1.2;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: center;
       }
 
       /* INPUT ID DE JUGADOR TOUCH */
       .terminal-input-wrap {
+        width: 100%;
+        box-sizing: border-box;
         margin-bottom: 14px;
       }
       .input-box {
-        padding: 4px 6px 4px 14px;
-        min-height: 48px;
+        padding: 3px 5px 3px 12px;
+        min-height: 46px;
         border-radius: 12px;
+        width: 100%;
+        box-sizing: border-box;
       }
       .input-box input {
-        font-size: 16px;
-        min-height: 42px;
+        font-size: 15px;
+        min-height: 40px;
+        width: 100%;
+        min-width: 0;
       }
       .input-box input::placeholder {
-        font-size: 13px;
+        font-size: 12.5px;
       }
       .input-verify-btn {
-        min-height: 40px;
-        padding: 0 16px;
-        font-size: 11.5px;
+        min-height: 38px;
+        padding: 0 14px;
+        font-size: 11px;
         border-radius: 8px;
+        flex-shrink: 0;
       }
 
       /* BOTÓN RECARGA TOUCH */
       .btn-terminal-submit {
-        min-height: 52px;
-        font-size: 14px;
+        width: 100%;
+        min-height: 50px;
+        font-size: 13.5px;
         border-radius: 12px;
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
       }
 
       .catalog-filters {
@@ -3715,7 +3846,11 @@
       document.querySelectorAll('.game-chip').forEach(c => c.classList.remove('active'));
       if (btn) {
         btn.classList.add('active');
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const container = document.getElementById('terminal-chips');
+        if (container) {
+          const scrollTarget = btn.offsetLeft - (container.clientWidth / 2) + (btn.clientWidth / 2);
+          container.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+        }
       }
       renderTerminalPackages(gameKey);
       playSfx('click');
@@ -3727,7 +3862,11 @@
       chips.forEach(c => {
         if (c.getAttribute('onclick') && c.getAttribute('onclick').includes(`'${gameKey}'`)) {
           c.classList.add('active');
-          c.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          const container = document.getElementById('terminal-chips');
+          if (container) {
+            const scrollTarget = c.offsetLeft - (container.clientWidth / 2) + (c.clientWidth / 2);
+            container.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+          }
         } else {
           c.classList.remove('active');
         }
