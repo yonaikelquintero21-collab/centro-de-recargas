@@ -71,6 +71,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 84px;
     }
 
     body {
@@ -158,27 +159,31 @@
       z-index: 10;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      overflow-x: clip;
       width: 100%;
+      padding-top: 74px;
     }
 
     /* =========================================================================
-       1. BARRA DE NAVEGACIÓN STICKY & MENÚ MÓVIL
+       1. BARRA DE NAVEGACIÓN TOTALMENTE FIJA & MENÚ MÓVIL
        ========================================================================= */
     .navbar {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       width: 100%;
       height: 74px;
       padding: 0 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(7, 9, 14, 0.94);
+      background: rgba(7, 9, 14, 0.96);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-card);
-      z-index: 100;
+      z-index: 1000;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
       transition: height 0.3s;
     }
 
@@ -381,7 +386,7 @@
     /* GAVETA / MENÚ MÓVIL DESPLEGABLE */
     .mobile-menu-drawer {
       position: fixed;
-      top: 68px;
+      top: 74px;
       left: 0;
       width: 100%;
       background: rgba(7, 9, 14, 0.98);
@@ -392,7 +397,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      z-index: 99;
+      z-index: 999;
       transform: translateY(-120%);
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
@@ -2075,10 +2080,19 @@
     /* =========================================================================
        12. ADAPTACIÓN RESPONSIVE TOTAL PARA CELULARES (MOBILE-FIRST)
        ========================================================================= */
-    @media (max-width: 1024px) {
+    @media (max-width: 1080px) {
       .navbar {
         padding: 0 20px;
       }
+      .nav-links {
+        gap: 12px;
+      }
+      .nav-link {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 900px) {
       .nav-links {
         display: none;
       }
@@ -2102,7 +2116,7 @@
       .payments-grid {
         grid-template-columns: repeat(3, 1fr);
       }
-      .flash-banner {
+      .flash-showcase {
         grid-template-columns: 1fr;
         padding: 28px 20px;
       }
@@ -2116,8 +2130,14 @@
     }
 
     @media (max-width: 768px) {
+      html {
+        scroll-padding-top: 72px;
+      }
       body {
         padding-bottom: 66px; /* Espacio para barra de navegación inferior móvil */
+      }
+      .app-container {
+        padding-top: 64px;
       }
       .mobile-bottom-bar {
         display: flex;
@@ -2125,6 +2145,9 @@
       .navbar {
         height: 64px;
         padding: 0 16px;
+      }
+      .mobile-menu-drawer {
+        top: 64px;
       }
       .brand-badge-x7 {
         width: 36px;
@@ -3853,6 +3876,47 @@
       requestAnimationFrame(renderGamerCanvas);
     }
     requestAnimationFrame(renderGamerCanvas);
+
+    // =========================================================================
+    // SCROLLSPY: RESALTADO AUTOMÁTICO DE SECCIÓN ACTIVA EN LA BARRA SUPERIOR FIJA
+    // =========================================================================
+    const spySections = document.querySelectorAll('section[id]');
+    const desktopNavLinks = document.querySelectorAll('.nav-links .nav-link');
+    const mobileDrawerLinks = document.querySelectorAll('.mobile-menu-drawer a');
+
+    function updateActiveNavOnScroll() {
+      const scrollPos = window.scrollY + 140; // compensación por altura de barra fija
+      let currentSectionId = '';
+
+      spySections.forEach(sec => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSectionId = sec.getAttribute('id');
+        }
+      });
+
+      if (currentSectionId) {
+        desktopNavLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        mobileDrawerLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
+    window.addEventListener('DOMContentLoaded', updateActiveNavOnScroll);
   </script>
 </body>
 </html>
